@@ -218,7 +218,7 @@ const Cart = () => {
                       <input
                         type="text"
                         value={item.quantity}
-                        className="w-12 text-center dark:bg-gray-800 dark:border-gray-700"
+                        className="w-2 text-center dark:bg-gray-800 dark:border-gray-700"
                         readOnly
                       />
                       <button
@@ -300,7 +300,7 @@ const Cart = () => {
                         <input
                           type="text"
                           value={item.quantity}
-                          className="w-12 text-center dark:bg-gray-800 dark:border-gray-700"
+                          className="w-2 text-center dark:bg-gray-800 dark:border-gray-700"
                           readOnly
                         />
                         <button

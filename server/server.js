@@ -37,7 +37,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
 app.use('/uploads', express.static('uploads'));
-app.use('/api/payments', paymentRoutes);
+app.use('/api/payment', paymentRoutes);
 app.use('/api/orders', orderRoutes);
 app.use(errorMiddleware);
 
