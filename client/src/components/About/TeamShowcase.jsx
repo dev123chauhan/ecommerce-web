@@ -14,17 +14,17 @@ const TeamMember = ({ imageUrl, name, position, socialLinks }) => (
     <div className="flex space-x-4">
       {socialLinks.twitter && (
         <Link to={socialLinks.twitter} className="text-gray-600 hover:text-blue-500">
-        <TfiTwitter size={20} />
+        <TfiTwitter className="hover:-translate-y-1 transition-transform duration-300" size={20} />
         </Link>
       )}
       {socialLinks.instagram && (
         <Link to={socialLinks.instagram} className="text-gray-600 hover:text-pink-500">
-          <BsInstagram size={20} />
+          <BsInstagram className="hover:-translate-y-1 transition-transform duration-300" size={20} />
         </Link>
       )}
       {socialLinks.linkedin && (
         <Link to={socialLinks.linkedin} className="text-gray-600 hover:text-blue-700">
-          <Linkedin size={20} />
+          <Linkedin className="hover:-translate-y-1 transition-transform duration-300"  size={20} />
         </Link>
       )}
     </div>

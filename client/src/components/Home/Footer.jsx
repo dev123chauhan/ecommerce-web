@@ -65,7 +65,7 @@ const Footer = () => {
                       </div>
                     );
                   case "custom":
-                    return <div key={itemIndex}>{item.content}</div>;
+                    return <div   key={itemIndex}>{item.content}</div>;
                   default:
                     return null;
                 }

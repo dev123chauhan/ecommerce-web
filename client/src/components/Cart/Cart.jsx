@@ -108,6 +108,7 @@ const Cart = () => {
   // Updated loading state to use Ant Design Skeleton
   if (isLoading) {
     return (
+      <div className="dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400">
       <div className="min-h-screen container mx-auto px-4 py-8 mt-10 max-w-7xl">
         {/* Mobile view loading skeleton */}
         <div className="sm:hidden space-y-4">
@@ -171,6 +172,7 @@ const Cart = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     );
   }

@@ -92,8 +92,8 @@ const Wishlist = () => {
   return (
     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300 min-h-screen">
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-8 mt-20">
-          <div className="flex items-center gap-1">
+        <div className="flex justify-between items-center mb-8">
+          <div className="flex items-center gap-1 mt-20">
             <h2 className="text-2xl font-bold">Wishlist</h2>
             <span className="inline-flex items-center justify-center text-2xl font-bold">
               ({isLoading || loading ? "0" : items.length})

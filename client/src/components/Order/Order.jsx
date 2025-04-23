@@ -46,7 +46,7 @@ const Order = () => {
       <div className="">
         {/* Order Header */}
         <div className="border-b pb-4 mb-4">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4 mt-20">
             <h1 className="text-xl sm:text-2xl font-bold">Order Details</h1>
             <span className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold whitespace-nowrap">
               {orderData.status}

@@ -267,16 +267,16 @@ const FlashSale = () => {
               </div>
             ))}
           </div>
-          <div className="flex space-x-2">
+          <div className="flex space-x-2 ">
             <button
-              className="p-2 rounded-full transition-colors bg-gray-100"
+              className="p-2 rounded-full transition-colors bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
               onClick={() => scroll("left")}
               aria-label="Scroll left"
             >
               <ArrowLeft size={20} />
             </button>
             <button
-              className="p-2 rounded-full transition-colors bg-gray-100"
+              className="p-2 rounded-full transition-colors bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
               onClick={() => scroll("right")}
               aria-label="Scroll right"
             >

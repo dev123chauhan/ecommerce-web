@@ -185,8 +185,8 @@ const ProductRecommendations = () => {
               </div>
             ))
           : allProducts && allProducts.map((product) => (
-              <div key={product._id} className="bg-white p-4 rounded-lg shadow-sm relative">
-                <div className="relative group">
+              <div key={product._id} className="bg-white p-4 rounded-lg shadow-sm relative dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400">
+                <div className="relative group ">
                   <img
                     src={product.image}
                     alt={product.name}
@@ -194,13 +194,13 @@ const ProductRecommendations = () => {
                     onClick={() => handleProductClick(product)}
                   />
                   <button 
-                    className="absolute top-2 right-2 p-2 bg-white rounded-full opacity-80 hover:opacity-100"
+                    className="absolute top-2 right-2 p-2 bg-white rounded-full opacity-80 hover:opacity-100 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
                     onClick={() => handleProductClick(product)}
                   >
                     <Eye className="w-5 h-5" />
                   </button>
                   <button
-                    className="absolute top-2 left-2 p-2 bg-white rounded-full opacity-80 hover:opacity-100"
+                    className="absolute top-2 left-2 p-2 bg-white rounded-full opacity-80 hover:opacity-100 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleFavoriteClick(product);

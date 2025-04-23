@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
       </div>
       
       {/* Main content with dynamic padding based on banner visibility */}
-      <div className={`${isBannerVisible ? 'pt-[60px]' : 'pt-[20px]'}`}>
+      <div className={`${isBannerVisible ? 'pt-[55px]' : 'pt-[20px]'}`}>
         <main>{children}</main>
         <Footer />
       </div>

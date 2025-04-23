@@ -64,11 +64,11 @@ export const   footerData = [
           type: "custom",
           content: (
             <div className="flex space-x-4 mt-4 cursor-pointer">
-              <FiFacebook size={24} />
-              <TfiTwitter size={24} />
-              <FiInstagram size={24} />
-              <FiLinkedin size={24} />
-            </div>
+            <FiFacebook size={24} className="hover:-translate-y-1 transition-transform duration-300" />
+            <TfiTwitter size={24} className="hover:-translate-y-1 transition-transform duration-300" />
+            <FiInstagram size={24} className="hover:-translate-y-1 transition-transform duration-300" />
+            <FiLinkedin size={24} className="hover:-translate-y-1 transition-transform duration-300" />
+          </div>
           )
         }
       ]

@@ -124,7 +124,7 @@ export default function ChangePassword() {
         type={showPasswords[name] ? "text" : "password"}
         name={name}
         placeholder={placeholder}
-        className={`w-full px-3 py-2 border rounded-md ${
+        className={`w-full px-3 py-2 border rounded-md dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 ${
           formData[name]
             ? (validity[name] 
                 ? "border-green-500 bg-green-50" 

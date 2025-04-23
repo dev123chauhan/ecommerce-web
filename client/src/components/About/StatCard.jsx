@@ -2,7 +2,7 @@ import { Store, DollarSign, ShoppingBag, Coins } from 'lucide-react';
 import PropTypes from 'prop-types';
 const StatsCard = ({ icon: Icon, value, description, highlighted = false }) => (
   <div className={`p-6 rounded-lg shadow-md ${highlighted ? 'bg-red-500 text-white' : ''}`}>
-    <div className={`rounded-full w-16 h-16 flex items-center justify-center mb-4 ${highlighted ? 'bg-red-400' : 'bg-gray-200'}`}>
+    <div className={`dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 rounded-full w-16 h-16 flex items-center justify-center mb-4 ${highlighted ? 'bg-red-400' : 'bg-gray-200'}`}>
       <Icon size={32} className={highlighted ? 'text-white' : 'text-black'} />
     </div>
     <h2 className="text-3xl font-bold mb-2">{value}</h2>

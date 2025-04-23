@@ -25,7 +25,7 @@ const Billing = () => {
     (state) => state.order
   );
  
-  const currency = items.length > 0 ? items[0].currency : "₹";
+  const currency = items.length && items.length > 0 ? items[0].currency && items[0].currency : "₹";
 
   const [selectedPaymentMethod, setSelectedPaymentMethod] =
     useState("cash_on_delivery");

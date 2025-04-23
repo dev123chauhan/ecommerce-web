@@ -392,7 +392,7 @@ const ExploreProduct = () => {
         </div>
         <div className="flex space-x-2">
           <button
-            className={`p-2 rounded-full transition-colors ${
+            className={`p-2 rounded-full transition-colors dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 ${
               page === 1 ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
             }`}
             onClick={() => setPage(page - 1)}
@@ -401,7 +401,7 @@ const ExploreProduct = () => {
             <ArrowLeft className="w-6 h-6" />
           </button>
           <button
-            className={`p-2 rounded-full transition-colors ${
+            className={`p-2 rounded-full transition-colors dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 ${
               page === pages ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
             }`}
             onClick={() => setPage(page + 1)}

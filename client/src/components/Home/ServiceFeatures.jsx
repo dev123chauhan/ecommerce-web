@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 const ServiceFeature = ({ icon: Icon, title, description }) => (
   <div className="flex flex-col items-center text-center">
     <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4">
-      <div className="absolute inset-0 bg-gray-200 rounded-full"></div>
-      <div className="relative bg-black rounded-full p-4">
+      <div className="absolute inset-0 bg-gray-200 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"></div>
+      <div className="relative bg-black rounded-full p-4 ">
         <Icon className="w-8 h-8 text-white" />
       </div>
     </div>
