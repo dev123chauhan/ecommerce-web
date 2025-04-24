@@ -279,7 +279,7 @@ const Billing = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 dark:text-white transition-colors duration-300">
       <div className="container mx-auto px-4 py-4 sm:py-8 max-w-7xl">
         {/* Breadcrumb - Hide on smallest screens */}
         <nav className="hidden sm:block text-sm text-gray-500 mb-6 sm:mb-8">
@@ -318,13 +318,13 @@ const Billing = () => {
                   >
                     First Name<span className="text-red-500">*</span>
                   </label>
-                  <div className="relative">
+                  <div className="relative ">
                     <input
                       type="text"
                       id="firstName"
                       value={formData.firstName}
                       onChange={handleChange}
-                      className={`w-full p-2.5 bg-gray-100 rounded-lg border ${
+                      className={`w-full p-2.5 bg-gray-100 rounded-lg border dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 ${
                         formData.firstName
                           ? validity.firstName
                             ? "border-green-500 bg-green-50"
@@ -362,7 +362,7 @@ const Billing = () => {
                     id="companyName"
                     value={formData.companyName}
                     onChange={handleChange}
-                    className="w-full p-2.5 bg-gray-100 rounded-lg border border-gray-200 focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors"
+                    className="w-full p-2.5 bg-gray-100 rounded-lg border border-gray-200 focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
                   />
                 </div>
               </div>
@@ -380,7 +380,7 @@ const Billing = () => {
                     id="streetAddress"
                     value={formData.streetAddress}
                     onChange={handleChange}
-                    className={`w-full p-2.5 bg-gray-100 rounded-lg border ${
+                    className={`w-full p-2.5 bg-gray-100 rounded-lg border dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 ${
                       formData.streetAddress
                         ? validity.streetAddress
                           ? "border-green-500 bg-green-50"
@@ -419,7 +419,7 @@ const Billing = () => {
                   id="apartment"
                   value={formData.apartment}
                   onChange={handleChange}
-                  className="w-full p-2.5 bg-gray-100 rounded-lg border border-gray-200 focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors"
+                  className="w-full p-2.5 bg-gray-100 rounded-lg border border-gray-200 focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
                 />
               </div>
 
@@ -437,7 +437,7 @@ const Billing = () => {
                       id="townCity"
                       value={formData.townCity}
                       onChange={handleChange}
-                      className={`w-full p-2.5 bg-gray-100 rounded-lg border ${
+                      className={`w-full p-2.5 bg-gray-100 rounded-lg border dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 ${
                         formData.townCity
                           ? validity.townCity
                             ? "border-green-500 bg-green-50"
@@ -476,7 +476,7 @@ const Billing = () => {
                       id="phoneNumber"
                       value={formData.phoneNumber}
                       onChange={handleChange}
-                      className={`w-full p-2.5 bg-gray-100 rounded-lg border ${
+                      className={`w-full p-2.5 bg-gray-100 rounded-lg border dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 ${
                         formData.phoneNumber
                           ? validity.phoneNumber
                             ? "border-green-500 bg-green-50"
@@ -517,7 +517,7 @@ const Billing = () => {
                     id="emailAddress"
                     value={formData.emailAddress}
                     onChange={handleChange}
-                    className={`w-full p-2.5 bg-gray-100 rounded-lg border ${
+                    className={`w-full p-2.5 bg-gray-100 rounded-lg border dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 ${
                       formData.emailAddress
                         ? validity.emailAddress
                           ? "border-green-500 bg-green-50"
@@ -547,7 +547,7 @@ const Billing = () => {
               {/* Payment Methods */}
               <div className="mt-6 space-y-4">
                 <h3 className="font-semibold text-lg">Payment Method</h3>
-                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400">
                   <input
                     type="radio"
                     id="razorpay"
@@ -555,7 +555,7 @@ const Billing = () => {
                     value="razorpay"
                     checked={selectedPaymentMethod === "razorpay"}
                     onChange={handlePaymentMethodChange}
-                    className="w-4 h-4 rounded accent-black  cursor-pointer"
+                    className="w-4 h-4 rounded accent-black  cursor-pointer "
                   />
                   <label htmlFor="razorpay" className="font-medium">
                     Pay with Razorpay
@@ -566,7 +566,7 @@ const Billing = () => {
                     className="h-8 ml-auto"
                   />
                 </div>
-                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400">
                   <input
                     type="radio"
                     id="cash_on_delivery"

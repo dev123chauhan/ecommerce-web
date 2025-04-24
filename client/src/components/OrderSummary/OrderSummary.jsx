@@ -157,8 +157,8 @@ export default function OrderSummary() {
   ];
 
   return (
-    <div className="w-full lg:w-1/3">
-      <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border border-gray-100">
+    <div className="w-full lg:w-1/3 ">
+      <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border border-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400">
         <h3 className="text-lg sm:text-xl font-semibold mb-4">Order Summary</h3>
 
         <div className="space-y-3 mb-4">
@@ -214,7 +214,7 @@ export default function OrderSummary() {
 
         {/* Payment methods */}
         <div className="mt-6 space-y-4">
-          <div className="flex flex-wrap items-center gap-3 p-3 bg-gray-50 rounded-lg">
+          <div className="flex flex-wrap items-center gap-3 p-3 bg-gray-50 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400">
             <input
               type="radio"
               id="bank"
@@ -237,7 +237,7 @@ export default function OrderSummary() {
               ))}
             </div>
           </div>
-          <div className="flex flex-wrap items-center gap-3 p-3 bg-gray-50 rounded-lg">
+          <div className="flex flex-wrap items-center gap-3 p-3 bg-gray-50 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400">
             <input
               type="radio"
               id="UPI"
@@ -247,7 +247,7 @@ export default function OrderSummary() {
             <label htmlFor="UPI" className="font-medium">
               UPI
             </label>
-            <div className="flex gap-2 ml-auto hover:cursor-pointer">
+            <div className="flex gap-2 ml-auto hover:cursor-pointer ">
               {upiOptions.map((option, index) => (
                 <div key={index}>
                   <img
@@ -260,7 +260,7 @@ export default function OrderSummary() {
               ))}
             </div>
           </div>
-          <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+          <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400">
             <input
               type="radio"
               id="cashOnDelivery"
@@ -276,11 +276,11 @@ export default function OrderSummary() {
 
         {/* Coupon and Place Order */}
         <div className="mt-6 space-y-4">
-          <div className="flex flex-col sm:flex-row gap-2">
+          <div className="flex flex-col sm:flex-row gap-2 ">
             <input
               type="text"
               placeholder="Coupon Code"
-              className="flex-grow p-2.5 border border-gray-200 rounded-lg focus:border-red-500 focus:ring-1 focus:ring-red-500"
+              className="flex-grow p-2.5 border border-gray-200 rounded-lg focus:border-red-500 focus:ring-1 focus:ring-red-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
             />
             <button className="bg-red-500 text-white px-1 py-1 rounded-lg hover:bg-red-600 transition-colors">
               Apply Coupon

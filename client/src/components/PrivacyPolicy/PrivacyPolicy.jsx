@@ -44,9 +44,9 @@ PolicySection.propTypes = {
   className: PropTypes.string
 };
 
-PolicySection.defaultProps = {
-  className: ''
-};
+// PolicySection.defaultProps = {
+//   className: ''
+// };
 
 const PrivacyPolicy = ({ 
   companyName = 'Example Company', 
