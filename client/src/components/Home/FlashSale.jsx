@@ -23,13 +23,13 @@ const Modal = ({ isOpen, onClose, children, className = "" }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center ">
       <div
         className="fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300"
         onClick={onClose}
       />
       <div
-        className={`relative z-50 bg-white rounded-lg w-[90%] max-w-4xl max-h-[90vh] overflow-auto transform transition-all duration-300 scale-100 opacity-100 modal-content ${className}`}
+        className={`dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 relative z-50 bg-white rounded-lg w-[90%] max-w-4xl max-h-[90vh] overflow-auto transform transition-all duration-300 scale-100 opacity-100 modal-content ${className}`}
       >
         {children}
       </div>
@@ -198,7 +198,15 @@ const FlashSale = () => {
   };
 
   const handleProductClick = (product) => {
-    navigate(`/product/${product.name}`, { state: { product } });
+    // Create a URL-friendly slug from the product name
+    const slug = product.name
+      .toLowerCase()                // Convert to lowercase
+      .replace(/[^\w\s-]/g, '')    // Remove special characters
+      .replace(/\s+/g, '-')        // Replace spaces with hyphens
+      .trim();                      // Trim any leading/trailing spaces
+    
+    // Navigate with the slug
+    navigate(`/product/${slug}`, { state: { product } });
   };
   useEffect(() => {
     dispatch(
@@ -439,7 +447,7 @@ const FlashSale = () => {
           <div className="flex justify-center space-x-4">
             <button
               onClick={() => setIsLoginPopupOpen(false)}
-              className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100 transition-colors"
+              className="px-4 py-2 border border-gray-300 rounded-md transition-colors"
             >
               Cancel
             </button>

@@ -3,7 +3,7 @@ import { ShoppingCart, Trash2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWishlist, removeFromWishlist } from "../../slice/WishlistSlice";
 import { toast } from "sonner";
-import wishlistGif from "../../assets/Wishlist.mp4";
+import wishlistGif from "../../assets/Wishlist.gif";
 import { Skeleton } from "antd";
 import ProductRecommendations from "./RecommendedProduct";
 
@@ -110,12 +110,8 @@ const Wishlist = () => {
           <WishlistSkeleton />
         ) : items.length === 0 ? (
           <div className="">
-            <video
-              src={wishlistGif}
-              autoPlay
-              loop
-              muted
-              playsInline
+            <img
+              src={wishlistGif} 
               className="w-full max-w-md mx-auto"
             />
             <h1 className="text-center font-bold text-xl">No Product in Wishlist</h1>

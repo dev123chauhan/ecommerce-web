@@ -9,17 +9,21 @@ import { Trash } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react"; // Added useState
 // import EmptyCartItem from "./EmptyCartItem";
-import cartGif from "../../assets/emptycart.mp4";
+import cartGif from "../../assets/emptycart.gif";
 import { Skeleton } from "antd"; // Added Ant Design Skeleton import
 // import ProductRecommendations from "../Wishlist/RecommendedProduct";
 
 const Cart = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { items, totalAmount, loading: apiLoading } = useSelector((state) => state.cart);
+  const {
+    items,
+    totalAmount,
+    loading: apiLoading,
+  } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
   const currency = items.length > 0 ? items[0].currency : "";
-  
+
   // Added state for controlling loading with setTimeout
   const [loading, setLoading] = useState(true);
 
@@ -27,7 +31,7 @@ const Cart = () => {
   useEffect(() => {
     if (user?.id) {
       dispatch(fetchCart(user.id));
-      
+
       // Added setTimeout to ensure skeleton is shown for at least 1.5 seconds
       // This helps with testing and ensures users see the loading state
       setTimeout(() => {
@@ -61,7 +65,7 @@ const Cart = () => {
       ).unwrap();
 
       dispatch(fetchCart(user.id));
-      
+
       // Clear loading after a short delay
       setTimeout(() => {
         setLoading(false);
@@ -89,7 +93,7 @@ const Cart = () => {
       ).unwrap();
 
       dispatch(fetchCart(user.id));
-      
+
       // Clear loading after a short delay
       setTimeout(() => {
         setLoading(false);
@@ -109,70 +113,102 @@ const Cart = () => {
   if (isLoading) {
     return (
       <div className="dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400">
-      <div className="min-h-screen container mx-auto px-4 py-8 mt-10 max-w-7xl">
-        {/* Mobile view loading skeleton */}
-        <div className="sm:hidden space-y-4">
-          {[1, 2, 3].map((item) => (
-            <div key={item} className="border rounded-lg p-4 space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <Skeleton.Image active style={{ width: 64, height: 64 }} />
-                  <div>
-                    <Skeleton active paragraph={{ rows: 1 }} />
+        <div className="min-h-screen container mx-auto px-4 py-8 mt-10 max-w-7xl">
+          {/* Mobile view loading skeleton */}
+          <div className="sm:hidden space-y-4">
+            {[1, 2, 3].map((item) => (
+              <div key={item} className="border rounded-lg p-4 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <Skeleton.Image active style={{ width: 64, height: 64 }} />
+                    <div>
+                      <Skeleton active paragraph={{ rows: 1 }} />
+                    </div>
                   </div>
                 </div>
+                <div className="flex items-center justify-between">
+                  <Skeleton.Button active style={{ width: 80 }} />
+                  <Skeleton.Button active style={{ width: 50 }} />
+                </div>
               </div>
-              <div className="flex items-center justify-between">
-                <Skeleton.Button active style={{ width: 80 }} />
-                <Skeleton.Button active style={{ width: 50 }} />
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Desktop view loading skeleton */}
-        <div className="hidden sm:block overflow-x-auto">
-          <table className="w-full mb-8">
-            <thead>
-              <tr className="border-b">
-                <th className="text-left py-2">Product</th>
-                <th className="text-left py-2">Price</th>
-                <th className="text-left py-2">Quantity</th>
-                <th className="text-right py-2">Subtotal</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[1, 2, 3].map((item) => (
-                <tr key={item} className="border-b">
-                  <td className="py-4">
-                    <div className="flex items-center">
-                      <Skeleton.Button active style={{ width: 20, marginRight: 8 }} />
-                      <Skeleton.Image active style={{ width: 48, height: 48, marginRight: 8 }} />
-                      <Skeleton active paragraph={{ rows: 1 }} style={{ width: 150 }} />
-                    </div>
-                  </td>
-                  <td className="py-4"><Skeleton active paragraph={{ rows: 1 }} style={{ width: 60 }} /></td>
-                  <td className="py-4"><Skeleton.Button active style={{ width: 100 }} /></td>
-                  <td className="py-4 text-right"><Skeleton active paragraph={{ rows: 1 }} style={{ width: 60 }} /></td>
+          {/* Desktop view loading skeleton */}
+          <div className="hidden sm:block overflow-x-auto">
+            <table className="w-full mb-8">
+              <thead>
+                <tr className="border-b">
+                  <th className="text-left py-2">Product</th>
+                  <th className="text-left py-2">Price</th>
+                  <th className="text-left py-2">Quantity</th>
+                  <th className="text-right py-2">Subtotal</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        {/* Cart total loading skeleton */}
-        <div className="flex flex-col lg:flex-row gap-6">
-          <div className="w-full lg:w-1/2">
-            <Skeleton.Input active style={{ width: '100%', height: 40 }} />
+              </thead>
+              <tbody>
+                {[1, 2, 3].map((item) => (
+                  <tr key={item} className="border-b">
+                    <td className="py-4">
+                      <div className="flex items-center">
+                        <Skeleton.Button
+                          active
+                          style={{ width: 20, marginRight: 8 }}
+                        />
+                        <Skeleton.Image
+                          active
+                          style={{ width: 48, height: 48, marginRight: 8 }}
+                        />
+                        <Skeleton
+                          active
+                          paragraph={{ rows: 1 }}
+                          style={{ width: 150 }}
+                        />
+                      </div>
+                    </td>
+                    <td className="py-4">
+                      <Skeleton
+                        active
+                        paragraph={{ rows: 1 }}
+                        style={{ width: 60 }}
+                      />
+                    </td>
+                    <td className="py-4">
+                      <Skeleton.Button active style={{ width: 100 }} />
+                    </td>
+                    <td className="py-4 text-right">
+                      <Skeleton
+                        active
+                        paragraph={{ rows: 1 }}
+                        style={{ width: 60 }}
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-          <div className="w-full lg:w-1/2">
-            <div className="border border-gray-300 rounded-lg p-6">
-              <Skeleton active title={{ width: 100 }} paragraph={{ rows: 4 }} />
-              <Skeleton.Button active block style={{ height: 40, marginTop: 24 }} />
+
+          {/* Cart total loading skeleton */}
+          <div className="flex flex-col lg:flex-row gap-6">
+            <div className="w-full lg:w-1/2">
+              <Skeleton.Input active style={{ width: "100%", height: 40 }} />
+            </div>
+            <div className="w-full lg:w-1/2">
+              <div className="border border-gray-300 rounded-lg p-6">
+                <Skeleton
+                  active
+                  title={{ width: 100 }}
+                  paragraph={{ rows: 4 }}
+                />
+                <Skeleton.Button
+                  active
+                  block
+                  style={{ height: 40, marginTop: 24 }}
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
     );
   }
@@ -240,14 +276,7 @@ const Cart = () => {
           ) : (
             <div className="">
               {/* <img src={cartImage} alt="" className="mx-auto"/> */}
-              <video
-                src={cartGif}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full max-w-md mx-auto"
-              />
+              <img src={cartGif} className="w-full max-w-md mx-auto" />
               <h1 className="text-center font-bold text-xl">
                 No Product in Cart
               </h1>
@@ -288,7 +317,10 @@ const Cart = () => {
                         </span>
                       </div>
                     </td>
-                    <td className="py-4">{item.currency}{item.price}</td>
+                    <td className="py-4">
+                      {item.currency}
+                      {item.price}
+                    </td>
                     <td className="py-4">
                       <div className="border rounded-md inline-flex">
                         <button
@@ -315,21 +347,17 @@ const Cart = () => {
                         </button>
                       </div>
                     </td>
-                    <td className="py-4 text-right">{item.currency}{item.totalPrice}</td>
+                    <td className="py-4 text-right">
+                      {item.currency}
+                      {item.totalPrice}
+                    </td>
                   </tr>
                 ))
               ) : (
                 <tr>
                   <td colSpan="4" className="">
                     {/* <img src={cartImage} alt="" className="mx-auto"/> */}
-                    <video
-                      src={cartGif}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full max-w-md mx-auto"
-                    />
+                    <img src={cartGif} className="w-full max-w-md mx-auto" />
                   </td>
                 </tr>
               )}
@@ -376,7 +404,10 @@ const Cart = () => {
                   <div className="space-y-3">
                     <div className="flex justify-between">
                       <span>Subtotal:</span>
-                      <span>{currency}{totalAmount}</span>
+                      <span>
+                        {currency}
+                        {totalAmount}
+                      </span>
                     </div>
                     <div className="flex justify-between pb-3 border-b">
                       <span>Shipping:</span>
@@ -384,7 +415,10 @@ const Cart = () => {
                     </div>
                     <div className="flex justify-between pt-1">
                       <span className="font-bold">Total:</span>
-                      <span className="font-bold">{currency}{totalAmount}</span>
+                      <span className="font-bold">
+                        {currency}
+                        {totalAmount}
+                      </span>
                     </div>
                   </div>
                   <button
@@ -417,7 +451,7 @@ export default Cart;
 // import { useEffect } from "react";
 // // import EmptyCartItem from "./EmptyCartItem";
 // import cartGif from "../../assets/emptycart.mp4";
-// import { LoaderforData } from "../../utils/Loader"; 
+// import { LoaderforData } from "../../utils/Loader";
 // // import ProductRecommendations from "../Wishlist/RecommendedProduct";
 // const Cart = () => {
 //   const navigate = useNavigate();
@@ -483,7 +517,7 @@ export default Cart;
 //         <LoaderforData />
 //       </div>
 //     );
-    
+
 //   }
 //   return (
 //     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300 min-h-screen">
@@ -640,7 +674,7 @@ export default Cart;
 //                     />
 //                   </td>
 //                 </tr>
-          
+
 //               )}
 //             </tbody>
 //           </table>
@@ -713,20 +747,3 @@ export default Cart;
 //   );
 // };
 // export default Cart;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

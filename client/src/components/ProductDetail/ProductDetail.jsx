@@ -81,7 +81,7 @@ const navigate = useNavigate();
             <img
               src={mainImage}
               alt={product.name}
-              className="w-full h-auto object-contain border border-gray-200 rounded p-4"
+              className="w-full h-auto object-contain rounded p-4"
             />
           </div>
         </div>
@@ -158,14 +158,14 @@ const navigate = useNavigate();
           <div className="flex items-center space-x-4 mb-6">
             <div className="flex items-center border border-gray-300 rounded-md">
               <button
-                className="px-3 py-2 hover:bg-gray-100 transition-colors"
+                className="px-1 py-2  transition-colors"
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
               >
                 <Minus className="w-4 h-4" />
               </button>
               <span className="px-3 py-2 min-w-[40px] text-center">{quantity}</span>
               <button
-                className="px-3 py-2 hover:bg-gray-100 transition-colors"
+                className="px-1 py-2  transition-colors"
                 onClick={() => setQuantity(quantity + 1)}
               >
                 <Plus className="w-4 h-4" />

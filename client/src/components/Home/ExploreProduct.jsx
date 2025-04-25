@@ -231,7 +231,7 @@ import { useNavigate } from 'react-router-dom';
 const ProductCardSkeleton = () => (
   
   <Card
-    className="rounded-lg shadow-md overflow-hidden"
+    className="rounded-lg shadow-md overflow-hidden dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
     cover={
       <Skeleton.Image 
         active 
@@ -291,7 +291,15 @@ const ProductCard = ({ product, loading = false }) => {
     }
   };
   const handleProductClick = (product) => {
-    navigate(`/product/${product.name}`, { state: { product } });
+    // Create a URL-friendly slug from the product name
+    const slug = product.name
+      .toLowerCase()                // Convert to lowercase
+      .replace(/[^\w\s-]/g, '')    // Remove special characters
+      .replace(/\s+/g, '-')        // Replace spaces with hyphens
+      .trim();                      // Trim any leading/trailing spaces
+    
+    // Navigate with the slug
+    navigate(`/product/${slug}`, { state: { product } });
   };
   return (
     <div className="rounded-lg shadow-md overflow-hidden">
