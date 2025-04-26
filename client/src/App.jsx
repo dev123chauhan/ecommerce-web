@@ -92,7 +92,7 @@ export default function App() {
         <Route path="/product/:id" element={<Layout><ProductDetail /></Layout>} />
         <Route path="*" element={<Layout><NotFound /></Layout>}/>
         <Route path="/order" element={<Layout><PrivateRoute element={Order} /></Layout>}/>
-        <Route path="/productlist" element={<Layout><Shop /></Layout>}/>
+        <Route path="/shop" element={<Layout><Shop /></Layout>}/>
         <Route path="/privacy" element={<Layout><PrivacyPolicy /></Layout>}/>
         <Route path="/terms" element={<Layout><Terms /></Layout>}/>
         <Route path="/faq" element={<Layout><FAQ /></Layout>}/>

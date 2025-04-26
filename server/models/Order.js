@@ -25,6 +25,11 @@ const OrderSchema = new mongoose.Schema({
         type: Number,
         required: true,
       },
+      currency: {
+        type: String,
+        required: true,
+        default: '₹',
+      },
       quantity: {
         type: Number,
         required: true,
@@ -48,11 +53,6 @@ const OrderSchema = new mongoose.Schema({
   totalAmount: {
     type: Number,
     required: true,
-  },
-  currency: {
-    type: String,
-    required: true,
-    default: '₹',
   },
   paymentMethod: {
     type: String,

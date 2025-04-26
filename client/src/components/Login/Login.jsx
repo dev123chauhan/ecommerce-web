@@ -5,7 +5,7 @@ import { loginUser } from "../../action/AuthAction";
 // import signupimage from "../../assets/loginimage.png";
 import { toast } from "sonner";
 import { Loader } from "../../utils/Loader";
-import { ArrowLeft, Eye, EyeOff, CheckCircle, AlertCircle } from "lucide-react";
+import { ArrowLeft, CheckCircle, AlertCircle } from "lucide-react";
 import AuthImage from "../AuthImage/AuthImage";
 
 const Login = () => {
@@ -168,7 +168,7 @@ const Login = () => {
                 required
               />
               {formData.email && (
-                <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                <div className="absolute right-3 top-1/3 transform -translate-y-1/2">
                   {validity.email ? (
                     <CheckCircle className="text-green-500 h-5 w-5" />
                   ) : (
@@ -203,14 +203,14 @@ const Login = () => {
                 onClick={togglePasswordVisibility}
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 focus:outline-none"
               >
-                {showPassword ? (
+                {/* {showPassword ? (
                   <Eye className="text-gray-500 h-5 w-5" />
                 ) : (
                   <EyeOff className="text-gray-500 h-5 w-5" />
-                )}
+                )} */}
               </button>
               {formData.password && (
-                <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                <div className="absolute right-3 top-1/3 transform -translate-y-1/2">
                   {validity.password ? (
                     <CheckCircle className="text-green-500 h-5 w-5" />
                   ) : (
