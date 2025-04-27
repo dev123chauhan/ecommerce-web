@@ -1,11 +1,27 @@
 import { useState, useEffect, useRef } from "react";
 import { Skeleton } from "antd";
-import { Heart, Eye, Star, ShoppingCart } from "lucide-react";
+import { Heart, Eye, ShoppingCart } from "lucide-react";
 import { products } from "../../Products";
 import PropTypes from "prop-types";
 import noproductfound from "../../assets/Not-found.gif";
 
+
+const renderStars = (rating, size = 'text-3xl') => {
+  return Array(5)
+    .fill(0)
+    .map((_, index) => (
+      <span
+        key={`star-${index}`}
+        className={`${size} text-yellow-400 ${
+          index < rating ? "fill-current" : "stroke-current"
+        }`}
+      >
+        ★
+      </span>
+    ));
+};
 const ProductCard = ({ product }) => (
+  
   <div className="rounded-lg shadow-md overflow-hidden">
     <div className="relative">
       <img
@@ -24,7 +40,7 @@ const ProductCard = ({ product }) => (
     </div>
     <div className="p-4">
       <h3 className="font-semibold text-lg mb-1">{product.name}</h3>
-      <div className="flex items-center mb-2">
+      <div className="flex items-center">
         <span className="text-red-500 font-bold mr-2">
           ${product.currentPrice}
         </span>
@@ -32,17 +48,8 @@ const ProductCard = ({ product }) => (
           <span className="line-through">${product.originalPrice}</span>
         )}
       </div>
-      <div className="flex items-center">
-        {[...Array(5)].map((_, i) => (
-          <Star
-            key={i}
-            className={`w-4 h-4 ${
-              i < Math.floor(product.rating)
-                ? "text-yellow-400 fill-current"
-                : ""
-            }`}
-          />
-        ))}
+      <div className="flex items-center mb-2">
+      {renderStars(product.rating, 'text-3xl')}
         <span className="ml-2">({product.reviews})</span>
       </div>
       <button className="w-full bg-black text-white py-2 rounded-md flex items-center justify-center hover:bg-gray-800 transition-colors">

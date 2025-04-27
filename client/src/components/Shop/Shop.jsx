@@ -53,7 +53,7 @@ const Shop = () => {
   const dispatch = useDispatch();
   const {
     searchTerm,
-    selectedCategories,
+  selectedCategories,
     selectedSubCategories,
     filteredProducts,
   } = useSelector((state) => state.shop);
@@ -75,7 +75,18 @@ const Shop = () => {
       return () => clearTimeout(timer);
     }
   }, [shop, dispatch]);
-
+    // const navigate = useNavigate();
+  // const handleProductClick = (product) => {
+  //   // Create a URL-friendly slug from the product name
+  //   const slug = product.name
+  //     .toLowerCase()                // Convert to lowercase
+  //     .replace(/[^\w\s-]/g, '')    // Remove special characters
+  //     .replace(/\s+/g, '-')        // Replace spaces with hyphens
+  //     .trim();                      // Trim any leading/trailing spaces
+    
+  //   // Navigate with the slug
+  //   navigate(`/product/${slug}`, { state: { product } });
+  // };
   // Add artificial loading when search or filters change
   useEffect(() => {
     if (shop) {
@@ -322,9 +333,10 @@ const Shop = () => {
                       >
                         <div className="relative h-48 flex items-center justify-center p-4">
                           <img
+                          //  onClick={() => handleProductClick(product)}
                             src={product.image}
                             alt={product.name}
-                            className="max-h-full max-w-full object-contain"
+                            className="max-h-full max-w-full object-contain cursor-pointer"
                           />
                         </div>
                         <div className="p-5">

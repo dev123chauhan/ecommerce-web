@@ -21,7 +21,7 @@ import Shop from "./components/Shop/Shop";
 import ThemeContextProvider from "./context/ThemeContextProvider";
 import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import Terms from "./components/Terms/Terms";
-import FAQ from "./components/Faq/Faq";
+import Faq from "./components/Faq/Faq";
 import Review from "./components/Review/Review";
 import MyCancellation from "./components/MyCancellation/MyCancellation";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
@@ -95,7 +95,7 @@ export default function App() {
         <Route path="/shop" element={<Layout><Shop /></Layout>}/>
         <Route path="/privacy" element={<Layout><PrivacyPolicy /></Layout>}/>
         <Route path="/terms" element={<Layout><Terms /></Layout>}/>
-        <Route path="/faq" element={<Layout><FAQ /></Layout>}/>
+        <Route path="/faq" element={<Layout><Faq /></Layout>}/>
         <Route path="/review" element={<Layout><PrivateRoute element={Review} /></Layout>}/>
         <Route path="/cancellation" element={<Layout><PrivateRoute element={MyCancellation} /></Layout>}/>
         <Route path="/verify" element={<Verify />}/>

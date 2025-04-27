@@ -27,6 +27,10 @@ const ExploreProductSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  currency: {
+    type: String,
+    default: "₹",
+  },
   isNew: {
     type: Boolean,
     default: false

@@ -158,13 +158,13 @@ const FlashSale = () => {
   };
 
   // Existing methods remain the same
-  const renderStars = (rating) => {
+  const renderStars = (rating, size = 'text-3xl') => {
     return Array(5)
       .fill(0)
       .map((_, index) => (
         <span
           key={`star-${index}`}
-          className={`text-yellow-400 ${
+          className={`${size} text-yellow-400 ${
             index < rating ? "fill-current" : "stroke-current"
           }`}
         >
@@ -375,11 +375,11 @@ const FlashSale = () => {
                         <Eye size={20} />
                       </button>
                     </div>
-                    <h3 className="font-semibold mb-2 text-sm sm:text-base">
+                    <h3 className="font-semibold  text-sm sm:text-base">
                       {product.name}
                     </h3>
                   
-                    <div className="flex items-center mb-2">
+                    <div className="flex items-center">
                       <span className="text-red-500 font-bold mr-2 text-sm sm:text-base">
                      {product.currency}{product.price}
                       </span>
@@ -387,9 +387,9 @@ const FlashSale = () => {
                       {product.currency}{product.originalPrice}
                       </span>
                     </div>
-                    <div className="flex items-center">
-                      {renderStars(product.rating)}
-                      <span className="ml-2 text-xs sm:text-sm">
+                    <div className="flex items-center mb-2">
+                      {renderStars(product.rating, 'text-3xl')}
+                      <span className="text-sm sm:text-sm">
                         ({product.reviews})
                       </span>
                     </div>

@@ -54,7 +54,7 @@ FAQSection.propTypes = {
   ).isRequired
 };
 
-const FAQ = () => {
+const Faq = () => {
   const faqData = [
     {
       title: 'Ordering',
@@ -130,4 +130,4 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+export default Faq;

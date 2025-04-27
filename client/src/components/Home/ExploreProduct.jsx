@@ -7,7 +7,6 @@ import {
   Eye,
   ArrowLeft,
   ArrowRight,
-  Star,
   ShoppingCart,
 } from 'lucide-react';
 import { listProducts } from '../../action/ExploreProductAction';
@@ -43,7 +42,20 @@ const ProductCardSkeleton = () => (
     />
   </Card>
 );
-
+const renderStars = (rating, size = 'text-3xl') => {
+  return Array(5)
+    .fill(0)
+    .map((_, index) => (
+      <span
+        key={`star-${index}`}
+        className={`${size} text-yellow-400 ${
+          index < rating ? "fill-current" : "stroke-current"
+        }`}
+      >
+        ★
+      </span>
+    ));
+};
 // Product Card Component
 const ProductCard = ({ product, loading = false }) => {
   const dispatch = useDispatch();
@@ -90,7 +102,7 @@ const ProductCard = ({ product, loading = false }) => {
     navigate(`/product/${slug}`, { state: { product } });
   };
   return (
-    <div className="rounded-lg shadow-md overflow-hidden">
+    <div className="rounded-lg shadow-md overflow-hidden p-4">
       <div className="relative">
         <img onClick={() => handleProductClick(product)} src={product.image} alt={product.name} className="w-full h-48 object-contain cursor-pointer" />
         {product.isNew && (
@@ -98,23 +110,21 @@ const ProductCard = ({ product, loading = false }) => {
             NEW
           </span>
         )}
-        <div className="absolute top-2 right-2 space-y-2">
+        <div className="absolute top-0 right-0 space-y-2">
           <button className="p-1.5 rounded-full shadow-md">
-            <Heart className="w-4 h-4" />
+            <Heart className="w-5 h-5" />
           </button>
           <button className="p-1.5 rounded-full shadow-md">
-            <Eye className="w-4 h-4" />
+            <Eye className="w-5 h-5" />
           </button>
         </div>
       </div>
-      <div className="p-4">
-        <h3 className="font-semibold text-sm mb-1">{product.name}</h3>
+      <div className="">
+        <h3 className="font-semibold text-md">{product.name}</h3>
         <div className="flex items-center mb-2">
-          <span className="text-red-500 font-bold mr-2">${product.price}</span>
+          <span className="text-red-500 font-bold mr-2">{product.currency}{product.price}</span>
           <div className="flex items-center">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className={`w-3 h-3 ${i < product.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />
-            ))}
+          {renderStars(product.rating, 'text-3xl')}
             <span className="text-gray-500 text-xs ml-1">({product.reviews})</span>
           </div>
         </div>
@@ -137,6 +147,7 @@ ProductCard.propTypes = {
     rating: PropTypes.number.isRequired,
     reviews: PropTypes.number.isRequired,
     image: PropTypes.string.isRequired,
+    currency: PropTypes.string.isRequired,
     isNew: PropTypes.bool,
     colors: PropTypes.arrayOf(PropTypes.string),
   }),
@@ -176,7 +187,7 @@ const ExploreProduct = () => {
       return () => clearTimeout(timer);
     }
   }, [reduxLoading, products]);
-
+ 
   return (
     <>
       <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
