@@ -71,7 +71,7 @@ const PrivacyPolicy = ({
 
   return (
     <div className='dark:bg-gray-900 dark:text-white transition-colors duration-300 pt-20'>
-    <div className="container mx-auto px-4 py-8 max-w-7xl">
+    <div className="container mx-auto  max-w-7xl">
       <h1 className="text-3xl font-bold mb-8">
         Privacy Policy
       </h1>

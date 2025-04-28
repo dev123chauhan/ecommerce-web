@@ -52,7 +52,7 @@ const AccountDropdown = () => {
   const wishlistItems = useSelector(state => state.wishlist.items);
   const totalWishlistItems = wishlistItems.length;
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-2">
    <div className="relative">
    <Heart
         onClick={() => navigate('/wishlist')}

@@ -254,7 +254,7 @@ const FlashSale = () => {
   return (
     <div className="w-full">
       {/* <Toaster position="top-right"/> */}
-      <div className="p-4 max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Existing Flash Sale Header */}
         <div className="bg-red-500 text-white px-4 py-2 rounded-t-lg inline-block mb-4">
           Todays

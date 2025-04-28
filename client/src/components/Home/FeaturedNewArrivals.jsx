@@ -4,7 +4,7 @@ import perfume from "../../assets/perfume.png"
 import plastation from "../../assets/plastation.png"
 const FeaturedNewArrivals = () => {
   return (
-    <div className="p-6 mb-10">
+    <div className="mb-10">
       <div className="text-red-500 font-bold mb-2">Featured</div>
       <h2 className="text-4xl font-bold mb-4">New Arrival</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">

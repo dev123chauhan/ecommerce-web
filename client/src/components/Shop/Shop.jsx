@@ -42,6 +42,7 @@ const ProductCardSkeleton = () => (
 
 const Shop = () => {
   // Get products and categories from Redux
+  
   const {
     data: shop,
     isLoading: productsLoading,
@@ -97,7 +98,7 @@ const Shop = () => {
 
       return () => clearTimeout(timer);
     }
-  }, [searchTerm, selectedCategories, selectedSubCategories]);
+  }, [searchTerm, selectedCategories, selectedSubCategories, shop]);
 
   // Toggle category expansion
   const toggleCategory = (category) => {
