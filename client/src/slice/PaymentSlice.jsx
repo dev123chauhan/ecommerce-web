@@ -1,13 +1,13 @@
 // src/slice/PaymentSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
+const API_URL = import.meta.env.VITE_API_URL
 // Create Razorpay order
 export const createRazorpayOrder = createAsyncThunk(
   "payment/createRazorpayOrder",
   async ({ amount, orderId }, { rejectWithValue }) => {
     try {
-      const response = await axios.post("http://localhost:3000/api/payment/create-order", {
+      const response = await axios.post(`${API_URL}/payment/create-order`, {
         amount,
         currency: "INR",
         receipt: orderId,
@@ -27,7 +27,7 @@ export const verifyPayment = createAsyncThunk(
   "payment/verifyPayment",
   async (paymentData, { rejectWithValue }) => {
     try {
-      const response = await axios.post("http://localhost:3000/api/payment/verify", paymentData);
+      const response = await axios.post(`${API_URL}/payment/verify`, paymentData);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -40,7 +40,7 @@ export const getRazorpayKey = createAsyncThunk(
   "payment/getRazorpayKey",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get("http://localhost:3000/api/payment/get-key");
+      const response = await axios.get(`${API_URL}/payment/get-key`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);

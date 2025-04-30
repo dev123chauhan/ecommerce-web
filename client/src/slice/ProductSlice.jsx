@@ -1,13 +1,13 @@
 // In ProductSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-
+const baseUrl = import.meta.env.VITE_API_URL;
 // Async thunk for fetching products
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async ({ page = 1, limit = 10, category, minPrice, maxPrice }, { rejectWithValue }) => {
     try {
-      const response = await axios.get('http://localhost:3000/api/products', {
+      const response = await axios.get(`${baseUrl}/products`, {
         params: { page, limit, category, minPrice, maxPrice }
       });
       return response.data;

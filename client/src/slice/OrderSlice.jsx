@@ -2,13 +2,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { clearPaymentState, createRazorpayOrder } from "./PaymentSlice";
-
+const API_URL = import.meta.env.VITE_API_URL
 // Create a new order
 export const createOrder = createAsyncThunk(
   "order/createOrder",
   async (orderData, { rejectWithValue }) => {
     try {
-      const response = await axios.post("http://localhost:3000/api/orders", orderData);
+      const response = await axios.post(`${API_URL}/orders`, orderData);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -21,7 +21,7 @@ export const getOrderById = createAsyncThunk(
   "order/getOrderById",
   async (orderId, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/orders/${orderId}`);
+      const response = await axios.get(`${API_URL}/orders/${orderId}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -34,7 +34,7 @@ export const getUserOrders = createAsyncThunk(
   "order/getUserOrders",
   async (userId, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/orders/user/${userId}`);
+      const response = await axios.get(`${API_URL}/orders/user/${userId}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
+const baseUrl = import.meta.env.VITE_API_URL;
 export const updateProfile = createAsyncThunk(
   'profile/updateProfile',
   async (formData, { rejectWithValue, getState }) => {
@@ -7,7 +7,7 @@ export const updateProfile = createAsyncThunk(
       // Get the token from your auth state
       const token = getState().auth.token; // Adjust this path based on your store structure
       
-      const response = await fetch('http://localhost:3000/api/users/profile', {
+      const response = await fetch(`${baseUrl}/users/profile`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

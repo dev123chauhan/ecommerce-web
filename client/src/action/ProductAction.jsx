@@ -2,11 +2,12 @@ import axios from 'axios';
 import { GET_PRODUCTS, PRODUCTS_LOADING, PRODUCTS_ERROR, FILTER_PRODUCTS } from './types';
 
 // Get all products
+const API_URL = import.meta.env.VITE_API_URL
 export const getProducts = () => async dispatch => {
   dispatch({ type: PRODUCTS_LOADING });
   
   try {
-    const res = await axios.get('http://localhost:3000/api/products');
+    const res = await axios.get(`${API_URL}/products`);
     
     dispatch({
       type: GET_PRODUCTS,
@@ -25,7 +26,7 @@ export const getFilteredProducts = (selectedCategories) => async dispatch => {
   dispatch({ type: PRODUCTS_LOADING });
   
   try {
-    let endpoint = 'http://localhost:3000/api/products';
+    let endpoint = `${API_URL}/products`;
     
     // If we have selected categories, add them as query params
     if (selectedCategories && selectedCategories.length > 0) {
@@ -51,7 +52,7 @@ export const getBestSellingProducts = (limit = 10) => async dispatch => {
   dispatch({ type: PRODUCTS_LOADING });
   
   try {
-    const res = await axios.get(`http://localhost:3000/api/products/bestselling?limit=${limit}`);
+    const res = await axios.get(`${API_URL}/products/bestselling?limit=${limit}`);
     
     dispatch({
       type: GET_PRODUCTS,

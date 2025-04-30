@@ -15,7 +15,7 @@ import {
   useGetProductsQuery,
   useGetCategoriesQuery,
 } from "../../slice/ShopApiSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ProductCardSkeleton = () => (
   <div className="rounded-xl shadow-sm overflow-hidden mt-10">
@@ -52,9 +52,11 @@ const Shop = () => {
     useGetCategoriesQuery();
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
   const {
     searchTerm,
-  selectedCategories,
+    selectedCategories,
     selectedSubCategories,
     filteredProducts,
   } = useSelector((state) => state.shop);
@@ -76,18 +78,20 @@ const Shop = () => {
       return () => clearTimeout(timer);
     }
   }, [shop, dispatch]);
-    // const navigate = useNavigate();
-  // const handleProductClick = (product) => {
-  //   // Create a URL-friendly slug from the product name
-  //   const slug = product.name
-  //     .toLowerCase()                // Convert to lowercase
-  //     .replace(/[^\w\s-]/g, '')    // Remove special characters
-  //     .replace(/\s+/g, '-')        // Replace spaces with hyphens
-  //     .trim();                      // Trim any leading/trailing spaces
+  
+  // Handle product click to navigate to product detail page
+  const handleProductClick = (product) => {
+    // Create a URL-friendly slug from the product name
+    const slug = product.name
+      .toLowerCase()                // Convert to lowercase
+      .replace(/[^\w\s-]/g, '')    // Remove special characters
+      .replace(/\s+/g, '-')        // Replace spaces with hyphens
+      .trim();                      // Trim any leading/trailing spaces
     
-  //   // Navigate with the slug
-  //   navigate(`/product/${slug}`, { state: { product } });
-  // };
+    // Navigate with the slug and pass product data as state
+    navigate(`/product/${slug}`, { state: { product } });
+  };
+  
   // Add artificial loading when search or filters change
   useEffect(() => {
     if (shop) {
@@ -334,7 +338,7 @@ const Shop = () => {
                       >
                         <div className="relative h-48 flex items-center justify-center p-4">
                           <img
-                          //  onClick={() => handleProductClick(product)}
+                            onClick={() => handleProductClick(product)}
                             src={product.image}
                             alt={product.name}
                             className="max-h-full max-w-full object-contain cursor-pointer"
@@ -347,7 +351,10 @@ const Shop = () => {
                               length={30}
                             />
                           </div>
-                          <h3 className="text-lg font-semibold mb-3">
+                          <h3 
+                            className="text-lg font-semibold mb-3 cursor-pointer hover:text-gray-700"
+                            onClick={() => handleProductClick(product)}
+                          >
                             {product.name}
                           </h3>
                           <div className="flex items-center mb-3">

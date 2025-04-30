@@ -1,12 +1,12 @@
 // src/slice/WishlistSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-
+const baseUrl = import.meta.env.VITE_API_URL;
 export const toggleWishlistItem = createAsyncThunk(
   'wishlist/toggleItem',
   async ({ userId, productId }, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:3000/api/wishlist/toggle', {
+      const response = await axios.post(`${baseUrl}/wishlist/toggle`, {
         userId,
         productId
       }, {
@@ -25,7 +25,7 @@ export const fetchWishlist = createAsyncThunk(
   'wishlist/fetchItems',
   async (userId, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/wishlist/${userId}`, {
+      const response = await axios.get(`${baseUrl}/wishlist/${userId}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}` // Add token if using authentication
         }
@@ -41,7 +41,7 @@ export const removeFromWishlist = createAsyncThunk(
   'wishlist/removeItem',
   async ({ userId, productId }, { rejectWithValue }) => {
     try {
-      await axios.delete(`http://localhost:3000/api/wishlist/${userId}/${productId}`, {
+      await axios.delete(`${baseUrl}/wishlist/${userId}/${productId}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}` // Add token if using authentication
         }

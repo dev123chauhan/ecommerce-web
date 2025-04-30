@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-
+const API_URL = import.meta.env.VITE_API_URL
 // Async thunk for fetching paginated products
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async (page = 1, thunkAPI) => {
     try {
-      const res = await axios.get(`http://localhost:3000/api/exploreproducts?page=${page}&limit=8`);
+      const res = await axios.get(`${API_URL}/exploreproducts?page=${page}&limit=8`);
       return res.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.response.data);

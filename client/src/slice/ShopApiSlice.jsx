@@ -1,9 +1,9 @@
 // client/src/features/products/productApiSlice.js
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
+const baseUrl = import.meta.env.VITE_API_URL;
 export const shopApi = createApi({
   reducerPath: 'shopApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api' }),
+  baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
   tagTypes: ['Shop', 'Categories'],
   endpoints: (builder) => ({
     getProducts: builder.query({
