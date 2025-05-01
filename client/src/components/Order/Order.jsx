@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { AlertCircle } from "lucide-react";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const Order = () => {
   const [orders, setOrders] = useState([]);
-  const [selectedOrder, setSelectedOrder] = useState(null);
+  const [selectedOrder, setSelectedOrder] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { user } = useSelector((state) => state.auth);
   const { items } = useSelector((state) => state.cart);
   const currency = items.length && items.length > 0 ? items[0].currency && items[0].currency : "₹";
-  
+  const baseUrl = import.meta.env.VITE_API_URL
   // Fetch orders when component mounts
   useEffect(() => {
     const fetchOrders = async () => {
@@ -24,7 +24,7 @@ const Order = () => {
       try {
         setLoading(true);
         // Replace with your actual API endpoint
-        const response = await fetch(`http://localhost:3000/api/orders/user/${user.id}`);
+        const response = await fetch(`${baseUrl}/orders/user/${user.id}`);
         
         if (!response.ok) {
           throw new Error('Failed to fetch orders');
@@ -68,7 +68,7 @@ const Order = () => {
     };
 
     fetchOrders();
-  }, [user]);
+  }, [user, baseUrl]);
 
   // Safe toFixed function that handles undefined/null values
   const safeToFixed = (value, decimals = 2) => {
@@ -130,21 +130,21 @@ const Order = () => {
   }
 
   // Show empty state
-  if (!orders || orders.length === 0) {
-    return (
-      <div className="min-h-screen dark:bg-gray-900 dark:text-white py-60">
-        <div className="max-w-xl mx-auto text-center p-8 bg-gray-50 dark:bg-gray-800 rounded-lg">
-          <h2 className="text-2xl font-bold mb-4">No Orders Found</h2>
-          <p className="mb-6">You havent placed any orders yet.</p>
-          <Link to="/shop" 
-            className="px-6 py-3 bg-red-500 text-white rounded hover:bg-red-600 transition"
-          >
-            Start Shopping
-          </Link>
-        </div>
-      </div>
-    );
-  }
+  // if (!orders || orders.length === 0) {
+  //   return (
+  //     <div className="min-h-screen dark:bg-gray-900 dark:text-white py-60">
+  //       <div className="max-w-xl mx-auto text-center p-8 bg-gray-50 dark:bg-gray-800 rounded-lg">
+  //         <h2 className="text-2xl font-bold mb-4">No Orders Found</h2>
+  //         <p className="mb-6">You havent placed any orders yet.</p>
+  //         <Link to="/shop" 
+  //           className="px-6 py-3 bg-red-500 text-white rounded hover:bg-red-600 transition"
+  //         >
+  //           Start Shopping
+  //         </Link>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   // Show selected order details
   if (selectedOrder) {
