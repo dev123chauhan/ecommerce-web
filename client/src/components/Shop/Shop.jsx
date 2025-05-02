@@ -1,10 +1,12 @@
 // client/src/components/Shop/Shop.js
 import { useEffect, useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown,  LogIn, } from "lucide-react";
 import { Skeleton } from "antd";
 import CropText from "../CropText/CropText";
 import noproductfound from "../../assets/Not-found.gif";
 import { useDispatch, useSelector } from "react-redux";
+import Modal from "../../components/Modal/Modal";
+import { toast } from "sonner";
 import {
   setSearchTerm,
   setSelectedCategories,
@@ -16,6 +18,7 @@ import {
   useGetCategoriesQuery,
 } from "../../slice/ShopApiSlice";
 import { Link, useNavigate } from "react-router-dom";
+import { addToCart } from "../../slice/CartSlice";
 
 const ProductCardSkeleton = () => (
   <div className="rounded-xl shadow-sm overflow-hidden mt-10">
@@ -41,8 +44,11 @@ const ProductCardSkeleton = () => (
 );
 
 const Shop = () => {
-  // Get products and categories from Redux
-  
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
+  const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [productToAdd, setProductToAdd] = useState(null);
   const {
     data: shop,
     isLoading: productsLoading,
@@ -214,7 +220,43 @@ const Shop = () => {
   // Determine if loading
   const isLoading =
     productsLoading || categoriesLoading || artificialLoading || isFiltering;
+    const closeModal = () => {
+      setIsModalOpen(false);
+      setSelectedImage(null);
+    };
+    const handleLoginRedirect = () => {
+      setIsLoginPopupOpen(false);
+    navigate("/login", {
+      state: {
+        productToAdd: productToAdd,
+      },
+    });
+    };
 
+      const handleAddToCart = async (product) => {
+        if (!isAuthenticated) {
+          setProductToAdd(product);
+          setIsLoginPopupOpen(true);
+          return;
+        }
+    
+        try {
+          await dispatch(
+            addToCart({
+              userId: user.id,
+              product: {
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+              },
+            })
+          ).unwrap();
+          toast.success("Item Added to Cart");
+        } catch (error) {
+          console.error("Failed to add to cart:", error);
+        }
+      };
   return (
     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300">
       <div className="min-h-screen banner">
@@ -381,7 +423,7 @@ const Shop = () => {
                               </span>
                             </div>
                           </div>
-                          <button className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors duration-200 w-full">
+                          <button    onClick={() => handleAddToCart(product)} className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors duration-200 w-full">
                             Add to Cart
                           </button>
                         </div>
@@ -401,6 +443,60 @@ const Shop = () => {
           </div>
         </div>
       </div>
+          <Modal 
+              isOpen={isModalOpen} 
+              onClose={closeModal}
+              title={selectedImage?.name}
+            >
+              {selectedImage && (
+                <div className="p-4">
+                  <img
+                    src={selectedImage.image}
+                    alt={selectedImage.name}
+                    className="w-full h-auto max-h-[70vh] object-contain mx-auto"
+                  />
+                </div>
+              )}
+            </Modal>
+      
+            {/* Login Required Popup */}
+            <Modal
+              isOpen={isLoginPopupOpen}
+              onClose={() => setIsLoginPopupOpen(false)}
+              className="max-w-md"
+              title="Login Required"
+            >
+              <div className="text-center p-6">
+                <div className="flex justify-center mb-4">
+                  <LogIn size={48} className="text-red-500" />
+                </div>
+                <p className="mb-6 text-gray-600 dark:text-gray-300">
+                  Please log in to add items to your cart and continue shopping.
+                </p>
+                <div className="flex justify-center space-x-4">
+                  <button
+                    onClick={() => setIsLoginPopupOpen(false)}
+                    className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleLoginRedirect}
+                    className="px-4 py-2 bg-red-500 text-white rounded-md flex items-center justify-center hover:bg-red-600 transition-colors"
+                  >
+                    <LogIn className="mr-2" size={20} />
+                    Go to Login
+                  </button>
+                </div>
+              </div>
+            </Modal>
+      
+            {/* Custom Styles */}
+            <style>{`
+              .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+              }
+            `}</style>
     </div>
   );
 };

@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
 const connectDB = require('./config/database');
+// const seedDatabase = require('./scripts/seedDatabase');
 const errorMiddleware = require('./middleware/errorMiddleware');
 const productRoutes = require('./routes/productRoutes');
 const exploreProductRoutes = require('./routes/exploreProductRoutes');
@@ -25,6 +26,18 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 connectDB()
+  // .then(async () => {
+  //   try {
+  //     // Seed database after connection is established
+  //     await seedDatabase();
+  //     console.log('Database seeded successfully');
+  //   } catch (error) {
+  //     console.error('Database seeding failed:', error.message);
+  //   }
+  // })
+  // .catch(err => {
+  //   console.error('Database connection failed:', err.message);
+  // });
 app.use('/api/categories', categoryRoutes);
 app.use('/api/shop', shopRoutes);
 app.use('/api/products', productRoutes);

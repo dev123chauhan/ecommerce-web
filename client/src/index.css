@@ -19,10 +19,10 @@
 *{
     font-family: "Poppins", serif !important;
     /* font-family: "Montserrat", serif !important; */
-    user-select: none;
+    /* user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
-    -ms-user-select: none;
+    -ms-user-select: none; */
 }
 .scrollToTop{
     background-color: rgb(255, 60, 60) !important;

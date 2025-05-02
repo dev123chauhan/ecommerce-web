@@ -42,14 +42,14 @@ export default function App() {
 
   useEffect(() => {
     const path = location.pathname;
-    let pageTitle = "Resume Builder"; // Default title
+    let pageTitle = "Ecommerce Webapp"; // Default title
 
     switch (path) {
       case "/":
         pageTitle = "Home | ShopVibe";
         break;
-      case "/features":
-        pageTitle = "Features | ShopVibe";
+      case "/shop":
+        pageTitle = "Shop | ShopVibe";
         break;
       case "/about":
         pageTitle = "About | ShopVibe";
@@ -60,11 +60,8 @@ export default function App() {
       case "/login":
         pageTitle = "Login | ShopVibe";
         break;
-      case "/register":
+      case "/signup":
         pageTitle = "Register | ShopVibe";
-        break;
-      case "/dashboard":
-        pageTitle = "dashboard | ShopVibe";
         break;
       default:
         pageTitle = "ShopVibe";

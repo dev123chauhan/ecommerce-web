@@ -57,8 +57,6 @@ const ProductDetail = () => {
           <ul className="flex space-x-2">
             <li className="cursor-pointer hover:text-red-500" onClick={() => navigate('/')}>Home</li>
             <li>/</li>
-            <li>{product.category || 'Category'}</li>
-            <li>/</li>
             <li className='font-bold'>{product.name}</li>
           </ul>
         </div>
