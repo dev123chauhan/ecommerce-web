@@ -4,39 +4,6 @@ const mongoose = require("mongoose");
 const Category = require("../models/Category");
 const Shop = require("../models/Shop");
 const connectDB = require("../config/database");
-
-// Category data
-// const categoryData = {
-//   "Gaming Controllers": [
-//     "Wireless Controllers",
-//     "Wired Controllers",
-//     "Racing Wheels",
-//     "Flight Sticks",
-//     "Fight Sticks",
-//     "Nintendo Controllers",
-//     "Xbox Controllers",
-//     "PlayStation Controllers",
-//   ],
-//   "Keyboards": [
-//     "Mechanical Keyboards",
-//     "Membrane Keyboards",
-//     "Wireless Keyboards",
-//     "Gaming Keyboards",
-//     "Ergonomic Keyboards",
-//     "Mini Keyboards",
-//     "Keyboard Accessories",
-//   ],
-//   "Mice & Pointing": [
-//     "Gaming Mice",
-//     "Wireless Mice",
-//     "Ergonomic Mice",
-//     "Trackballs",
-//     "Vertical Mice",
-//     "Mouse Bundles",
-//     "Precision Mice",
-//   ],
-//   // ... other categories
-// };
 const categoryData = {
   "Woman's Fashion": [
     "Clothing",
@@ -269,7 +236,7 @@ const productData = [
     reviews: 160,
     category: "Woman's Fashion",
     subCategory: "Clothing",
-    image: "",
+    image: "https://i.ibb.co/XcdGxJW/summerdress.png",
     description: "Breathable cotton summer dress with floral pattern, perfect for casual outings and beach vacations.",
     stock: 38,
     brand: "StyleChic",
@@ -288,7 +255,7 @@ const productData = [
     rating: 4.8,
     category: "Woman's Fashion",
     subCategory: "Handbags",
-    image: "",
+    image: "https://i.ibb.co/TDH9j55H/designerhandbag.png",
     description: "Premium faux leather designer handbag with gold accents and multiple compartments for organization.",
     stock: 25,
     brand: "LuxeBag",
@@ -309,7 +276,7 @@ const productData = [
     rating: 4.5,
     category: "Men's Fashion",
     subCategory: "Clothing",
-    image: "",
+    image: "https://i.ibb.co/whWG5SNV/blazzer.png",
     description: "Smart-casual blazer for men with slim fit design, perfect for office and formal events.",
     stock: 40,
     brand: "GentlemanFit",
@@ -328,7 +295,7 @@ const productData = [
     rating: 4.9,
     category: "Men's Fashion",
     subCategory: "Watches",
-    image: "",
+    image: "https://i.ibb.co/Txwrc83c/luxary-watch.png",
     description: "Stainless steel chronograph watch with genuine leather strap and water-resistant design.",
     stock: 15,
     brand: "TimeMaster",
@@ -349,7 +316,7 @@ const productData = [
     rating: 4.7,
     category: "Electronics",
     subCategory: "TVs",
-    image: "",
+    image: "https://i.ibb.co/1ffNhgJ7/smarttv.png",
     description: "55-inch 4K Ultra HD Smart TV with HDR support, built-in streaming apps and voice control.",
     stock: 20,
     brand: "VisionTech",
@@ -368,7 +335,7 @@ const productData = [
     rating: 4.8,
     category: "Electronics",
     subCategory: "Cameras",
-    image: "",
+    image: "https://i.ibb.co/prLzXvpY/camera.png",
     description: "High-performance DSLR camera with 24.2MP sensor, 4K video recording and advanced autofocus system.",
     stock: 12,
     brand: "CapturePro",
@@ -389,7 +356,7 @@ const productData = [
     rating: 4.5,
     category: "Home & Lifestyle",
     subCategory: "Furniture",
-    image: "",
+    image: "https://i.ibb.co/dJmYZnL6/moderncoffe.png",
     description: "Stylish mid-century modern coffee table with wooden legs and tempered glass top, perfect for living rooms.",
     stock: 18,
     brand: "HomeElegance",
@@ -408,7 +375,7 @@ const productData = [
     rating: 4.7,
     category: "Home & Lifestyle",
     subCategory: "Bedding",
-    image: "",
+    image: "https://i.ibb.co/nN5nfsdZ/bedshit.png",
     description: "Luxury Egyptian cotton bedding set including duvet cover, fitted sheet, and pillowcases with elegant design.",
     stock: 30,
     brand: "DreamSleep",
@@ -627,7 +594,7 @@ const productData = [
     rating: 4.5,
     category: "Gaming Controllers",
     subCategory: "Wireless Controllers",
-    image: "https://cdn.bdstall.com/product-image/giant_258719.jpg",
+    image: "https://i.ibb.co/MXLxdSH/gamepad.png",
     description:
       "Professional-grade wireless gaming controller with customizable buttons and low latency connection for competitive gaming.",
     stock: 45,
@@ -648,7 +615,7 @@ const productData = [
     category: "Keyboards",
     subCategory: "Mechanical Keyboards",
     image:
-      "https://garmade.com/cdn/shop/products/TBD0602123801A.jpg?v=1669711132",
+      "https://i.ibb.co/0RXSS35q/keyboard.png",
     description:
       "Full-sized mechanical keyboard with RGB backlighting, Cherry MX switches, and programmable macros for gaming and productivity.",
     stock: 30,
@@ -669,7 +636,7 @@ const productData = [
     category: "Mice & Pointing",
     subCategory: "Gaming Mice",
     image:
-      "https://rukminim2.flixcart.com/image/850/1000/xif0q/mouse/n/f/0/zeb-phero-with-dpi-switch-high-precision-plug-play-4-buttons-original-imahfgekqehdazzv.jpeg?q=20&crop=false",
+      "https://i.ibb.co/SwP65xyk/gaming-mouse.png",
     description:
       "High-precision gaming mouse with adjustable DPI settings, ergonomic design and customizable weight system.",
     stock: 60,
@@ -690,7 +657,7 @@ const productData = [
     category: "Gaming Controllers",
     subCategory: "Xbox Controllers",
     image:
-      "https://m.media-amazon.com/images/I/71FAo+u4+SL._AC_UF1000,1000_QL80_.jpg",
+      "https://i.ibb.co/xtH2dBSc/wireless-controller.png",
     description:
       "Official wired Xbox controller with improved D-pad and textured grip for enhanced comfort during long gaming sessions.",
     stock: 25,
@@ -710,7 +677,7 @@ const productData = [
     rating: 4.6,
     category: "Keyboards",
     subCategory: "Ergonomic Keyboards",
-    image: "https://m.media-amazon.com/images/I/71Yp7pxBFOL.jpg",
+    image: "https://i.ibb.co/7xYxM5sj/wirless-keyboard.png",
     description:
       "Split-design ergonomic keyboard with wireless connectivity, cushioned palm rest and quiet membrane keys for comfortable typing.",
     stock: 15,
@@ -778,3 +745,36 @@ const seedDatabase = async () => {
 
 // Execute the seeding function
 seedDatabase();
+
+// Category data
+// const categoryData = {
+//   "Gaming Controllers": [
+//     "Wireless Controllers",
+//     "Wired Controllers",
+//     "Racing Wheels",
+//     "Flight Sticks",
+//     "Fight Sticks",
+//     "Nintendo Controllers",
+//     "Xbox Controllers",
+//     "PlayStation Controllers",
+//   ],
+//   "Keyboards": [
+//     "Mechanical Keyboards",
+//     "Membrane Keyboards",
+//     "Wireless Keyboards",
+//     "Gaming Keyboards",
+//     "Ergonomic Keyboards",
+//     "Mini Keyboards",
+//     "Keyboard Accessories",
+//   ],
+//   "Mice & Pointing": [
+//     "Gaming Mice",
+//     "Wireless Mice",
+//     "Ergonomic Mice",
+//     "Trackballs",
+//     "Vertical Mice",
+//     "Mouse Bundles",
+//     "Precision Mice",
+//   ],
+//   // ... other categories
+// };

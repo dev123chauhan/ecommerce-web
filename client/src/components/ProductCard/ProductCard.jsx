@@ -157,7 +157,7 @@ const ProductCard = ({ product, loading = false, onToggleWishlist = null }) => {
           )}
           <div className="absolute top-0 right-0 space-y-2 p-2">
             <button 
-              className="p-1.5 rounded-full shadow-md bg-white text-gray-700 hover:bg-gray-100 transition-colors"
+              className="p-1.5 rounded-full shadow-md  hover:bg-gray-100 transition-colors"
               onClick={handleWishlistClick}
             >
               <Heart 
@@ -166,7 +166,7 @@ const ProductCard = ({ product, loading = false, onToggleWishlist = null }) => {
               />
             </button>
             <button 
-              className="p-1.5 rounded-full shadow-md bg-white text-gray-700 hover:bg-gray-100 transition-colors"
+              className="p-1.5 rounded-full shadow-md  hover:bg-gray-100 transition-colors"
               onClick={handleImageView}
             >
               <Eye className="w-5 h-5" />
@@ -211,7 +211,7 @@ const ProductCard = ({ product, loading = false, onToggleWishlist = null }) => {
             alt={product.name}
             className="w-full h-auto max-h-[70vh] object-contain mx-auto"
           />
-          <div className="mt-4 text-center">
+          {/* <div className="mt-4 text-center">
             <h3 className="text-xl font-semibold">{product.name}</h3>
             <div className="flex items-center justify-center mt-2">
               <span className="text-red-500 font-bold mr-2">{product.currency || '₹'}{product.price}</span>
@@ -235,7 +235,7 @@ const ProductCard = ({ product, loading = false, onToggleWishlist = null }) => {
               <ShoppingCart className="w-4 h-4 mr-2" />
               Add To Cart
             </button>
-          </div>
+          </div> */}
         </div>
       </Modal>
 
