@@ -8,9 +8,7 @@ import {
   registerFailure,
   logout,
   checkAuthState,
-  profileUpdateStart,
-  profileUpdateSuccess,
-  profileUpdateFailure,
+
 } from '../slice/AuthSlice';
 
 const API_URL = import.meta.env.VITE_API_URL
@@ -66,22 +64,9 @@ export const registerUser = (userData) => async (dispatch) => {
   }
 };
 
-export const updateProfile = (userData) => async (dispatch) => {
-  try {
-    dispatch(profileUpdateStart());
-    const response = await axios.put(
-      `${API_URL}/users/update-profile`, 
-      userData
-    );
-    
-    dispatch(profileUpdateSuccess(response.data.user));
-    return { success: true };
-  } catch (error) {
-    const errorMessage = error.response?.data?.message || 'Update failed';
-    dispatch(profileUpdateFailure(errorMessage));
-    return { success: false, error: errorMessage };
-  }
-};
+
+
+
 
 
 export const logoutUser = () => (dispatch) => {

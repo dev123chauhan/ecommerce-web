@@ -6,9 +6,6 @@ const initialState = {
   isAuthenticated: !!localStorage.getItem('token'),
   loading: false,
   error: null,
-  // passwordChangeLoading: false,
-  // passwordChangeError: null,
-  // passwordChangeSuccess: null,
 };
 
 const authSlice = createSlice({
@@ -75,40 +72,6 @@ const authSlice = createSlice({
         localStorage.removeItem('token');
       }
     },
-    profileUpdateStart: (state) => {
-      state.loading = true;
-      state.error = null;
-    },
-    profileUpdateSuccess: (state, action) => {
-      state.loading = false;
-      state.user = action.payload;
-      state.error = null;
-      localStorage.setItem('userData', JSON.stringify(action.payload));
-    },
-    profileUpdateFailure: (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
-    },
-    // passwordChangeStart: (state) => {
-    //   state.passwordChangeLoading = true;
-    //   state.passwordChangeError = null;
-    //   state.passwordChangeSuccess = null;
-    // },
-    // passwordChangeSuccess: (state, action) => {
-    //   state.passwordChangeLoading = false;
-    //   state.passwordChangeSuccess = action.payload;
-    //   state.passwordChangeError = null;
-    // },
-    // passwordChangeFailure: (state, action) => {
-    //   state.passwordChangeLoading = false;
-    //   state.passwordChangeError = action.payload;
-    //   state.passwordChangeSuccess = null;
-    // },
-    // clearPasswordChangeStatus: (state) => {
-    //   state.passwordChangeLoading = false;
-    //   state.passwordChangeError = null;
-    //   state.passwordChangeSuccess = null;
-    // }
   }
 });
 
@@ -121,13 +84,6 @@ export const {
   registerFailure,
   logout,
   checkAuthState,
-  profileUpdateStart,
-  profileUpdateSuccess,
-  profileUpdateFailure,
-  // passwordChangeStart,
-  // passwordChangeSuccess,
-  // passwordChangeFailure,
-  // clearPasswordChangeStatus
 } = authSlice.actions;
 
 export default authSlice.reducer;

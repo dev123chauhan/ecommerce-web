@@ -1,9 +1,7 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
 const connectDB = require('./config/database');
-// const seedDatabase = require('./scripts/seedDatabase');
 const errorMiddleware = require('./middleware/errorMiddleware');
 const productRoutes = require('./routes/productRoutes');
 const exploreProductRoutes = require('./routes/exploreProductRoutes');
@@ -11,7 +9,6 @@ const userRoutes = require('./routes/userRoutes');
 const contactRoutes = require('./routes/contactRoutes');
 const cartRoutes = require('./routes/cartRoute');
 const wishlistRoutes = require('./routes/wishlistRoute');
-const path = require('path');
 const privacyPolicyRoutes = require('./routes/privacyPolicyRoutes');
 const productBannerRoutes = require('./routes/productBannerRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
@@ -26,18 +23,6 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 connectDB()
-  // .then(async () => {
-  //   try {
-  //     // Seed database after connection is established
-  //     await seedDatabase();
-  //     console.log('Database seeded successfully');
-  //   } catch (error) {
-  //     console.error('Database seeding failed:', error.message);
-  //   }
-  // })
-  // .catch(err => {
-  //   console.error('Database connection failed:', err.message);
-  // });
 app.use('/api/categories', categoryRoutes);
 app.use('/api/shop', shopRoutes);
 app.use('/api/products', productRoutes);
@@ -48,8 +33,6 @@ app.use('/api', cartRoutes);
 app.use('/api/privacy-policy', privacyPolicyRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/contact', contactRoutes);
-app.use('/images', express.static(path.join(__dirname, 'public/images')));
-app.use('/uploads', express.static('uploads'));
 app.use('/api/payment', paymentRoutes);
 app.use('/api/orders', orderRoutes);
 app.use(errorMiddleware);

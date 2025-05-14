@@ -77,54 +77,5 @@ exports.loginUser = async (req, res) => {
 };
 
 
-exports.updateProfile = async (req, res) => {
-  try {
-    const { username, email, address } = req.body;
-    
-    if (!req.user || !req.user.userId) {
-      return res.status(401).json({ 
-        message: 'Authentication failed' 
-      });
-    }
-
-    const userId = req.user.userId;  // This matches your JWT payload structure
-
-    // Check if email is already taken by another user
-    const existingUser = await User.findOne({ 
-      email, 
-      _id: { $ne: userId } 
-    });
-    
-    if (existingUser) {
-      return res.status(400).json({ 
-        message: 'Email is already taken' 
-      });
-    }
-
-    // Update user profile
-    const updatedUser = await User.findByIdAndUpdate(
-      userId,
-      { username, email, address },
-      { new: true, runValidators: true }
-    ).select('-password');
-
-    if (!updatedUser) {
-      return res.status(404).json({ 
-        message: 'User not found' 
-      });
-    }
-
-    res.json({
-      message: 'Profile updated successfully',
-      user: updatedUser
-    });
-  } catch (error) {
-    console.error('Update Profile Error:', error);
-    res.status(500).json({ 
-      message: 'Server error', 
-      error: error.message 
-    });
-  }
-};
 
 
