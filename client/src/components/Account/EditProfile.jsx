@@ -1,12 +1,9 @@
 // Frontend - EditProfile.jsx
-
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { updateProfile } from "../../action/AuthAction";
-import { toast } from "sonner";
+import { useSelector } from "react-redux";
 import { Loader } from "../../utils/Loader";
 export default function EditProfile() {
-  const dispatch = useDispatch();
+
   const { user, loading, error } = useSelector((state) => state.auth);
 
   const [formData, setFormData] = useState({
@@ -22,15 +19,7 @@ export default function EditProfile() {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const result = await dispatch(updateProfile(formData));
-    if (result.success) {
-      // You can add a success notification here
-      console.log("Profile updated successfully");
-      toast.success("Profile updated successfully");
-    }
-  };
+
 
   return (
     <>
@@ -40,7 +29,7 @@ export default function EditProfile() {
           {error}
         </div>
       )}
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form  className="space-y-6">
         <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
           <div className="w-full">
             <label className="block text-sm font-medium mb-1">Username</label>

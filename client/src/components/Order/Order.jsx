@@ -129,23 +129,6 @@ const Order = () => {
     );
   }
 
-  // Show empty state
-  // if (!orders || orders.length === 0) {
-  //   return (
-  //     <div className="min-h-screen dark:bg-gray-900 dark:text-white py-60">
-  //       <div className="max-w-xl mx-auto text-center p-8 bg-gray-50 dark:bg-gray-800 rounded-lg">
-  //         <h2 className="text-2xl font-bold mb-4">No Orders Found</h2>
-  //         <p className="mb-6">You havent placed any orders yet.</p>
-  //         <Link to="/shop" 
-  //           className="px-6 py-3 bg-red-500 text-white rounded hover:bg-red-600 transition"
-  //         >
-  //           Start Shopping
-  //         </Link>
-  //       </div>
-  //     </div>
-  //   );
-  // }
-
   // Show selected order details
   if (selectedOrder) {
     const subtotal = selectedOrder.items.reduce(
