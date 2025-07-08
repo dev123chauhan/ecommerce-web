@@ -1,6 +1,5 @@
-const ProductBanner = require('../models/ProductBanner');
+const ProductBanner = require("../models/ProductBanner");
 
-// Get all products
 exports.getProducts = async (req, res) => {
   try {
     const products = await ProductBanner.find({});
@@ -10,22 +9,22 @@ exports.getProducts = async (req, res) => {
   }
 };
 
-// Get featured products for the slider
 exports.getFeaturedProducts = async (req, res) => {
   try {
-    const featuredProducts = await ProductBanner.find({ featured: true }).limit(5);
+    const featuredProducts = await ProductBanner.find({ featured: true }).limit(
+      5
+    );
     res.json(featuredProducts);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-// Get a single product
 exports.getProductById = async (req, res) => {
   try {
     const product = await ProductBanner.findById(req.params.id);
     if (!product) {
-      return res.status(404).json({ message: 'Product not found' });
+      return res.status(404).json({ message: "Product not found" });
     }
     res.json(product);
   } catch (error) {
@@ -33,7 +32,6 @@ exports.getProductById = async (req, res) => {
   }
 };
 
-// Create a new product
 exports.createProduct = async (req, res) => {
   try {
     const product = new ProductBanner(req.body);
@@ -44,7 +42,6 @@ exports.createProduct = async (req, res) => {
   }
 };
 
-// Update a product
 exports.updateProduct = async (req, res) => {
   try {
     const product = await ProductBanner.findByIdAndUpdate(
@@ -53,7 +50,7 @@ exports.updateProduct = async (req, res) => {
       { new: true, runValidators: true }
     );
     if (!product) {
-      return res.status(404).json({ message: 'Product not found' });
+      return res.status(404).json({ message: "Product not found" });
     }
     res.json(product);
   } catch (error) {
@@ -61,14 +58,13 @@ exports.updateProduct = async (req, res) => {
   }
 };
 
-// Delete a product
 exports.deleteProduct = async (req, res) => {
   try {
     const product = await ProductBanner.findByIdAndDelete(req.params.id);
     if (!product) {
-      return res.status(404).json({ message: 'Product not found' });
+      return res.status(404).json({ message: "Product not found" });
     }
-    res.json({ message: 'Product removed' });
+    res.json({ message: "Product removed" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
 import { registerUser } from "../../action/AuthAction";
-// import signupimage from "../../assets/loginimage.png";
 import { toast } from "sonner";
 import { Loader } from "../../utils/Loader";
 import { ArrowLeft, CheckCircle, AlertCircle } from "lucide-react";
@@ -33,7 +31,6 @@ const Register = () => {
     password: false,
   });
 
-  // Validation functions
   const validateUsername = (username) => {
     if (!username) return { isValid: false, message: "Name is required" };
     if (username.length < 2)
@@ -62,7 +59,6 @@ const Register = () => {
         message: "Password must be at least 8 characters long",
       };
 
-    // Password strength checks
     const hasUpperCase = /[A-Z]/.test(password);
     const hasLowerCase = /[a-z]/.test(password);
     const hasNumber = /[0-9]/.test(password);
@@ -83,7 +79,6 @@ const Register = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    // Real-time validation
     let validationResult;
     switch (name) {
       case "username":
@@ -113,7 +108,6 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Final validation before submission
     const usernameValidation = validateUsername(formData.username);
     const emailValidation = validateEmail(formData.email);
     const passwordValidation = validatePassword(formData.password);
@@ -130,7 +124,6 @@ const Register = () => {
       password: passwordValidation.isValid,
     });
 
-    // Check if all validations pass
     if (
       !usernameValidation.isValid ||
       !emailValidation.isValid ||
@@ -157,13 +150,6 @@ const Register = () => {
 
   return (
     <div className="flex flex-col md:flex-row h-screen bg-blue-50">
-      {/* <div className="hidden md:flex md:w-1/2 items-center justify-center p-8">
-        <img
-          src={signupimage}
-          alt="Shopping concept"
-          className="max-w-full h-auto"
-        />
-      </div> */}
       <AuthImage />
 
       <div className="w-full md:w-1/2 flex items-center justify-center p-8">
@@ -257,13 +243,7 @@ const Register = () => {
                 type="button"
                 onClick={togglePasswordVisibility}
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 focus:outline-none"
-              >
-                {/* {showPassword ? (
-                  <Eye className="text-gray-500 h-5 w-5" />
-                ) : (
-                  <EyeOff className="text-gray-500 h-5 w-5" />
-                )} */}
-              </button>
+              ></button>
               {formData.password && (
                 <div className="absolute right-3 top-1/3 transform -translate-y-1/2">
                   {validity.password ? (
@@ -289,10 +269,6 @@ const Register = () => {
             </button>
           </form>
 
-          <button className="w-full gap-2 mt-4 py-2 px-4 border border-gray-300 rounded-md flex items-center justify-center hover:bg-gray-50 transition duration-300">
-            <FcGoogle size={25} /> Sign up with Google
-          </button>
-
           <p className="mt-6 text-center text-gray-600">
             Already have an account?{" "}
             <Link to="/login" className="text-red-500 hover:underline">
@@ -306,4 +282,3 @@ const Register = () => {
 };
 
 export default Register;
-

@@ -3,15 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchCart,
   removeFromCart,
-  updateQuantity,
 } from "../../slice/CartSlice";
 import { Trash } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react"; // Added useState
-// import EmptyCartItem from "./EmptyCartItem";
+import { useEffect, useState } from "react"; 
 import cartGif from "../../assets/emptycart.gif";
-import { Skeleton } from "antd"; // Added Ant Design Skeleton import
-// import ProductRecommendations from "../Wishlist/RecommendedProduct";
+import { Skeleton } from "antd"; 
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -23,29 +20,21 @@ const Cart = () => {
   } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
   const currency = items.length > 0 ? items[0].currency : "";
-
-  // Added state for controlling loading with setTimeout
   const [loading, setLoading] = useState(true);
-
-  // const loading = true;
   useEffect(() => {
     if (user?.id) {
       dispatch(fetchCart(user.id));
-
-      // Added setTimeout to ensure skeleton is shown for at least 1.5 seconds
-      // This helps with testing and ensures users see the loading state
       setTimeout(() => {
         setLoading(false);
       }, 1500);
     } else {
-      // If no user, still clear loading after timeout
       setTimeout(() => {
         setLoading(false);
       }, 1500);
     }
   }, [dispatch, user]);
 
-  // Show loading state if either API is loading or our setTimeout hasn't finished
+
   const isLoading = loading || apiLoading;
 
   const handleRemoveItem = async (productId) => {
@@ -55,7 +44,7 @@ const Cart = () => {
         return;
       }
 
-      setLoading(true); // Show loading when removing item
+      setLoading(true); 
 
       await dispatch(
         removeFromCart({
@@ -66,7 +55,7 @@ const Cart = () => {
 
       dispatch(fetchCart(user.id));
 
-      // Clear loading after a short delay
+
       setTimeout(() => {
         setLoading(false);
         toast.success("Item Removed from Cart");
@@ -78,43 +67,17 @@ const Cart = () => {
     }
   };
 
-  const handleQuantityChange = async (productId, type) => {
-    try {
-      if (!user?.id) return;
 
-      setLoading(true); // Show loading when updating quantity
-
-      await dispatch(
-        updateQuantity({
-          userId: user.id,
-          productId,
-          type,
-        })
-      ).unwrap();
-
-      dispatch(fetchCart(user.id));
-
-      // Clear loading after a short delay
-      setTimeout(() => {
-        setLoading(false);
-      }, 800);
-    } catch (error) {
-      console.error("Failed to update quantity:", error);
-      setLoading(false);
-      alert("Failed to update quantity");
-    }
-  };
 
   const handleCheckout = () => {
     navigate("/billing");
   };
 
-  // Updated loading state to use Ant Design Skeleton
+
   if (isLoading) {
     return (
       <div className="dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400">
         <div className="min-h-screen container mx-auto px-4 py-8 mt-10 max-w-7xl">
-          {/* Mobile view loading skeleton */}
           <div className="sm:hidden space-y-4">
             {[1, 2, 3].map((item) => (
               <div key={item} className="border rounded-lg p-4 space-y-3">
@@ -134,7 +97,7 @@ const Cart = () => {
             ))}
           </div>
 
-          {/* Desktop view loading skeleton */}
+
           <div className="hidden sm:block overflow-x-auto">
             <table className="w-full mb-8">
               <thead>
@@ -188,7 +151,6 @@ const Cart = () => {
             </table>
           </div>
 
-          {/* Cart total loading skeleton */}
           <div className="flex flex-col lg:flex-row gap-6">
             <div className="w-full lg:w-1/2">
               <Skeleton.Input active style={{ width: "100%", height: 40 }} />
@@ -216,7 +178,6 @@ const Cart = () => {
   return (
     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300 min-h-screen">
       <div className="container mx-auto px-4 py-8 mt-10 max-w-7xl sm:px-6 lg:px-8 xl:px-0">
-        {/* Mobile View (< 640px) */}
         <div className="sm:hidden">
           {items.length > 0 ? (
             <div className="space-y-4">
@@ -247,9 +208,6 @@ const Cart = () => {
                     <div className="border rounded-md inline-flex">
                       <button
                         className="px-3 py-1"
-                        onClick={() =>
-                          handleQuantityChange(item.productId, "decrease")
-                        }
                       >
                         -
                       </button>
@@ -261,9 +219,6 @@ const Cart = () => {
                       />
                       <button
                         className="px-3 py-1"
-                        onClick={() =>
-                          handleQuantityChange(item.productId, "increase")
-                        }
                       >
                         +
                       </button>
@@ -275,7 +230,6 @@ const Cart = () => {
             </div>
           ) : (
             <div className="">
-              {/* <img src={cartImage} alt="" className="mx-auto"/> */}
               <img src={cartGif} className="w-full max-w-md mx-auto" />
               <h1 className="text-center font-bold text-xl">
                 No Product in Cart
@@ -284,7 +238,6 @@ const Cart = () => {
           )}
         </div>
 
-        {/* Desktop View (≥ 640px) */}
         <div className="hidden sm:block overflow-x-auto">
           <table className="w-full mb-8">
             <thead>
@@ -325,9 +278,6 @@ const Cart = () => {
                       <div className="border rounded-md inline-flex">
                         <button
                           className="px-3 py-1"
-                          onClick={() =>
-                            handleQuantityChange(item.productId, "decrease")
-                          }
                         >
                           -
                         </button>
@@ -339,9 +289,6 @@ const Cart = () => {
                         />
                         <button
                           className="px-3 py-1"
-                          onClick={() =>
-                            handleQuantityChange(item.productId, "increase")
-                          }
                         >
                           +
                         </button>
@@ -356,7 +303,6 @@ const Cart = () => {
               ) : (
                 <tr>
                   <td colSpan="4" className="">
-                    {/* <img src={cartImage} alt="" className="mx-auto"/> */}
                     <img src={cartGif} className="w-full max-w-md mx-auto" />
                   </td>
                 </tr>
@@ -383,7 +329,6 @@ const Cart = () => {
             </div>
 
             <div className="flex flex-col lg:flex-row gap-6">
-              {/* Left side: Coupon input and button */}
               <div className="w-full lg:w-1/2">
                 <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
                   <input
@@ -397,7 +342,6 @@ const Cart = () => {
                 </div>
               </div>
 
-              {/* Right side: Cart Total */}
               <div className="w-full lg:w-1/2">
                 <div className="border border-gray-300 rounded-lg p-6">
                   <h2 className="text-xl font-bold mb-4">Cart Total</h2>

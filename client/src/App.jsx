@@ -30,7 +30,6 @@ import Otp from "./components/Verify/Otp";
 import { Toaster } from "sonner";
 import { AnimatePresence } from "framer-motion";
 import PageTransition from "./animation/PageTransition";
-// import Verify from "./components/Verify/Verify";
 export default function App() {
   const dispatch = useDispatch();
 
@@ -42,7 +41,7 @@ export default function App() {
 
   useEffect(() => {
     const path = location.pathname;
-    let pageTitle = "Ecommerce Webapp"; // Default title
+    let pageTitle = "Ecommerce Webapp"; 
 
     switch (path) {
       case "/":
@@ -85,7 +84,6 @@ export default function App() {
         <Route path="/cart" element={<Layout><PrivateRoute element={Cart} /></Layout>}/>
         <Route path="/billing" element={<Layout><PrivateRoute element={Billing} /></Layout>}/>
         <Route path="/wishlist" element={<Layout><PrivateRoute element={Wishlist} /></Layout>}/>
-        {/* <Route path="/product-detail" element={<Layout><ProductDetail /></Layout>}/> */}
         <Route path="/product/:id" element={<Layout><ProductDetail /></Layout>} />
         <Route path="*" element={<Layout><NotFound /></Layout>}/>
         <Route path="/order" element={<Layout><PrivateRoute element={Order} /></Layout>}/>

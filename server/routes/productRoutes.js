@@ -8,16 +8,13 @@ const {
   deleteProduct 
 } = require('../controllers/productController');
 
-// Middleware for admin protection (to be implemented)
-// const { protect, admin } = require('../middleware/authMiddleware');
-
 router.route('/')
   .get(getProducts)
-  .post(createProduct); // add protect, admin middleware later
+  .post(createProduct); 
 
 router.route('/:id')
   .get(getProductById)
-  .put(updateProduct) // add protect, admin middleware later
-  .delete(deleteProduct); // add protect, admin middleware later
+  .put(updateProduct) 
+  .delete(deleteProduct); 
 
 module.exports = router;

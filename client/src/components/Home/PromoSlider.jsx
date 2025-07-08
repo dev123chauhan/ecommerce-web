@@ -4,8 +4,6 @@ import iphone from "../../assets/i-phone.png"
 import saleimage from "../../assets/saleimage.webp"
 const PromoSlider = () => {
   const [activeSlide, setActiveSlide] = useState(0);
-
-  // Array of promo content - you can expand this with more items
   const promoContent = [
     {
       title: "iPhone 14 Series",
@@ -37,7 +35,6 @@ const PromoSlider = () => {
   return (
     <div className="w-full md:w-3/4 bg-black text-white p-8">
       <div className="relative h-64 md:h-96">
-        {/* Promo Content */}
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0 transition-all duration-500 ease-in-out">
             <svg 
@@ -66,7 +63,7 @@ const PromoSlider = () => {
           </div>
         </div>
 
-        {/* Slide Indicators */}
+
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
           {promoContent.map((_, index) => (
             <button

@@ -23,7 +23,6 @@ const MyCancellation = () => {
   };
 
   const handleCancellation = () => {
-    // In a real application, this would call an API to cancel the order
     console.log('Order cancelled', {
       reasons: [...selectedReasons, ...(otherReason ? [`Other: ${otherReason}`] : [])]
     });
@@ -33,7 +32,7 @@ const MyCancellation = () => {
   return (
     <div className='dark:bg-gray-900 dark:text-white transition-colors duration-300'>
     <div className="min-h-screen  flex flex-col max-w-7xl mx-auto">
-      {/* Header */}
+
       <header className="shadow-sm p-4 flex items-center ">
         <button className="mr-4">
           <ChevronLeft className="" />
@@ -41,7 +40,7 @@ const MyCancellation = () => {
         <h1 className="text-xl font-semibold  mt-40">Cancel Order</h1>
       </header>
 
-      {/* Order Details */}
+
       <div className="p-4 shadow-sm mb-4">
         <div className="flex items-center">
           <img 
@@ -56,7 +55,7 @@ const MyCancellation = () => {
         </div>
       </div>
 
-      {/* Cancellation Reasons */}
+
       <div className="p-4">
         <h3 className="text-lg font-semibold mb-4">
           Why are you cancelling?
@@ -97,7 +96,6 @@ const MyCancellation = () => {
         </div>
       </div>
 
-      {/* Warning & Confirmation */}
       {!isConfirming && (
         <div className="p-4  mt-4">
           <div className="bg-yellow-50 border border-yellow-200 p-3 rounded-md flex items-center mb-4">
@@ -109,7 +107,7 @@ const MyCancellation = () => {
         </div>
       )}
 
-      {/* Action Buttons */}
+
       <div className="mt-auto p-4  shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
         {!isConfirming ? (
           <button 

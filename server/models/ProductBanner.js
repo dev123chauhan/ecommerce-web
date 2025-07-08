@@ -1,4 +1,3 @@
-// server/models/Product.js
 const mongoose = require('mongoose');
 
 const ProductBannerSchema = new mongoose.Schema({
@@ -27,7 +26,7 @@ const ProductBannerSchema = new mongoose.Schema({
   },
   discount: {
     type: Number,
-    default: 0 // percentage discount
+    default: 0 
   },
   featured: {
     type: Boolean,

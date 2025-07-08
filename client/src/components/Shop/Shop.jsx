@@ -1,6 +1,5 @@
-// client/src/components/Shop/Shop.js
 import { useEffect, useState } from "react";
-import { ChevronDown,  LogIn, } from "lucide-react";
+import { ChevronDown, LogIn } from "lucide-react";
 import { Skeleton } from "antd";
 import CropText from "../CropText/CropText";
 import noproductfound from "../../assets/Not-found.gif";
@@ -59,7 +58,7 @@ const Shop = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   const {
     searchTerm,
     selectedCategories,
@@ -71,12 +70,12 @@ const Shop = () => {
   const [isFiltering, setIsFiltering] = useState(false);
   const [artificialLoading, setArtificialLoading] = useState(true);
 
-  // Set products in Redux store when fetched
+
   useEffect(() => {
     if (shop) {
       dispatch(setProducts(shop));
 
-      // Add artificial initial loading delay (2 seconds)
+
       const timer = setTimeout(() => {
         setArtificialLoading(false);
       }, 1500);
@@ -84,33 +83,32 @@ const Shop = () => {
       return () => clearTimeout(timer);
     }
   }, [shop, dispatch]);
-  
-  // Handle product click to navigate to product detail page
+
+
   const handleProductClick = (product) => {
-    // Create a URL-friendly slug from the product name
     const slug = product.name
-      .toLowerCase()                // Convert to lowercase
-      .replace(/[^\w\s-]/g, '')    // Remove special characters
-      .replace(/\s+/g, '-')        // Replace spaces with hyphens
-      .trim();                      // Trim any leading/trailing spaces
-    
-    // Navigate with the slug and pass product data as state
+      .toLowerCase() 
+      .replace(/[^\w\s-]/g, "") 
+      .replace(/\s+/g, "-") 
+      .trim(); 
+
+
     navigate(`/product/${slug}`, { state: { product } });
   };
-  
-  // Add artificial loading when search or filters change
+
+
   useEffect(() => {
     if (shop) {
       setIsFiltering(true);
       const timer = setTimeout(() => {
         setIsFiltering(false);
-      }, 1500); // 1.5 second delay when filtering
+      }, 1500); 
 
       return () => clearTimeout(timer);
     }
   }, [searchTerm, selectedCategories, selectedSubCategories, shop]);
 
-  // Toggle category expansion
+
   const toggleCategory = (category) => {
     setExpandedCategories((prev) =>
       prev.includes(category)
@@ -119,7 +117,7 @@ const Shop = () => {
     );
   };
 
-  // Handle category selection
+
   const handleCategoryChange = (category) => {
     const newCategories = selectedCategories.includes(category)
       ? selectedCategories.filter((c) => c !== category)
@@ -127,7 +125,7 @@ const Shop = () => {
 
     dispatch(setSelectedCategories(newCategories));
 
-    // Remove subcategories if category is unchecked
+
     if (selectedCategories.includes(category)) {
       const newSubCategories = selectedSubCategories.filter(
         (sc) => !categories[category].includes(sc)
@@ -136,7 +134,6 @@ const Shop = () => {
     }
   };
 
-  // Handle subcategory selection
   const handleSubCategoryChange = (subCategory) => {
     const newSubCategories = selectedSubCategories.includes(subCategory)
       ? selectedSubCategories.filter((sc) => sc !== subCategory)
@@ -145,18 +142,17 @@ const Shop = () => {
     dispatch(setSelectedSubCategories(newSubCategories));
   };
 
-  // Update search term
+
   const handleSearchChange = (e) => {
     dispatch(setSearchTerm(e.target.value));
   };
 
-  // Helper function to render star rating
   const renderStarRating = (rating) => {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 >= 0.5;
     const stars = [];
 
-    // Full stars
+
     for (let i = 0; i < fullStars; i++) {
       stars.push(
         <svg
@@ -174,7 +170,7 @@ const Shop = () => {
       );
     }
 
-    // Half star
+
     if (hasHalfStar) {
       stars.push(
         <svg
@@ -192,7 +188,6 @@ const Shop = () => {
       );
     }
 
-    // Empty stars
     const emptyStars = 5 - stars.length;
     for (let i = 0; i < emptyStars; i++) {
       stars.push(
@@ -217,52 +212,50 @@ const Shop = () => {
     return stars;
   };
 
-  // Determine if loading
   const isLoading =
     productsLoading || categoriesLoading || artificialLoading || isFiltering;
-    const closeModal = () => {
-      setIsModalOpen(false);
-      setSelectedImage(null);
-    };
-    const handleLoginRedirect = () => {
-      setIsLoginPopupOpen(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedImage(null);
+  };
+  const handleLoginRedirect = () => {
+    setIsLoginPopupOpen(false);
     navigate("/login", {
       state: {
         productToAdd: productToAdd,
       },
     });
-    };
+  };
 
-      const handleAddToCart = async (product) => {
-        if (!isAuthenticated) {
-          setProductToAdd(product);
-          setIsLoginPopupOpen(true);
-          return;
-        }
-    
-        try {
-          await dispatch(
-            addToCart({
-              userId: user.id,
-              product: {
-                id: product.id,
-                name: product.name,
-                price: product.price,
-                image: product.image,
-              },
-            })
-          ).unwrap();
-          toast.success("Item Added to Cart");
-        } catch (error) {
-          console.error("Failed to add to cart:", error);
-        }
-      };
+  const handleAddToCart = async (product) => {
+    if (!isAuthenticated) {
+      setProductToAdd(product);
+      setIsLoginPopupOpen(true);
+      return;
+    }
+
+    try {
+      await dispatch(
+        addToCart({
+          userId: user.id,
+          product: {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+          },
+        })
+      ).unwrap();
+      toast.success("Item Added to Cart");
+    } catch (error) {
+      console.error("Failed to add to cart:", error);
+    }
+  };
   return (
     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300">
       <div className="min-h-screen banner">
         <div className="max-w-7xl mx-auto lg:px-0">
           <div className="flex flex-col md:flex-row gap-6">
-            {/* Category Filter Sidebar */}
             <div className="md:w-1/4 lg:w-1/4">
               <nav className="pt-6">
                 <ul className="flex space-x-4">
@@ -360,7 +353,7 @@ const Shop = () => {
               </div>
             </div>
 
-            {/* Products Grid */}
+
             <div className="md:w-3/4 lg:w-4/5">
               {productsError && (
                 <div className="bg-red-100 text-red-700 p-4 mb-6 rounded">
@@ -393,7 +386,7 @@ const Shop = () => {
                               length={30}
                             />
                           </div>
-                          <h3 
+                          <h3
                             className="text-lg font-semibold mb-3 cursor-pointer hover:text-gray-700"
                             onClick={() => handleProductClick(product)}
                           >
@@ -423,7 +416,10 @@ const Shop = () => {
                               </span>
                             </div>
                           </div>
-                          <button    onClick={() => handleAddToCart(product)} className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors duration-200 w-full">
+                          <button
+                            onClick={() => handleAddToCart(product)}
+                            className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors duration-200 w-full"
+                          >
                             Add to Cart
                           </button>
                         </div>
@@ -443,56 +439,55 @@ const Shop = () => {
           </div>
         </div>
       </div>
-          <Modal 
-              isOpen={isModalOpen} 
-              onClose={closeModal}
-              title={selectedImage?.name}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        title={selectedImage?.name}
+      >
+        {selectedImage && (
+          <div className="p-4">
+            <img
+              src={selectedImage.image}
+              alt={selectedImage.name}
+              className="w-full h-auto max-h-[70vh] object-contain mx-auto"
+            />
+          </div>
+        )}
+      </Modal>
+
+      <Modal
+        isOpen={isLoginPopupOpen}
+        onClose={() => setIsLoginPopupOpen(false)}
+        className="max-w-md"
+        title="Login Required"
+      >
+        <div className="text-center p-6">
+          <div className="flex justify-center mb-4">
+            <LogIn size={48} className="text-red-500" />
+          </div>
+          <p className="mb-6 text-gray-600 dark:text-gray-300">
+            Please log in to add items to your cart and continue shopping.
+          </p>
+          <div className="flex justify-center space-x-4">
+            <button
+              onClick={() => setIsLoginPopupOpen(false)}
+              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md transition-colors"
             >
-              {selectedImage && (
-                <div className="p-4">
-                  <img
-                    src={selectedImage.image}
-                    alt={selectedImage.name}
-                    className="w-full h-auto max-h-[70vh] object-contain mx-auto"
-                  />
-                </div>
-              )}
-            </Modal>
-      
-            {/* Login Required Popup */}
-            <Modal
-              isOpen={isLoginPopupOpen}
-              onClose={() => setIsLoginPopupOpen(false)}
-              className="max-w-md"
-              title="Login Required"
+              Cancel
+            </button>
+            <button
+              onClick={handleLoginRedirect}
+              className="px-4 py-2 bg-red-500 text-white rounded-md flex items-center justify-center hover:bg-red-600 transition-colors"
             >
-              <div className="text-center p-6">
-                <div className="flex justify-center mb-4">
-                  <LogIn size={48} className="text-red-500" />
-                </div>
-                <p className="mb-6 text-gray-600 dark:text-gray-300">
-                  Please log in to add items to your cart and continue shopping.
-                </p>
-                <div className="flex justify-center space-x-4">
-                  <button
-                    onClick={() => setIsLoginPopupOpen(false)}
-                    className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md transition-colors"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    onClick={handleLoginRedirect}
-                    className="px-4 py-2 bg-red-500 text-white rounded-md flex items-center justify-center hover:bg-red-600 transition-colors"
-                  >
-                    <LogIn className="mr-2" size={20} />
-                    Go to Login
-                  </button>
-                </div>
-              </div>
-            </Modal>
-      
-            {/* Custom Styles */}
-            <style>{`
+              <LogIn className="mr-2" size={20} />
+              Go to Login
+            </button>
+          </div>
+        </div>
+      </Modal>
+
+
+      <style>{`
               .scrollbar-hide::-webkit-scrollbar {
                 display: none;
               }

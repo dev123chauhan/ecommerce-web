@@ -1,26 +1,25 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const baseUrl = import.meta.env.VITE_API_URL;
 export const updateProfile = createAsyncThunk(
-  'profile/updateProfile',
+  "profile/updateProfile",
   async (formData, { rejectWithValue, getState }) => {
     try {
-      // Get the token from your auth state
-      const token = getState().auth.token; // Adjust this path based on your store structure
-      
+      const token = getState().auth.token;
+
       const response = await fetch(`${baseUrl}/users/profile`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
       });
-      
+
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to update profile');
+        throw new Error(errorData.message || "Failed to update profile");
       }
-      
+
       const data = await response.json();
       return data;
     } catch (error) {
@@ -30,12 +29,12 @@ export const updateProfile = createAsyncThunk(
 );
 
 const profileSlice = createSlice({
-  name: 'profile',
+  name: "profile",
   initialState: {
     loading: false,
     error: null,
     success: false,
-    data: null
+    data: null,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -56,7 +55,7 @@ const profileSlice = createSlice({
         state.error = action.payload;
         state.success = false;
       });
-  }
+  },
 });
 
 export default profileSlice.reducer;

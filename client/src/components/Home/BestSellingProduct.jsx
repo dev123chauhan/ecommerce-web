@@ -25,7 +25,6 @@ const renderStars = (rating, size = 'text-3xl') => {
     ));
 };
 const ProductCard = ({ product }) => {
-  // Create a state to handle image loading errors
   const [imageError, setImageError] = useState(false);
 
   return (
@@ -61,7 +60,7 @@ const ProductCard = ({ product }) => {
         </div>
         <div className="flex items-center">
         {renderStars(product.rating, 'text-3xl')}
-          {/* <span className="ml-2">({product.reviews || 0})</span> */}
+      
         </div>
         <button className="w-full bg-black text-white py-2 rounded-md flex items-center justify-center hover:bg-gray-800 transition-colors mt-2">
           <ShoppingCart className="w-4 h-4 mr-2" />
@@ -91,23 +90,15 @@ const BestSellingProduct = () => {
   const [showAll, setShowAll] = useState(false);
   const viewAllButtonRef = useRef(null);
   const dispatch = useDispatch();
-  
-  // Get data from Redux store
   const { 
-    // searchTerm, 
-    // selectedCategories, 
-    // selectedSubCategories, 
     filteredProducts 
   } = useSelector((state) => state.shop);
-  
-  // Fetch products with RTK Query
   const { 
     data: shop, 
     isLoading: productsLoading, 
     error: productsError 
   } = useGetProductsQuery();
   
-  // Update products in Redux store when data arrives
   useEffect(() => {
     if (shop) {
       dispatch(setProducts(shop));
@@ -132,12 +123,12 @@ const BestSellingProduct = () => {
     }, 100);
   };
   
-  // Limit displayed products based on showAll state
+
   const displayedProducts = showAll
     ? filteredProducts
     : filteredProducts.slice(0, 3);
 
-  // Skeleton Loader
+
   const SkeletonLoader = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {[...Array(3)].map((_, index) => (

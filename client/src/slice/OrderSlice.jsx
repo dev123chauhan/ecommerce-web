@@ -1,9 +1,8 @@
-// src/slice/OrderSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { clearPaymentState, createRazorpayOrder } from "./PaymentSlice";
-const API_URL = import.meta.env.VITE_API_URL
-// Create a new order
+const API_URL = import.meta.env.VITE_API_URL;
+
 export const createOrder = createAsyncThunk(
   "order/createOrder",
   async (orderData, { rejectWithValue }) => {
@@ -16,7 +15,6 @@ export const createOrder = createAsyncThunk(
   }
 );
 
-// Get order by ID
 export const getOrderById = createAsyncThunk(
   "order/getOrderById",
   async (orderId, { rejectWithValue }) => {
@@ -29,7 +27,6 @@ export const getOrderById = createAsyncThunk(
   }
 );
 
-// Get all orders for a user
 export const getUserOrders = createAsyncThunk(
   "order/getUserOrders",
   async (userId, { rejectWithValue }) => {
@@ -104,21 +101,15 @@ const orderSlice = createSlice({
 
 export const { clearOrderState } = orderSlice.actions;
 
-// Thunk to handle the complete checkout process
 export const processCheckout = (orderData) => async (dispatch) => {
   try {
-    // Step 1: Create the order
     const orderResponse = await dispatch(createOrder(orderData)).unwrap();
     const orderId = orderResponse.order._id;
     const amount = orderResponse.order.totalAmount;
 
-    // Step 2: If payment method is razorpay, create Razorpay order
     if (orderData.paymentMethod === "razorpay") {
-      await dispatch(
-        createRazorpayOrder({ amount, orderId })
-      ).unwrap();
+      await dispatch(createRazorpayOrder({ amount, orderId })).unwrap();
     } else {
-      // For other payment methods, we can proceed directly
       dispatch(clearPaymentState());
       return orderResponse;
     }

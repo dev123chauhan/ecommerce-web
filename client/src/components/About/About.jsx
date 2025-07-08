@@ -2,7 +2,6 @@ import ServiceFeatures from "../Home/ServiceFeatures";
 import AboutContent from "./AboutContent";
 import StatsCards from "./StatCard";
 import TeamShowcase from "./TeamShowcase";
-
 export default function About() {
   return (
     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300">

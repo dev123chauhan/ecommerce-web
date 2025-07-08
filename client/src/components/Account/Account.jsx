@@ -58,7 +58,6 @@ const Account = () => {
   return (
     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300">
     <div className="min-h-screen  p-4 md:p-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 mt-10">
-      {/* Header */}
       <header className="flex justify-between items-center mb-8">
         <nav className="text-sm">
           <span>Home</span> / <span className="font-semibold">My Account</span>
@@ -69,7 +68,6 @@ const Account = () => {
       </header>
 
       <div className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8">
-        {/* Sidebar */}
         <aside className="w-full md:w-1/4">
           <h2 className="text-xl font-bold mb-4">Manage My Account</h2>
           <nav className="space-y-2">
@@ -110,8 +108,6 @@ const Account = () => {
           </nav>
           <h2 className="text-xl font-bold mt-6 mb-4">My Wishlist</h2>
         </aside>
-
-        {/* Main Content */}
         <main className="w-full md:w-3/4">
           {renderContent()}
         </main>

@@ -1,6 +1,6 @@
 import  { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../../action/AuthAction'; // Adjust the import path as needed
+import { loginUser } from '../../action/AuthAction'; 
 import { ShoppingCart, X } from 'lucide-react';
 import PropTypes from 'prop-types';
 
@@ -16,7 +16,6 @@ const LoginPopup = ({ isOpen, onClose, onLoginSuccess, product }) => {
       const result = await dispatch(loginUser({ email, password }));
       
       if (result.success) {
-        // Close popup and add to cart
         onLoginSuccess(product);
         onClose();
       } else {

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../action/AuthAction";
-// import signupimage from "../../assets/loginimage.png";
 import { toast } from "sonner";
 import { Loader } from "../../utils/Loader";
 import { ArrowLeft, CheckCircle, AlertCircle } from "lucide-react";
@@ -29,9 +28,9 @@ const Login = () => {
     password: false,
   });
 
-  // Validation functions
+
   const validateEmail = (email) => {
-    // Basic email validation regex
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email) return { isValid: false, message: "Email is required" };
     if (!emailRegex.test(email))
@@ -46,8 +45,6 @@ const Login = () => {
         isValid: false,
         message: "Password must be at least 8 characters long",
       };
-
-    // Optional: Additional password strength checks
     const hasUpperCase = /[A-Z]/.test(password);
     const hasLowerCase = /[a-z]/.test(password);
     const hasNumber = /[0-9]/.test(password);
@@ -67,8 +64,6 @@ const Login = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-
-    // Real-time validation
     let validationResult;
     switch (name) {
       case "email":
@@ -94,8 +89,6 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Final validation before submission
     const emailValidation = validateEmail(formData.email);
     const passwordValidation = validatePassword(formData.password);
 
@@ -132,13 +125,6 @@ const Login = () => {
 
   return (
     <div className="flex flex-col md:flex-row h-screen bg-blue-50">
-      {/* <div className="hidden md:flex md:w-1/2 items-center justify-center p-8">
-        <img
-          src={signupimage}
-          alt="Shopping concept"
-          className="max-w-full h-auto"
-        />
-      </div> */}
       <AuthImage />
 
       <div className="w-full md:w-1/2 flex items-center justify-center p-8">
@@ -203,11 +189,6 @@ const Login = () => {
                 onClick={togglePasswordVisibility}
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 focus:outline-none"
               >
-                {/* {showPassword ? (
-                  <Eye className="text-gray-500 h-5 w-5" />
-                ) : (
-                  <EyeOff className="text-gray-500 h-5 w-5" />
-                )} */}
               </button>
               {formData.password && (
                 <div className="absolute right-3 top-1/3 transform -translate-y-1/2">
@@ -233,12 +214,6 @@ const Login = () => {
                 />{" "}
                 Remember me{" "}
               </p>
-              <Link
-                to="/verify"
-                className="text-sm text-red-500 hover:underline"
-              >
-                Forget Password?
-              </Link>
             </div>
             <button
               type="submit"

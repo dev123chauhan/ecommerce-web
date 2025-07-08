@@ -26,7 +26,6 @@ const Header = () => {
     <>
       <header className="bg-white dark:bg-gray-900 transition-colors duration-300">
         <nav className="border-b dark:border-gray-800">
-          {/* Desktop Navigation */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 hidden md:flex items-center justify-between py-5">
             <Link to="/" className="text-xl font-bold dark:text-white">
               ShopVibe
@@ -45,7 +44,7 @@ const Header = () => {
                   >
                     {item.name}
                   </Link>
-                  {/* Animated border on hover */}
+
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black dark:bg-white group-hover:w-full transition-all duration-300 ease-in-out"></span>
                 </li>
               ))}
@@ -99,18 +98,17 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Mobile Navigation */}
           <div className="md:hidden flex items-center justify-between px-4 py-4">
             <Menu
               onClick={toggleSidebar}
               className="cursor-pointer dark:text-white"
               size={24}
             />
-            
+
             <Link to="/" className="text-xl font-bold dark:text-white">
               ShopVibe
             </Link>
-            
+
             <div className="flex items-center space-x-4">
               <button
                 onClick={toggleTheme}
@@ -145,13 +143,11 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Mobile Sidebar */}
           <div
             className={`fixed top-0 left-0 h-full w-full bg-white dark:bg-gray-900 shadow-2xl transform transition-transform duration-300 ease-in-out z-50 ${
               isOpen ? "translate-x-0" : "-translate-x-full"
             }`}
           >
-            {/* Sidebar Header */}
             <div className="flex items-center justify-between p-6 border-b dark:border-gray-700">
               <Link to="/" className="text-2xl font-bold dark:text-white">
                 ShopVibe
@@ -163,9 +159,7 @@ const Header = () => {
               />
             </div>
 
-            {/* Sidebar Content */}
             <div className="p-6">
-              {/* Search Bar for Authenticated Users */}
               {isAuthenticated && (
                 <div className="mb-8">
                   <div className="relative">
@@ -182,7 +176,6 @@ const Header = () => {
                 </div>
               )}
 
-              {/* Navigation Items */}
               <nav className="mb-8">
                 <ul className="space-y-6">
                   {navItems.map((item) => (
@@ -202,12 +195,9 @@ const Header = () => {
                   ))}
                 </ul>
               </nav>
-
-
             </div>
           </div>
 
-          {/* Overlay */}
           {isOpen && (
             <div
               className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"

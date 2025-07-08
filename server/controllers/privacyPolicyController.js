@@ -1,47 +1,42 @@
-const asyncHandler = require('express-async-handler');
-const PrivacyPolicy = require('../models/PrivacyPolicy');
-
-// @desc    Get current privacy policy
-// @route   GET /api/privacy-policy
+const asyncHandler = require("express-async-handler");
+const PrivacyPolicy = require("../models/PrivacyPolicy");
 exports.getPrivacyPolicy = asyncHandler(async (req, res) => {
   const privacyPolicy = await PrivacyPolicy.findOne().sort({ createdAt: -1 });
-  
+
   if (!privacyPolicy) {
-    // Create default policy if none exists
     const defaultPolicy = new PrivacyPolicy({
       sections: [
-        { 
-          key: 'dataCollection', 
-          title: 'Data Collection', 
-          content: 'Details about data collection practices' 
+        {
+          key: "dataCollection",
+          title: "Data Collection",
+          content: "Details about data collection practices",
         },
-        { 
-          key: 'sifhilhfw', 
-          title: 'wqfhkwfhq klwqhflh', 
-          content: 'Details about data collection practices' 
+        {
+          key: "sifhilhfw",
+          title: "wqfhkwfhq klwqhflh",
+          content: "Details about data collection practices",
         },
-        { 
-          key: 'dataCollection', 
-          title: 'Data Collection', 
-          content: 'Details about data collection practices' 
+        {
+          key: "dataCollection",
+          title: "Data Collection",
+          content: "Details about data collection practices",
         },
-        { 
-          key: 'dataCollection', 
-          title: 'Data Collection', 
-          content: 'Details about data collection practices' 
+        {
+          key: "dataCollection",
+          title: "Data Collection",
+          content: "Details about data collection practices",
         },
-        { 
-          key: 'dataCollection', 
-          title: 'Data Collection', 
-          content: 'Details about data collection practices' 
+        {
+          key: "dataCollection",
+          title: "Data Collection",
+          content: "Details about data collection practices",
         },
-        { 
-          key: 'dataCollection', 
-          title: 'Data Collection', 
-          content: 'Details about data collection practices' 
+        {
+          key: "dataCollection",
+          title: "Data Collection",
+          content: "Details about data collection practices",
         },
-        // Add other default sections similarly
-      ]
+      ],
     });
     await defaultPolicy.save();
     res.json(defaultPolicy);
@@ -50,8 +45,6 @@ exports.getPrivacyPolicy = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Update privacy policy
-// @route   PUT /api/privacy-policy
 exports.updatePrivacyPolicy = asyncHandler(async (req, res) => {
   const { companyName, contactEmail, sections } = req.body;
 
@@ -70,7 +63,7 @@ exports.updatePrivacyPolicy = asyncHandler(async (req, res) => {
       companyName,
       contactEmail,
       sections,
-      lastUpdated: new Date()
+      lastUpdated: new Date(),
     });
 
     const createdPolicy = await newPolicy.save();

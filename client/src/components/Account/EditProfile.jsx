@@ -1,4 +1,3 @@
-// Frontend - EditProfile.jsx
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Loader } from "../../utils/Loader";

@@ -8,7 +8,6 @@ const FeaturedNewArrivals = () => {
       <div className="text-red-500 font-bold mb-2">Featured</div>
       <h2 className="text-4xl font-bold mb-4">New Arrival</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {/* PlayStation 5 */}
         <div className="bg-black rounded-lg overflow-hidden relative">
           <img src={plastation} alt="PlayStation 5" className="w-full h-full object-cover" />
           <div className="absolute bottom-4 left-4 text-white">
@@ -19,7 +18,6 @@ const FeaturedNewArrivals = () => {
         </div>
         
         <div className="grid grid-rows-2 gap-4">
-          {/* Women's Collections */}
           <div className="bg-black rounded-lg overflow-hidden relative">
             <img src={women} alt="Women's Collections" className="w-full h-full object-cover" />
             <div className="absolute bottom-4 left-4 text-white">
@@ -30,7 +28,7 @@ const FeaturedNewArrivals = () => {
           </div>
           
           <div className="grid grid-cols-2 gap-4">
-            {/* Speakers */}
+
             <div className="bg-black rounded-lg overflow-hidden relative">
               <img src={speaker} alt="Speakers" className="w-full h-full object-cover" />
               <div className="absolute bottom-4 left-4 text-white">
@@ -39,8 +37,7 @@ const FeaturedNewArrivals = () => {
                 <button className="bg-white text-black px-4 py-2 rounded-full text-xs font-semibold">Shop Now</button>
               </div>
             </div>
-            
-            {/* Perfume */}
+
             <div className="bg-black rounded-lg overflow-hidden relative">
               <img src={perfume} alt="Perfume" className="w-full h-full object-cover" />
               <div className="absolute bottom-4 left-4 text-white">

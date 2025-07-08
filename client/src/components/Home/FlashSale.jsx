@@ -14,18 +14,14 @@ import { addToCart } from "../../slice/CartSlice";
 import { useNavigate } from "react-router-dom";
 import { fetchProducts } from "../../slice/ProductSlice";
 import { fetchWishlist, toggleWishlistItem } from "../../slice/WishlistSlice";
-import Modal from "../../components/Modal/Modal"; // Import the new Modal component
+import Modal from "../../components/Modal/Modal"; 
 
 const FlashSale = () => {
   const { items: products } = useSelector((state) => state.products);
   const { items: wishlistItems } = useSelector((state) => state.wishlist);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // Select authentication state from Redux
   const { user, isAuthenticated } = useSelector((state) => state.auth);
-
-  // State for various modals and loading
   const [timeLeft, setTimeLeft] = useState({
     days: 3,
     hours: 23,
@@ -40,7 +36,7 @@ const FlashSale = () => {
 
   const scrollContainerRef = useRef(null);
 
-  // Timer countdown effect
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => {
@@ -70,7 +66,7 @@ const FlashSale = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // Loading simulation effect
+
   useEffect(() => {
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
@@ -104,7 +100,7 @@ const FlashSale = () => {
     }
   };
 
-  // Handle Login Redirect
+
   const handleLoginRedirect = () => {
     setIsLoginPopupOpen(false);
     navigate("/login", {
@@ -154,14 +150,11 @@ const FlashSale = () => {
   };
 
   const handleProductClick = (product) => {
-    // Create a URL-friendly slug from the product name
     const slug = product.name
-      .toLowerCase()                // Convert to lowercase
-      .replace(/[^\w\s-]/g, '')    // Remove special characters
-      .replace(/\s+/g, '-')        // Replace spaces with hyphens
-      .trim();                      // Trim any leading/trailing spaces
-    
-    // Navigate with the slug
+      .toLowerCase()                
+      .replace(/[^\w\s-]/g, '')    
+      .replace(/\s+/g, '-')        
+      .trim();                      
     navigate(`/product/${slug}`, { state: { product } });
   };
   
@@ -208,12 +201,9 @@ const FlashSale = () => {
   return (
     <div className="w-full">
       <div className="max-w-7xl mx-auto">
-        {/* Existing Flash Sale Header */}
         <div className="bg-red-500 text-white px-4 py-2 rounded-t-lg inline-block mb-4">
           Todays
         </div>
-
-        {/* Existing Header Content */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-4 sm:space-y-0">
           <h2 className="text-2xl sm:text-3xl font-bold">Flash Sales</h2>
           <div className="flex space-x-2 sm:space-x-4">
@@ -245,16 +235,9 @@ const FlashSale = () => {
             </button>
           </div>
         </div>
-
-        {/* Product Scrollable Container */}
         <div
           ref={scrollContainerRef}
           className="flex overflow-x-auto gap-4 sm:gap-6 pb-4 scrollbar-hide scroll-smooth"
-          style={{
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-            WebkitOverflowScrolling: "touch",
-          }}
         >
           {isLoading
             ? Array(6)
@@ -346,7 +329,7 @@ const FlashSale = () => {
         </div>
       </div>
 
-      {/* Product Image Modal */}
+
       <Modal 
         isOpen={isModalOpen} 
         onClose={closeModal}
@@ -363,7 +346,7 @@ const FlashSale = () => {
         )}
       </Modal>
 
-      {/* Login Required Popup */}
+
       <Modal
         isOpen={isLoginPopupOpen}
         onClose={() => setIsLoginPopupOpen(false)}
@@ -395,7 +378,6 @@ const FlashSale = () => {
         </div>
       </Modal>
 
-      {/* Custom Styles */}
       <style>{`
         .scrollbar-hide::-webkit-scrollbar {
           display: none;

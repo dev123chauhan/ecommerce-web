@@ -9,7 +9,6 @@ const ProductDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // Use a default empty object if favorites doesn't exist
   const favorites = useSelector((state) => state?.wishlist?.favorites || {});
   const { product } = location.state || {};
 
@@ -27,10 +26,9 @@ const ProductDetail = () => {
 
   if (!product) return null;
 
-  const productId = product._id || product.id; // Handle both ID formats
+  const productId = product._id || product.id; 
   const colors = ['white', 'red'];
   
-  // Ensure rating is a valid number between 0-5
   const safeRating = typeof product.rating === 'number' && isFinite(product.rating) 
     ? Math.min(Math.max(0, Math.floor(product.rating)), 5) 
     : 0;
@@ -52,7 +50,6 @@ const ProductDetail = () => {
   return (
     <div className='dark:bg-gray-900 dark:text-white transition-colors duration-300'>
       <div className="max-w-7xl mx-auto py-10">
-        {/* Breadcrumb Navigation */}
         <div className="text-sm breadcrumbs mb-4 mt-10">
           <ul className="flex space-x-2">
             <li className="cursor-pointer hover:text-red-500" onClick={() => navigate('/')}>Home</li>
@@ -61,9 +58,8 @@ const ProductDetail = () => {
           </ul>
         </div>
 
-        {/* Main Product Content */}
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Product Images Section */}
           <div className="flex">
             <div className="flex-grow">
               <img
@@ -74,17 +70,16 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          {/* Product Details Section */}
+
           <div>
             <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
             <p className="mb-6 text-gray-600">
               {product.description}
             </p>
             
-            {/* Ratings and Reviews */}
+
             <div className="flex items-center mb-4">
               <div className="flex text-yellow-400 mr-2">
-                {/* Safely generate stars based on rating */}
                 {[...Array(safeRating)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />
                 ))}
@@ -97,7 +92,7 @@ const ProductDetail = () => {
               </span>
             </div>
 
-            {/* Price */}
+
             <div className="mb-4 flex items-center gap-3">
               <p className="text-2xl font-bold text-red-500">
                 {product.currency || '$'}{product.price}
@@ -109,7 +104,7 @@ const ProductDetail = () => {
               )}
             </div>
 
-            {/* Color Selection */}
+
             <div className="mb-6">
               <h3 className="font-semibold mb-2">Colours:</h3>
               <div className="flex space-x-2">
@@ -128,7 +123,6 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            {/* Quantity and Actions */}
             <div className="flex items-center space-x-4 mb-6">
               <div className="flex items-center border border-gray-300 rounded-md">
                 <button

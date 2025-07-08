@@ -8,6 +8,7 @@ import { Loader } from "../../utils/Loader";
 import { CheckCircle, AlertCircle } from "lucide-react";
 
 const Contact = () => {
+  const baseUrl = import.meta.env.VITE_API_URL;
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -27,7 +28,7 @@ const Contact = () => {
     message: false,
   });
 
-  // Validation functions
+
   const validateName = (name) => {
     if (!name) return { isValid: false, message: "Name is required" };
     if (name.length < 2)
@@ -61,8 +62,6 @@ const Contact = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-
-    // Real-time validation
     let validationResult;
     switch (name) {
       case "name":
@@ -91,8 +90,6 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Final validation before submission
     const nameValidation = validateName(formData.name);
     const emailValidation = validateEmail(formData.email);
     const messageValidation = validateMessage(formData.message);
@@ -108,8 +105,6 @@ const Contact = () => {
       email: emailValidation.isValid,
       message: messageValidation.isValid,
     });
-
-    // Check if all fields are valid
     if (
       !nameValidation.isValid ||
       !emailValidation.isValid ||
@@ -120,10 +115,7 @@ const Contact = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post(
-        "http://localhost:3000/api/contact",
-        formData
-      );
+       const res = await axios.post(`${baseUrl}/contact`,formData);
       console.log(res.data);
       setFormData({
         name: "",
@@ -132,7 +124,6 @@ const Contact = () => {
       });
       toast.success("Thanks for contacting us!");
 
-      // Reset validity and errors
       setValidity({
         name: false,
         email: false,
@@ -345,7 +336,7 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Optional: Address Section below map */}
+        
         <div className="mt-6 mb-12">
           <h3 className="text-xl font-semibold mb-2">Visit Our Store</h3>
           <p className="text-gray-600 dark:text-gray-400">

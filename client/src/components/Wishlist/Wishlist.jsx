@@ -12,7 +12,7 @@ const WishlistSkeleton = () => {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {[1, 2, 3, 4].map((item) => (
         <div key={item} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-          {/* Top image area with delete button */}
+
           <div className="relative p-4 bg-gray-100 dark:bg-gray-700">
             <div className="absolute top-2 right-2">
               <Skeleton.Button active size="small" shape="circle" />
@@ -25,7 +25,7 @@ const WishlistSkeleton = () => {
             </div>
           </div>
           
-          {/* Product details */}
+
           <div className="p-4">
             <Skeleton active  paragraph={false} />
             <div className="flex items-center mt-2 mb-4">
@@ -33,7 +33,7 @@ const WishlistSkeleton = () => {
               <Skeleton.Button active size="small"  />
             </div>
             
-            {/* Add to cart button */}
+
             <Skeleton.Button active block  />
           </div>
         </div>
@@ -51,24 +51,24 @@ const Wishlist = () => {
 
   useEffect(() => {
     if (user?.id) {
-      // Set loading state
+
       setIsLoading(true);
       
-      // Fetch wishlist data
+
       dispatch(fetchWishlist(user.id));
       
-      // Simulate loading delay
+
       const timer = setTimeout(() => {
         setIsLoading(false);
-      }, 1500); // 1.5 seconds delay
+      }, 1500); 
       
-      // Clean up timeout
+
       return () => clearTimeout(timer);
     }
   }, [dispatch, user]);
 
   const handleRemove = (productId) => {
-    setRemoving(true); // Start loader
+    setRemoving(true); 
   
     setTimeout(async () => {
       try {
@@ -84,9 +84,9 @@ const Wishlist = () => {
         toast.error("Failed to remove item");
         console.log(error);
       } finally {
-        setRemoving(false); // Stop loader after removal
+        setRemoving(false); 
       }
-    }, 1000); // 1 second delay
+    }, 1000);
   };
 
   return (

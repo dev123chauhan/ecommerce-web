@@ -1,11 +1,8 @@
-// server/controllers/categoryController.js
 const Category = require('../models/Category');
 
 exports.getAllCategories = async (req, res) => {
   try {
     const categories = await Category.find();
-    
-    // Format as an object with category names as keys for easier frontend consumption
     const categoriesObj = {};
     categories.forEach(category => {
       categoriesObj[category.name] = category.subCategories;

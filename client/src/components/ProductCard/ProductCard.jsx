@@ -11,9 +11,9 @@ import {
 import { addToCart } from "../../slice/CartSlice";
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
-import Modal from '../../components/Modal/Modal'; // Import the Modal component
+import Modal from '../../components/Modal/Modal';
 
-// Skeleton Loader for ProductCard
+
 const ProductCardSkeleton = () => (
   <Card
     className="rounded-lg mb-10 shadow-md overflow-hidden dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
@@ -56,7 +56,7 @@ const renderStars = (rating, size = 'text-3xl') => {
     ));
 };
 
-// Product Card Component
+
 const ProductCard = ({ product, loading = false, onToggleWishlist = null }) => {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useSelector((state) => state.auth);
@@ -65,7 +65,6 @@ const ProductCard = ({ product, loading = false, onToggleWishlist = null }) => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [productToAdd, setProductToAdd] = useState(null);
   
-  // Return skeleton if loading
   if (loading) {
     return <ProductCardSkeleton />;
   }
@@ -82,7 +81,7 @@ const ProductCard = ({ product, loading = false, onToggleWishlist = null }) => {
         addToCart({
           userId: user.id,
           product: {
-            id: product.id || product._id, // Use _id as fallback if id is not available
+            id: product.id || product._id, 
             name: product.name,
             price: product.price,
             image: product.image,
@@ -96,14 +95,11 @@ const ProductCard = ({ product, loading = false, onToggleWishlist = null }) => {
   };
 
   const handleProductClick = (product) => {
-    // Create a URL-friendly slug from the product name
     const slug = product.name
-      .toLowerCase()                // Convert to lowercase
-      .replace(/[^\w\s-]/g, '')    // Remove special characters
-      .replace(/\s+/g, '-')        // Replace spaces with hyphens
-      .trim();                      // Trim any leading/trailing spaces
-    
-    // Navigate with the slug
+      .toLowerCase()               
+      .replace(/[^\w\s-]/g, '')    
+      .replace(/\s+/g, '-')        
+      .trim();                      
     navigate(`/product/${slug}`, { state: { product } });
   };
 
@@ -113,7 +109,6 @@ const ProductCard = ({ product, loading = false, onToggleWishlist = null }) => {
       return;
     }
 
-    // If parent component provided a toggle wishlist function, use it
     if (onToggleWishlist) {
       onToggleWishlist(product);
     }
@@ -133,7 +128,7 @@ const ProductCard = ({ product, loading = false, onToggleWishlist = null }) => {
     });
   };
 
-  const isInWishlist = false; // You'll need to implement this based on your wishlist data
+  const isInWishlist = false; 
 
   return (
     <>
@@ -199,7 +194,7 @@ const ProductCard = ({ product, loading = false, onToggleWishlist = null }) => {
         </button>
       </div>
 
-      {/* Image Modal */}
+
       <Modal
         isOpen={isImageModalOpen}
         onClose={() => setIsImageModalOpen(false)}
@@ -211,35 +206,11 @@ const ProductCard = ({ product, loading = false, onToggleWishlist = null }) => {
             alt={product.name}
             className="w-full h-auto max-h-[70vh] object-contain mx-auto"
           />
-          {/* <div className="mt-4 text-center">
-            <h3 className="text-xl font-semibold">{product.name}</h3>
-            <div className="flex items-center justify-center mt-2">
-              <span className="text-red-500 font-bold mr-2">{product.currency || '₹'}{product.price}</span>
-              {product.originalPrice && (
-                <span className="text-gray-500 text-sm line-through">
-                  {product.currency || '₹'}{product.originalPrice}
-                </span>
-              )}
-            </div>
-            <div className="flex items-center justify-center mt-2">
-            {renderStars(product.rating, 'text-3xl')}
-              <span className="text-gray-500 text-sm ml-1">({product.reviews || 0} reviews)</span>
-            </div>
-            <button 
-              onClick={() => {
-                handleAddToCart(product);
-                setIsImageModalOpen(false);
-              }} 
-              className="mt-4 bg-black text-white py-2 px-6 rounded-md flex items-center justify-center hover:bg-gray-800 transition-colors mx-auto"
-            >
-              <ShoppingCart className="w-4 h-4 mr-2" />
-              Add To Cart
-            </button>
-          </div> */}
+         
         </div>
       </Modal>
 
-      {/* Login Modal */}
+
       <Modal
         isOpen={isLoginModalOpen}
         onClose={() => setIsLoginModalOpen(false)}
@@ -274,7 +245,7 @@ const ProductCard = ({ product, loading = false, onToggleWishlist = null }) => {
   );
 };
 
-// PropTypes for ProductCard
+
 ProductCard.propTypes = {
   product: PropTypes.shape({
     _id: PropTypes.string,

@@ -8,19 +8,10 @@ import { Skeleton } from 'antd';
 const CategoryList = () => {
   const [expandedCategories, setExpandedCategories] = useState([]);
   const dispatch = useDispatch();
-  
-  // Get selected categories from Redux store
   const { selectedCategories, selectedSubCategories } = useSelector(
     (state) => state.shop
   );
-  
-  // Fetch categories from the API
   const { data: allCategories, isLoading: categoriesLoading } = useGetCategoriesQuery();
-  // Filter to only show retail categories (not gaming-related)
-
-  // const { data: allCategories } = useGetCategoriesQuery();
-  // // Force loading state to true for testing
-  // const categoriesLoading = true;
 
   const filteredCategoryNames = [
     "Woman's Fashion",
@@ -33,8 +24,6 @@ const CategoryList = () => {
     "Groceries & Pets",
     "Health & Beauty"
   ];
-
-  // Create a filtered categories object
   const getFilteredCategories = () => {
     if (!allCategories) return {};
     
@@ -57,8 +46,6 @@ const CategoryList = () => {
         : [...prev, categoryName]
     );
   };
-
-  // Handle category selection
   const handleCategoryChange = (category) => {
     const newCategories = selectedCategories.includes(category)
       ? selectedCategories.filter(c => c !== category)
@@ -69,7 +56,6 @@ const CategoryList = () => {
     if (bestSellingSection) {
       bestSellingSection.scrollIntoView({ behavior: 'smooth' });
     }
-    // Remove subcategories if category is unchecked
     if (selectedCategories.includes(category)) {
       const newSubCategories = selectedSubCategories.filter(
         sc => !categories[category]?.includes(sc)
@@ -82,7 +68,6 @@ const CategoryList = () => {
     }
   };
 
-  // Handle subcategory selection
   const handleSubCategoryChange = (subCategory) => {
     const newSubCategories = selectedSubCategories.includes(subCategory)
       ? selectedSubCategories.filter(sc => sc !== subCategory)
@@ -90,14 +75,14 @@ const CategoryList = () => {
       
     dispatch(setSelectedSubCategories(newSubCategories));
     
-    // Scroll to BestSellingProduct section when filter changes
+
     const bestSellingSection = document.getElementById('best-selling');
     if (bestSellingSection) {
       bestSellingSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  // Show Ant Design Skeleton loading state while categories are loading
+
   if (categoriesLoading || !allCategories) {
     return (
       <div className="w-full pr-4 py-2">

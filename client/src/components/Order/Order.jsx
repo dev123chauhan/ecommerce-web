@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { AlertCircle } from "lucide-react";
-// import { Link } from 'react-router-dom';
 
 const Order = () => {
   const [orders, setOrders] = useState([]);
@@ -12,7 +11,6 @@ const Order = () => {
   const { items } = useSelector((state) => state.cart);
   const currency = items.length && items.length > 0 ? items[0].currency && items[0].currency : "₹";
   const baseUrl = import.meta.env.VITE_API_URL
-  // Fetch orders when component mounts
   useEffect(() => {
     const fetchOrders = async () => {
       if (!user?.id) {
@@ -23,7 +21,6 @@ const Order = () => {
       
       try {
         setLoading(true);
-        // Replace with your actual API endpoint
         const response = await fetch(`${baseUrl}/orders/user/${user.id}`);
         
         if (!response.ok) {
@@ -31,22 +28,20 @@ const Order = () => {
         }
         
         const data = await response.json();
-        console.log("API Response:", data); // Debug log
-        
-        // Map the API response to match the component's expected structure
+        console.log("API Response:", data); 
         const formattedOrders = Array.isArray(data.orders) ? data.orders.map(order => ({
           _id: order._id,
-          orderId: order._id.slice(-6).toUpperCase(), // Create a shorter order ID for display
+          orderId: order._id.slice(-6).toUpperCase(), 
           orderDate: order.createdAt,
-          status: order.status || "Processing", // Convert to Title Case
+          status: order.status || "Processing", 
           paymentMethod: order.paymentMethod || "Card",
-          shipping: 0, // Default shipping value
+          shipping: 0, 
           items: order.items.map(item => ({
             id: item._id,
             name: item.name,
             image: item.image,
-            price: parseFloat(item.price) || 0, // Ensure price is a number
-            quantity: parseInt(item.quantity) || 1, // Ensure quantity is a number
+            price: parseFloat(item.price) || 0,
+            quantity: parseInt(item.quantity) || 1,
           })),
           customerInfo: {
             name: order.shippingAddress?.firstName || "Customer",
@@ -54,7 +49,7 @@ const Order = () => {
             address: order.shippingAddress?.streetAddress + 
                     (order.shippingAddress?.apartment ? ", " + order.shippingAddress.apartment : ""),
             city: order.shippingAddress?.townCity || "Unknown",
-            zipCode: "10001" // Default or extract from API if available
+            zipCode: "10001" 
           }
         })) : [];
         
@@ -70,13 +65,13 @@ const Order = () => {
     fetchOrders();
   }, [user, baseUrl]);
 
-  // Safe toFixed function that handles undefined/null values
+
   const safeToFixed = (value, decimals = 2) => {
     const num = parseFloat(value);
     return isNaN(num) ? "0.00" : num.toFixed(decimals);
   };
 
-  // Calculate order totals
+
   const calculateOrderTotal = (items, shipping = 0) => {
     if (!items || !Array.isArray(items)) return 0;
     
@@ -88,17 +83,17 @@ const Order = () => {
     return subtotal + (parseFloat(shipping) || 0) + tax;
   };
 
-  // Handle order selection
+
   const handleOrderSelect = (order) => {
     setSelectedOrder(order);
   };
 
-  // Return to order list
+
   const handleBackToList = () => {
     setSelectedOrder(null);
   };
 
-  // Show loading state
+
   if (loading) {
     return (
       <div className="min-h-screen dark:bg-gray-900 dark:text-white flex items-center justify-center">
@@ -110,7 +105,7 @@ const Order = () => {
     );
   }
 
-  // Show error state
+
   if (error) {
     return (
       <div className="min-h-screen dark:bg-gray-900 dark:text-white flex items-center justify-center">
@@ -129,7 +124,7 @@ const Order = () => {
     );
   }
 
-  // Show selected order details
+
   if (selectedOrder) {
     const subtotal = selectedOrder.items.reduce(
       (sum, item) => sum + (parseFloat(item.price) || 0) * (parseInt(item.quantity) || 1),
@@ -152,7 +147,7 @@ const Order = () => {
             Back to Order List
           </button>
           
-          {/* Order Header */}
+
           <div className="border-b pb-4 mb-4">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
               <h1 className="text-xl sm:text-2xl font-bold">Order Details</h1>
@@ -183,7 +178,7 @@ const Order = () => {
             </div>
           </div>
 
-          {/* Order Items */}
+        
           <div className="mb-6">
             <h2 className="text-lg font-semibold mb-4">Order Items</h2>
             <div className="space-y-4">
@@ -220,7 +215,7 @@ const Order = () => {
             </div>
           </div>
 
-          {/* Price Summary */}
+
           <div className="border-t pt-4 mb-6">
             <div className="space-y-2 ml-auto max-w-xs">
               <div className="flex justify-between">
@@ -242,7 +237,7 @@ const Order = () => {
             </div>
           </div>
 
-          {/* Shipping Information */}
+       
           <div className="border-t pt-4">
             <h2 className="text-lg font-semibold mb-4">Shipping Information</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
@@ -265,7 +260,7 @@ const Order = () => {
             </div>
           </div>
 
-          {/* Action Buttons */}
+      
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <button className="w-full sm:flex-1 bg-red-500 text-white py-3 sm:py-2 px-4 rounded hover:bg-red-600 transition duration-200">
               Track Order
@@ -279,7 +274,7 @@ const Order = () => {
     );
   }
 
-  // Show order list
+
   return (
     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300 py-10">
       <div className="min-h-screen py-8 max-w-7xl mx-auto px-4">

@@ -22,19 +22,15 @@ const ProductRecommendations = () => {
   const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
-    // Initially fetch only 4 products
     dispatch(
       fetchProducts({
         page: 1,
         limit: displayLimit,
-        // You can add specific filters for recommendations
-        // category: 'recommended',
-        // sort: 'popularity'
       })
     );
   }, [dispatch, displayLimit]);
 
-  // Store fetched products in local state
+
   useEffect(() => {
     if (products) {
       setAllProducts(products);
@@ -111,16 +107,12 @@ const ProductRecommendations = () => {
   };
 
   const handleSeeAll = () => {
-    // Fetch all products when "See All" is clicked
     dispatch(
       fetchProducts({
         page: 1,
-        limit: 100, // Set a higher limit or remove limit for all products
-        // Add other filters if needed
+        limit: 100, 
       })
     );
-    // Alternatively, navigate to products page
-    // navigate('/products');
   };
 
   const renderStars = (rating) => {
@@ -138,7 +130,7 @@ const ProductRecommendations = () => {
       ));
   };
 
-  // Modal component for login popup
+
   const Modal = ({ isOpen, onClose, children, className = "" }) => {
     if (!isOpen) return null;
 
@@ -249,7 +241,7 @@ const ProductRecommendations = () => {
             ))}
       </div>
 
-      {/* Login Required Popup */}
+
       <Modal
         isOpen={isLoginPopupOpen}
         onClose={() => setIsLoginPopupOpen(false)}
@@ -280,7 +272,7 @@ const ProductRecommendations = () => {
         </div>
       </Modal>
 
-      {/* Custom Styles */}
+
       <style>{`
         .modal-content {
           animation: modalZoomIn 0.3s ease-out;

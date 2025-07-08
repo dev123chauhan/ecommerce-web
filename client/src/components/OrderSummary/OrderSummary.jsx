@@ -13,7 +13,6 @@ export default function OrderSummary() {
   const { items, totalAmount } = useSelector((state) => state.cart);
   const currency = items.length > 0 ? items[0].currency : "";
 
-  // Create named arrays with identifiers for proper keys
   const bankCards = [
     { id: 1, name: "visa", src: visa, alt: "Visa" },
     { id: 2, name: "mastercard", src: mastercard, alt: "Mastercard" },
@@ -60,7 +59,7 @@ export default function OrderSummary() {
           )}
         </div>
 
-        {/* Order totals */}
+       
         <div className="border-t pt-4 space-y-2">
           <div className="flex justify-between text-sm">
             <span className="text-gray-600">Subtotal:</span>
@@ -82,7 +81,7 @@ export default function OrderSummary() {
           </div>
         </div>
 
-        {/* Payment methods */}
+      
         <div className="mt-6 space-y-4">
           <div className="flex flex-wrap items-center gap-3 p-3 bg-gray-50 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400">
             <input
@@ -144,7 +143,7 @@ export default function OrderSummary() {
           </div>
         </div>
 
-        {/* Coupon and Place Order */}
+     
         <div className="mt-6 space-y-4">
           <div className="flex flex-col sm:flex-row gap-2 ">
             <input

@@ -51,7 +51,7 @@ const Terms = () => {
     <div className='dark:bg-gray-900 dark:text-white transition-colors duration-300'>
     <div className="min-h-screen  py-12 px-4 sm:px-6 lg:px-8 pt-20">
       <div className="max-w-7xl mx-auto  shadow-xl rounded-lg overflow-hidden flex flex-col md:flex-row">
-        {/* Sidebar Navigation */}
+    
         <div className="w-full md:w-64 p-6 border-r border-gray-200">
           <h2 className="text-2xl font-bold mb-6 flex items-center">
             <Scroll className="mr-3" size={24} />
@@ -74,7 +74,7 @@ const Terms = () => {
           </nav>
         </div>
 
-        {/* Content Area */}
+       
         <div className="flex-1 p-8 overflow-y-auto max-h-[700px]">
           {sections.map((section) => (
             activeSection === section.id && (
@@ -91,7 +91,7 @@ const Terms = () => {
         </div>
       </div>
 
-      {/* Bottom Acceptance */}
+
       <div className="max-w-5xl mx-auto mt-6 rounded-lg shadow-md p-6">
         <div className="flex items-center justify-between">
           <p className="text-sm">

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
-import Header from '../Home/Header';
-import Footer from '../Home/Footer';
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { useLocation } from "react-router-dom";
+import Header from "../Home/Header";
+import Footer from "../Home/Footer";
 
-const AnnouncementBanner = React.lazy(() => import('./AnnouncmentBanner'));
+const AnnouncementBanner = React.lazy(() => import("./AnnouncmentBanner"));
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -14,23 +14,22 @@ const Layout = ({ children }) => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  // Function to handle banner visibility state
   const handleBannerVisibilityChange = (isVisible) => {
     setIsBannerVisible(isVisible);
   };
 
   return (
     <div className="min-h-screen">
-      {/* Fixed position wrapper for announcement + header */}
       <div className="fixed top-0 left-0 right-0 z-50">
         <React.Suspense fallback={<div className="h-8 bg-black" />}>
-          <AnnouncementBanner onVisibilityChange={handleBannerVisibilityChange} />
+          <AnnouncementBanner
+            onVisibilityChange={handleBannerVisibilityChange}
+          />
         </React.Suspense>
         <Header />
       </div>
-      
-      {/* Main content with dynamic padding based on banner visibility */}
-      <div className={`${isBannerVisible ? 'pt-[55px]' : 'pt-[15px]'}`}>
+
+      <div className={`${isBannerVisible ? "pt-[55px]" : "pt-[15px]"}`}>
         <main>{children}</main>
         <Footer />
       </div>
@@ -43,6 +42,3 @@ Layout.propTypes = {
 };
 
 export default Layout;
-
-
-

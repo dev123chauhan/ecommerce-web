@@ -1,18 +1,15 @@
-// controllers/orderController.js
-const Order = require('../models/Order');
-
-// Create a new order
+const Order = require("../models/Order");
 exports.createOrder = async (req, res) => {
   try {
-    const { 
-      userId, 
-      items, 
-      shippingAddress, 
-      totalAmount, 
-      currency = '₹',
-      paymentMethod 
+    const {
+      userId,
+      items,
+      shippingAddress,
+      totalAmount,
+      currency = "₹",
+      paymentMethod,
     } = req.body;
-    
+
     const order = await Order.create({
       userId,
       items,
@@ -21,61 +18,58 @@ exports.createOrder = async (req, res) => {
       currency,
       paymentMethod,
     });
-    
+
     res.status(201).json({
       success: true,
       order,
     });
   } catch (error) {
-    console.error('Error creating order:', error);
+    console.error("Error creating order:", error);
     res.status(500).json({
       success: false,
-      message: 'Failed to create order',
+      message: "Failed to create order",
       error: error.message,
     });
   }
 };
-
-// Get order by ID
 exports.getOrderById = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id);
-    
+
     if (!order) {
       return res.status(404).json({
         success: false,
-        message: 'Order not found',
+        message: "Order not found",
       });
     }
-    
+
     res.status(200).json({
       success: true,
       order,
     });
   } catch (error) {
-    console.error('Error fetching order:', error);
+    console.error("Error fetching order:", error);
     res.status(500).json({
       success: false,
-      message: 'Failed to fetch order',
+      message: "Failed to fetch order",
       error: error.message,
     });
   }
 };
 
-// Get all orders for a user
 exports.getUserOrders = async (req, res) => {
   try {
     const orders = await Order.find({ userId: req.params.userId });
-    
+
     res.status(200).json({
       success: true,
       orders,
     });
   } catch (error) {
-    console.error('Error fetching user orders:', error);
+    console.error("Error fetching user orders:", error);
     res.status(500).json({
       success: false,
-      message: 'Failed to fetch user orders',
+      message: "Failed to fetch user orders",
       error: error.message,
     });
   }

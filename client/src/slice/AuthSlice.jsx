@@ -22,7 +22,7 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.error = null;
-      // Store user data in localStorage
+
       localStorage.setItem('userData', JSON.stringify(action.payload.user));
       localStorage.setItem('token', action.payload.token);
     },
@@ -30,7 +30,7 @@ const authSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
       state.isAuthenticated = false;
-      // Clear localStorage on login failure
+
       localStorage.removeItem('userData');
       localStorage.removeItem('token');
     },
@@ -52,11 +52,11 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.loading = false;
       state.error = null;
-      // Clear localStorage on logout
+
       localStorage.removeItem('userData');
       localStorage.removeItem('token');
     },
-    // Add a new reducer to check auth state
+ 
     checkAuthState: (state) => {
       const token = localStorage.getItem('token');
       const userData = localStorage.getItem('userData');

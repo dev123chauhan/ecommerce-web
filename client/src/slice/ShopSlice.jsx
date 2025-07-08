@@ -1,16 +1,15 @@
-// client/src/features/products/productSlice.js
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   selectedCategories: [],
   selectedSubCategories: [],
-  searchTerm: '',
+  searchTerm: "",
   filteredProducts: [],
-  allProducts: []
+  allProducts: [],
 };
 
 export const shopSlice = createSlice({
-  name: 'Shop',
+  name: "Shop",
   initialState,
   reducers: {
     setProducts: (state, action) => {
@@ -57,36 +56,38 @@ export const shopSlice = createSlice({
         state.selectedCategories,
         state.selectedSubCategories
       );
-    }
-  }
+    },
+  },
 });
 
-// Helper function to filter products
-const filterProductsHelper = (shop, searchTerm, selectedCategories, selectedSubCategories) => {
-  return shop.filter(product => {
-    // Search term filter
+const filterProductsHelper = (
+  shop,
+  searchTerm,
+  selectedCategories,
+  selectedSubCategories
+) => {
+  return shop.filter((product) => {
     const matchesSearch =
       !searchTerm ||
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
       product.subCategory.toLowerCase().includes(searchTerm.toLowerCase());
-    
-    // Category filter
+
     const matchesCategory =
       (selectedCategories.length === 0 && selectedSubCategories.length === 0) ||
       selectedCategories.includes(product.category) ||
       selectedSubCategories.includes(product.subCategory);
-    
+
     return matchesSearch && matchesCategory;
   });
 };
 
-export const { 
-  setProducts, 
-  setSearchTerm, 
-  setSelectedCategories, 
+export const {
+  setProducts,
+  setSearchTerm,
+  setSelectedCategories,
   setSelectedSubCategories,
-  filterProducts
+  filterProducts,
 } = shopSlice.actions;
 
 export default shopSlice.reducer;

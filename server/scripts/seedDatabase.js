@@ -1,4 +1,3 @@
-// server/scripts/seedDatabase.js
 require("dotenv").config();
 const mongoose = require("mongoose");
 const Category = require("../models/Category");
@@ -22,7 +21,7 @@ const categoryData = {
     "Bags",
     "Traditional Wear",
   ],
-  "Electronics": [
+  Electronics: [
     "Smartphones",
     "Laptops",
     "Tablets",
@@ -43,7 +42,7 @@ const categoryData = {
     "Garden & Outdoor",
     "Home Appliances",
   ],
-  "Medicine": [
+  Medicine: [
     "Prescription Medicines",
     "Over-the-Counter Drugs",
     "First Aid",
@@ -103,7 +102,7 @@ const categoryData = {
     "Xbox Controllers",
     "PlayStation Controllers",
   ],
-  "Keyboards": [
+  Keyboards: [
     "Mechanical Keyboards",
     "Membrane Keyboards",
     "Wireless Keyboards",
@@ -161,7 +160,7 @@ const categoryData = {
     "PC Cases",
     "Cooling Systems",
   ],
-  "Networking": [
+  Networking: [
     "Gaming Routers",
     "Network Cards",
     "WiFi Adapters",
@@ -225,9 +224,7 @@ const categoryData = {
     "Cloud Storage",
   ],
 };
-// Sample product data
 const productData = [
-  // Woman's Fashion
   {
     name: "Elegant Summer Dress",
     price: 49.99,
@@ -237,7 +234,8 @@ const productData = [
     category: "Woman's Fashion",
     subCategory: "Clothing",
     image: "https://i.ibb.co/XcdGxJW/summerdress.png",
-    description: "Breathable cotton summer dress with floral pattern, perfect for casual outings and beach vacations.",
+    description:
+      "Breathable cotton summer dress with floral pattern, perfect for casual outings and beach vacations.",
     stock: 38,
     brand: "StyleChic",
     features: [
@@ -245,7 +243,7 @@ const productData = [
       "Floral pattern design",
       "Side pockets",
       "Adjustable straps",
-      "Machine washable"
+      "Machine washable",
     ],
   },
   {
@@ -256,7 +254,8 @@ const productData = [
     category: "Woman's Fashion",
     subCategory: "Handbags",
     image: "https://i.ibb.co/TDH9j55H/designerhandbag.png",
-    description: "Premium faux leather designer handbag with gold accents and multiple compartments for organization.",
+    description:
+      "Premium faux leather designer handbag with gold accents and multiple compartments for organization.",
     stock: 25,
     brand: "LuxeBag",
     features: [
@@ -264,11 +263,10 @@ const productData = [
       "Gold-plated hardware",
       "Multiple compartments",
       "Adjustable shoulder strap",
-      "Interior zippered pocket"
+      "Interior zippered pocket",
     ],
   },
-  
-  // Men's Fashion
+
   {
     name: "Business Casual Blazer",
     price: 89.99,
@@ -277,7 +275,8 @@ const productData = [
     category: "Men's Fashion",
     subCategory: "Clothing",
     image: "https://i.ibb.co/whWG5SNV/blazzer.png",
-    description: "Smart-casual blazer for men with slim fit design, perfect for office and formal events.",
+    description:
+      "Smart-casual blazer for men with slim fit design, perfect for office and formal events.",
     stock: 40,
     brand: "GentlemanFit",
     features: [
@@ -285,7 +284,7 @@ const productData = [
       "Premium cotton blend",
       "Two-button closure",
       "Three interior pockets",
-      "Available in multiple colors"
+      "Available in multiple colors",
     ],
   },
   {
@@ -296,7 +295,8 @@ const productData = [
     category: "Men's Fashion",
     subCategory: "Watches",
     image: "https://i.ibb.co/Txwrc83c/luxary-watch.png",
-    description: "Stainless steel chronograph watch with genuine leather strap and water-resistant design.",
+    description:
+      "Stainless steel chronograph watch with genuine leather strap and water-resistant design.",
     stock: 15,
     brand: "TimeMaster",
     features: [
@@ -304,11 +304,10 @@ const productData = [
       "Genuine leather strap",
       "Water-resistant (50m)",
       "Luminous hands",
-      "Sapphire crystal glass"
+      "Sapphire crystal glass",
     ],
   },
-  
-  // Electronics
+
   {
     name: "Ultra HD Smart TV",
     price: 799.99,
@@ -317,7 +316,8 @@ const productData = [
     category: "Electronics",
     subCategory: "TVs",
     image: "https://i.ibb.co/1ffNhgJ7/smarttv.png",
-    description: "55-inch 4K Ultra HD Smart TV with HDR support, built-in streaming apps and voice control.",
+    description:
+      "55-inch 4K Ultra HD Smart TV with HDR support, built-in streaming apps and voice control.",
     stock: 20,
     brand: "VisionTech",
     features: [
@@ -325,7 +325,7 @@ const productData = [
       "HDR10+ support",
       "Smart TV with built-in apps",
       "Voice control compatible",
-      "Multiple HDMI and USB ports"
+      "Multiple HDMI and USB ports",
     ],
   },
   {
@@ -336,7 +336,8 @@ const productData = [
     category: "Electronics",
     subCategory: "Cameras",
     image: "https://i.ibb.co/prLzXvpY/camera.png",
-    description: "High-performance DSLR camera with 24.2MP sensor, 4K video recording and advanced autofocus system.",
+    description:
+      "High-performance DSLR camera with 24.2MP sensor, 4K video recording and advanced autofocus system.",
     stock: 12,
     brand: "CapturePro",
     features: [
@@ -344,11 +345,10 @@ const productData = [
       "4K video recording",
       "45-point autofocus system",
       "3-inch vari-angle touchscreen",
-      "Built-in Wi-Fi and Bluetooth"
+      "Built-in Wi-Fi and Bluetooth",
     ],
   },
-  
-  // Home & Lifestyle
+
   {
     name: "Modern Coffee Table",
     price: 199.99,
@@ -357,7 +357,8 @@ const productData = [
     category: "Home & Lifestyle",
     subCategory: "Furniture",
     image: "https://i.ibb.co/dJmYZnL6/moderncoffe.png",
-    description: "Stylish mid-century modern coffee table with wooden legs and tempered glass top, perfect for living rooms.",
+    description:
+      "Stylish mid-century modern coffee table with wooden legs and tempered glass top, perfect for living rooms.",
     stock: 18,
     brand: "HomeElegance",
     features: [
@@ -365,7 +366,7 @@ const productData = [
       "Solid wood legs",
       "Storage shelf",
       "Easy assembly",
-      "Stain-resistant finish"
+      "Stain-resistant finish",
     ],
   },
   {
@@ -376,7 +377,8 @@ const productData = [
     category: "Home & Lifestyle",
     subCategory: "Bedding",
     image: "https://i.ibb.co/nN5nfsdZ/bedshit.png",
-    description: "Luxury Egyptian cotton bedding set including duvet cover, fitted sheet, and pillowcases with elegant design.",
+    description:
+      "Luxury Egyptian cotton bedding set including duvet cover, fitted sheet, and pillowcases with elegant design.",
     stock: 30,
     brand: "DreamSleep",
     features: [
@@ -384,11 +386,10 @@ const productData = [
       "600 thread count",
       "Hypoallergenic",
       "Wrinkle-resistant",
-      "Machine washable"
+      "Machine washable",
     ],
   },
-  
-  // Medicine
+
   {
     name: "Digital Blood Pressure Monitor",
     price: 49.99,
@@ -397,7 +398,8 @@ const productData = [
     category: "Medicine",
     subCategory: "Healthcare Devices",
     image: "",
-    description: "Accurate digital blood pressure monitor with large display and memory function for home use.",
+    description:
+      "Accurate digital blood pressure monitor with large display and memory function for home use.",
     stock: 45,
     brand: "MediSense",
     features: [
@@ -405,7 +407,7 @@ const productData = [
       "Irregular heartbeat detection",
       "90 memory records",
       "One-touch operation",
-      "Portable design"
+      "Portable design",
     ],
   },
   {
@@ -416,7 +418,8 @@ const productData = [
     category: "Medicine",
     subCategory: "Vitamins & Supplements",
     image: "",
-    description: "Complete daily multivitamin supplement with essential vitamins and minerals for overall health support.",
+    description:
+      "Complete daily multivitamin supplement with essential vitamins and minerals for overall health support.",
     stock: 100,
     brand: "VitalNutrient",
     features: [
@@ -424,11 +427,10 @@ const productData = [
       "Once daily formula",
       "Vegetarian friendly",
       "No artificial preservatives",
-      "Supports immune health"
+      "Supports immune health",
     ],
   },
-  
-  // Sports & Outdoor
+
   {
     name: "Professional Yoga Mat",
     price: 39.99,
@@ -437,7 +439,8 @@ const productData = [
     category: "Sports & Outdoor",
     subCategory: "Exercise Equipment",
     image: "",
-    description: "Non-slip yoga mat with optimal cushioning and carrying strap, perfect for yoga, pilates and floor exercises.",
+    description:
+      "Non-slip yoga mat with optimal cushioning and carrying strap, perfect for yoga, pilates and floor exercises.",
     stock: 50,
     brand: "ZenFit",
     features: [
@@ -445,7 +448,7 @@ const productData = [
       "6mm thickness for comfort",
       "Eco-friendly TPE material",
       "Carrying strap included",
-      "Easy to clean"
+      "Easy to clean",
     ],
   },
   {
@@ -456,7 +459,8 @@ const productData = [
     category: "Sports & Outdoor",
     subCategory: "Outdoor Recreation",
     image: "",
-    description: "Durable 50L hiking backpack with hydration system compatibility, multiple compartments and weather protection.",
+    description:
+      "Durable 50L hiking backpack with hydration system compatibility, multiple compartments and weather protection.",
     stock: 25,
     brand: "TrailMaster",
     features: [
@@ -464,11 +468,10 @@ const productData = [
       "Waterproof rain cover",
       "Hydration system compatible",
       "Adjustable straps",
-      "Multiple storage compartments"
+      "Multiple storage compartments",
     ],
   },
-  
-  // Baby's & Toys
+
   {
     name: "Adjustable Baby Stroller",
     price: 199.99,
@@ -477,7 +480,8 @@ const productData = [
     category: "Baby's & Toys",
     subCategory: "Strollers & Gear",
     image: "",
-    description: "Lightweight, adjustable baby stroller with reclining seat, storage basket and one-hand folding mechanism.",
+    description:
+      "Lightweight, adjustable baby stroller with reclining seat, storage basket and one-hand folding mechanism.",
     stock: 18,
     brand: "BabyComfort",
     features: [
@@ -485,7 +489,7 @@ const productData = [
       "Multi-position reclining seat",
       "Large storage basket",
       "5-point safety harness",
-      "One-hand folding mechanism"
+      "One-hand folding mechanism",
     ],
   },
   {
@@ -496,7 +500,8 @@ const productData = [
     category: "Baby's & Toys",
     subCategory: "Educational Toys",
     image: "",
-    description: "Colorful building blocks set for kids ages 3-8, designed to enhance creativity and cognitive development.",
+    description:
+      "Colorful building blocks set for kids ages 3-8, designed to enhance creativity and cognitive development.",
     stock: 40,
     brand: "SmartKids",
     features: [
@@ -504,11 +509,10 @@ const productData = [
       "Non-toxic materials",
       "Various shapes and colors",
       "Compatible with major brands",
-      "Storage container included"
+      "Storage container included",
     ],
   },
-  
-  // Groceries & Pets
+
   {
     name: "Organic Coffee Beans",
     price: 14.99,
@@ -517,7 +521,8 @@ const productData = [
     category: "Groceries & Pets",
     subCategory: "Packaged Food",
     image: "",
-    description: "Premium organic dark roast coffee beans sourced from sustainable farms with rich, bold flavor.",
+    description:
+      "Premium organic dark roast coffee beans sourced from sustainable farms with rich, bold flavor.",
     stock: 75,
     brand: "BeanMaster",
     features: [
@@ -525,7 +530,7 @@ const productData = [
       "USDA certified organic",
       "Fair trade certified",
       "Dark roast profile",
-      "Resealable packaging"
+      "Resealable packaging",
     ],
   },
   {
@@ -536,7 +541,8 @@ const productData = [
     category: "Groceries & Pets",
     subCategory: "Pet Food",
     image: "",
-    description: "All-natural dry dog food with real meat as the first ingredient, enriched with vitamins and minerals.",
+    description:
+      "All-natural dry dog food with real meat as the first ingredient, enriched with vitamins and minerals.",
     stock: 30,
     brand: "NutriPaws",
     features: [
@@ -544,11 +550,10 @@ const productData = [
       "No artificial preservatives",
       "Added vitamins and minerals",
       "Supports healthy digestion",
-      "Suitable for all life stages"
+      "Suitable for all life stages",
     ],
   },
-  
-  // Health & Beauty
+
   {
     name: "Anti-Aging Skincare Set",
     price: 79.99,
@@ -557,7 +562,8 @@ const productData = [
     category: "Health & Beauty",
     subCategory: "Skincare",
     image: "",
-    description: "Complete anti-aging skincare regimen including cleanser, serum, moisturizer and eye cream with natural ingredients.",
+    description:
+      "Complete anti-aging skincare regimen including cleanser, serum, moisturizer and eye cream with natural ingredients.",
     stock: 25,
     brand: "GlowRadiance",
     features: [
@@ -565,7 +571,7 @@ const productData = [
       "Hyaluronic acid for hydration",
       "Paraben and sulfate free",
       "Suitable for all skin types",
-      "Cruelty-free"
+      "Cruelty-free",
     ],
   },
   {
@@ -576,7 +582,8 @@ const productData = [
     category: "Health & Beauty",
     subCategory: "Beauty Tools",
     image: "",
-    description: "Salon-quality hair dryer with ionic technology, multiple heat settings and concentrator attachment.",
+    description:
+      "Salon-quality hair dryer with ionic technology, multiple heat settings and concentrator attachment.",
     stock: 35,
     brand: "StylePro",
     features: [
@@ -584,7 +591,7 @@ const productData = [
       "Ionic technology",
       "3 heat and 2 speed settings",
       "Cool shot button",
-      "Concentrator attachment included"
+      "Concentrator attachment included",
     ],
   },
   {
@@ -614,8 +621,7 @@ const productData = [
     rating: 4.8,
     category: "Keyboards",
     subCategory: "Mechanical Keyboards",
-    image:
-      "https://i.ibb.co/0RXSS35q/keyboard.png",
+    image: "https://i.ibb.co/0RXSS35q/keyboard.png",
     description:
       "Full-sized mechanical keyboard with RGB backlighting, Cherry MX switches, and programmable macros for gaming and productivity.",
     stock: 30,
@@ -635,8 +641,7 @@ const productData = [
     rating: 4.7,
     category: "Mice & Pointing",
     subCategory: "Gaming Mice",
-    image:
-      "https://i.ibb.co/SwP65xyk/gaming-mouse.png",
+    image: "https://i.ibb.co/SwP65xyk/gaming-mouse.png",
     description:
       "High-precision gaming mouse with adjustable DPI settings, ergonomic design and customizable weight system.",
     stock: 60,
@@ -656,8 +661,7 @@ const productData = [
     rating: 4.3,
     category: "Gaming Controllers",
     subCategory: "Xbox Controllers",
-    image:
-      "https://i.ibb.co/xtH2dBSc/wireless-controller.png",
+    image: "https://i.ibb.co/xtH2dBSc/wireless-controller.png",
     description:
       "Official wired Xbox controller with improved D-pad and textured grip for enhanced comfort during long gaming sessions.",
     stock: 25,
@@ -692,19 +696,15 @@ const productData = [
   },
 ];
 
-// Function to seed the database
 const seedDatabase = async () => {
   try {
-    // Connect to the database
     await connectDB();
 
-    // Clear existing data
     await Category.deleteMany({});
     await Shop.deleteMany({});
 
     console.log("Previous data cleared");
 
-    // Insert category data
     const categoryMap = {};
 
     for (const [categoryName, subCategories] of Object.entries(categoryData)) {
@@ -721,7 +721,6 @@ const seedDatabase = async () => {
       );
     }
 
-    // Insert product data
     for (const product of productData) {
       const newProduct = new Shop({
         ...product,
@@ -734,7 +733,6 @@ const seedDatabase = async () => {
 
     console.log("Database seeded successfully!");
 
-    // Close the database connection
     await mongoose.connection.close();
     console.log("Database connection closed");
   } catch (error) {
@@ -742,39 +740,4 @@ const seedDatabase = async () => {
     process.exit(1);
   }
 };
-
-// Execute the seeding function
 seedDatabase();
-
-// Category data
-// const categoryData = {
-//   "Gaming Controllers": [
-//     "Wireless Controllers",
-//     "Wired Controllers",
-//     "Racing Wheels",
-//     "Flight Sticks",
-//     "Fight Sticks",
-//     "Nintendo Controllers",
-//     "Xbox Controllers",
-//     "PlayStation Controllers",
-//   ],
-//   "Keyboards": [
-//     "Mechanical Keyboards",
-//     "Membrane Keyboards",
-//     "Wireless Keyboards",
-//     "Gaming Keyboards",
-//     "Ergonomic Keyboards",
-//     "Mini Keyboards",
-//     "Keyboard Accessories",
-//   ],
-//   "Mice & Pointing": [
-//     "Gaming Mice",
-//     "Wireless Mice",
-//     "Ergonomic Mice",
-//     "Trackballs",
-//     "Vertical Mice",
-//     "Mouse Bundles",
-//     "Precision Mice",
-//   ],
-//   // ... other categories
-// };

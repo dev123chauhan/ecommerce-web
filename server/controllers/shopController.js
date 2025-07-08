@@ -1,6 +1,4 @@
 const Shop = require('../models/Shop');
-
-
 exports.getAllProducts = async (req, res) => {
   try {
     const shop = await Shop.find();

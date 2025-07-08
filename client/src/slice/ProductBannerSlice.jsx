@@ -1,10 +1,7 @@
-// client/src/redux/slices/productSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const baseUrl = import.meta.env.VITE_API_URL;
-
-// Async thunks
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async (_, { rejectWithValue }) => {
@@ -53,7 +50,6 @@ const productBannerSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // Handle fetchProducts
       .addCase(fetchProducts.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -67,7 +63,7 @@ const productBannerSlice = createSlice({
         state.error = action.payload || 'Failed to fetch products';
       })
       
-      // Handle fetchFeaturedProducts
+
       .addCase(fetchFeaturedProducts.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -81,7 +77,6 @@ const productBannerSlice = createSlice({
         state.error = action.payload || 'Failed to fetch featured products';
       })
       
-      // Handle fetchProductById
       .addCase(fetchProductById.pending, (state) => {
         state.loading = true;
         state.error = null;

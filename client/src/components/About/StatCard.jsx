@@ -10,10 +10,10 @@ const StatsCard = ({ icon: Icon, value, description, highlighted = false }) => (
   </div>
 );
 StatsCard.propTypes = {
-    icon: PropTypes.elementType.isRequired, // Icon should be a component (elementType)
-    value: PropTypes.string.isRequired, // Value should be a string
-    description: PropTypes.string.isRequired, // Description should be a string
-    highlighted: PropTypes.bool, // Highlighted is optional and should be a boolean
+    icon: PropTypes.elementType.isRequired, 
+    value: PropTypes.string.isRequired, 
+    description: PropTypes.string.isRequired, 
+    highlighted: PropTypes.bool, 
   };
 const StatsCards = () => {
   const stats = [

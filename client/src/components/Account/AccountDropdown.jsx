@@ -10,33 +10,26 @@ const AccountDropdown = () => {
   const { totalQuantity } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  
-  // Create a ref for the dropdown container
   const dropdownRef = useRef(null);
-
   const toggleDropdown = () => setIsOpen(!isOpen);
-
   const handleLogout = () => {
     dispatch(logoutUser());
     navigate('/login');
     toast.success("Successfully logged out!");
   };
 
-  // Handle clicks outside the dropdown
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Check if the click is outside the dropdown
+
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
 
-    // Add event listener when dropdown is open
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
-    // Cleanup the event listener
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -58,7 +51,7 @@ const AccountDropdown = () => {
         onClick={() => navigate('/wishlist')}
         className="cursor-pointer transition-colors dark:text-white"
         size={25}
-      /> {/* Your heart icon component */}
+      /> 
       {totalWishlistItems > 0 && (
         <span className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">
           {totalWishlistItems}
@@ -104,7 +97,6 @@ const AccountDropdown = () => {
           >
             {menuItems.map((item, index) =>
               item.onClick ? (
-                // Render button for logout
                 <button
                   key={index}
                   onClick={item.onClick}
@@ -115,7 +107,6 @@ const AccountDropdown = () => {
                   {item.text}
                 </button>
               ) : (
-                // Render Link for navigation items
                 <Link
                   key={index}
                   to={item.path}

@@ -10,7 +10,6 @@ const Modal = ({
   showCloseButton = true,
   title = "" 
 }) => {
-  // Add body overflow control when modal opens/closes
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -27,17 +26,13 @@ const Modal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      {/* Backdrop */}
       <div
         className="fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300"
         onClick={onClose}
       />
-      
-      {/* Modal Content */}
       <div
         className={`dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 relative z-50 bg-white rounded-lg w-[90%] max-w-4xl max-h-[90vh] overflow-auto transform transition-all duration-300 scale-100 opacity-100 modal-content ${className}`}
       >
-        {/* Optional Close Button */}
         {showCloseButton && (
           <button
             onClick={onClose}
@@ -48,20 +43,20 @@ const Modal = ({
           </button>
         )}
 
-        {/* Optional Title */}
+
         {title && (
           <div className="border-b dark:border-gray-700 p-4 pb-3">
             <h3 className="text-xl font-semibold">{title}</h3>
           </div>
         )}
 
-        {/* Content */}
+
         <div className={`${title ? 'pt-2' : ''}`}>
           {children}
         </div>
       </div>
 
-      {/* Animation Styles */}
+
       <style>{`
         .modal-content {
           animation: modalZoomIn 0.3s ease-out;

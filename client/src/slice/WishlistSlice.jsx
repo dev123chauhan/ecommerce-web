@@ -1,4 +1,3 @@
-// src/slice/WishlistSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 const baseUrl = import.meta.env.VITE_API_URL;
@@ -11,7 +10,7 @@ export const toggleWishlistItem = createAsyncThunk(
         productId
       }, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}` // Add token if using authentication
+          'Authorization': `Bearer ${localStorage.getItem('token')}` 
         }
       });
       return response.data;
@@ -27,7 +26,7 @@ export const fetchWishlist = createAsyncThunk(
     try {
       const response = await axios.get(`${baseUrl}/wishlist/${userId}`, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}` // Add token if using authentication
+          'Authorization': `Bearer ${localStorage.getItem('token')}` 
         }
       });
       return response.data;
@@ -43,7 +42,7 @@ export const removeFromWishlist = createAsyncThunk(
     try {
       await axios.delete(`${baseUrl}/wishlist/${userId}/${productId}`, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}` // Add token if using authentication
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
       return productId;

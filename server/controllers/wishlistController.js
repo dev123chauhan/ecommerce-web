@@ -1,28 +1,21 @@
 const Wishlist = require('../models/Wishlist');
-const Product = require('../models/Product'); // Import your existing Product model
-
 exports.toggleWishlistItem = async (req, res) => {
   try {
     const { userId, productId } = req.body;
-    
-    // Check if item exists in wishlist
     const existingItem = await Wishlist.findOne({ 
       userId, 
       productId 
     });
 
     if (existingItem) {
-      // Remove item if it exists
       await Wishlist.findOneAndDelete({ 
         userId, 
         productId 
       });
     } else {
-      // Add item if it doesn't exist
       await Wishlist.create({ userId, productId });
     }
 
-    // Return updated wishlist with populated product details
     const updatedWishlist = await Wishlist.find({ userId })
       .populate('productId')
       .exec();

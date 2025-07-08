@@ -8,9 +8,7 @@ import {
   PRODUCT_DETAILS_FAIL
 } from '../contants/ExploreProductConstants';
 
-
 const API_URL = import.meta.env.VITE_API_URL
-// Action to fetch products with pagination
 export const listProducts = (page = 1, limit = 8) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
@@ -31,7 +29,6 @@ export const listProducts = (page = 1, limit = 8) => async (dispatch) => {
   }
 };
 
-// Action to fetch single product details
 export const listProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });

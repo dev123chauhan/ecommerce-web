@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import aboutImage from "../../assets/aboutimage.png"
-
 const AboutContent = () => {
   return (
     <div className="container mx-auto">

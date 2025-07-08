@@ -1,8 +1,7 @@
-// src/slice/PaymentSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-const API_URL = import.meta.env.VITE_API_URL
-// Create Razorpay order
+const API_URL = import.meta.env.VITE_API_URL;
+
 export const createRazorpayOrder = createAsyncThunk(
   "payment/createRazorpayOrder",
   async ({ amount, orderId }, { rejectWithValue }) => {
@@ -22,12 +21,14 @@ export const createRazorpayOrder = createAsyncThunk(
   }
 );
 
-// Verify payment after completion
 export const verifyPayment = createAsyncThunk(
   "payment/verifyPayment",
   async (paymentData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${API_URL}/payment/verify`, paymentData);
+      const response = await axios.post(
+        `${API_URL}/payment/verify`,
+        paymentData
+      );
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -35,7 +36,6 @@ export const verifyPayment = createAsyncThunk(
   }
 );
 
-// Get Razorpay API key
 export const getRazorpayKey = createAsyncThunk(
   "payment/getRazorpayKey",
   async (_, { rejectWithValue }) => {
@@ -66,7 +66,7 @@ const paymentSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // Create Razorpay order
+
       .addCase(createRazorpayOrder.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -79,7 +79,7 @@ const paymentSlice = createSlice({
         state.loading = false;
         state.error = action.payload?.message || "Failed to create order";
       })
-      // Verify payment
+
       .addCase(verifyPayment.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -92,7 +92,7 @@ const paymentSlice = createSlice({
         state.loading = false;
         state.error = action.payload?.message || "Payment verification failed";
       })
-      // Get Razorpay key
+
       .addCase(getRazorpayKey.fulfilled, (state, action) => {
         state.razorpayKey = action.payload.key;
       });

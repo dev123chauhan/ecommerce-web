@@ -14,9 +14,9 @@ const ServiceFeature = ({ icon: Icon, title, description }) => (
   </div>
 );
 
-// Prop validation
+
 ServiceFeature.propTypes = {
-  icon: PropTypes.elementType.isRequired, // Icon should be a component (elementType)
+  icon: PropTypes.elementType.isRequired, 
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 };

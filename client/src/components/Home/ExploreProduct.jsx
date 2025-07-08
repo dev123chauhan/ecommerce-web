@@ -7,9 +7,7 @@ import {
 import { listProducts } from '../../action/ExploreProductAction';
 import { toast } from 'sonner';
 import { toggleWishlistItem, fetchWishlist } from '../../slice/WishlistSlice';
-import ProductCard from '../../components/ProductCard/ProductCard'; // Assuming ProductCard is in the same directory
-
-// Main ExploreProduct Component
+import ProductCard from '../../components/ProductCard/ProductCard'; 
 const ExploreProduct = () => {
   const dispatch = useDispatch();
   const { loading: reduxLoading, error, products, pages } = useSelector((state) => state.productList);
@@ -21,50 +19,49 @@ const ExploreProduct = () => {
   const [displayProducts, setDisplayProducts] = useState([]);
   const itemsPerPage = 8;
 
-  // Fetch products based on current page
+
   useEffect(() => {
     dispatch(listProducts(page, itemsPerPage));
   }, [dispatch, page]);
 
-  // Fetch user's wishlist if logged in
+
   useEffect(() => {
     if (user?.id) {
       dispatch(fetchWishlist(user.id));
     }
   }, [dispatch, user]);
 
-  // Effect to handle the loading state and delayed products display
+
   useEffect(() => {
     if (!reduxLoading && products?.length > 0) {
       setLoading(true);
       
-      // Transform products to ensure they have consistent structure
+
       const transformedProducts = products.map(product => ({
         ...product,
-        id: product.id || product._id // Ensure id exists by using _id as fallback
+        id: product.id || product._id 
       }));
       
-      // Use setTimeout to delay showing the products
       const timer = setTimeout(() => {
         setDisplayProducts(transformedProducts);
         setLoading(false);
-      }, 1500);  // 1.5 second delay
+      }, 1500);  
       
       return () => clearTimeout(timer);
     }
   }, [reduxLoading, products]);
 
-  // Check if a product is in the user's wishlist
+
   const isInWishlist = (productId) => {
     return wishlistItems?.some(item => 
       (item.productId?._id === productId) || (item.productId === productId)
     );
   };
 
-  // Handle toggling wishlist item
+
   const handleToggleWishlist = async (product) => {
     if (!user?.id) {
-      return; // Already handled in ProductCard component
+      return; 
     }
 
     try {

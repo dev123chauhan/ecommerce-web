@@ -52,19 +52,17 @@ const Billing = () => {
   });
 
   useEffect(() => {
-    // Get Razorpay key when component mounts
     dispatch(getRazorpayKey());
   }, [dispatch]);
 
-  // Set up effect to handle Razorpay payment after razorpayOrder is updated
+ 
   useEffect(() => {
-    // If we have both a razorpayOrder and we're in the process of making a payment
     if (razorpayOrder && razorpayKey && selectedPaymentMethod === "razorpay" && orderLoading === false) {
       handleRazorpayPayment(razorpayOrder.receipt);
     }
   }, [razorpayOrder, razorpayKey, orderLoading,]);
 
-  // Validation functions
+
   const validateFirstName = (name) => {
     if (!name) return { isValid: false, message: "First Name is required" };
     if (name.length < 2)
@@ -116,7 +114,7 @@ const Billing = () => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
 
-    // Validation logic
+
     let validationResult;
     switch (id) {
       case "firstName":
@@ -138,7 +136,7 @@ const Billing = () => {
         validationResult = { isValid: true, message: "" };
     }
 
-    // Update errors and validity
+
     setErrors((prev) => ({
       ...prev,
       [id]: validationResult.message,
@@ -154,7 +152,7 @@ const Billing = () => {
     setSelectedPaymentMethod(e.target.value);
   };
 
-  // Handle Razorpay payment
+ 
   const handleRazorpayPayment = (orderId) => {
     if (!razorpayKey || !razorpayOrder || !razorpayOrder.amount) {
       toast.error("Payment initialization failed - missing payment details");
@@ -203,7 +201,7 @@ const Billing = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate all fields
+   
     const validationResults = {
       firstName: validateFirstName(formData.firstName),
       streetAddress: validateStreetAddress(formData.streetAddress),
@@ -212,7 +210,7 @@ const Billing = () => {
       emailAddress: validateEmail(formData.emailAddress),
     };
 
-    // Update errors and validity
+    
     const newErrors = {};
     const newValidity = {};
 
@@ -224,7 +222,7 @@ const Billing = () => {
     setErrors(newErrors);
     setValidity(newValidity);
 
-    // Check if form is valid
+
     const isFormValid = Object.values(newValidity).every((val) => val === true);
 
     if (!isFormValid) {
@@ -243,7 +241,6 @@ const Billing = () => {
     }
 
     try {
-      // Create the order data
       const orderData = {
         userId: user.id,
         items: items,
@@ -260,18 +257,18 @@ const Billing = () => {
         paymentMethod: selectedPaymentMethod,
       };
 
-      // Create order
+   
       const response = await dispatch(createOrder(orderData)).unwrap();
       const orderId = response.order._id;
 
       if (selectedPaymentMethod === "razorpay") {
-        // Create Razorpay order - but now the effect will handle opening the payment
+    
         await dispatch(
           createRazorpayOrder({ amount: totalAmount, orderId })
         ).unwrap();
-        // handleRazorpayPayment is now called by the useEffect when razorpayOrder is updated
+    
       } else {
-        // For cash on delivery, bank, or UPI (without Razorpay)
+   
         toast.success("Order placed successfully!");
         navigate("/order");
       }
@@ -283,7 +280,7 @@ const Billing = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 dark:text-white transition-colors duration-300">
       <div className="container mx-auto px-4 py-4 sm:py-8 max-w-7xl">
-        {/* Breadcrumb - Hide on smallest screens */}
+   
         <nav className="hidden sm:block text-sm text-gray-500 mb-6 sm:mb-8">
           <ol className="flex flex-wrap gap-2">
             {["Account", "My Account", "Product", "View Cart", "Checkout"].map(
@@ -303,9 +300,7 @@ const Billing = () => {
           </ol>
         </nav>
 
-        {/* Main content */}
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
-          {/* Billing Details Form */}
           <div className="w-full lg:w-2/3">
             <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 mt-10">
               Billing Details
@@ -531,7 +526,6 @@ const Billing = () => {
                 )}
               </div>
 
-              {/* Payment Methods */}
               <div className="mt-6 space-y-4">
                 <h3 className="font-semibold text-lg">Payment Method</h3>
                 <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400">

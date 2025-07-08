@@ -8,12 +8,8 @@ import {
   registerFailure,
   logout,
   checkAuthState,
-
 } from '../slice/AuthSlice';
-
 const API_URL = import.meta.env.VITE_API_URL
-
-// Add axios interceptor to handle token
 axios.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -26,10 +22,6 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-
-
-
-
 export const loginUser = (credentials) => async (dispatch) => {
   dispatch(loginStart());
   try {
@@ -49,8 +41,6 @@ export const loginUser = (credentials) => async (dispatch) => {
   }
 };
 
-
-
 export const registerUser = (userData) => async (dispatch) => {
   try {
     dispatch(registerStart());
@@ -64,16 +54,10 @@ export const registerUser = (userData) => async (dispatch) => {
   }
 };
 
-
-
-
-
-
 export const logoutUser = () => (dispatch) => {
   dispatch(logout());
 };
 
-// Add function to check auth state
 export const checkAuthentication = () => (dispatch) => {
   dispatch(checkAuthState());
 };

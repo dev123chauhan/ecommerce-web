@@ -31,16 +31,15 @@ const TeamMember = ({ imageUrl, name, position, socialLinks }) => (
   </div>
 );
 
-// Prop validation
 TeamMember.propTypes = {
-  imageUrl: PropTypes.string.isRequired,        // Ensures imageUrl is a string
-  name: PropTypes.string.isRequired,            // Ensures name is a string
-  position: PropTypes.string.isRequired,        // Ensures position is a string
-  socialLinks: PropTypes.shape({                // Ensures socialLinks is an object
-    twitter: PropTypes.string,                  // Optional, but if provided, it must be a string
-    instagram: PropTypes.string,                // Optional, but if provided, it must be a string
-    linkedin: PropTypes.string,                 // Optional, but if provided, it must be a string
-  }).isRequired                                 // socialLinks object is required
+  imageUrl: PropTypes.string.isRequired,    
+  name: PropTypes.string.isRequired,        
+  position: PropTypes.string.isRequired,  
+  socialLinks: PropTypes.shape({      
+    twitter: PropTypes.string,    
+    instagram: PropTypes.string,    
+    linkedin: PropTypes.string,   
+  }).isRequired                              
 };
 
 const TeamShowcase = () => {

@@ -10,8 +10,8 @@ const Footer = () => {
     setIsLoading(true);
     setTimeout(() => {
       navigate(path);
-      setIsLoading(false); // Hide loading after navigation
-    }, 1500); // Simulate loading time
+      setIsLoading(false);
+    }, 1500); 
   };
 
   if (isLoading) {

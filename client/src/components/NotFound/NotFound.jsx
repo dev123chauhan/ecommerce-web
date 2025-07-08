@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-
-
 const NotFound = () => {
   return (
     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300">

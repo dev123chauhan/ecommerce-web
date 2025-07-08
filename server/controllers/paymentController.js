@@ -1,16 +1,14 @@
-// controllers/paymentController.js
 const razorpayInstance = require('../config/razorpay');
 const Order = require('../models/Order');
 const Payment = require('../models/Payment');
 const crypto = require('crypto');
 
-// Create a new order in Razorpay
 exports.createOrder = async (req, res) => {
   try {
     const { amount, currency = '₹', receipt, notes } = req.body;
     
     const options = {
-      amount: amount * 100, // Razorpay expects amount in paise
+      amount: amount * 100, 
       currency,
       receipt,
       notes,
@@ -18,7 +16,7 @@ exports.createOrder = async (req, res) => {
     
     const order = await razorpayInstance.orders.create(options);
     
-    // Save order details to database
+
     await Order.findByIdAndUpdate(receipt, {
       razorpayOrderId: order.id,
       paymentStatus: 'created',
@@ -38,7 +36,6 @@ exports.createOrder = async (req, res) => {
   }
 };
 
-// Verify payment signature
 exports.verifyPayment = async (req, res) => {
   try {
     const { 
@@ -48,7 +45,7 @@ exports.verifyPayment = async (req, res) => {
       orderId
     } = req.body;
     
-    // Verify signature
+
     const expectedSignature = crypto.createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
       .update(`${razorpayOrderId}|${razorpayPaymentId}`)
       .digest('hex');
@@ -56,7 +53,6 @@ exports.verifyPayment = async (req, res) => {
     const isAuthentic = expectedSignature === razorpaySignature;
     
     if (isAuthentic) {
-      // Save payment details
       await Payment.create({
         razorpayOrderId,
         razorpayPaymentId,
@@ -64,7 +60,7 @@ exports.verifyPayment = async (req, res) => {
         orderId,
       });
       
-      // Update order status
+
       await Order.findByIdAndUpdate(orderId, {
         paymentStatus: 'completed',
         isPaid: true,
@@ -95,7 +91,7 @@ exports.verifyPayment = async (req, res) => {
   }
 };
 
-// Get payment key
+
 exports.getKey = (req, res) => {
   res.status(200).json({
     key: process.env.RAZORPAY_KEY_ID,

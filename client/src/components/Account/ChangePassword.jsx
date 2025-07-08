@@ -1,4 +1,3 @@
-// import React from 'react'
 import { Eye, EyeOff, AlertCircle, CheckCircle } from 'lucide-react';
 import { useState } from 'react';
 export default function ChangePassword() {
@@ -90,8 +89,6 @@ export default function ChangePassword() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Final validation
     const currentPasswordValidation = validatePassword(formData.currentPassword);
     const newPasswordValidation = validatePassword(formData.newPassword, true);
     const confirmPasswordValidation = validateConfirmPassword(formData.newPassword, formData.confirmPassword);
@@ -113,8 +110,6 @@ export default function ChangePassword() {
         !confirmPasswordValidation.isValid) {
       return;
     }
-
-    // TODO: Implement password change logic
     console.log('Password change submitted');
   };
 

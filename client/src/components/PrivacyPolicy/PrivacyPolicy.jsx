@@ -34,7 +34,7 @@ const PolicySection = ({
   </div>
 );
 
-// PropTypes for PolicySection
+
 PolicySection.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
@@ -44,9 +44,7 @@ PolicySection.propTypes = {
   className: PropTypes.string
 };
 
-// PolicySection.defaultProps = {
-//   className: ''
-// };
+
 
 const PrivacyPolicy = ({ 
   companyName = 'Example Company', 
@@ -200,7 +198,7 @@ const PrivacyPolicy = ({
   );
 };
 
-// PropTypes for PrivacyPolicy
+
 PrivacyPolicy.propTypes = {
   companyName: PropTypes.string,
   contactEmail: PropTypes.string,
