@@ -283,14 +283,14 @@ const Shop = () => {
                   <input
                     type="text"
                     placeholder="Search products..."
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
+                    className="w-full px-4 py-3 border border-gray-100 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
                     value={searchTerm}
                     onChange={handleSearchChange}
                   />
                 </div>
 
                 <h2 className="text-xl font-semibold mb-4">Categories</h2>
-                <div className="divide-y divide-gray-100">
+                <div className="">
                   {!categoriesLoading &&
                     categories &&
                     Object.entries(categories).map(

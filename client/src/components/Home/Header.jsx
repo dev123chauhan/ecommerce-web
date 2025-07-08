@@ -100,13 +100,17 @@ const Header = () => {
           </div>
 
           {/* Mobile Navigation */}
-          <div className="md:hidden flex items-center justify-between px-4 py-2">
+          <div className="md:hidden flex items-center justify-between px-4 py-4">
             <Menu
               onClick={toggleSidebar}
               className="cursor-pointer dark:text-white"
               size={24}
             />
-
+            
+            <Link to="/" className="text-xl font-bold dark:text-white">
+              ShopVibe
+            </Link>
+            
             <div className="flex items-center space-x-4">
               <button
                 onClick={toggleTheme}
@@ -123,10 +127,10 @@ const Header = () => {
               {isAuthenticated ? (
                 <AccountDropdown />
               ) : (
-                <div className="space-x-4">
+                <div className="space-x-4 buttons">
                   <Link
                     to="/login"
-                    className="bg-red-500 text-white px-4 py-1.5 rounded-md hover:bg-red-600 transition-colors"
+                    className="bg-red-500  text-white px-4 py-1.5 rounded-md hover:bg-red-600 transition-colors"
                   >
                     Login
                   </Link>
@@ -143,38 +147,52 @@ const Header = () => {
 
           {/* Mobile Sidebar */}
           <div
-            className={`fixed top-0 left-0 h-full w-full bg-white dark:bg-gray-900 shadow-lg transform transition-transform duration-300 ease-in-out ${
+            className={`fixed top-0 left-0 h-full w-full bg-white dark:bg-gray-900 shadow-2xl transform transition-transform duration-300 ease-in-out z-50 ${
               isOpen ? "translate-x-0" : "-translate-x-full"
             }`}
           >
-            <div className="p-4">
+            {/* Sidebar Header */}
+            <div className="flex items-center justify-between p-6 border-b dark:border-gray-700">
+              <Link to="/" className="text-2xl font-bold dark:text-white">
+                ShopVibe
+              </Link>
               <X
                 onClick={toggleSidebar}
-                className="cursor-pointer float-right dark:text-white"
-                size={24}
+                className="cursor-pointer dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full p-1 transition-colors"
+                size={28}
               />
-              <div className="">
-                {isAuthenticated && (
-                  <div className="mb-10 text-center">
-                    {/* <input
-                    type="text"
-                    placeholder="Search..."
-                    className="w-full pl-3 pr-8 py-1.5 border rounded-md focus:outline-none focus:ring-1 focus:ring-gray-400 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
-                  /> */}
-                    <Link to="/" className="text-xl font-bold dark:text-white">
-                      ShopVibe
-                    </Link>
+            </div>
+
+            {/* Sidebar Content */}
+            <div className="p-6">
+              {/* Search Bar for Authenticated Users */}
+              {isAuthenticated && (
+                <div className="mb-8">
+                  <div className="relative">
+                    <input
+                      type="text"
+                      placeholder="What are you looking for"
+                      className="w-full pl-3 pr-10 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
+                    />
+                    <Search
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                      size={20}
+                    />
                   </div>
-                )}
-                <ul className="space-y-20 text-center">
+                </div>
+              )}
+
+              {/* Navigation Items */}
+              <nav className="mb-8">
+                <ul className="space-y-6">
                   {navItems.map((item) => (
                     <li key={item.name}>
                       <Link
                         to={item.path}
-                        className={`block hover:text-gray-600 dark:text-gray-200 dark:hover:text-white transition-colors ${
+                        className={`block text-lg font-medium py-2 px-4 rounded-lg transition-all duration-200 ${
                           location.pathname === item.path
-                            ? " border-black dark:border-white"
-                            : ""
+                            ? "bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400 border-l-4 border-red-500"
+                            : "text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-red-500"
                         }`}
                         onClick={toggleSidebar}
                       >
@@ -183,9 +201,19 @@ const Header = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </nav>
+
+
             </div>
           </div>
+
+          {/* Overlay */}
+          {isOpen && (
+            <div
+              className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+              onClick={toggleSidebar}
+            ></div>
+          )}
         </nav>
       </header>
     </>

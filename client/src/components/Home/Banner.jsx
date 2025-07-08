@@ -1,5 +1,3 @@
-
-
 import CategoryList from "./CategoryList";
 import ProductSlider from "./ProductSlider";
 

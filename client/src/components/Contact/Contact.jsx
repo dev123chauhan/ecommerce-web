@@ -173,7 +173,7 @@ const Contact = () => {
         </nav>
 
         <div className="flex flex-col md:flex-row gap-8">
-          <div className="w-full md:w-1/3 p-6 rounded-lg border border-blue-200">
+          <div className="w-full md:w-1/3 p-6 rounded-lg border border-gray-300 dark:border-gray-700">
             <div className="mb-8">
               <h2 className="text-xl font-semibold mb-2 flex items-center">
                 <Phone className="mr-2 text-red-500" size={24} /> Call To Us
@@ -184,7 +184,7 @@ const Contact = () => {
               </p>
             </div>
 
-            <div className="border-t border-gray-200 pt-6">
+            <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
               <h2 className="text-xl font-semibold mb-2 flex items-center">
                 <Mail className="mr-2 text-red-500" size={24} /> Write To US
               </h2>

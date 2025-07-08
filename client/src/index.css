@@ -1,39 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap'); */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 ::-webkit-scrollbar-thumb {
-    background: rgb(255, 60, 60) !important; /* Blue scrollbar thumb */
-    border-radius: 6px !important;
-  }
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Light grey background */
-  }
+  background: rgb(255, 60, 60) !important; /* Blue scrollbar thumb */
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
 
-*{
-    font-family: "Poppins", serif !important;
-    /* font-family: "Montserrat", serif !important; */
-    user-select: none !important;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light grey background */
 }
-.scrollToTop{
-    background-color: rgb(255, 60, 60) !important;
+
+* {
+  font-family: "DM Sans", sans-serif;
+  /* font-family: "Montserrat", serif !important; */
+  user-select: none !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
-.upArrow{
-    color: white !important;
-    font-size: 1.5rem !important;
-    margin: auto !important;
-  }
-  .required {
-    color: red !important;
+.scrollToTop {
+  background-color: rgb(255, 60, 60) !important;
+  border-radius: 50% !important;
+}
+.upArrow {
+  color: white !important;
+  font-size: 1.5rem !important;
+  margin: auto !important;
+}
+.required {
+  color: red !important;
 }
 
 .slide-in {
@@ -51,16 +52,21 @@
   }
 }
 
-
-.banner{
+.banner {
   margin-top: 3.7rem;
 }
-.IconImage{
+.IconImage {
   width: 100px;
 }
-.imgBgRemove{
+.imgBgRemove {
   mix-blend-mode: color-burn !important;
 }
 .max-w-7xl {
   max-width: 85rem !important;
+}
+@media(max-width:371px){
+  .buttons{
+    font-size: 0.6rem !important;
+    gap: 0px !important;
+  }
 }
