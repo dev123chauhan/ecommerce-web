@@ -151,7 +151,6 @@ const Login = () => {
                     : "border-gray-300"
                 }`}
                 onChange={handleChange}
-                required
               />
               {formData.email && (
                 <div className="absolute right-3 top-1/3 transform -translate-y-1/2">
@@ -182,7 +181,6 @@ const Login = () => {
                     : "border-gray-300"
                 }`}
                 onChange={handleChange}
-                required
               />
               <button
                 type="button"

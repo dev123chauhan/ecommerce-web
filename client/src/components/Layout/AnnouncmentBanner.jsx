@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const AnnouncementBanner = ({ onVisibilityChange }) => {
   const [isVisible, setIsVisible] = useState(true);
@@ -17,15 +18,15 @@ const AnnouncementBanner = ({ onVisibilityChange }) => {
       <div className="flex items-center justify-center gap-x-6 max-w-screen-xl mx-auto">
         <div className="md:hidden text-center text-sm flex-1">
           <p>Summer Sale For All Swim Suits - OFF 50%!</p>
-          <a href="#" className="font-semibold underline">
+          <Link to="" className="font-semibold underline">
             ShopNow
-          </a>
+          </Link>
         </div>
         <div className="hidden md:flex items-center justify-center flex-1 text-sm">
           <span>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!</span>
-          <a href="#" className="font-semibold underline ml-2">
+          <Link to="" className="font-semibold underline ml-2">
             ShopNow
-          </a>
+          </Link>
         </div>
 
         <div className="hidden md:flex items-center gap-2">

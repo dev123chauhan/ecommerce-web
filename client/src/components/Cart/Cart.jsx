@@ -80,7 +80,7 @@ const Cart = () => {
         <div className="min-h-screen container mx-auto px-4 py-8 mt-10 max-w-7xl">
           <div className="sm:hidden space-y-4">
             {[1, 2, 3].map((item) => (
-              <div key={item} className="border rounded-lg p-4 space-y-3">
+              <div key={item} className="border dark:border-gray-700 rounded-lg p-4 space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
                     <Skeleton.Image active style={{ width: 64, height: 64 }} />
@@ -101,7 +101,7 @@ const Cart = () => {
           <div className="hidden sm:block overflow-x-auto">
             <table className="w-full mb-8">
               <thead>
-                <tr className="border-b">
+                <tr className="border-b dark:border-gray-700">
                   <th className="text-left py-2">Product</th>
                   <th className="text-left py-2">Price</th>
                   <th className="text-left py-2">Quantity</th>
@@ -110,7 +110,7 @@ const Cart = () => {
               </thead>
               <tbody>
                 {[1, 2, 3].map((item) => (
-                  <tr key={item} className="border-b">
+                  <tr key={item} className="border-b dark:border-gray-700">
                     <td className="py-4">
                       <div className="flex items-center">
                         <Skeleton.Button
@@ -156,7 +156,7 @@ const Cart = () => {
               <Skeleton.Input active style={{ width: "100%", height: 40 }} />
             </div>
             <div className="w-full lg:w-1/2">
-              <div className="border border-gray-300 rounded-lg p-6">
+              <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-6">
                 <Skeleton
                   active
                   title={{ width: 100 }}
@@ -205,7 +205,7 @@ const Cart = () => {
                     </button>
                   </div>
                   <div className="flex items-center justify-between">
-                    <div className="border rounded-md inline-flex">
+                    <div className="border  rounded-md inline-flex">
                       <button
                         className="px-3 py-1"
                       >
@@ -241,7 +241,7 @@ const Cart = () => {
         <div className="hidden sm:block overflow-x-auto">
           <table className="w-full mb-8">
             <thead>
-              <tr className="border-b">
+              <tr className="border-b dark:border-gray-700">
                 <th className="text-left py-2">Product</th>
                 <th className="text-left py-2">Price</th>
                 <th className="text-left py-2">Quantity</th>
@@ -251,7 +251,7 @@ const Cart = () => {
             <tbody>
               {items.length > 0 ? (
                 items.map((item, index) => (
-                  <tr key={index} className="border-b">
+                  <tr key={index} className="border-b dark:border-gray-700">
                     <td className="py-4">
                       <div className="flex items-center">
                         <button
@@ -275,7 +275,7 @@ const Cart = () => {
                       {item.price}
                     </td>
                     <td className="py-4">
-                      <div className="border rounded-md inline-flex">
+                      <div className="border dark:border-gray-700 rounded-md inline-flex">
                         <button
                           className="px-3 py-1"
                         >
@@ -284,7 +284,7 @@ const Cart = () => {
                         <input
                           type="text"
                           value={item.quantity}
-                          className="w-2 text-center dark:bg-gray-800 dark:border-gray-700"
+                          className="w-8 text-center dark:bg-gray-800 dark:border-gray-700"
                           readOnly
                         />
                         <button
@@ -334,7 +334,7 @@ const Cart = () => {
                   <input
                     type="text"
                     placeholder="Enter your coupon code"
-                    className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:text-white text-base"
+                    className="flex-1 px-4 py-2.5 border dark:border-gray-700 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:text-white text-base"
                   />
                   <button className="px-6 py-2.5 bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none text-base font-medium whitespace-nowrap">
                     Apply Coupon
@@ -343,7 +343,7 @@ const Cart = () => {
               </div>
 
               <div className="w-full lg:w-1/2">
-                <div className="border border-gray-300 rounded-lg p-6">
+                <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-6">
                   <h2 className="text-xl font-bold mb-4">Cart Total</h2>
                   <div className="space-y-3">
                     <div className="flex justify-between">
@@ -353,7 +353,7 @@ const Cart = () => {
                         {totalAmount}
                       </span>
                     </div>
-                    <div className="flex justify-between pb-3 border-b">
+                    <div className="flex justify-between pb-3 border-b dark:border-gray-700">
                       <span>Shipping:</span>
                       <span>Free</span>
                     </div>

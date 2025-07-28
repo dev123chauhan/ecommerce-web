@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
         <Header />
       </div>
 
-      <div className={`${isBannerVisible ? "pt-[55px]" : "pt-[15px]"}`}>
+      <div className={`${isBannerVisible ? "pt-[55px]" : "pt-[9px]"}`}>
         <main>{children}</main>
         <Footer />
       </div>

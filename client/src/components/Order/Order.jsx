@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, Package } from "lucide-react";
+import { Link } from 'react-router-dom';
 
 const Order = () => {
   const [orders, setOrders] = useState([]);
@@ -11,6 +12,7 @@ const Order = () => {
   const { items } = useSelector((state) => state.cart);
   const currency = items.length && items.length > 0 ? items[0].currency && items[0].currency : "₹";
   const baseUrl = import.meta.env.VITE_API_URL
+
   useEffect(() => {
     const fetchOrders = async () => {
       if (!user?.id) {
@@ -65,12 +67,10 @@ const Order = () => {
     fetchOrders();
   }, [user, baseUrl]);
 
-
   const safeToFixed = (value, decimals = 2) => {
     const num = parseFloat(value);
     return isNaN(num) ? "0.00" : num.toFixed(decimals);
   };
-
 
   const calculateOrderTotal = (items, shipping = 0) => {
     if (!items || !Array.isArray(items)) return 0;
@@ -83,16 +83,13 @@ const Order = () => {
     return subtotal + (parseFloat(shipping) || 0) + tax;
   };
 
-
   const handleOrderSelect = (order) => {
     setSelectedOrder(order);
   };
 
-
   const handleBackToList = () => {
     setSelectedOrder(null);
   };
-
 
   if (loading) {
     return (
@@ -104,7 +101,6 @@ const Order = () => {
       </div>
     );
   }
-
 
   if (error) {
     return (
@@ -123,7 +119,6 @@ const Order = () => {
       </div>
     );
   }
-
 
   if (selectedOrder) {
     const subtotal = selectedOrder.items.reduce(
@@ -147,7 +142,6 @@ const Order = () => {
             Back to Order List
           </button>
           
-
           <div className="border-b pb-4 mb-4">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
               <h1 className="text-xl sm:text-2xl font-bold">Order Details</h1>
@@ -178,7 +172,6 @@ const Order = () => {
             </div>
           </div>
 
-        
           <div className="mb-6">
             <h2 className="text-lg font-semibold mb-4">Order Items</h2>
             <div className="space-y-4">
@@ -215,7 +208,6 @@ const Order = () => {
             </div>
           </div>
 
-
           <div className="border-t pt-4 mb-6">
             <div className="space-y-2 ml-auto max-w-xs">
               <div className="flex justify-between">
@@ -237,7 +229,6 @@ const Order = () => {
             </div>
           </div>
 
-       
           <div className="border-t pt-4">
             <h2 className="text-lg font-semibold mb-4">Shipping Information</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
@@ -260,7 +251,6 @@ const Order = () => {
             </div>
           </div>
 
-      
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <button className="w-full sm:flex-1 bg-red-500 text-white py-3 sm:py-2 px-4 rounded hover:bg-red-600 transition duration-200">
               Track Order
@@ -274,6 +264,32 @@ const Order = () => {
     );
   }
 
+  // No orders found state
+  if (orders.length === 0) {
+    return (
+      <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300">
+        <div className="min-h-screen py-12  max-w-7xl mx-auto">
+          <h1 className="text-2xl font-bold mb-8 mt-10  text-center sm:text-left">My Orders</h1>
+          
+          <div className="flex flex-col items-center justify-center py-16 px-4">
+            <div className="text-center max-w-md mx-auto">
+              <Package className="h-24 w-24 text-gray-400 dark:text-gray-500 mx-auto mb-6" />
+              <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">No Orders Found</h2>
+              <p className="text-gray-600 dark:text-gray-400 mb-8">
+                You have not placed any orders yet. Start shopping to see your orders here.
+              </p>
+              <Link 
+                to="/shop" 
+                className="bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition duration-200 font-semibold"
+              >
+                Start Shopping
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300 py-10">
