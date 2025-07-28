@@ -1,6 +1,3 @@
-// import visa from "../../assets/visa.png";
-// import mastercard from "../../assets/mastercard.png";
-// import rupaycard from "../../assets/rupaycard.png";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -21,11 +18,6 @@ export default function OrderSummary({
   
   const { items } = useSelector((state) => state.cart);
 
-  // const bankCards = [
-  //   { id: 1, name: "visa", src: visa, alt: "Visa" },
-  //   { id: 2, name: "mastercard", src: mastercard, alt: "Mastercard" },
-  //   { id: 3, name: "rupaycard", src: rupaycard, alt: "Rupay Card" },
-  // ];
 
   const upiOptions = [
     { id: 1, name: "phonepe", src: phonepe, alt: "PhonePe" },
@@ -95,33 +87,6 @@ export default function OrderSummary({
 
         <div className="mt-6 space-y-4">
           <h4 className="font-semibold text-base">Payment Method</h4>
-          
-          {/* <div className="flex flex-wrap items-center gap-3 p-3 bg-gray-50 rounded-lg dark:bg-gray-700">
-            <input
-              type="radio"
-              id="bank"
-              name="paymentMethod"
-              value="bank"
-              checked={selectedPaymentMethod === "bank"}
-              onChange={handlePaymentMethodChange}
-              className="w-4 h-4 rounded accent-black cursor-pointer"
-            />
-            <label htmlFor="bank" className="font-medium">
-              Bank
-            </label>
-            <div className="flex gap-2 ml-auto">
-              {bankCards.map((card, index) => (
-                <div key={index}>
-                  <img
-                    key={card.name}
-                    src={card.src}
-                    alt={card.alt}
-                    className="h-8 sm:h-10 object-contain"
-                  />
-                </div>
-              ))}
-            </div>
-          </div> */}
 
           <div className="flex flex-wrap items-center gap-3 p-3 bg-gray-50 rounded-lg dark:bg-gray-700">
             <input
