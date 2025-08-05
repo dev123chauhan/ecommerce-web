@@ -1,9 +1,11 @@
-import  { useState, useEffect, useRef } from "react";
-import { User, ShoppingBag, X, Star, LogOut, Heart, ShoppingCart } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { User, ShoppingBag, Star, LogOut, Heart, ShoppingCart } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../action/AuthAction";
-import {  toast } from 'sonner'
+import { fetchCart } from "../../slice/CartSlice"; // Update with correct path
+import { toast } from 'sonner';
+
 const AccountDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
@@ -11,16 +13,28 @@ const AccountDropdown = () => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const dropdownRef = useRef(null);
+
   const toggleDropdown = () => setIsOpen(!isOpen);
+
   const handleLogout = () => {
     dispatch(logoutUser());
     navigate('/login');
     toast.success("Successfully logged out!");
   };
 
+  // Fetch cart data when component mounts if user is logged in
+  useEffect(() => {
+    if (user?.id && totalQuantity === 0) {
+      // Check if we have cart data in localStorage first
+      const savedCart = localStorage.getItem('cart');
+      if (!savedCart) {
+        dispatch(fetchCart(user.id));
+      }
+    }
+  }, [user?.id, totalQuantity, dispatch]);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
-
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
       }
@@ -38,27 +52,27 @@ const AccountDropdown = () => {
   const menuItems = [
     { icon: <User size={18} />, text: "Manage My Account", path: "/account" },
     { icon: <ShoppingBag size={18} />, text: "My Order", path: "/order" },
-    { icon: <X size={18} />, text: "My Cancellations", path:"/cancellation"},
-    { icon: <Star size={18} />, text: "My Reviews", path:"/review" },
+    { icon: <Star size={18} />, text: "My Reviews", path: "/review" },
     { icon: <LogOut size={18} />, text: "Logout", onClick: handleLogout },
   ];
+
   const wishlistItems = useSelector(state => state.wishlist.items);
   const totalWishlistItems = wishlistItems.length;
+
   return (
     <div className="flex items-center gap-2">
-   <div className="relative">
-   <Heart
-        onClick={() => navigate('/wishlist')}
-        className="cursor-pointer transition-colors dark:text-white"
-        size={25}
-      /> 
-      {totalWishlistItems > 0 && (
-        <span className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">
-          {totalWishlistItems}
-        </span>
-      )}
-    </div>
-     
+      <div className="relative">
+        <Heart
+          onClick={() => navigate('/wishlist')}
+          className="cursor-pointer transition-colors dark:text-white"
+          size={25}
+        /> 
+        {totalWishlistItems > 0 && (
+          <span className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">
+            {totalWishlistItems}
+          </span>
+        )}
+      </div>
 
       <div className="relative">
         <ShoppingCart

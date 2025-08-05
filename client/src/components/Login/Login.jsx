@@ -124,19 +124,16 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-screen bg-blue-50">
+    <div className="flex flex-col md:flex-row  bg-blue-50">
       <AuthImage />
-
       <div className="w-full md:w-1/2 flex items-center justify-center p-8">
         <div className="w-full max-w-md">
           <Link className="flex items-center gap-2 py-3 text-red-500" to="/">
             <ArrowLeft />
             Back to home
           </Link>
-
           <h2 className="text-2xl font-bold mb-6">Log in to ShopVibe</h2>
           <p className="mb-6 text-gray-600">Enter your details below</p>
-
           <form onSubmit={handleSubmit}>
             <div className="mb-4 relative">
               <input
@@ -215,14 +212,13 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition duration-300"
+              className="w-full mb-6 bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition duration-300"
               disabled={loading}
             >
               {loading ? <Loader /> : "Log in"}
             </button>
           </form>
-
-          <p className="mt-6 text-center text-gray-600">
+          <p className="text-center text-gray-600">
             Do not have an account?{" "}
             <Link to="/signup" className="text-red-500 hover:underline">
               Register

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { ChevronDown, LogIn } from "lucide-react";
 import { Skeleton } from "antd";
-import CropText from "../CropText/CropText";
 import noproductfound from "../../assets/Not-found.gif";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "../../components/Modal/Modal";
@@ -18,6 +17,7 @@ import {
 } from "../../slice/ShopApiSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { addToCart } from "../../slice/CartSlice";
+import CropText from "../../components/CropText/CropText";
 
 const ProductCardSkeleton = () => (
   <div className="rounded-xl shadow-sm overflow-hidden mt-10">
@@ -70,11 +70,9 @@ const Shop = () => {
   const [isFiltering, setIsFiltering] = useState(false);
   const [artificialLoading, setArtificialLoading] = useState(true);
 
-
   useEffect(() => {
     if (shop) {
       dispatch(setProducts(shop));
-
 
       const timer = setTimeout(() => {
         setArtificialLoading(false);
@@ -84,30 +82,26 @@ const Shop = () => {
     }
   }, [shop, dispatch]);
 
-
   const handleProductClick = (product) => {
     const slug = product.name
-      .toLowerCase() 
-      .replace(/[^\w\s-]/g, "") 
-      .replace(/\s+/g, "-") 
-      .trim(); 
-
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .trim();
 
     navigate(`/product/${slug}`, { state: { product } });
   };
-
 
   useEffect(() => {
     if (shop) {
       setIsFiltering(true);
       const timer = setTimeout(() => {
         setIsFiltering(false);
-      }, 1500); 
+      }, 1500);
 
       return () => clearTimeout(timer);
     }
   }, [searchTerm, selectedCategories, selectedSubCategories, shop]);
-
 
   const toggleCategory = (category) => {
     setExpandedCategories((prev) =>
@@ -117,14 +111,12 @@ const Shop = () => {
     );
   };
 
-
   const handleCategoryChange = (category) => {
     const newCategories = selectedCategories.includes(category)
       ? selectedCategories.filter((c) => c !== category)
       : [...selectedCategories, category];
 
     dispatch(setSelectedCategories(newCategories));
-
 
     if (selectedCategories.includes(category)) {
       const newSubCategories = selectedSubCategories.filter(
@@ -142,7 +134,6 @@ const Shop = () => {
     dispatch(setSelectedSubCategories(newSubCategories));
   };
 
-
   const handleSearchChange = (e) => {
     dispatch(setSearchTerm(e.target.value));
   };
@@ -151,7 +142,6 @@ const Shop = () => {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 >= 0.5;
     const stars = [];
-
 
     for (let i = 0; i < fullStars; i++) {
       stars.push(
@@ -169,7 +159,6 @@ const Shop = () => {
         </svg>
       );
     }
-
 
     if (hasHalfStar) {
       stars.push(
@@ -254,7 +243,7 @@ const Shop = () => {
   return (
     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300">
       <div className="min-h-screen banner">
-        <div className="max-w-7xl mx-auto lg:px-0">
+        <div className="max-w-7xl mx-auto px-4  sm:px-6 lg:px-0">
           <div className="flex flex-col md:flex-row gap-6">
             <div className="md:w-1/4 lg:w-1/4">
               <nav className="pt-6">
@@ -276,7 +265,7 @@ const Shop = () => {
                   <input
                     type="text"
                     placeholder="Search products..."
-                    className="w-full px-4 py-3 border border-gray-100 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
                     value={searchTerm}
                     onChange={handleSearchChange}
                   />
@@ -284,7 +273,21 @@ const Shop = () => {
 
                 <h2 className="text-xl font-semibold mb-4">Categories</h2>
                 <div className="">
-                  {!categoriesLoading &&
+                  {categoriesLoading ? (
+                    <div className="animate-pulse space-y-3">
+                      {[...Array(8)].map((_, index) => (
+                        <div key={index} className="py-3">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                              <div className="w-4 h-4 bg-gray-300 rounded"></div>
+                              <div className="h-5 bg-gray-300 rounded w-20 sm:w-24 md:w-32 lg:w-40"></div>
+                            </div>
+                            <div className="w-5 h-5 bg-gray-300 rounded-full"></div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
                     categories &&
                     Object.entries(categories).map(
                       ([category, subCategories]) => (
@@ -300,17 +303,17 @@ const Shop = () => {
                               />
                               <label
                                 htmlFor={category}
-                                className="font-medium cursor-pointer"
+                                className="font-medium cursor-pointer text-sm sm:text-base"
                               >
                                 {category}
                               </label>
                             </div>
                             <button
                               onClick={() => toggleCategory(category)}
-                              className="p-1 rounded-full transition-colors"
+                              className="p-1 rounded-full transition-colors hover:bg-gray-100"
                             >
                               <ChevronDown
-                                className={`w-5 h-5 transition-transform duration-200 ${
+                                className={`w-5 h-5 transition-transform duration-300 ease-in-out ${
                                   expandedCategories.includes(category)
                                     ? "rotate-180"
                                     : ""
@@ -318,12 +321,28 @@ const Shop = () => {
                               />
                             </button>
                           </div>
-                          {expandedCategories.includes(category) && (
-                            <div className="ml-7 mt-2 space-y-2">
+
+                          <div
+                            className={`ml-5 sm:ml-7 overflow-hidden transition-all duration-300 ease-in-out ${
+                              expandedCategories.includes(category)
+                                ? "max-h-96 opacity-100 mt-2"
+                                : "max-h-0 opacity-0 mt-0"
+                            }`}
+                          >
+                            <div className="space-y-2 pb-1">
                               {subCategories.map((subCategory) => (
                                 <div
                                   key={subCategory}
-                                  className="flex items-center"
+                                  className="flex items-center transform transition-all duration-200 ease-in-out"
+                                  style={{
+                                    transitionDelay:
+                                      expandedCategories.includes(category)
+                                        ? `${
+                                            subCategories.indexOf(subCategory) *
+                                            50
+                                          }ms`
+                                        : "0ms",
+                                  }}
                                 >
                                   <input
                                     type="checkbox"
@@ -334,25 +353,25 @@ const Shop = () => {
                                     onChange={() =>
                                       handleSubCategoryChange(subCategory)
                                     }
-                                    className="w-4 h-4 mr-3 accent-black rounded border-gray-300 focus:ring-black"
+                                    className="w-4 h-4 mr-2 sm:mr-3 accent-black rounded border-gray-300 focus:ring-black"
                                   />
                                   <label
                                     htmlFor={subCategory}
-                                    className="text-sm cursor-pointer"
+                                    className="text-xs sm:text-sm cursor-pointer"
                                   >
                                     {subCategory}
                                   </label>
                                 </div>
                               ))}
                             </div>
-                          )}
+                          </div>
                         </div>
                       )
-                    )}
+                    )
+                  )}
                 </div>
               </div>
             </div>
-
 
             <div className="md:w-3/4 lg:w-4/5">
               {productsError && (
@@ -485,7 +504,6 @@ const Shop = () => {
           </div>
         </div>
       </Modal>
-
 
       <style>{`
               .scrollbar-hide::-webkit-scrollbar {

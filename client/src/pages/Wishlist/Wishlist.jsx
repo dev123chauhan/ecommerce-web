@@ -91,16 +91,16 @@ const Wishlist = () => {
 
   return (
     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300 min-h-screen">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <div className="flex items-center gap-1 mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
+        <div className="flex justify-between items-center mb-8 pt-20">
+          <div className="flex items-center gap-1">
             <h2 className="text-2xl font-bold">Wishlist</h2>
             <span className="inline-flex items-center justify-center text-2xl font-bold">
               ({isLoading || loading ? "0" : items.length})
             </span>
           </div>
           {!isLoading && !loading && items.length > 0 && (
-            <button className="px-4 py-2 border-2 border-solid text-black rounded-lg transition-colors">
+            <button className="px-4 py-2 border-2 border-solid dark:text-white dark:border-gray-700 text-black rounded-lg transition-colors">
               Move All To Bag
             </button>
           )}

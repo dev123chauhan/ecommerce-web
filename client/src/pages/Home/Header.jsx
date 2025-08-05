@@ -125,7 +125,7 @@ const Header = () => {
               {isAuthenticated ? (
                 <AccountDropdown />
               ) : (
-                <div className="space-x-4 buttons">
+                <div className="space-x-4">
                   <Link
                     to="/login"
                     className="bg-red-500  text-white px-4 py-1.5 rounded-md hover:bg-red-600 transition-colors"

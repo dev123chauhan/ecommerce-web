@@ -62,9 +62,9 @@
 .max-w-7xl {
   max-width: 85rem !important;
 }
-@media(max-width:371px){
+/* @media(max-width:371px){
   .buttons{
     font-size: 0.6rem !important;
     gap: 0px !important;
   }
-}
+} */

@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { categories } from "../Category/CategoryData";
+import { categories } from "../../components/Category/CategoryData";
 
 const CategoryCard = ({ name, icon, isActive, onClick }) => (
   <div

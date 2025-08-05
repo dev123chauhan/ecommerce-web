@@ -3,8 +3,8 @@ import aboutImage from "../../assets/aboutimage.png"
 const AboutContent = () => {
   return (
     <div className="container mx-auto">
-      <nav className="py-4">
-        <ul className="flex space-x-4 mt-5">
+      <nav>
+        <ul className="flex space-x-4">
           <li><Link to="/" className="">Home</Link></li>
           <li><Link to="" className="font-bold">About</Link></li>
         </ul>

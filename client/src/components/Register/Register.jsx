@@ -136,7 +136,7 @@ const Register = () => {
       await dispatch(registerUser(formData));
       toast.success("Successfully registered");
       setTimeout(() => {
-        navigate("/login");
+        navigate("/");
       }, 1200);
     } catch (error) {
       toast.error("Registration failed");
@@ -149,7 +149,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-screen bg-blue-50">
+    <div className="flex flex-col md:flex-row  bg-blue-50">
       <AuthImage />
 
       <div className="w-full md:w-1/2 flex items-center justify-center p-8">

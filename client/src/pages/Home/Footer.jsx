@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { footerData } from "../Footer/FooterData";
+import { footerData } from "../../components/Footer/FooterData";
 
 const Footer = () => {
   const [isLoading, setIsLoading] = useState(false);

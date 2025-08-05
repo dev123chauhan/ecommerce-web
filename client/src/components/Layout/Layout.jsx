@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
-import Header from "../Home/Header";
-import Footer from "../Home/Footer";
+import Header from "../../pages/Home/Header";
+import Footer from "../../pages/Home/Footer";
 
 const AnnouncementBanner = React.lazy(() => import("./AnnouncmentBanner"));
 
@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="">
       <div className="fixed top-0 left-0 right-0 z-50">
         <React.Suspense fallback={<div className="h-8 bg-black" />}>
           <AnnouncementBanner
@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
         <Header />
       </div>
 
-      <div className={`${isBannerVisible ? "pt-[55px]" : "pt-[9px]"}`}>
+      <div className={`${isBannerVisible ? "pt-[50px]" : "pt-[9px]"}`}>
         <main>{children}</main>
         <Footer />
       </div>

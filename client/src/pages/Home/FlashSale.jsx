@@ -6,8 +6,7 @@ import {
   ArrowLeft,
   ArrowRight,
   ShoppingCart,
-  LogIn,
-} from "lucide-react";
+  LogIn } from "lucide-react";
 import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../slice/CartSlice";
@@ -23,10 +22,10 @@ const FlashSale = () => {
   const navigate = useNavigate();
   const { user, isAuthenticated } = useSelector((state) => state.auth);
   const [timeLeft, setTimeLeft] = useState({
-    days: 3,
-    hours: 23,
-    minutes: 19,
-    seconds: 56,
+    Days: 3,
+    Hours: 23,
+    Minutes: 19,
+    Seconds: 56,
   });
   const [isLoading, setIsLoading] = useState(true);
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
@@ -41,20 +40,20 @@ const FlashSale = () => {
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => {
         const newTime = { ...prevTime };
-        if (newTime.seconds > 0) {
-          newTime.seconds--;
+        if (newTime.Seconds > 0) {
+          newTime.Seconds--;
         } else {
-          newTime.seconds = 59;
-          if (newTime.minutes > 0) {
-            newTime.minutes--;
+          newTime.Seconds = 59;
+          if (newTime.Minutes > 0) {
+            newTime.Minutes--;
           } else {
-            newTime.minutes = 59;
-            if (newTime.hours > 0) {
-              newTime.hours--;
+            newTime.Minutes = 59;
+            if (newTime.Hours > 0) {
+              newTime.Hours--;
             } else {
-              newTime.hours = 23;
-              if (newTime.days > 0) {
-                newTime.days--;
+              newTime.Hours = 23;
+              if (newTime.Days > 0) {
+                newTime.Days--;
               }
             }
           }
@@ -210,10 +209,10 @@ const FlashSale = () => {
             {Object.entries(timeLeft).map(([unit, value], index) => (
               <div key={`${unit}-${index}`} className="text-center">
                 <div className="px-3 py-2 rounded">
-                  <div className="text-xs sm:text-sm">{unit}</div>
                   <div className="text-lg sm:text-2xl font-bold">
                     {value.toString().padStart(2, "0")}
                   </div>
+                  <div className="text-xs sm:text-sm">{unit}</div>
                 </div>
               </div>
             ))}

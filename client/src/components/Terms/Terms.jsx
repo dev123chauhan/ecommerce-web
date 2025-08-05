@@ -52,7 +52,7 @@ const Terms = () => {
     <div className="min-h-screen  py-12 px-4 sm:px-6 lg:px-8 pt-20">
       <div className="max-w-7xl mx-auto  shadow-xl rounded-lg overflow-hidden flex flex-col md:flex-row">
     
-        <div className="w-full md:w-64 p-6 border-r border-gray-200">
+        <div className="w-full md:w-64 p-6 border-r  border-gray-200">
           <h2 className="text-2xl font-bold mb-6 flex items-center">
             <Scroll className="mr-3" size={24} />
             Terms of Use
@@ -79,7 +79,7 @@ const Terms = () => {
           {sections.map((section) => (
             activeSection === section.id && (
               <div key={section.id} className="prose prose-blue max-w-none">
-                <h3 className="text-2xl font-semibold mb-4 border-b pb-2">
+                <h3 className="text-2xl font-semibold mb-4 border-b dark:border-gray-700 pb-2">
                   {section.title}
                 </h3>
                 <p className="leading-relaxed">

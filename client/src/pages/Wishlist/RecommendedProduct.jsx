@@ -157,7 +157,7 @@ const ProductRecommendations = () => {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto">
+    <div className="w-full max-w-7xl mx-auto px-4  sm:px-6 lg:px-0 pt-20">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-bold">Just For You</h2>
         <button 

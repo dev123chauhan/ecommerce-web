@@ -3,8 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Star, Minus, Plus, Heart } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../slice/CartSlice';
-import ProductRecommendations from '../Wishlist/RecommendedProduct';
-
+import ProductRecommendations from '../../pages/Wishlist/RecommendedProduct';
 const ProductDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -49,7 +48,7 @@ const ProductDetail = () => {
 
   return (
     <div className='dark:bg-gray-900 dark:text-white transition-colors duration-300'>
-      <div className="max-w-7xl mx-auto py-10">
+      <div className="max-w-7xl mx-auto px-4  sm:px-6 lg:px-0 pt-10">
         <div className="text-sm breadcrumbs mb-4 mt-10">
           <ul className="flex space-x-2">
             <li className="cursor-pointer hover:text-red-500" onClick={() => navigate('/')}>Home</li>

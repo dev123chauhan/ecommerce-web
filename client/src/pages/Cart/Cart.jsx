@@ -1,9 +1,6 @@
 import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchCart,
-  removeFromCart,
-} from "../../slice/CartSlice";
+import { fetchCart, removeFromCart } from "../../slice/CartSlice";
 import { Trash } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react"; 
@@ -176,13 +173,13 @@ const Cart = () => {
   }
 
   return (
-    <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300 min-h-screen">
+    <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300">
       <div className="container mx-auto px-4 py-8 mt-10 max-w-7xl sm:px-6 lg:px-8 xl:px-0">
         <div className="sm:hidden">
           {items.length > 0 ? (
             <div className="space-y-4">
               {items.map((item, index) => (
-                <div key={index} className="border rounded-lg p-4 space-y-3">
+                <div key={index} className="border dark:border-gray-700 mb-3 rounded-lg p-4 space-y-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
                       <img
@@ -214,7 +211,7 @@ const Cart = () => {
                       <input
                         type="text"
                         value={item.quantity}
-                        className="w-2 text-center dark:bg-gray-800 dark:border-gray-700"
+                        className="w-7 text-center dark:bg-gray-800 dark:border-gray-700"
                         readOnly
                       />
                       <button
@@ -223,7 +220,7 @@ const Cart = () => {
                         +
                       </button>
                     </div>
-                    <p className="font-medium">${item.totalPrice}</p>
+                    <p className="font-medium">{item.currency}{item.totalPrice}</p>
                   </div>
                 </div>
               ))}
@@ -313,35 +310,8 @@ const Cart = () => {
 
         {items.length > 0 && (
           <>
-            <div className="flex flex-col sm:flex-row justify-between gap-4 mb-6">
-              <button
-                type="button"
-                className="py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-500 focus:ring-4 focus:ring-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-              >
-                Return To Shop
-              </button>
-              <button
-                type="button"
-                className="py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-500 focus:ring-4 focus:ring-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-              >
-                Update Cart
-              </button>
-            </div>
 
             <div className="flex flex-col lg:flex-row gap-6">
-              <div className="w-full lg:w-1/2">
-                <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
-                  <input
-                    type="text"
-                    placeholder="Enter your coupon code"
-                    className="flex-1 px-4 py-2.5 border dark:border-gray-700 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:text-white text-base"
-                  />
-                  <button className="px-6 py-2.5 bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none text-base font-medium whitespace-nowrap">
-                    Apply Coupon
-                  </button>
-                </div>
-              </div>
-
               <div className="w-full lg:w-1/2">
                 <div className="border border-gray-300 dark:border-gray-700 rounded-lg p-6">
                   <h2 className="text-xl font-bold mb-4">Cart Total</h2>

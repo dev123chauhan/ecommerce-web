@@ -57,7 +57,7 @@ const Account = () => {
 
   return (
     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300">
-    <div className="min-h-screen  p-4 md:p-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 mt-10">
+    <div className="p-4 md:p-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 mt-10">
       <header className="flex justify-between items-center mb-8">
         <nav className="text-sm">
           <span>Home</span> / <span className="font-semibold">My Account</span>

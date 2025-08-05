@@ -7,7 +7,7 @@ import { TfiTwitter } from 'react-icons/tfi';
 export const   footerData = [
     {
       title: "Exclusive",
-      items: [
+      items: [  
         { type: "text", content: "Subscribe" },
         { type: "text", content: "Get 10% off your first order" },
         {

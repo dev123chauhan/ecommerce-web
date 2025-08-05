@@ -9,7 +9,7 @@ import {
   LaptopMinimal,
   Phone,
   Shirt,
-  Smartphone,
+  Smartphone, 
   Utensils,
 } from "lucide-react";
 
