@@ -36,7 +36,7 @@ const ProductSlider = () => {
     return (
       <div className="relative w-full bg-black overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative min-h-[350px] xs:min-h-[400px] sm:min-h-[450px] md:min-h-[500px]  py-8 sm:py-12 md:py-16">
+          <div className="relative min-h-[300px] xs:min-h-[350px] sm:min-h-[400px] md:min-h-[450px]  py-8 sm:py-12 md:py-16">
             <div className="flex flex-col md:flex-row h-full items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
               <div className="w-full md:w-1/2 space-y-6 text-center md:text-left">
                 <Skeleton.Avatar

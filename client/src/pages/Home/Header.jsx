@@ -125,16 +125,16 @@ const Header = () => {
               {isAuthenticated ? (
                 <AccountDropdown />
               ) : (
-                <div className="space-x-4">
+                <div className="flex items-center space-x-2">
                   <Link
                     to="/login"
-                    className="bg-red-500  text-white px-4 py-1.5 rounded-md hover:bg-red-600 transition-colors"
+                    className="bg-red-500  text-white px-3 py-1.5 rounded-md hover:bg-red-600 transition-colors whitespace-nowrap"
                   >
                     Login
                   </Link>
                   <Link
                     to="/signup"
-                    className="border border-red-500 text-red-500 px-3 py-1 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                    className="border border-red-500 text-red-500 px-2 py-1 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors whitespace-nowrap"
                   >
                     Sign Up
                   </Link>

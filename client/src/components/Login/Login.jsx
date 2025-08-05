@@ -126,7 +126,7 @@ const Login = () => {
   return (
     <div className="flex flex-col md:flex-row  bg-blue-50">
       <AuthImage />
-      <div className="w-full md:w-1/2 flex items-center justify-center p-8">
+      <div className="w-full md:w-1/2 flex items-center justify-center p-8 h-screen">
         <div className="w-full max-w-md">
           <Link className="flex items-center gap-2 py-3 text-red-500" to="/">
             <ArrowLeft />
