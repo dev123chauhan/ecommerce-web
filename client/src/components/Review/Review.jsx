@@ -66,7 +66,7 @@ const Review = () => {
     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300">
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold  mb-4 mt-20">Customer Reviews</h1>
+          <h1 className="text-3xl font-bold  mb-4 mt-10">Customer Reviews</h1>
 
           <div className="flex items-center mb-6">
             <div className="flex items-center">
@@ -87,7 +87,7 @@ const Review = () => {
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   selectedFilter === filter
                     ? "bg-red-500 text-white"
-                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                    : "bg-gray-200 dark:bg-gray-700 dark:text-white text-gray-700 hover:bg-gray-300"
                 }`}
               >
                 {filter}
@@ -100,18 +100,23 @@ const Review = () => {
           {reviews.map((review) => (
             <div
               key={review.id}
-              className="border border-gray-200 rounded-lg p-6 shadow-sm"
+              className="border border-gray-300 dark:border-gray-700 rounded-lg p-6 shadow-sm"
             >
-              <div className="flex justify-between items-center mb-4">
-                <div className="flex items-center">
-                  <span className="font-semibold mr-2">{review.username}</span>
-                  {review.verified && (
-                    <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
-                      Verified Purchase
-                    </span>
-                  )}
+              <div className="mb-4">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                  <div className="flex items-center">
+                    <span className="font-semibold">{review.username}</span>
+                  </div>
+
+                  <div className="flex items-center justify-between sm:justify-end gap-2">
+                    <span className="text-gray-500 text-sm">{review.date}</span>
+                    {review.verified && (
+                      <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full whitespace-nowrap">
+                        Verified Purchase
+                      </span>
+                    )}
+                  </div>
                 </div>
-                <span className="text-gray-500 text-sm">{review.date}</span>
               </div>
 
               <div className="flex mb-4">{renderStars(review.rating)}</div>

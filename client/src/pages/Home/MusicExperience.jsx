@@ -64,7 +64,7 @@ const MusicExperience = () => {
           <h3 className="text-green-400 text-sm uppercase mb-2">Categories</h3>
           <h2 className="text-4xl font-bold mb-6">Enhance Your Music Experience</h2>
           <CountdownTimer {...timeLeft} />
-          <button className="mt-8 bg-green-400 text-black font-bold py-3 px-8 rounded-full hover:bg-green-500 transition duration-300">
+          <button onClick={()=>window.open("https://in.jbl.com/, _blank")} className="mt-8 bg-green-400 text-gray-700 font-bold py-3 px-8 rounded-full hover:bg-green-500 transition duration-300">
             Buy Now!
           </button>
         </div>

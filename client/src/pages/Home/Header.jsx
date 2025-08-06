@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Menu, Moon, Search, Sun, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { ThemeContext } from "../../context/ThemeContextProvider";
 import AccountDropdown from "../Account/AccountDropdown";
 
@@ -51,20 +51,6 @@ const Header = () => {
             </ul>
 
             <div className="flex items-center space-x-6">
-              {isAuthenticated && (
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="What are you looking for"
-                    className="pl-3 pr-8 py-1.5 border rounded-md focus:outline-none focus:ring-1 focus:ring-gray-400 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
-                  />
-                  <Search
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400"
-                    size={18}
-                  />
-                </div>
-              )}
-
               <button
                 onClick={toggleTheme}
                 className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -155,26 +141,11 @@ const Header = () => {
               <X
                 onClick={toggleSidebar}
                 className="cursor-pointer dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full p-1 transition-colors"
-                size={28}
+                size={38}
               />
             </div>
 
             <div className="p-6">
-              {isAuthenticated && (
-                <div className="mb-8">
-                  <div className="relative">
-                    <input
-                      type="text"
-                      placeholder="What are you looking for"
-                      className="w-full pl-3 pr-10 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
-                    />
-                    <Search
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                      size={20}
-                    />
-                  </div>
-                </div>
-              )}
 
               <nav className="mb-8">
                 <ul className="space-y-6">

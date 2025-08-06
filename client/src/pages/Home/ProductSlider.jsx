@@ -14,7 +14,6 @@ const ProductSlider = () => {
   const { featuredProducts, loading, error } = useSelector(
     (state) => state.productBanner
   );
-
   useEffect(() => {
     dispatch(fetchFeaturedProducts());
   }, [dispatch]);
@@ -76,7 +75,7 @@ const ProductSlider = () => {
               </div>
 
               <div className="w-full md:w-1/2 flex justify-center items-center px-4 sm:px-6 md:px-8">
-                <Skeleton.Image active style={{ width: 300, height: 300 }} />
+                <Skeleton.Image active  />
               </div>
             </div>
 

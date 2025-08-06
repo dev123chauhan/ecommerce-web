@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Star, Minus, Plus, Heart } from 'lucide-react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../../slice/CartSlice';
+import {  useSelector } from 'react-redux';
 import ProductRecommendations from '../../pages/Wishlist/RecommendedProduct';
 const ProductDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const favorites = useSelector((state) => state?.wishlist?.favorites || {});
   const { product } = location.state || {};
 
@@ -31,21 +29,9 @@ const ProductDetail = () => {
   const safeRating = typeof product.rating === 'number' && isFinite(product.rating) 
     ? Math.min(Math.max(0, Math.floor(product.rating)), 5) 
     : 0;
-
-  const handleAddToCart = () => {
-    if (!productId) return;
-    dispatch(
-      addToCart({
-        id: productId,
-        name: product.name,
-        price: product.price,
-        image: product.image,
-        quantity: quantity,
-        color: selectedColor,
-      })
-    );
+  const handleCheckout = () => {
+    navigate("/billing");
   };
-
   return (
     <div className='dark:bg-gray-900 dark:text-white transition-colors duration-300'>
       <div className="max-w-7xl mx-auto px-4  sm:px-6 lg:px-0 pt-10">
@@ -140,7 +126,6 @@ const ProductDetail = () => {
               </div>
               <button
                 className="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-600 transition-colors flex-grow"
-                onClick={handleAddToCart}
               >
                 Add to Cart
               </button>
@@ -155,7 +140,7 @@ const ProductDetail = () => {
               </button>
             </div>
 
-            <button className='w-full rounded-lg bg-black text-white p-4 text-bold'>Buy Now</button>
+            <button  onClick={handleCheckout} className='w-full rounded-lg bg-black text-white p-4 text-bold'>Buy Now</button>
           </div>
         </div>
       </div>

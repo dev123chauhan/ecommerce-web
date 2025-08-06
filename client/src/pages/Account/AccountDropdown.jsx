@@ -3,9 +3,8 @@ import { User, ShoppingBag, Star, LogOut, Heart, ShoppingCart } from "lucide-rea
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../action/AuthAction";
-import { fetchCart } from "../../slice/CartSlice"; // Update with correct path
-import { toast } from 'sonner';
-
+import { fetchCart } from "../../slice/CartSlice";
+import { toast } from "sonner";
 const AccountDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
@@ -18,15 +17,12 @@ const AccountDropdown = () => {
 
   const handleLogout = () => {
     dispatch(logoutUser());
-    navigate('/login');
+    navigate("/login");
     toast.success("Successfully logged out!");
   };
-
-  // Fetch cart data when component mounts if user is logged in
   useEffect(() => {
     if (user?.id && totalQuantity === 0) {
-      // Check if we have cart data in localStorage first
-      const savedCart = localStorage.getItem('cart');
+      const savedCart = localStorage.getItem("cart");
       if (!savedCart) {
         dispatch(fetchCart(user.id));
       }
@@ -41,32 +37,31 @@ const AccountDropdown = () => {
     };
 
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
 
   const menuItems = [
-    { icon: <User size={18} />, text: "Manage My Account", path: "/account" },
     { icon: <ShoppingBag size={18} />, text: "My Order", path: "/order" },
     { icon: <Star size={18} />, text: "My Reviews", path: "/review" },
     { icon: <LogOut size={18} />, text: "Logout", onClick: handleLogout },
   ];
 
-  const wishlistItems = useSelector(state => state.wishlist.items);
+  const wishlistItems = useSelector((state) => state.wishlist.items);
   const totalWishlistItems = wishlistItems.length;
 
   return (
     <div className="flex items-center gap-2">
       <div className="relative">
         <Heart
-          onClick={() => navigate('/wishlist')}
+          onClick={() => navigate("/wishlist")}
           className="cursor-pointer transition-colors dark:text-white"
           size={25}
-        /> 
+        />
         {totalWishlistItems > 0 && (
           <span className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">
             {totalWishlistItems}
@@ -76,7 +71,7 @@ const AccountDropdown = () => {
 
       <div className="relative">
         <ShoppingCart
-          onClick={() => navigate('/cart')}
+          onClick={() => navigate("/cart")}
           className="cursor-pointer transition-colors dark:text-white"
           size={25}
         />

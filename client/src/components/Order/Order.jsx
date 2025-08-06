@@ -131,7 +131,7 @@ const Order = () => {
 
     return (
       <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300">
-        <div className="min-h-screen py-4 sm:py-8 max-w-7xl mx-auto px-4">
+        <div className="py-4 sm:py-8 max-w-7xl mx-auto px-4">
           <button 
             onClick={handleBackToList}
             className="mb-6 flex items-center text-red-500 hover:text-red-600"
@@ -268,7 +268,7 @@ const Order = () => {
   if (orders.length === 0) {
     return (
       <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300">
-        <div className="min-h-screen py-12  max-w-7xl mx-auto">
+        <div className="py-12  max-w-7xl mx-auto">
           <h1 className="text-2xl font-bold mb-8 mt-10  text-center sm:text-left">My Orders</h1>
           
           <div className="flex flex-col items-center justify-center py-16 px-4">
