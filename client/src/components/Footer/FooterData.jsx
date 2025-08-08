@@ -27,9 +27,7 @@ export const   footerData = [
       ]
     },
     {
-      title: "Account",
      items: [
-        { type: "link", content: "My Account", path: "/account" },
         { type: "link", content: "Cart", path: "/cart" },
         { type: "link", content: "Wishlist", path: "/wishlist" },
         { type: "link", content: "Shop", path: "/shop" }

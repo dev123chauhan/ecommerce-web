@@ -85,11 +85,13 @@ const Header = () => {
           </div>
 
           <div className="md:hidden flex items-center justify-between px-4 py-4">
-            <Menu
-              onClick={toggleSidebar}
-              className="cursor-pointer dark:text-white"
-              size={24}
-            />
+            <button onClick={toggleSidebar} className="cursor-pointer dark:text-white">
+              {isOpen ? (
+                <X size={24} />
+              ) : (
+                <Menu size={24} />
+              )}
+            </button>
 
             <Link to="/" className="text-xl font-bold dark:text-white">
               ShopVibe
@@ -129,52 +131,33 @@ const Header = () => {
             </div>
           </div>
 
+          {/* Mobile dropdown menu */}
           <div
-            className={`fixed top-0 left-0 h-full w-full bg-white dark:bg-gray-900 shadow-2xl transform transition-transform duration-300 ease-in-out z-50 ${
-              isOpen ? "translate-x-0" : "-translate-x-full"
+            className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+              isOpen
+                ? "max-h-96 opacity-100 pb-4 border-t border-gray-200 dark:border-gray-700"
+                : "max-h-0 opacity-0 pb-0"
             }`}
           >
-            <div className="flex items-center justify-between p-6 border-b dark:border-gray-700">
-              <Link to="/" className="text-2xl font-bold dark:text-white">
-                ShopVibe
-              </Link>
-              <X
-                onClick={toggleSidebar}
-                className="cursor-pointer dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full p-1 transition-colors"
-                size={38}
-              />
-            </div>
-
-            <div className="p-6">
-
-              <nav className="mb-8">
-                <ul className="space-y-6">
-                  {navItems.map((item) => (
-                    <li key={item.name}>
-                      <Link
-                        to={item.path}
-                        className={`block text-lg font-medium py-2 px-4 rounded-lg transition-all duration-200 ${
-                          location.pathname === item.path
-                            ? "bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400 border-l-4 border-red-500"
-                            : "text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-red-500"
-                        }`}
-                        onClick={toggleSidebar}
-                      >
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
+            <nav className="flex flex-col space-y-3 pt-4 px-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={`text-base py-2 transform transition-all duration-200 hover:translate-x-2 ${
+                    location.pathname === item.path
+                      ? "text-red-600 font-medium"
+                      : "text-gray-700 dark:text-gray-200 hover:text-red-500"
+                  }`}
+                  onClick={toggleSidebar}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </nav>
           </div>
 
-          {isOpen && (
-            <div
-              className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
-              onClick={toggleSidebar}
-            ></div>
-          )}
+
         </nav>
       </header>
     </>

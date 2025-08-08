@@ -11,7 +11,7 @@ const ProductSlider = () => {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const dispatch = useDispatch();
-  const { featuredProducts, loading, error } = useSelector(
+  const { featuredProducts, error,loading } = useSelector(
     (state) => state.productBanner
   );
   useEffect(() => {
@@ -35,7 +35,7 @@ const ProductSlider = () => {
     return (
       <div className="relative w-full bg-black overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative min-h-[300px] xs:min-h-[350px] sm:min-h-[400px] md:min-h-[450px]  py-8 sm:py-12 md:py-16">
+          <div className="relative min-h-[300px] xs:min-h-[300px] sm:min-h-[350px] md:min-h-[450px]  py-8 sm:py-12 md:py-16">
             <div className="flex flex-col md:flex-row h-full items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
               <div className="w-full md:w-1/2 space-y-6 text-center md:text-left">
                 <Skeleton.Avatar
@@ -48,28 +48,28 @@ const ProductSlider = () => {
                 <Skeleton.Input
                   active
                   size="small"
-                  style={{ width: 100 }}
+                
                   className="mx-auto md:mx-0"
                 />
 
                 <Skeleton.Input
                   active
                   size="large"
-                  style={{ width: "80%" }}
+                 
                   className="mx-auto md:mx-0"
                 />
 
                 <Skeleton.Input
                   active
                   size="large"
-                  style={{ width: "60%" }}
+                 
                   className="mx-auto md:mx-0"
                 />
 
                 <Skeleton.Button
                   active
                   size="default"
-                  style={{ width: 120 }}
+                 
                   className="mx-auto md:mx-0"
                 />
               </div>
@@ -86,7 +86,6 @@ const ProductSlider = () => {
                   active
                   size="small"
                   shape="circle"
-                  style={{ width: 12, height: 12 }}
                 />
               ))}
             </div>
@@ -125,7 +124,7 @@ const ProductSlider = () => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          {/* Main content area */}
+         
           <div className="flex flex-col md:flex-row h-full items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 mb-8 md:mb-12">
             <div className="w-full md:w-1/2 space-y-3 sm:space-y-4 md:space-y-6 text-center md:text-left">
               <div className="w-10 h-10 mx-auto md:mx-0 flex items-center space-x-2">
