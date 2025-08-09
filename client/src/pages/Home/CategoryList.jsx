@@ -12,7 +12,6 @@ const CategoryList = () => {
     (state) => state.shop
   );
   const { data: allCategories, isLoading: categoriesLoading } = useGetCategoriesQuery();
-
   const filteredCategoryNames = [
     "Woman's Fashion",
     "Men's Fashion",
@@ -24,6 +23,7 @@ const CategoryList = () => {
     "Groceries & Pets",
     "Health & Beauty"
   ];
+  
   const getFilteredCategories = () => {
     if (!allCategories) return {};
     
@@ -46,6 +46,7 @@ const CategoryList = () => {
         : [...prev, categoryName]
     );
   };
+  
   const handleCategoryChange = (category) => {
     const newCategories = selectedCategories.includes(category)
       ? selectedCategories.filter(c => c !== category)
@@ -75,20 +76,25 @@ const CategoryList = () => {
       
     dispatch(setSelectedSubCategories(newSubCategories));
     
-
     const bestSellingSection = document.getElementById('best-selling');
     if (bestSellingSection) {
       bestSellingSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-
   if (categoriesLoading || !allCategories) {
     return (
-      <div className="w-full pr-4 py-2">
-        {[...Array(12)].map((_, i) => (
+      <div className="w-full pr-2 sm:pr-4 py-4">
+        {[...Array(9)].map((_, i) => (
           <div key={i} className="mb-2">
-            <Skeleton.Input active />
+            <Skeleton.Input 
+              active 
+              style={{ 
+                width: '100%',
+                maxWidth: '100%'
+              }}
+              className="!w-full !h-8 sm:!h-10"
+            />
           </div>
         ))}
       </div>
@@ -96,7 +102,7 @@ const CategoryList = () => {
   }
 
   return (
-    <div className="w-full pr-4 py-2">
+    <div className="w-full pr-2 sm:pr-4 py-2">
       <ul>
         {Object.entries(categories).map(([category, subCategories], index) => (
           <li key={index}>
@@ -113,14 +119,14 @@ const CategoryList = () => {
                     className="w-4 h-4 rounded accent-black"
                     onClick={(e) => e.stopPropagation()}
                   />
-                  <span>
+                  <span className="text-sm sm:text-base">
                     {category}
                   </span>
                 </div>
                 <div>
                   {expandedCategories.includes(category)
-                    ? <ChevronDown size={20} />
-                    : <ChevronRight size={20} />
+                    ? <ChevronDown size={18} className="sm:w-5 sm:h-5" />
+                    : <ChevronRight size={18} className="sm:w-5 sm:h-5" />
                   }
                 </div>
               </div>
@@ -132,7 +138,7 @@ const CategoryList = () => {
                     : 'max-h-0 opacity-0'
                 }`}
               >
-                <ul className="ml-6">
+                <ul className="ml-4 sm:ml-6">
                   {subCategories.map((subCategory, subIndex) => (
                     <li
                       key={subIndex}
@@ -145,7 +151,7 @@ const CategoryList = () => {
                           onChange={() => handleSubCategoryChange(subCategory)}
                           className="w-4 h-4 rounded accent-black"
                         />
-                        <span>
+                        <span className="text-sm sm:text-base">
                           {subCategory}
                         </span>
                       </div>

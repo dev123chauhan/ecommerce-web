@@ -3,11 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { createOrder } from "../../slice/OrderSlice";
-import {
-  createRazorpayOrder,
-  getRazorpayKey,
-  verifyPayment,
-} from "../../slice/PaymentSlice";
+import { createRazorpayOrder, getRazorpayKey, verifyPayment } from "../../slice/PaymentSlice";
 import BillingForm from "./BillingForm";
 import OrderSummary from "../OrderSummary/OrderSummary"
 
