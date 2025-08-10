@@ -347,7 +347,6 @@ const Cart = () => {
           </>
         )}
       </div>
-      {/* <ProductRecommendations /> */}
     </div>
   );
 };

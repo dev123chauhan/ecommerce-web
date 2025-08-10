@@ -175,7 +175,7 @@ const ProductSlider = () => {
             </div>
           </div>
 
-          {/* Dots indicator - positioned at bottom and always visible */}
+
           <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2">
             <div className="flex justify-center space-x-2 sm:space-x-3">
               {featuredProducts.map((_, index) => (

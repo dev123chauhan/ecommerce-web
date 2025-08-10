@@ -47,7 +47,6 @@ export const registerUser = (userData) => async (dispatch) => {
     const response = await axios.post(`${API_URL}/users/register`, userData);
     console.log(response)
     dispatch(registerSuccess());
-    // Automatically login after successful registration
     dispatch(loginUser({ email: userData.email, password: userData.password }));
   } catch (error) {
     dispatch(registerFailure(error.response?.data?.message || 'Registration failed'));

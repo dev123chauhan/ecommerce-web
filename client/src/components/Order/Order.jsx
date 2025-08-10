@@ -264,7 +264,6 @@ const Order = () => {
     );
   }
 
-  // No orders found state
   if (orders.length === 0) {
     return (
       <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300">

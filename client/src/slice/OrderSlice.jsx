@@ -56,7 +56,7 @@ const orderSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // Create order
+    
       .addCase(createOrder.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -70,7 +70,7 @@ const orderSlice = createSlice({
         state.loading = false;
         state.error = action.payload?.message || "Failed to create order";
       })
-      // Get order by ID
+  
       .addCase(getOrderById.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -83,7 +83,7 @@ const orderSlice = createSlice({
         state.loading = false;
         state.error = action.payload?.message || "Failed to fetch order";
       })
-      // Get user orders
+      
       .addCase(getUserOrders.pending, (state) => {
         state.loading = true;
         state.error = null;

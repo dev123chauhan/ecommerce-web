@@ -1,11 +1,10 @@
-/* @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"); */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(255, 60, 60) !important; /* Blue scrollbar thumb */
+  background: rgb(255, 60, 60) !important; 
 }
 ::-webkit-scrollbar {
   width: 8px;
@@ -62,9 +61,3 @@
 .max-w-7xl {
   max-width: 85rem !important;
 }
-/* @media(max-width:371px){
-  .buttons{
-    font-size: 0.6rem !important;
-    gap: 0px !important;
-  }
-} */

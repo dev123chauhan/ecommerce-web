@@ -59,8 +59,6 @@ const cartController = {
       if (!cart) {
         return res.status(404).json({ message: "Cart not found" });
       }
-
-      // Find the index of the item to remove
       const itemIndex = cart.items.findIndex(
         (item) =>
           item.productId && item.productId.toString() === req.params.productId

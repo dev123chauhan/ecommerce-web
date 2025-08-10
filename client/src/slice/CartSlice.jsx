@@ -11,8 +11,6 @@ const handleAsyncError = (error) => {
   const message = error.response?.data?.message || error.message || 'An error occurred';
   throw new Error(message);
 };
-
-// Helper functions for localStorage
 const saveCartToStorage = (cartData) => {
   try {
     localStorage.setItem('cart', JSON.stringify(cartData));
@@ -80,7 +78,7 @@ const updateCartState = (state, action) => {
   state.totalAmount = action.payload.totalAmount || 0;
   state.totalQuantity = calculateTotalQuantity(action.payload.items);
   
-  // Save to localStorage whenever cart is updated
+
   saveCartToStorage({
     items: state.items,
     totalAmount: state.totalAmount,
@@ -98,7 +96,6 @@ const handleRejected = (state, action) => {
   state.error = action.error.message;
 };
 
-// Load initial state from localStorage
 const initialCartState = loadCartFromStorage();
 
 const cartSlice = createSlice({
@@ -121,16 +118,16 @@ const cartSlice = createSlice({
       state.loading = false;
       state.error = null;
       
-      // Clear localStorage when cart is reset
+
       localStorage.removeItem('cart');
     },
-    // New reducer to sync cart from server without localStorage save
+
     syncCartFromServer: (state, action) => {
       state.items = action.payload.items || [];
       state.totalAmount = action.payload.totalAmount || 0;
       state.totalQuantity = calculateTotalQuantity(action.payload.items);
       
-      // Save to localStorage when syncing from server
+
       saveCartToStorage({
         items: state.items,
         totalAmount: state.totalAmount,
