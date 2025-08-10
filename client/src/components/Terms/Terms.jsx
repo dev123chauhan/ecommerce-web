@@ -49,10 +49,10 @@ const Terms = () => {
 
   return (
     <div className='dark:bg-gray-900 dark:text-white transition-colors duration-300'>
-    <div className="min-h-screen  py-12 px-4 sm:px-6 lg:px-8 pt-20">
+    <div className="py-12 px-4 sm:px-6 lg:px-8 pt-20">
       <div className="max-w-7xl mx-auto  shadow-xl rounded-lg overflow-hidden flex flex-col md:flex-row">
     
-        <div className="w-full md:w-64 p-6 border-r  border-gray-200">
+        <div className="w-full md:w-64  border-r  border-gray-200 dark:border-gray-700">
           <h2 className="text-2xl font-bold mb-6 flex items-center">
             <Scroll className="mr-3" size={24} />
             Terms of Use

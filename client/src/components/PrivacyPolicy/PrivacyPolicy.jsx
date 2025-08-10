@@ -68,13 +68,13 @@ const PrivacyPolicy = ({
   };
 
   return (
-    <div className='dark:bg-gray-900 dark:text-white transition-colors duration-300 pt-20'>
+    <div className='dark:bg-gray-900 pb-6 dark:text-white transition-colors duration-300 pt-20'>
     <div className="container mx-auto  max-w-7xl px-4  sm:px-6 lg:px-0">
       <h1 className="text-3xl font-bold mb-8">
         Privacy Policy
       </h1>
       
-      <div className="shadow-md rounded-lg p-6">
+      <div className="rounded-lg">
         <p className="mb-6">
           Last Updated: {lastUpdated}
         </p>

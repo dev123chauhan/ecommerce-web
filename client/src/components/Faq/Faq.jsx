@@ -34,7 +34,7 @@ FAQItem.propTypes = {
 };
 
 const FAQSection = ({ title, items }) => (
-  <div className="shadow-md rounded-lg p-6 mb-6">
+  <div className="shadow-md rounded-lg  mb-6">
     <h2 className="text-2xl font-bold mb-6 dark:border-gray-700 border-b pb-3">{title}</h2>
     {items.map((faq, index) => (
       <FAQItem key={index} question={faq.question} answer={faq.answer} />
@@ -103,7 +103,7 @@ const Faq = () => {
 
   return (
     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300">
-      <div className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="pt-20 pb-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-4xl font-extrabold  mb-12">
             Frequently Asked Questions

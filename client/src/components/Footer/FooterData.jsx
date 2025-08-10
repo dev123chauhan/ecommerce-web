@@ -27,13 +27,6 @@ export const   footerData = [
       ]
     },
     {
-     items: [
-        { type: "link", content: "Cart", path: "/cart" },
-        { type: "link", content: "Wishlist", path: "/wishlist" },
-        { type: "link", content: "Shop", path: "/shop" }
-      ]
-    },
-    {
       title: "Quick Link",
       items: [
         { type: "link", content: "Privacy Policy", path: "/privacy" },
