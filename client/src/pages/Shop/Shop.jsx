@@ -5,12 +5,7 @@ import noproductfound from "../../assets/Not-found.gif";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "../../components/Modal/Modal";
 import { toast } from "sonner";
-import {
-  setSearchTerm,
-  setSelectedCategories,
-  setSelectedSubCategories,
-  setProducts,
-} from "../../slice/ShopSlice";
+import { setSearchTerm, setSelectedCategories, setSelectedSubCategories, setProducts} from "../../slice/ShopSlice";
 import {
   useGetProductsQuery,
   useGetCategoriesQuery,
@@ -375,7 +370,7 @@ const Shop = () => {
 
             <div className="md:w-3/4 lg:w-4/5">
               {productsError && (
-                <div className="bg-red-100 text-red-700 p-4 mb-6 rounded">
+                <div className="bg-red-100 text-red-500 p-4 mb-6 rounded">
                   Error: {productsError}
                 </div>
               )}
@@ -423,7 +418,7 @@ const Shop = () => {
                                 (1 - product.discountPercentage / 100)
                               ).toFixed(2)}
                             </span>
-                            <span className="bg-red-100 text-red-600 px-2 py-1 rounded-full text-sm font-medium">
+                            <span className="bg-red-100 text-red-500 px-2 py-1 rounded-full text-sm font-medium">
                               {product.discountPercentage}% off
                             </span>
                           </div>
@@ -437,7 +432,7 @@ const Shop = () => {
                           </div>
                           <button
                             onClick={() => handleAddToCart(product)}
-                            className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors duration-200 w-full"
+                            className="secondaryColor text-white px-4 py-2 rounded-lg  transition-colors duration-200 w-full"
                           >
                             Add to Cart
                           </button>
@@ -496,7 +491,7 @@ const Shop = () => {
             </button>
             <button
               onClick={handleLoginRedirect}
-              className="px-4 py-2 bg-red-500 text-white rounded-md flex items-center justify-center hover:bg-red-600 transition-colors"
+              className="px-4 py-2 primaryColor text-white rounded-md flex items-center justify-center  transition-colors"
             >
               <LogIn className="mr-2" size={20} />
               Go to Login

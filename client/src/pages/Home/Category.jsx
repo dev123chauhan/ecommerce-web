@@ -7,7 +7,7 @@ const CategoryCard = ({ name, icon, isActive, onClick }) => (
   <div
     onClick={onClick}
     className={`flex flex-col items-center justify-center p-4 rounded-lg transition-colors duration-300 hover:cursor-pointer
-      ${isActive ? "bg-red-500 text-white" : ""}`}
+      ${isActive ? "primaryColor text-white" : ""}`}
   >
     <div className={`w-16 h-16 flex items-center justify-center mb-2 ${isActive ? "text-white" : ""}`}>
       <span>{icon}</span>
@@ -43,7 +43,7 @@ const Category = () => {
 
   return (
     <>
-      <div className="bg-red-500 text-white py-2 px-4 rounded-t-lg inline-block mb-2">
+      <div className="primaryColor text-white py-2 px-4 rounded-t-lg inline-block mb-2">
         <span className="font-bold">Categories</span>
       </div>
 

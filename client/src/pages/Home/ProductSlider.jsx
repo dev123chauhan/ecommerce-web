@@ -33,7 +33,7 @@ const ProductSlider = () => {
 
   if (loading) {
     return (
-      <div className="relative w-full bg-black overflow-hidden">
+      <div className="relative w-full secondaryColor  overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative min-h-[300px] xs:min-h-[300px] sm:min-h-[350px] md:min-h-[450px]  py-8 sm:py-12 md:py-16">
             <div className="flex flex-col md:flex-row h-full items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
@@ -97,7 +97,7 @@ const ProductSlider = () => {
 
   if (error) {
     return (
-      <div className="flex justify-center items-center min-h-[400px] bg-black">
+      <div className="flex justify-center items-center min-h-[400px] secondaryColor">
         <div className="text-white text-center">
           <p className="text-xl">Something went wrong!</p>
           <p className="text-sm mt-2">{error}</p>
@@ -108,7 +108,7 @@ const ProductSlider = () => {
 
   if (featuredProducts.length === 0) {
     return (
-      <div className="flex justify-center items-center min-h-[400px] bg-black">
+      <div className="flex justify-center items-center min-h-[400px] secondaryColor">
         <div className="text-white text-center">
           <p className="text-xl">No featured products available</p>
         </div>
@@ -117,7 +117,7 @@ const ProductSlider = () => {
   }
 
   return (
-    <div className="relative w-full bg-black overflow-hidden">
+    <div className="relative w-full secondaryColor overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className="relative min-h-[300px] xs:min-h-[350px] sm:min-h-[400px] md:min-h-[450px] py-8 sm:py-12 md:py-16"
@@ -184,7 +184,7 @@ const ProductSlider = () => {
                   className={`h-2 sm:h-3 rounded-full transition-all duration-300 
                     ${
                       index === activeSlide
-                        ? "bg-red-500 w-4 sm:w-6"
+                        ? "primaryColor w-4 sm:w-6"
                         : "bg-gray-500 hover:bg-gray-300 w-2 sm:w-3"
                     }`}
                   onClick={() => setActiveSlide(index)}

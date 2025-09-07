@@ -1,10 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-color: #DB4444 !important;
+  --secondary-color: #000000 !important;
+}
+.primaryColor{
+  background-color: var(--primary-color) !important;
+}
+.secondaryColor{
+  background-color: var(--secondary-color) !important;
+}
 ::-webkit-scrollbar-thumb {
-  background: rgb(255, 60, 60) !important; 
+  background: var(--primary-color) !important;
 }
 ::-webkit-scrollbar {
   width: 8px;
@@ -22,7 +32,7 @@
   -ms-user-select: none;
 }
 .scrollToTop {
-  background-color: rgb(255, 60, 60) !important;
+  background-color: var(--primary-color)!important;
   border-radius: 50% !important;
 }
 .upArrow {
@@ -31,7 +41,7 @@
   margin: auto !important;
 }
 .required {
-  color: red !important;
+  color: var(--primary-color) !important;
 }
 
 .slide-in {

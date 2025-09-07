@@ -56,14 +56,14 @@ const AccountDropdown = () => {
 
   return (
     <div className="flex items-center gap-2">
-      <div className="relative">
+      <div className="relative">  
         <Heart
           onClick={() => navigate("/wishlist")}
           className="cursor-pointer transition-colors dark:text-white"
           size={25}
         />
         {totalWishlistItems > 0 && (
-          <span className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">
+          <span className="absolute -top-1 -right-1 primaryColor text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">
             {totalWishlistItems}
           </span>
         )}
@@ -76,7 +76,7 @@ const AccountDropdown = () => {
           size={25}
         />
         {totalQuantity > 0 && (
-          <div className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+          <div className="absolute -top-1 -right-1 primaryColor text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
             {totalQuantity}
           </div>
         )}

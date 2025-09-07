@@ -13,7 +13,7 @@ const AnnouncementBanner = ({ onVisibilityChange }) => {
   if (!isVisible) return null;
 
   return (
-    <div className="relative bg-black text-white px-4 py-3">
+    <div className="relative secondaryColor text-white px-4 py-3">
       <div className="flex items-center justify-center gap-x-6 max-w-screen-xl mx-auto">
         <div className="md:hidden text-center text-sm flex-1">
           <p>Summer Sale For All Swim Suits - OFF 50%!</p>

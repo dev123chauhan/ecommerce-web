@@ -48,7 +48,7 @@ const ProductCard = ({
           onError={() => setImageError(true)}
         />
         {product.discountPercentage && (
-          <span className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs sm:text-sm">
+          <span className="absolute top-2 left-2 primaryColo text-white px-2 py-1 rounded text-xs sm:text-sm">
             -{product.discountPercentage}%
           </span>
         )}
@@ -95,7 +95,7 @@ const ProductCard = ({
         </div>
         <button
           onClick={() => onAddToCart(product)}
-          className="w-full bg-black text-white py-2 rounded-md flex items-center justify-center hover:bg-gray-800 transition-colors mt-2"
+          className="w-full secondaryColor text-white py-2 rounded-md flex items-center justify-center transition-colors mt-2"
         >
           <ShoppingCart className="w-4 h-4 mr-2" />
           Add To Cart
@@ -276,7 +276,7 @@ const BestSellingProduct = () => {
     <div id="best-selling" className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-6">
         <div>
-          <div className="bg-red-500 text-white py-1 px-3 rounded-full inline-block text-sm mb-2">
+          <div className="primaryColor text-white py-1 px-3 rounded-full inline-block text-sm mb-2">
             This Month
           </div>
           <h2 className="text-2xl font-bold">Best Selling Products</h2>
@@ -286,7 +286,7 @@ const BestSellingProduct = () => {
       {productsLoading ? (
         <SkeletonLoader />
       ) : productsError ? (
-        <div className="bg-red-100 text-red-700 p-4 mb-6 rounded">
+        <div className="bg-red-100 text-red-500 p-4 mb-6 rounded">
           Error: {productsError.toString()}
         </div>
       ) : filteredProducts.length === 0 ? (
@@ -318,7 +318,7 @@ const BestSellingProduct = () => {
           <button
             ref={viewAllButtonRef}
             onClick={showAll ? handleShowLess : handleViewAll}
-            className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition duration-300"
+            className="primaryColor text-white py-2 px-4 rounded-md  transition duration-300"
           >
             {showAll ? "Show Less" : "View More"}
           </button>
@@ -361,7 +361,7 @@ const BestSellingProduct = () => {
             </button>
             <button
               onClick={handleLoginRedirect}
-              className="px-4 py-2 bg-red-500 text-white rounded-md flex items-center justify-center hover:bg-red-600 transition-colors"
+              className="px-4 py-2 primaryColor text-white rounded-md flex items-center justify-center  transition-colors"
             >
               <LogIn className="mr-2" size={20} />
               Go to Login

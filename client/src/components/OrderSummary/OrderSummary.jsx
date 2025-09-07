@@ -110,7 +110,7 @@ const OrderSummary = ({
         <button
           onClick={onPlaceOrder}
           disabled={loading || !selectedPaymentMethod}
-          className={`w-full py-3 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors font-semibold text-sm ${
+          className={`w-full py-3 px-4 primaryColor text-white rounded-lg  transition-colors font-semibold text-sm ${
             loading || !selectedPaymentMethod 
               ? "opacity-70 cursor-not-allowed" 
               : "hover:shadow-lg transform hover:-translate-y-0.5"

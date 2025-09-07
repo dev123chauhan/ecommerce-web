@@ -85,7 +85,7 @@ const ExploreProduct = () => {
     <div className="max-w-7xl mx-auto">
       <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
         <div className="mb-4 sm:mb-0">
-          <div className="bg-red-500 text-white py-1 px-3 rounded-full inline-block text-sm mb-2">
+          <div className="primaryColor text-white py-1 px-3 rounded-full inline-block text-sm mb-2">
             Our Products
           </div>
           <h2 className="text-2xl font-bold">Explore Our Products</h2>
@@ -115,7 +115,7 @@ const ExploreProduct = () => {
       </div>
 
       {error ? (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+        <div className="bg-red-100 border border-red-400 text-red-500 px-4 py-3 rounded mb-4">
           Error: {error}
         </div>
       ) : (

@@ -137,7 +137,7 @@ const ProductRecommendations = () => {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center">
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300"
+          className="fixed inset-0 secondaryColor bg-opacity-50 transition-opacity duration-300"
           onClick={onClose}
         />
         <div
@@ -161,7 +161,7 @@ const ProductRecommendations = () => {
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-bold">Just For You</h2>
         <button 
-          className="bg-red-500 text-white py-2 px-4 rounded-md"
+          className="primaryColor text-white py-2 px-4 rounded-md"
           onClick={handleSeeAll}
         >
           See All
@@ -205,7 +205,7 @@ const ProductRecommendations = () => {
                     />
                   </button>
                   {product.discount && (
-                    <span className="absolute bottom-2 left-2 bg-red-500 text-white px-2 py-1 rounded-md text-sm">
+                    <span className="absolute bottom-2 left-2 primaryColor text-white px-2 py-1 rounded-md text-sm">
                       {product.discount}
                     </span>
                   )}
@@ -231,7 +231,7 @@ const ProductRecommendations = () => {
                 </div>
 
                 <button 
-                  className="w-full bg-black text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors"
+                  className="w-full secondaryColor text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2  transition-colors"
                   onClick={() => handleAddToCart(product)}
                 >
                   <ShoppingCart className="w-5 h-5" />
@@ -264,7 +264,7 @@ const ProductRecommendations = () => {
             </button>
             <button
               onClick={handleLoginRedirect}
-              className="px-4 py-2 bg-red-500 text-white rounded-md flex items-center justify-center hover:bg-red-600 transition-colors"
+              className="px-4 py-2 primaryColor text-white rounded-md flex items-center justify-center transition-colors"
             >
               Login
             </button>

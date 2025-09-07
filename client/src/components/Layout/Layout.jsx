@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
   return (
     <div className="">
       <div className="fixed top-0 left-0 right-0 z-50">
-        <React.Suspense fallback={<div className="h-8 bg-black" />}>
+        <React.Suspense fallback={<div className="h-8 secondaryColor" />}>
           <AnnouncementBanner
             onVisibilityChange={handleBannerVisibilityChange}
           />

@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import {  Linkedin,  } from 'lucide-react';
-import { BsInstagram } from 'react-icons/bs';
-import team1 from "../../assets/team1.png"
-import team2 from "../../assets/team2.png"
-import team3 from "../../assets/team3.png"
-import { TfiTwitter } from 'react-icons/tfi';
-import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
+import { Linkedin } from "lucide-react";
+import { BsInstagram } from "react-icons/bs";
+import team1 from "../../assets/team1.png";
+import team2 from "../../assets/team2.png";
+import team3 from "../../assets/team3.png";
+import { TfiTwitter } from "react-icons/tfi";
+import { Link } from "react-router-dom";
 const TeamMember = ({ imageUrl, name, position, socialLinks }) => (
   <div className="flex flex-col items-center">
     <img src={imageUrl} alt={name} className="w-64 h-64 object-contain mb-4" />
@@ -13,18 +13,27 @@ const TeamMember = ({ imageUrl, name, position, socialLinks }) => (
     <p className="text-gray-600 mb-2">{position}</p>
     <div className="flex space-x-4">
       {socialLinks.twitter && (
-        <Link to={socialLinks.twitter} className="text-gray-600 hover:text-blue-500">
-        <TfiTwitter className="hover:-translate-y-1 transition-transform duration-300" size={20} />
+        <Link to={socialLinks.twitter} className="text-gray-600">
+          <TfiTwitter
+            className="hover:-translate-y-1 transition-transform duration-300"
+            size={20}
+          />
         </Link>
       )}
       {socialLinks.instagram && (
-        <Link to={socialLinks.instagram} className="text-gray-600 hover:text-pink-500">
-          <BsInstagram className="hover:-translate-y-1 transition-transform duration-300" size={20} />
+        <Link to={socialLinks.instagram} className="text-gray-600">
+          <BsInstagram
+            className="hover:-translate-y-1 transition-transform duration-300"
+            size={20}
+          />
         </Link>
       )}
       {socialLinks.linkedin && (
-        <Link to={socialLinks.linkedin} className="text-gray-600 hover:text-blue-700">
-          <Linkedin className="hover:-translate-y-1 transition-transform duration-300"  size={20} />
+        <Link to={socialLinks.linkedin} className="text-gray-600">
+          <Linkedin
+            className="hover:-translate-y-1 transition-transform duration-300"
+            size={20}
+          />
         </Link>
       )}
     </div>
@@ -32,14 +41,14 @@ const TeamMember = ({ imageUrl, name, position, socialLinks }) => (
 );
 
 TeamMember.propTypes = {
-  imageUrl: PropTypes.string.isRequired,    
-  name: PropTypes.string.isRequired,        
-  position: PropTypes.string.isRequired,  
-  socialLinks: PropTypes.shape({      
-    twitter: PropTypes.string,    
-    instagram: PropTypes.string,    
-    linkedin: PropTypes.string,   
-  }).isRequired                              
+  imageUrl: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  position: PropTypes.string.isRequired,
+  socialLinks: PropTypes.shape({
+    twitter: PropTypes.string,
+    instagram: PropTypes.string,
+    linkedin: PropTypes.string,
+  }).isRequired,
 };
 
 const TeamShowcase = () => {
@@ -51,8 +60,8 @@ const TeamShowcase = () => {
       socialLinks: {
         twitter: "#",
         instagram: "#",
-        linkedin: "#"
-      }
+        linkedin: "#",
+      },
     },
     {
       imageUrl: team2,
@@ -61,8 +70,8 @@ const TeamShowcase = () => {
       socialLinks: {
         twitter: "#",
         instagram: "#",
-        linkedin: "#"
-      }
+        linkedin: "#",
+      },
     },
     {
       imageUrl: team3,
@@ -71,9 +80,9 @@ const TeamShowcase = () => {
       socialLinks: {
         twitter: "#",
         instagram: "#",
-        linkedin: "#"
-      }
-    }
+        linkedin: "#",
+      },
+    },
   ];
 
   return (

@@ -337,7 +337,7 @@ const Cart = () => {
                   </div>
                   <button
                     onClick={handleCheckout}
-                    className="w-full mt-6 px-6 py-2.5 bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 text-base font-medium"
+                    className="w-full mt-6 px-6 py-2.5 primaryColor text-white rounded-lg  focus:outline-none focus:ring-2 focus:ring-red-500 text-base font-medium"
                   >
                     Proceed to checkout
                   </button>

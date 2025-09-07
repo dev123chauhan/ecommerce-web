@@ -169,7 +169,7 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
         Billing Details
       </h2>
 
-      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 mb-5">
         <div>
           <label
             htmlFor="firstName"

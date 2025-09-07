@@ -145,7 +145,7 @@ const Wishlist = () => {
                     </div>
                     
                     {product.discount && (
-                      <span className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-sm">
+                      <span className="absolute top-2 left-2 primaryColor text-white px-2 py-1 rounded text-sm">
                         {product.discount}
                       </span>
                     )}
@@ -168,7 +168,7 @@ const Wishlist = () => {
                     </div>
 
                     <button
-                      className="w-full bg-black text-white py-2 rounded-md flex items-center justify-center hover:bg-gray-800 transition-colors"
+                      className="w-full secondaryColor text-white py-2 rounded-md flex items-center justify-center transition-colors"
                     >
                       <ShoppingCart className="w-4 h-4 mr-2" />
                       Add To Cart

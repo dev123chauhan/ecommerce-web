@@ -69,7 +69,7 @@ const Header = () => {
                 <div className="space-x-4 flex items-center">
                   <Link
                     to="/login"
-                    className="bg-red-500 text-white px-4 py-1.5 rounded-md hover:bg-red-600 transition-colors"
+                    className="primaryColor text-white px-4 py-1.5 rounded-md  transition-colors"
                   >
                     Login
                   </Link>
@@ -116,7 +116,7 @@ const Header = () => {
                 <div className="flex items-center space-x-2">
                   <Link
                     to="/login"
-                    className="bg-red-500  text-white px-3 py-1.5 rounded-md hover:bg-red-600 transition-colors whitespace-nowrap"
+                    className="primaryColor text-white px-3 py-1.5 rounded-md  transition-colors whitespace-nowrap"
                   >
                     Login
                   </Link>
@@ -146,7 +146,7 @@ const Header = () => {
                   to={item.path}
                   className={`text-base py-2 transform transition-all duration-200 hover:translate-x-2 ${
                     location.pathname === item.path
-                      ? "text-red-600 font-medium"
+                      ? "text-red-500 font-medium"
                       : "text-gray-700 dark:text-gray-200 hover:text-red-500"
                   }`}
                   onClick={toggleSidebar}
