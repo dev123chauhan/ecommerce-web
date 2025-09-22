@@ -273,7 +273,7 @@ const BestSellingProduct = () => {
   );
 
   return (
-    <div id="best-selling" className="container mx-auto px-4 py-8">
+    <div id="best-selling" className="container mx-auto max-w-7xl">
       <div className="flex justify-between items-center mb-6">
         <div>
           <div className="primaryColor text-white py-1 px-3 rounded-full inline-block text-sm mb-2">

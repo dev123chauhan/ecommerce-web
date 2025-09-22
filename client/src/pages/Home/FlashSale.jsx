@@ -1,12 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Skeleton } from "antd";
-import {
-  Heart,
-  Eye,
-  ArrowLeft,
-  ArrowRight,
-  ShoppingCart,
-  LogIn } from "lucide-react";
+import { Heart, Eye, ArrowLeft, ArrowRight, ShoppingCart, LogIn } from "lucide-react";
 import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../slice/CartSlice";
@@ -14,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { fetchProducts } from "../../slice/ProductSlice";
 import { fetchWishlist, toggleWishlistItem } from "../../slice/WishlistSlice";
 import Modal from "../../components/Modal/Modal"; 
-
 const FlashSale = () => {
   const { items: products } = useSelector((state) => state.products);
   const { items: wishlistItems } = useSelector((state) => state.wishlist);

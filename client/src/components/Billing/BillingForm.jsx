@@ -175,7 +175,7 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
             htmlFor="firstName"
             className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300"
           >
-            First Name<span className="text-red-500">*</span>
+            First Name<span className="text-[#db4444]">*</span>
           </label>
           <div className="relative">
             <input
@@ -187,9 +187,9 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
                 formData.firstName
                   ? validity.firstName
                     ? "border-green-500 bg-green-50 dark:bg-green-900/20"
-                    : "border-red-500 bg-red-50 dark:bg-red-900/20"
+                    : "border-[#db4444] bg-red-50 dark:bg-red-900/20"
                   : "border-gray-200"
-              } focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors`}
+              } focus:border-red-500 focus:ring-1 focus:ring-[#db4444] transition-colors`}
               required
             />
             {formData.firstName && (
@@ -197,13 +197,13 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
                 {validity.firstName ? (
                   <CheckCircle className="text-green-500 h-5 w-5" />
                 ) : (
-                  <AlertCircle className="text-red-500 h-5 w-5" />
+                  <AlertCircle className="text-[#db4444] h-5 w-5" />
                 )}
               </div>
             )}
           </div>
           {errors.firstName && (
-            <div className="text-red-500 text-sm mt-1 flex items-center gap-1">
+            <div className="text-[#db4444] text-sm mt-1 flex items-center gap-1">
               <AlertCircle className="h-4 w-4" />
               {errors.firstName}
             </div>
@@ -216,7 +216,7 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
             htmlFor="streetAddress"
             className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300"
           >
-            Street Address<span className="text-red-500">*</span>
+            Street Address<span className="text-[#db4444]">*</span>
           </label>
           <div className="relative">
             <input
@@ -228,9 +228,9 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
                 formData.streetAddress
                   ? validity.streetAddress
                     ? "border-green-500 bg-green-50 dark:bg-green-900/20"
-                    : "border-red-500 bg-red-50 dark:bg-red-900/20"
+                    : "border-[#db4444] bg-red-50 dark:bg-red-900/20"
                   : "border-gray-200"
-              } focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors`}
+              } focus:border-red-500 focus:ring-1 focus:ring-[#db4444] transition-colors`}
               required
             />
             {formData.streetAddress && (
@@ -238,13 +238,13 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
                 {validity.streetAddress ? (
                   <CheckCircle className="text-green-500 h-5 w-5" />
                 ) : (
-                  <AlertCircle className="text-red-500 h-5 w-5" />
+                  <AlertCircle className="text-[#db4444] h-5 w-5" />
                 )}
               </div>
             )}
           </div>
           {errors.streetAddress && (
-            <div className="text-red-500 text-sm mt-1 flex items-center gap-1">
+            <div className="text-[#db4444] text-sm mt-1 flex items-center gap-1">
               <AlertCircle className="h-4 w-4" />
               {errors.streetAddress}
             </div>
@@ -262,7 +262,7 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
             id="apartment"
             value={formData.apartment}
             onChange={handleChange}
-            className="w-full p-2.5 bg-gray-100 rounded-lg border border-gray-200 focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
+            className="w-full p-2.5 bg-gray-100 rounded-lg border border-gray-200 focus:border-[#db4444] focus:ring-1 focus:ring-[#db4444] transition-colors dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
           />
         </div>
 
@@ -273,7 +273,7 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
               htmlFor="townCity"
               className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300"
             >
-              Town/City<span className="text-red-500">*</span>
+              Town/City<span className="text-[#db4444]">*</span>
             </label>
             <div className="relative">
               <input
@@ -285,9 +285,9 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
                   formData.townCity
                     ? validity.townCity
                       ? "border-green-500 bg-green-50 dark:bg-green-900/20"
-                      : "border-red-500 bg-red-50 dark:bg-red-900/20"
+                      : "border-[#db4444] bg-red-50 dark:bg-red-900/20"
                     : "border-gray-200"
-                } focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors`}
+                } focus:border-red-500 focus:ring-1 focus:ring-[#db4444] transition-colors`}
                 required
               />
               {formData.townCity && (
@@ -295,13 +295,13 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
                   {validity.townCity ? (
                     <CheckCircle className="text-green-500 h-5 w-5" />
                   ) : (
-                    <AlertCircle className="text-red-500 h-5 w-5" />
+                    <AlertCircle className="text-[#db4444] h-5 w-5" />
                   )}
                 </div>
               )}
             </div>
             {errors.townCity && (
-              <div className="text-red-500 text-sm mt-1 flex items-center gap-1">
+              <div className="text-[#db4444] text-sm mt-1 flex items-center gap-1">
                 <AlertCircle className="h-4 w-4" />
                 {errors.townCity}
               </div>
@@ -313,7 +313,7 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
               htmlFor="phoneNumber"
               className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300"
             >
-              Phone Number<span className="text-red-500">*</span>
+              Phone Number<span className="text-[#db4444]">*</span>
             </label>
             <div className="relative">
               <input
@@ -332,9 +332,9 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
                   formData.phoneNumber
                     ? validity.phoneNumber
                       ? "border-green-500 bg-green-50 dark:bg-green-900/20"
-                      : "border-red-500 bg-red-50 dark:bg-red-900/20"
+                      : "border-[#db4444] bg-red-50 dark:bg-red-900/20"
                     : "border-gray-200"
-                } focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors`}
+                } focus:border-[#db4444] focus:ring-1 focus:ring-[#db4444] transition-colors`}
                 required
               />
               {formData.phoneNumber && (
@@ -342,13 +342,13 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
                   {validity.phoneNumber ? (
                     <CheckCircle className="text-green-500 h-5 w-5" />
                   ) : (
-                    <AlertCircle className="text-red-500 h-5 w-5" />
+                    <AlertCircle className="text-[#db4444] h-5 w-5" />
                   )}
                 </div>
               )}
             </div>
             {errors.phoneNumber && (
-              <div className="text-red-500 text-sm mt-1 flex items-center gap-1">
+              <div className="text-[#db4444] text-sm mt-1 flex items-center gap-1">
                 <AlertCircle className="h-4 w-4" />
                 {errors.phoneNumber}
               </div>
@@ -361,7 +361,7 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
             htmlFor="emailAddress"
             className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300"
           >
-            Email Address<span className="text-red-500">*</span>
+            Email Address<span className="text-[#db4444]">*</span>
           </label>
           <div className="relative">
             <input
@@ -373,9 +373,9 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
                 formData.emailAddress
                   ? validity.emailAddress
                     ? "border-green-500 bg-green-50 dark:bg-green-900/20"
-                    : "border-red-500 bg-red-50 dark:bg-red-900/20"
+                    : "border-[#db4444] bg-red-50 dark:bg-red-900/20"
                   : "border-gray-200"
-              } focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors`}
+              } focus:border-red-500 focus:ring-1 focus:ring-[#db4444] transition-colors`}
               required
             />
             {formData.emailAddress && (
@@ -383,13 +383,13 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
                 {validity.emailAddress ? (
                   <CheckCircle className="text-green-500 h-5 w-5" />
                 ) : (
-                  <AlertCircle className="text-red-500 h-5 w-5" />
+                  <AlertCircle className="text-[#db4444] h-5 w-5" />
                 )}
               </div>
             )}
           </div>
           {errors.emailAddress && (
-            <div className="text-red-500 text-sm mt-1 flex items-center gap-1">
+            <div className="text-[#db4444] text-sm mt-1 flex items-center gap-1">
               <AlertCircle className="h-4 w-4" />
               {errors.emailAddress}
             </div>

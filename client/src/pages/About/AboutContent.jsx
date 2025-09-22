@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import aboutImage from "../../assets/aboutimage.png"
 const AboutContent = () => {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto max-w-7xl">
       <nav>
         <ul className="flex space-x-4">
           <li><Link to="/" className="">Home</Link></li>

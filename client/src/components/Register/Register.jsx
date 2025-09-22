@@ -154,7 +154,7 @@ const Register = () => {
 
       <div className="w-full md:w-1/2 flex items-center justify-center p-8 h-screen">
         <div className="w-full max-w-md">
-          <Link className="flex items-center gap-2 py-3 text-red-500" to="/">
+          <Link className="flex items-center gap-2 py-3 text-[#db4444]" to="/">
             <ArrowLeft />
             Back to home
           </Link>
@@ -171,7 +171,7 @@ const Register = () => {
                   formData.username
                     ? validity.username
                       ? "border-green-500 bg-green-50"
-                      : "border-red-500 bg-red-50"
+                      : "border-[#db4444] bg-red-50"
                     : "border-gray-300"
                 }`}
                 onChange={handleChange}
@@ -182,12 +182,12 @@ const Register = () => {
                   {validity.username ? (
                     <CheckCircle className="text-green-500 h-5 w-5" />
                   ) : (
-                    <AlertCircle className="text-red-500 h-5 w-5" />
+                    <AlertCircle className="text-[#db4444] h-5 w-5" />
                   )}
                 </div>
               )}
               {errors.username && (
-                <div className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                <div className="text-[#db4444] text-sm mt-1 flex items-center gap-1">
                   <AlertCircle className="h-4 w-4" />
                   {errors.username}
                 </div>
@@ -202,7 +202,7 @@ const Register = () => {
                   formData.email
                     ? validity.email
                       ? "border-green-500 bg-green-50"
-                      : "border-red-500 bg-red-50"
+                      : "border-[#db4444] bg-red-50"
                     : "border-gray-300"
                 }`}
                 onChange={handleChange}
@@ -213,12 +213,12 @@ const Register = () => {
                   {validity.email ? (
                     <CheckCircle className="text-green-500 h-5 w-5" />
                   ) : (
-                    <AlertCircle className="text-red-500 h-5 w-5" />
+                    <AlertCircle className="text-[#db4444] h-5 w-5" />
                   )}
                 </div>
               )}
               {errors.email && (
-                <div className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                <div className="text-[#db4444] text-sm mt-1 flex items-center gap-1">
                   <AlertCircle className="h-4 w-4" />
                   {errors.email}
                 </div>
@@ -233,7 +233,7 @@ const Register = () => {
                   formData.password
                     ? validity.password
                       ? "border-green-500 bg-green-50"
-                      : "border-red-500 bg-red-50"
+                      : "border-[#db4444] bg-red-50"
                     : "border-gray-300"
                 }`}
                 onChange={handleChange}
@@ -249,12 +249,12 @@ const Register = () => {
                   {validity.password ? (
                     <CheckCircle className="text-green-500 h-5 w-5" />
                   ) : (
-                    <AlertCircle className="text-red-500 h-5 w-5" />
+                    <AlertCircle className="text-[#db4444] h-5 w-5" />
                   )}
                 </div>
               )}
               {errors.password && (
-                <div className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                <div className="text-[#db4444] text-sm mt-1 flex items-center gap-1">
                   <AlertCircle className="h-4 w-4" />
                   {errors.password}
                 </div>
@@ -271,7 +271,7 @@ const Register = () => {
 
           <p className="mt-6 text-center text-gray-600">
             Already have an account?{" "}
-            <Link to="/login" className="text-red-500 hover:underline">
+            <Link to="/login" className="text-[#db4444] hover:underline">
               Log in
             </Link>
           </p>

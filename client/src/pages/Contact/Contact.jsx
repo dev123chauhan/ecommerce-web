@@ -3,10 +3,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import {  toast } from "sonner";
-import "react-toastify/dist/ReactToastify.css";
 import { Loader } from "../../utils/Loader";
 import { CheckCircle, AlertCircle } from "lucide-react";
-
 const Contact = () => {
   const baseUrl = import.meta.env.VITE_API_URL;
   const [loading, setLoading] = useState(false);
@@ -167,7 +165,7 @@ const Contact = () => {
           <div className="w-full md:w-1/3 p-6 rounded-lg border border-gray-300 dark:border-gray-700">
             <div className="mb-8">
               <h2 className="text-xl font-semibold mb-2 flex items-center">
-                <Phone className="mr-2 text-red-500" size={24} /> Call To Us
+                <Phone className="mr-2 text-[#db4444]" size={24} /> Call To Us
               </h2>
               <p className="mb-2">We are available 24/7, 7 days a week.</p>
               <p className="">
@@ -177,7 +175,7 @@ const Contact = () => {
 
             <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
               <h2 className="text-xl font-semibold mb-2 flex items-center">
-                <Mail className="mr-2 text-red-500" size={24} /> Write To US
+                <Mail className="mr-2 text-[#db4444]" size={24} /> Write To US
               </h2>
               <p className="mb-2">
                 Fill out our form and we will contact you within 24 hours.
@@ -198,17 +196,17 @@ const Contact = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="block text-sm font-medium">
-                    Your Name <span className="text-red-500">*</span>
+                    Your Name <span className="text-[#db4444]">*</span>
                   </label>
                   <div className="relative">
                     <input
                       id="name"
                       type="text"
-                      className={`w-full rounded-lg border px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition duration-200 ${
+                      className={`w-full rounded-lg border px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 focus:border-[#db4444] focus:ring-2 focus:ring-[#db4444] focus:ring-opacity-50 transition duration-200 ${
                         formData.name
                           ? validity.name
                             ? "border-green-500 bg-green-50"
-                            : "border-red-500 bg-red-50"
+                            : "border-[#db4444] bg-red-50"
                           : "border-gray-300"
                       }`}
                       placeholder="John Doe"
@@ -221,13 +219,13 @@ const Contact = () => {
                         {validity.name ? (
                           <CheckCircle className="text-green-500 h-5 w-5" />
                         ) : (
-                          <AlertCircle className="text-red-500 h-5 w-5" />
+                          <AlertCircle className="text-[#db4444] h-5 w-5" />
                         )}
                       </div>
                     )}
                   </div>
                   {errors.name && (
-                    <div className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                    <div className="text-[#db4444] text-sm mt-1 flex items-center gap-1">
                       <AlertCircle className="h-4 w-4" />
                       {errors.name}
                     </div>
@@ -236,17 +234,17 @@ const Contact = () => {
 
                 <div className="space-y-2">
                   <label htmlFor="email" className="block text-sm font-medium">
-                    Your Email <span className="text-red-500">*</span>
+                    Your Email <span className="text-[#db4444]">*</span>
                   </label>
                   <div className="relative">
                     <input
                       id="email"
                       type="email"
-                      className={`w-full rounded-lg border px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition duration-200 ${
+                      className={`w-full rounded-lg border px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 focus:border-[#db4444] focus:ring-2 focus:ring-[#db4444] focus:ring-opacity-50 transition duration-200 ${
                         formData.email
                           ? validity.email
                             ? "border-green-500 bg-green-50"
-                            : "border-red-500 bg-red-50"
+                            : "border-[#db4444] bg-red-50"
                           : "border-gray-300"
                       }`}
                       placeholder="john@example.com"
@@ -259,13 +257,13 @@ const Contact = () => {
                         {validity.email ? (
                           <CheckCircle className="text-green-500 h-5 w-5" />
                         ) : (
-                          <AlertCircle className="text-red-500 h-5 w-5" />
+                          <AlertCircle className="text-[#db4444] h-5 w-5" />
                         )}
                       </div>
                     )}
                   </div>
                   {errors.email && (
-                    <div className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                    <div className="text-[#db4444] text-sm mt-1 flex items-center gap-1">
                       <AlertCircle className="h-4 w-4" />
                       {errors.email}
                     </div>
@@ -275,17 +273,17 @@ const Contact = () => {
 
               <div className="space-y-2">
                 <label htmlFor="message" className="block text-sm font-medium">
-                  Your Message <span className="text-red-500">*</span>
+                  Your Message <span className="text-[#db4444]">*</span>
                 </label>
                 <div className="relative">
                   <textarea
                     id="message"
                     rows={4}
-                    className={`w-full rounded-lg border px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition duration-200 ${
+                    className={`w-full rounded-lg border px-4 py-2.5 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 focus:border-[#db4444] focus:ring-2 focus:ring-[#db4444] focus:ring-opacity-50 transition duration-200 ${
                       formData.message
                         ? validity.message
                           ? "border-green-500 bg-green-50"
-                          : "border-red-500 bg-red-50"
+                          : "border-[#db4444] bg-red-50"
                         : "border-gray-300"
                     }`}
                     placeholder="Write your message here..."
@@ -298,13 +296,13 @@ const Contact = () => {
                       {validity.message ? (
                         <CheckCircle className="text-green-500 h-5 w-5" />
                       ) : (
-                        <AlertCircle className="text-red-500 h-5 w-5" />
+                        <AlertCircle className="text-[#db4444] h-5 w-5" />
                       )}
                     </div>
                   )}
                 </div>
                 {errors.message && (
-                  <div className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                  <div className="text-[#db4444] text-sm mt-1 flex items-center gap-1">
                     <AlertCircle className="h-4 w-4" />
                     {errors.message}
                   </div>
@@ -314,7 +312,7 @@ const Contact = () => {
               <div className="flex">
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center rounded-lg primaryColor px-6 py-2.5 text-white font-medium  focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition duration-200"
+                  className="w-full inline-flex items-center justify-center rounded-lg primaryColor px-6 py-2.5 text-white font-medium  focus:outline-none focus:ring-2 focus:ring-[#db4444] focus:ring-offset-2 transition duration-200"
                   disabled={loading}
                 >
                   {loading ? <Loader /> : "Send Message"}
