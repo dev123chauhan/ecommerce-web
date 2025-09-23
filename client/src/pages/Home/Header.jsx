@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { ThemeContext } from "../../context/ThemeContextProvider";
 import AccountDropdown from "../Account/AccountDropdown";
-
 const Header = () => {
   const location = useLocation();
   const { isAuthenticated } = useSelector((state) => state.auth);
