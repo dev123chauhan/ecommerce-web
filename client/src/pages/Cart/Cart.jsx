@@ -1,12 +1,11 @@
 import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCart, removeFromCart } from "../../slice/CartSlice";
+import { fetchCart, removeFromCart } from "../../redux/slice/CartSlice";
 import { Trash } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react"; 
 import cartGif from "../../assets/emptycart.gif";
 import { Skeleton } from "antd"; 
-
 const Cart = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -337,7 +336,7 @@ const Cart = () => {
                   </div>
                   <button
                     onClick={handleCheckout}
-                    className="w-full mt-6 px-6 py-2.5 primaryColor text-white rounded-lg  focus:outline-none focus:ring-2 focus:ring-red-500 text-base font-medium"
+                    className="w-full mt-6 px-6 py-3 rounded-full primaryColor text-white   focus:outline-none focus:ring-2 focus:ring-red-500 text-base font-medium"
                   >
                     Proceed to checkout
                   </button>

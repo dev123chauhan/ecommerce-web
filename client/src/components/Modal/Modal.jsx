@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import PropTypes from "prop-types";
 import { X } from "lucide-react";
-
 const Modal = ({ 
   isOpen, 
   onClose, 
@@ -31,12 +30,12 @@ const Modal = ({
         onClick={onClose}
       />
       <div
-        className={`dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 relative z-50 bg-white rounded-lg w-[90%] max-w-4xl max-h-[90vh] overflow-auto transform transition-all duration-300 scale-100 opacity-100 modal-content ${className}`}
+        className={`dark:bg-gray-800  dark:border-gray-700 dark:text-white dark:placeholder-gray-400 relative z-50 bg-white rounded-lg w-[90%] max-w-4xl max-h-[90vh] overflow-auto transform transition-all duration-300 scale-100 opacity-100 modal-content ${className}`}
       >
         {showCloseButton && (
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            className="absolute right-4 top-4  rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
             aria-label="Close modal"
           >
             <X size={24} className="text-gray-500 dark:text-gray-400" />

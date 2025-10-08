@@ -1,19 +1,12 @@
 import { Route, Routes, useLocation } from "react-router-dom";
-import Layout from "./components/Layout/Layout";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
-import Billing from "./components/Billing/Billing";
 import ScrollToTop from "react-scroll-to-top";
 import { FaArrowUp } from "react-icons/fa";
-import Order from "./components/Order/Order";
 import { useDispatch } from 'react-redux';
-import { checkAuthentication } from './action/AuthAction';
+import { checkAuthentication } from './redux/action/AuthAction';
 import { useEffect } from "react";
 import ThemeContextProvider from "./context/ThemeContextProvider";
-import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
-import Terms from "./components/Terms/Terms";
-import Faq from "./components/Faq/Faq";
-import Review from "./components/Review/Review";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { Toaster } from "sonner";
 import { AnimatePresence } from "framer-motion";
@@ -26,9 +19,15 @@ import Wishlist from "./pages/Wishlist/Wishlist";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 import NotFound from "./pages/NotFound/NotFound";
 import Shop from "./pages/Shop/Shop";
+import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
+import Terms from "./pages/Terms/Terms";
+import Faq from "./pages/Faq/Faq";
+import Layout from "./Layout/Layout";
+import Billing from "./pages/Billing/Billing";
+import Order from "./pages/Order/Order";
+import Review from "./pages/Review/Review";
 export default function App() {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(checkAuthentication());
   }, [dispatch]);

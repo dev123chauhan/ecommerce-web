@@ -5,13 +5,13 @@ import noproductfound from "../../assets/Not-found.gif";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "../../components/Modal/Modal";
 import { toast } from "sonner";
-import { setSearchTerm, setSelectedCategories, setSelectedSubCategories, setProducts} from "../../slice/ShopSlice";
+import { setSearchTerm, setSelectedCategories, setSelectedSubCategories, setProducts} from "../../redux/slice/ShopSlice";
 import {
   useGetProductsQuery,
   useGetCategoriesQuery,
-} from "../../slice/ShopApiSlice";
+} from "../../redux/slice/ShopApiSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { addToCart } from "../../slice/CartSlice";
+import { addToCart } from "../../redux/slice/CartSlice";
 import CropText from "../../components/CropText/CropText";
 
 const ProductCardSkeleton = () => (
@@ -432,7 +432,7 @@ const Shop = () => {
                           </div>
                           <button
                             onClick={() => handleAddToCart(product)}
-                            className="secondaryColor text-white px-4 py-2 rounded-lg  transition-colors duration-200 w-full"
+                            className="secondaryColor text-white px-6 py-3 rounded-full transition-colors duration-200 w-full"
                           >
                             Add to Cart
                           </button>
@@ -485,13 +485,13 @@ const Shop = () => {
           <div className="flex justify-center space-x-4">
             <button
               onClick={() => setIsLoginPopupOpen(false)}
-              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md transition-colors"
+              className="px-6 py-3 rounded-full border border-gray-300 dark:border-gray-600  transition-colors"
             >
               Cancel
             </button>
             <button
               onClick={handleLoginRedirect}
-              className="px-4 py-2 primaryColor text-white rounded-md flex items-center justify-center  transition-colors"
+              className="px-6 py-3 rounded-full primaryColor text-white  flex items-center justify-center  transition-colors"
             >
               <LogIn className="mr-2" size={20} />
               Go to Login

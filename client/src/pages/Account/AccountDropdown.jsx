@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { User, ShoppingBag, Star, LogOut, Heart, ShoppingCart } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "../../action/AuthAction";
-import { fetchCart } from "../../slice/CartSlice";
+import { logoutUser } from "../../redux/action/AuthAction";
+import { fetchCart } from "../../redux/slice/CartSlice";
 import { toast } from "sonner";
 const AccountDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);

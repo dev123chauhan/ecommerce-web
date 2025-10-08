@@ -1,4 +1,4 @@
-import ServiceFeatures from "../Home/ServiceFeatures";
+import ServiceFeatures from "../../components/ServiceFeatures/ServiceFeatures";
 import AboutContent from "./AboutContent";
 import StatsCards from "./StatCard";
 import TeamShowcase from "./TeamShowcase";
@@ -9,7 +9,7 @@ export default function About() {
       <AboutContent/>
       <StatsCards/>
       <TeamShowcase/>
-      <ServiceFeatures/>
+      <ServiceFeatures />
     </div>
     </div>
   )

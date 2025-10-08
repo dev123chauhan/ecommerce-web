@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../../action/AuthAction";
+import { loginUser } from "../../redux/action/AuthAction";
 import { toast } from "sonner";
 import { Loader } from "../../utils/Loader";
 import { ArrowLeft, CheckCircle, AlertCircle } from "lucide-react";
@@ -212,7 +212,7 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="w-full mb-6 primaryColor text-white py-2 rounded-md  transition duration-300"
+              className="w-full mb-6 primaryColor text-white px-6 py-3 rounded-full  transition duration-300"
               disabled={loading}
             >
               {loading ? <Loader /> : "Log in"}

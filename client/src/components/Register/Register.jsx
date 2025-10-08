@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { registerUser } from "../../action/AuthAction";
+import { registerUser } from "../../redux/action/AuthAction";
 import { toast } from "sonner";
 import { Loader } from "../../utils/Loader";
 import { ArrowLeft, CheckCircle, AlertCircle } from "lucide-react";
@@ -262,7 +262,7 @@ const Register = () => {
             </div>
             <button
               type="submit"
-              className="w-full primaryColor text-white py-2 rounded-md transition duration-300"
+              className="w-full primaryColor text-white px-6 py-3 rounded-full transition duration-300"
               disabled={loading}
             >
               {loading ? <Loader /> : "Create Account"}

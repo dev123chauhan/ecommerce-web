@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Eye, ShoppingCart, Heart } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../slice/ProductSlice";
-import { addToCart } from "../../slice/CartSlice";  
-import { fetchWishlist, toggleWishlistItem } from "../../slice/WishlistSlice";
+import { fetchProducts } from "../../redux/slice/ProductSlice";
+import { addToCart } from "../../redux/slice/CartSlice";  
+import { fetchWishlist, toggleWishlistItem } from "../../redux/slice/WishlistSlice";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { Skeleton } from "antd";
@@ -161,7 +161,7 @@ const ProductRecommendations = () => {
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-bold">Just For You</h2>
         <button 
-          className="primaryColor text-white py-2 px-4 rounded-md"
+          className="primaryColor text-white px-6 py-2 rounded-full"
           onClick={handleSeeAll}
         >
           See All
@@ -231,7 +231,7 @@ const ProductRecommendations = () => {
                 </div>
 
                 <button 
-                  className="w-full secondaryColor text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2  transition-colors"
+                  className="w-full secondaryColor text-white px-6 py-3 rounded-full flex items-center justify-center gap-2  transition-colors"
                   onClick={() => handleAddToCart(product)}
                 >
                   <ShoppingCart className="w-5 h-5" />

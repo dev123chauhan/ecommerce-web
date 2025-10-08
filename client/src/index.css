@@ -1,12 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities; 
-
-html,
 body {
   margin: 0 !important;
   padding: 0 !important;
-  min-height: 100% !important;
+  box-sizing: border-box !important;
 }
 
 :root {
@@ -77,3 +75,6 @@ body {
 .max-w-7xl {
   max-width: 85rem !important;
 }
+  /* --bs-btn-padding-x: 28px !important;
+  --bs-btn-padding-y: 8px !important;
+  --bs-border-radius: 10px !important; */

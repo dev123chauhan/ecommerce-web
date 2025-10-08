@@ -1,7 +1,7 @@
 import  { useState, useEffect } from "react";
 import { ShoppingCart, Trash2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchWishlist, removeFromWishlist } from "../../slice/WishlistSlice";
+import { fetchWishlist, removeFromWishlist } from "../../redux/slice/WishlistSlice";
 import { toast } from "sonner";
 import wishlistGif from "../../assets/Wishlist.gif";
 import { Skeleton } from "antd";
@@ -100,7 +100,7 @@ const Wishlist = () => {
             </span>
           </div>
           {!isLoading && !loading && items.length > 0 && (
-            <button className="px-4 py-2 border-2 border-solid dark:text-white dark:border-gray-700 text-black rounded-lg transition-colors">
+            <button className="px-6 py-3 rounded-full border-2 border-solid dark:text-white dark:border-gray-700 text-black  transition-colors">
               Move All To Bag
             </button>
           )}
@@ -168,7 +168,7 @@ const Wishlist = () => {
                     </div>
 
                     <button
-                      className="w-full secondaryColor text-white py-2 rounded-md flex items-center justify-center transition-colors"
+                      className="w-full secondaryColor text-white px-6 py-3 rounded-full flex items-center justify-center transition-colors"
                     >
                       <ShoppingCart className="w-4 h-4 mr-2" />
                       Add To Cart

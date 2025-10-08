@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-
 const OrderSummary = ({ 
   selectedPaymentMethod, 
   setSelectedPaymentMethod, 
@@ -9,7 +8,6 @@ const OrderSummary = ({
   totalAmount, 
   currency 
 }) => {
-  
   const { items } = useSelector((state) => state.cart);
 
   const handlePaymentMethodChange = (e) => {
@@ -110,7 +108,7 @@ const OrderSummary = ({
         <button
           onClick={onPlaceOrder}
           disabled={loading || !selectedPaymentMethod}
-          className={`w-full py-3 px-4 primaryColor text-white rounded-lg  transition-colors font-semibold text-sm ${
+          className={`w-full px-6 py-3 rounded-full primaryColor text-white   transition-colors font-semibold text-sm ${
             loading || !selectedPaymentMethod 
               ? "opacity-70 cursor-not-allowed" 
               : "hover:shadow-lg transform hover:-translate-y-0.5"

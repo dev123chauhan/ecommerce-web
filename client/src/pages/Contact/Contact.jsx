@@ -312,7 +312,7 @@ const Contact = () => {
               <div className="flex">
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center rounded-lg primaryColor px-6 py-2.5 text-white font-medium  focus:outline-none focus:ring-2 focus:ring-[#db4444] focus:ring-offset-2 transition duration-200"
+                  className="w-full inline-flex items-center justify-center  primaryColor px-6 py-3 rounded-full text-white font-medium  focus:outline-none focus:ring-2 focus:ring-[#db4444] focus:ring-offset-2 transition duration-200"
                   disabled={loading}
                 >
                   {loading ? <Loader /> : "Send Message"}
