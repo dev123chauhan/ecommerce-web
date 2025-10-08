@@ -3,8 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { ThemeContext } from "../context/ThemeContextProvider";
-import AccountDropdown from "../pages/Account/AccountDropdown";
 import Button from "../components/Button/Button";
+import AccountDropdown from "../pages/AccountDropdown";
 const Header = () => {
   const location = useLocation();
   const { isAuthenticated } = useSelector((state) => state.auth);

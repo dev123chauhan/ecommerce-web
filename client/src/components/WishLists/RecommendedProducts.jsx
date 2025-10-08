@@ -8,8 +8,7 @@ import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { Skeleton } from "antd";
 import PropTypes from "prop-types";
-
-const ProductRecommendations = () => {
+const RecommendedProducts = () => {
   const { items: products, loading } = useSelector((state) => state.products);
   const { items: wishlistItems } = useSelector((state) => state.wishlist);
   const { user, isAuthenticated } = useSelector((state) => state.auth);
@@ -293,4 +292,4 @@ const ProductRecommendations = () => {
   );
 };
 
-export default ProductRecommendations;
+export default RecommendedProducts;

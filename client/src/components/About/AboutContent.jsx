@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import aboutImage from "../../assets/aboutimage.png"
+import aboutImage from "../../../public/assets/aboutimage.png"
 const AboutContent = () => {
   return (
     <div className="container mx-auto max-w-7xl">

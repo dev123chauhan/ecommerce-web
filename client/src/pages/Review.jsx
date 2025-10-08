@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Star, ThumbsUp, ThumbsDown } from "lucide-react";
-import airpods from "../../assets/airpods.png";
-import monitor from "../../assets/monitor.png";
-import mobile from "../../assets/mobile.png";
+import airpods from "../../public/assets/airpods.png";
+import monitor from "../../public/assets/monitor.png";
+import mobile from "../../public/assets/mobile.png";
 const Review = () => {
   const [selectedFilter, setSelectedFilter] = useState("All");
   const [reviews] = useState([

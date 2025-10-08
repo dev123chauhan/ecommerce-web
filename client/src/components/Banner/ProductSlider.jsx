@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFeaturedProducts } from "../../redux/slice/ProductBannerSlice";
-import iphonelogo from "../../assets/iphonelogo.png";
+import iphonelogo from "../../../public/assets/iphonelogo.png";
 import { Skeleton } from "antd";
 const ProductSlider = () => {
   const [activeSlide, setActiveSlide] = useState(0);

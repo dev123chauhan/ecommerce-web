@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-
 const PolicySection = ({ 
   title, 
   children, 

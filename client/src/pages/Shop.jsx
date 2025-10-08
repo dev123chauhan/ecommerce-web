@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { ChevronDown, LogIn } from "lucide-react";
 import { Skeleton } from "antd";
-import noproductfound from "../../assets/Not-found.gif";
+import noproductfound from "../../public/assets/Not-found.gif";
 import { useDispatch, useSelector } from "react-redux";
-import Modal from "../../components/Modal/Modal";
+import Modal from "../components/Modal/Modal";
 import { toast } from "sonner";
-import { setSearchTerm, setSelectedCategories, setSelectedSubCategories, setProducts} from "../../redux/slice/ShopSlice";
+import { setSearchTerm, setSelectedCategories, setSelectedSubCategories, setProducts} from "../redux/slice/ShopSlice";
 import {
   useGetProductsQuery,
   useGetCategoriesQuery,
-} from "../../redux/slice/ShopApiSlice";
+} from "../redux/slice/ShopApiSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { addToCart } from "../../redux/slice/CartSlice";
-import CropText from "../../components/CropText/CropText";
+import { addToCart } from "../redux/slice/CartSlice";
+import CropText from "../components/CropText/CropText";
 
 const ProductCardSkeleton = () => (
   <div className="rounded-xl shadow-sm overflow-hidden mt-10">

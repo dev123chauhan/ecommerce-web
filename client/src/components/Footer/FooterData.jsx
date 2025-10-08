@@ -1,7 +1,7 @@
 import { Send } from "lucide-react";
-import qrcode from "../../assets/qrcode.png"
-import applestore from "../../assets/applestore.png"
-import googleplaystore from "../../assets/googleplaystore.png"
+import qrcode from "../../../public/assets/qrcode.png"
+import applestore from "../../../public/assets/applestore.png"
+import googleplaystore from "../../../public/assets/googleplaystore.png"
 import { FiFacebook, FiInstagram, FiLinkedin } from 'react-icons/fi';
 import { TfiTwitter } from 'react-icons/tfi';
 export const   footerData = [

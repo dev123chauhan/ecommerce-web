@@ -1,31 +1,31 @@
 import { Route, Routes, useLocation } from "react-router-dom";
-import Register from "./components/Register/Register";
-import Login from "./components/Login/Login";
 import ScrollToTop from "react-scroll-to-top";
 import { FaArrowUp } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
 import { checkAuthentication } from './redux/action/AuthAction';
 import { useEffect } from "react";
 import ThemeContextProvider from "./context/ThemeContextProvider";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { Toaster } from "sonner";
 import { AnimatePresence } from "framer-motion";
 import PageTransition from "./animation/PageTransition";
-import Home from "./pages/Home/Home";
-import Contact from "./pages/Contact/Contact";
-import About from "./pages/About/About";
-import Cart from "./pages/Cart/Cart";
-import Wishlist from "./pages/Wishlist/Wishlist";
-import ProductDetail from "./components/ProductDetail/ProductDetail";
-import NotFound from "./pages/NotFound/NotFound";
-import Shop from "./pages/Shop/Shop";
-import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
-import Terms from "./pages/Terms/Terms";
-import Faq from "./pages/Faq/Faq";
 import Layout from "./Layout/Layout";
-import Billing from "./pages/Billing/Billing";
-import Order from "./pages/Order/Order";
-import Review from "./pages/Review/Review";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Cart from "./pages/Cart";
+import Wishlist from "./pages/Wishlist";
+import NotFound from "./pages/NotFound";
+import Shop from "./pages/Shop";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
+import Faq from "./pages/Faq";
+import Billing from "./pages/Billing";
+import Order from "./pages/Order";
+import Review from "./pages/Review";
+import ProductDetail from "./pages/ProductDetail";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 export default function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -73,8 +73,8 @@ export default function App() {
         <Route path="/" element={<Layout><PageTransition><Home /></PageTransition></Layout>}/>
         <Route path="/contact" element={<Layout><Contact /></Layout>}/>
         <Route path="/about" element={<Layout><About/></Layout>}/>
-        <Route path="/signup" element={<Register/>}/>
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<Register />}/>
+        <Route path="/login" element={<Login />}/>
         <Route path="/cart" element={<Layout><PrivateRoute element={Cart} /></Layout>}/>
         <Route path="/billing" element={<Layout><PrivateRoute element={Billing} /></Layout>}/>
         <Route path="/wishlist" element={<Layout><PrivateRoute element={Wishlist} /></Layout>}/>

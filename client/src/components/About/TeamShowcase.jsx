@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import { Linkedin } from "lucide-react";
 import { BsInstagram } from "react-icons/bs";
-import team1 from "../../assets/team1.png";
-import team2 from "../../assets/team2.png";
-import team3 from "../../assets/team3.png";
+import team1 from "../../../public/assets/team1.png";
+import team2 from "../../../public/assets/team2.png";
+import team3 from "../../../public/assets/team3.png";
 import { TfiTwitter } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 const TeamMember = ({ imageUrl, name, position, socialLinks }) => (

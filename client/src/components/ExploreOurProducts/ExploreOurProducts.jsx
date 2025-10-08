@@ -13,12 +13,10 @@ const ExploreOurProducts = () => {
   const { loading: reduxLoading, error, products, pages } = useSelector((state) => state.productList);
   const { user } = useSelector((state) => state.auth);
   const { items: wishlistItems } = useSelector((state) => state.wishlist);
-  
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [displayProducts, setDisplayProducts] = useState([]);
   const itemsPerPage = 8;
-
 
   useEffect(() => {
     dispatch(listProducts(page, itemsPerPage));

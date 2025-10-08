@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { createOrder } from "../../redux/slice/OrderSlice";
-import { createRazorpayOrder, getRazorpayKey, verifyPayment } from "../../redux/slice/PaymentSlice";
-import BillingForm from "./BillingForm";
-import OrderSummary from "../../components/OrderSummary/OrderSummary";
+import { createOrder } from "../redux/slice/OrderSlice";
+import { createRazorpayOrder, getRazorpayKey, verifyPayment } from "../redux/slice/PaymentSlice";
+import BillingForm from "../components/Billing/BillingForm";
+import OrderSummary from "../components/Billing/OrderSummary";
 const Billing = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();

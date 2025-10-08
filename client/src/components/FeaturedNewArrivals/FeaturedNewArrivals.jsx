@@ -1,7 +1,7 @@
-import women from "../../assets/women.png";
-import speaker from "../../assets/speaker.png";
-import perfume from "../../assets/perfume.png";
-import plastation from "../../assets/plastation.png";
+import women from "../../../public/assets/women.png";
+import speaker from "../../../public/assets/speaker.png";
+import perfume from "../../../public/assets/perfume.png";
+import plastation from "../../../public/assets/plastation.png";
 import Button from "../../components/Button/Button";
 const FeaturedNewArrivals = () => {
   return (

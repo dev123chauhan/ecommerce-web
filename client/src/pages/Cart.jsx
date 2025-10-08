@@ -1,10 +1,10 @@
 import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCart, removeFromCart } from "../../redux/slice/CartSlice";
+import { fetchCart, removeFromCart } from "../redux/slice/CartSlice";
 import { Trash } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react"; 
-import cartGif from "../../assets/emptycart.gif";
+import cartGif from "../../public/assets/emptycart.gif";
 import { Skeleton } from "antd"; 
 const Cart = () => {
   const navigate = useNavigate();

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { AlertCircle, Package } from "lucide-react";
 import {  useNavigate } from 'react-router-dom';
-import Button from '../../components/Button/Button';
+import Button from '../components/Button/Button';
 const Order = () => {
   const [orders, setOrders] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState();

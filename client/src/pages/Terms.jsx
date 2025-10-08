@@ -1,6 +1,5 @@
 import  { useState } from 'react';
 import { Scroll } from 'lucide-react';
-
 const Terms = () => {
   const [activeSection, setActiveSection] = useState('overview');
 

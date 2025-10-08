@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import {  toast } from "sonner";
-import { Loader } from "../../utils/Loader";
+import { Loader } from "../utils/Loader";
 import { CheckCircle, AlertCircle } from "lucide-react";
 const Contact = () => {
   const baseUrl = import.meta.env.VITE_API_URL;

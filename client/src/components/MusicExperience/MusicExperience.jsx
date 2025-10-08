@@ -1,6 +1,6 @@
 import  { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import jbl from "../../assets/Jbl.png"
+import jbl from "../../../public/assets/Jbl.png"
 import Button from '../../components/Button/Button';
 const CountdownTimer = ({ hours, days, minutes, seconds }) => {
   const TimeUnit = ({ value, label }) => (

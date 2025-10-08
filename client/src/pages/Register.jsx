@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { registerUser } from "../../redux/action/AuthAction";
 import { toast } from "sonner";
-import { Loader } from "../../utils/Loader";
 import { ArrowLeft, CheckCircle, AlertCircle } from "lucide-react";
-import AuthImage from "../AuthImage/AuthImage";
+import AuthImage from "../components/AuthImage/AuthImage";
+import { registerUser } from "../redux/action/AuthAction";
+import { Loader } from "../utils/Loader";
 
 const Register = () => {
   const dispatch = useDispatch();

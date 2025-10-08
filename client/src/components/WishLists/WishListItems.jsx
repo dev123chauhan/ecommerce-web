@@ -3,10 +3,8 @@ import { ShoppingCart, Trash2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWishlist, removeFromWishlist } from "../../redux/slice/WishlistSlice";
 import { toast } from "sonner";
-import wishlistGif from "../../assets/Wishlist.gif";
+import wishlistGif from "../../../public/assets/Wishlist.gif";
 import { Skeleton } from "antd";
-import ProductRecommendations from "./RecommendedProduct";
-
 const WishlistSkeleton = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -41,8 +39,7 @@ const WishlistSkeleton = () => {
     </div>
   );
 };
-
-const Wishlist = () => {
+const WishlistItems = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { items, loading } = useSelector((state) => state.wishlist);
@@ -180,10 +177,9 @@ const Wishlist = () => {
           </div>
         )}
       </div>
-      <ProductRecommendations />
     </div>
   );
 };
 
-export default Wishlist;
+export default WishlistItems;
 

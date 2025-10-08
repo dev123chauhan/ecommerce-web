@@ -1,6 +1,5 @@
 import { Truck, Headphones, Shield } from 'lucide-react';
 import PropTypes from 'prop-types';
-
 const ServiceFeature = ({ icon: Icon, title, description }) => (
   <div className="flex flex-col items-center text-center">
     <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4">

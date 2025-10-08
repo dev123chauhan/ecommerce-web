@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Skeleton } from "antd";
-import noImage from "../../assets/no-image.png";
+import noImage from "../../../public/assets/no-image.png";
 import { Heart, Eye, LogIn } from "lucide-react";
 import PropTypes from "prop-types";
-import noproductfound from "../../assets/Not-found.gif";
+import noproductfound from "../../../public/assets/Not-found.gif";
 import { useSelector, useDispatch } from "react-redux";
 import { useGetProductsQuery } from "../../redux/slice/ShopApiSlice";
 import { setProducts } from "../../redux/slice/ShopSlice";
