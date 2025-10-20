@@ -1,11 +1,13 @@
-import { Truck, Headphones, Shield } from 'lucide-react';
 import PropTypes from 'prop-types';
-const ServiceFeature = ({ icon: Icon, title, description }) => (
+import deliveryIcon from "../../../public/assets/Delivery.png"
+import customerServiceIcon from "../../../public/assets/CustomerService.png"
+import secureIcon from "../../../public/assets/Secure.png"
+const ServiceFeature = ({ img, title, description }) => (
   <div className="flex flex-col items-center text-center">
     <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4">
       <div className="absolute inset-0 bg-gray-200 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"></div>
       <div className="relative secondaryColor rounded-full p-4 ">
-        <Icon className="w-8 h-8 text-white" />
+        <img src={img} className="w-8 h-8 text-white" />
       </div>
     </div>
     <h3 className="text-lg font-bold mb-2">{title}</h3>
@@ -15,7 +17,7 @@ const ServiceFeature = ({ icon: Icon, title, description }) => (
 
 
 ServiceFeature.propTypes = {
-  icon: PropTypes.elementType.isRequired, 
+  img: PropTypes.string.isRequired, 
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 };
@@ -23,17 +25,17 @@ ServiceFeature.propTypes = {
 const ServiceFeatures = () => {
   const features = [
     {
-      icon: Truck,
+      img: deliveryIcon,
       title: "FREE AND FAST DELIVERY",
       description: "Free delivery for all orders over $140",
     },
     {
-      icon: Headphones,
+      img: customerServiceIcon,
       title: "24/7 CUSTOMER SERVICE",
       description: "Friendly 24/7 customer support",
     },
     {
-      icon: Shield,
+      img: secureIcon,
       title: "MONEY BACK GUARANTEE",
       description: "We return money within 30 days",
     },

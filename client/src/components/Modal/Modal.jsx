@@ -1,88 +1,75 @@
-import { useEffect } from "react";
-import PropTypes from "prop-types";
-import { X } from "lucide-react";
-const Modal = ({ 
-  isOpen, 
-  onClose, 
-  children, 
-  className = "", 
-  showCloseButton = true,
-  title = "" 
-}) => {
+import { useEffect, useRef } from "react";
+import { Dialog } from "primereact/dialog";
+import { useModal } from "../../context/ModalContext";
+import { LogIn } from "lucide-react";
+import Button from "../Button/Button";
+import { useNavigate } from "react-router-dom";
+const Modal = () => {
+  const { isOpen, modalTitle, closeModal } = useModal();
+  const navigate = useNavigate();
+  const scrollPosition = useRef(0);
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      scrollPosition.current = window.pageYOffset;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollPosition.current}px`;
+      document.body.style.width = "100%";
+      document.body.style.overflowY = "scroll";
     } else {
-      document.body.style.overflow = "unset";
+      const scrollY = scrollPosition.current;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      document.body.style.overflowY = "";
+      
+      window.scrollTo(0, scrollY);
     }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
   }, [isOpen]);
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div
-        className="fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300"
-        onClick={onClose}
-      />
-      <div
-        className={`dark:bg-gray-800  dark:border-gray-700 dark:text-white dark:placeholder-gray-400 relative z-50 bg-white rounded-lg w-[90%] max-w-4xl max-h-[90vh] overflow-auto transform transition-all duration-300 scale-100 opacity-100 modal-content ${className}`}
-      >
-        {showCloseButton && (
-          <button
-            onClick={onClose}
-            className="absolute right-4 top-4  rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-            aria-label="Close modal"
-          >
-            <X size={24} className="text-gray-500 dark:text-gray-400" />
-          </button>
-        )}
-
-
-        {title && (
-          <div className="border-b dark:border-gray-700 p-4 pb-3">
-            <h3 className="text-xl font-semibold">{title}</h3>
-          </div>
-        )}
-
-
-        <div className={`${title ? 'pt-2' : ''}`}>
-          {children}
+    <Dialog
+      visible={isOpen}
+      onHide={closeModal}
+      header={modalTitle}
+      modal
+      className="w-full max-w-lg"
+      contentClassName="dark:bg-gray-800 dark:text-white"
+      headerClassName="dark:bg-gray-800 dark:text-white dark:border-gray-700"
+      dismissableMask
+      draggable={false}
+      resizable={false}
+      blockScroll={false}
+      appendTo="self"
+    >
+      <div className="text-center p-6">
+        <div className="flex justify-center mb-4">
+          <LogIn size={48} className="text-[#db4444]" />
+        </div>
+        <p className="mb-6 text-gray-600 dark:text-gray-300">
+          Please log in to add items to your cart and continue shopping.
+        </p>
+        <div className="flex justify-center space-x-4">
+          <Button
+            text="Cancel"
+            onClick={closeModal}
+            className="py-2 border border-gray-300 dark:border-gray-600"
+          />
+          <Button
+            onClick={() => {
+              closeModal();
+              navigate("/login");
+            }}
+            text="Go to Login"
+            className="primaryColor text-white py-2"
+          />
         </div>
       </div>
-
-
-      <style>{`
-        .modal-content {
-          animation: modalZoomIn 0.3s ease-out;
-        }
-        
-        @keyframes modalZoomIn {
-          from {
-            transform: scale(0.5);
-            opacity: 0;
-          }
-          to {
-            transform: scale(1);
-            opacity: 1;
-          }
-        }
-      `}</style>
-    </div>
+    </Dialog>
   );
 };
 
-Modal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  showCloseButton: PropTypes.bool,
-  title: PropTypes.string
-};
-
 export default Modal;
+
+
+
+

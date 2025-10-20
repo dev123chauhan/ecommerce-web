@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-
 const CropText = ({ text, length = 100 }) => {
   if (!text) return null;
   

@@ -1,30 +1,58 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { categories } from "../../components/Category/CategoryData";
-const CategoryCard = ({ name, icon, isActive, onClick }) => (
-  <div
-    onClick={onClick}
-    className={`flex flex-col items-center justify-center p-4 rounded-lg transition-colors duration-300 hover:cursor-pointer
-      ${isActive ? "primaryColor text-white" : ""}`}
-  >
-    <div className={`w-16 h-16 flex items-center justify-center mb-2 ${isActive ? "text-white" : ""}`}>
-      <span>{icon}</span>
+const CategoryCard = ({ name, img, imgDark, imgActive, isActive, isDark, onClick }) => {
+  const getImageSrc = () => {
+    if (isActive) return imgActive;
+    if (isDark) return imgDark;
+    return img;
+  };
+  return (
+    <div
+      onClick={onClick}
+      className={`flex flex-col items-center justify-center p-4 rounded-lg transition-colors duration-300 hover:cursor-pointer
+        ${isActive ? "primaryColor text-white" : ""}`}
+    >
+      <div className={`w-16 h-16 flex items-center justify-center mb-2 ${isActive ? "text-white" : ""}`}>
+        <img src={getImageSrc()} alt={name} />
+      </div>
+      <span className="text-sm font-medium">{name}</span>
     </div>
-    <span className="text-sm font-medium">{name}</span>
-  </div>
-);
+  );
+};
 
 CategoryCard.propTypes = {
   name: PropTypes.string.isRequired,
-  icon: PropTypes.element.isRequired,
+  img: PropTypes.string.isRequired,
+  imgDark: PropTypes.string.isRequired,
+  imgActive: PropTypes.string.isRequired,
   isActive: PropTypes.bool,
+  isDark: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
 };
 
 const Categories = () => {
   const scrollContainerRef = useRef(null);
   const [activeCategory, setActiveCategory] = useState(null);
+  const [isDark, setIsDark] = useState(false);
+
+
+  useEffect(() => {
+    const checkDarkMode = () => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    };
+
+    checkDarkMode();
+
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const scroll = (direction) => {
     const container = scrollContainerRef.current;
@@ -67,6 +95,7 @@ const Categories = () => {
                 <CategoryCard
                   {...category}
                   isActive={category.name === activeCategory}
+                  isDark={isDark}
                   onClick={() => setActiveCategory(category.name)}
                 />
               </div>
@@ -78,14 +107,14 @@ const Categories = () => {
             className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
             aria-label="Scroll left"
           >
-            <ArrowLeft className="w-6 h-6 text-gray-600" />
+            <ArrowLeft className="w-6 h-6 text-gray-600 dark:text-gray-300" />
           </button>
           <button
             onClick={() => scroll("right")}
             className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
             aria-label="Scroll right"
           >
-            <ArrowRight className="w-6 h-6 text-gray-600" />
+            <ArrowRight className="w-6 h-6 text-gray-600 dark:text-gray-300" />
           </button>
         </div>
       </div>
@@ -99,3 +128,7 @@ const Categories = () => {
 };
 
 export default Categories;
+
+
+
+

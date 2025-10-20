@@ -31,9 +31,7 @@ export default function App() {
   useEffect(() => {
     dispatch(checkAuthentication());
   }, [dispatch]);
-
   const location = useLocation();
-
   useEffect(() => {
     const path = location.pathname;
     let pageTitle = "Ecommerce Webapp"; 

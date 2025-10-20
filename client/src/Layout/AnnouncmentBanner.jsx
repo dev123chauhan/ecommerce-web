@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import PropTypes from 'prop-types';
-
 const AnnouncementBanner = ({ onVisibilityChange }) => {
   const [isVisible, setIsVisible] = useState(true);
   useEffect(() => {

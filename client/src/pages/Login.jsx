@@ -6,7 +6,7 @@ import { ArrowLeft, CheckCircle, AlertCircle } from "lucide-react";
 import { loginUser } from "../redux/action/AuthAction";
 import { Loader } from "../utils/Loader";
 import AuthImage from "../components/AuthImage/AuthImage";
-
+import { validateEmail, validatePassword } from "../Validation/Validation";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
@@ -28,42 +28,10 @@ const Login = () => {
     password: false,
   });
 
-
-  const validateEmail = (email) => {
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email) return { isValid: false, message: "Email is required" };
-    if (!emailRegex.test(email))
-      return { isValid: false, message: "Please enter a valid email address" };
-    return { isValid: true, message: "" };
-  };
-
-  const validatePassword = (password) => {
-    if (!password) return { isValid: false, message: "Password is required" };
-    if (password.length < 8)
-      return {
-        isValid: false,
-        message: "Password must be at least 8 characters long",
-      };
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasLowerCase = /[a-z]/.test(password);
-    const hasNumber = /[0-9]/.test(password);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-
-    if (!(hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar)) {
-      return {
-        isValid: false,
-        message:
-          "Password must include uppercase, lowercase, number, and special character",
-      };
-    }
-
-    return { isValid: true, message: "" };
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
     let validationResult;
     switch (name) {
       case "email":
@@ -113,9 +81,7 @@ const Login = () => {
         navigate("/");
       }, 2000);
     } else {
-      toast.error(
-        result.error || "Login failed. Please check your credentials."
-      );
+      toast.error(result.error || "Login failed. Please check your credentials.");
     }
   };
 
@@ -124,7 +90,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row  bg-blue-50">
+    <div className="flex flex-col md:flex-row bg-blue-50">
       <AuthImage />
       <div className="w-full md:w-1/2 flex items-center justify-center p-8 h-screen">
         <div className="w-full max-w-md">
@@ -183,8 +149,7 @@ const Login = () => {
                 type="button"
                 onClick={togglePasswordVisibility}
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 focus:outline-none"
-              >
-              </button>
+              ></button>
               {formData.password && (
                 <div className="absolute right-3 top-1/3 transform -translate-y-1/2">
                   {validity.password ? (
@@ -203,16 +168,12 @@ const Login = () => {
             </div>
             <div className="flex items-center justify-between mb-6">
               <p className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  className="w-4 h-4 rounded accent-black"
-                />{" "}
-                Remember me{" "}
+                <input type="checkbox" className="w-4 h-4 rounded accent-black" /> Remember me
               </p>
             </div>
             <button
               type="submit"
-              className="w-full mb-6 primaryColor text-white px-6 py-3 rounded-full  transition duration-300"
+              className="w-full mb-6 primaryColor text-white px-6 py-3 rounded-full transition duration-300"
               disabled={loading}
             >
               {loading ? <Loader /> : "Log in"}
@@ -231,3 +192,7 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
+

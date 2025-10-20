@@ -1,6 +1,6 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
 body {
   margin: 0 !important;
   padding: 0 !important;
@@ -75,6 +75,19 @@ body {
 .max-w-7xl {
   max-width: 85rem !important;
 }
-  /* --bs-btn-padding-x: 28px !important;
-  --bs-btn-padding-y: 8px !important;
-  --bs-border-radius: 10px !important; */
+
+.modal-content {
+  transition: all 0.3s ease-in-out;
+  transform-origin: center;
+}
+.p-dialog-mask {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(4px);
+}
+body.p-overflow-hidden {
+  overflow: visible !important;
+  padding-right: 0 !important;
+}
+body[style*="position: fixed"] {
+  overflow-y: scroll !important;
+}

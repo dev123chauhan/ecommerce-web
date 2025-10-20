@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { ThemeContext } from "../context/ThemeContextProvider";
 import Button from "../components/Button/Button";
-import AccountDropdown from "../pages/AccountDropdown";
+import Dropdown from "../components/Dropdown/Dropdown";
 const Header = () => {
   const location = useLocation();
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -14,14 +14,12 @@ const Header = () => {
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
-
   const navItems = [
     { name: "Home", path: "/" },
     { name: "Contact", path: "/contact" },
     { name: "About", path: "/about" },
     { name: "Shop", path: "/shop" },
   ];
-
   return (
     <>
       <header className="bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -64,7 +62,7 @@ const Header = () => {
               </button>
 
               {isAuthenticated ? (
-                <AccountDropdown />
+                <Dropdown />
               ) : (
                 <div className="space-x-4 flex items-center">
                   <Button
@@ -108,7 +106,7 @@ const Header = () => {
               </button>
 
               {isAuthenticated ? (
-                <AccountDropdown />
+                <Dropdown />
               ) : (
                 <div className="flex items-center space-x-2">
                   <Button

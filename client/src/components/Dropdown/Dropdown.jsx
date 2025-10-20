@@ -1,20 +1,23 @@
 import { useState, useEffect, useRef } from "react";
-import { User, ShoppingBag, Star, LogOut, Heart, ShoppingCart } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "../redux/action/AuthAction";
-import { fetchCart } from "../redux/slice/CartSlice";
 import { toast } from "sonner";
-const AccountDropdown = () => {
+import wishlistIcon from "../../../public/assets/Wishlist.png"
+import cartIcon from "../../../public/assets/Cart.png"
+import userIcon from "../../../public/assets/user.png"
+import myOrderIcon from "../../../public/assets/MyOrder.png"
+import reviewsIcon from "../../../public/assets/Reviews.png"
+import logoutIcon from "../../../public/assets/Logout.png"
+import { logoutUser } from "../../redux/action/AuthAction";
+import { fetchCart } from "../../redux/slice/CartSlice";
+const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const { totalQuantity } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const dropdownRef = useRef(null);
-
   const toggleDropdown = () => setIsOpen(!isOpen);
-
   const handleLogout = () => {
     dispatch(logoutUser());
     navigate("/login");
@@ -46,9 +49,9 @@ const AccountDropdown = () => {
   }, [isOpen]);
 
   const menuItems = [
-    { icon: <ShoppingBag size={18} />, text: "My Order", path: "/order" },
-    { icon: <Star size={18} />, text: "My Reviews", path: "/review" },
-    { icon: <LogOut size={18} />, text: "Logout", onClick: handleLogout },
+    { img: myOrderIcon, text: "My Order", path: "/order" },
+    { img: reviewsIcon, text: "My Reviews", path: "/review" },
+    { img: logoutIcon, text: "Logout", onClick: handleLogout },
   ];
 
   const wishlistItems = useSelector((state) => state.wishlist.items);
@@ -57,10 +60,10 @@ const AccountDropdown = () => {
   return (
     <div className="flex items-center gap-2">
       <div className="relative">  
-        <Heart
+        <img
+          src={wishlistIcon}
           onClick={() => navigate("/wishlist")}
-          className="cursor-pointer transition-colors dark:text-white"
-          size={25}
+          className="cursor-pointer transition-colors dark:text-white w-8 h-8"
         />
         {totalWishlistItems > 0 && (
           <span className="absolute -top-1 -right-1 primaryColor text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">
@@ -70,10 +73,10 @@ const AccountDropdown = () => {
       </div>
 
       <div className="relative">
-        <ShoppingCart
+        <img 
+          src={cartIcon}
           onClick={() => navigate("/cart")}
-          className="cursor-pointer transition-colors dark:text-white"
-          size={25}
+          className="cursor-pointer transition-colors dark:text-white w-8 h-8"
         />
         {totalQuantity > 0 && (
           <div className="absolute -top-1 -right-1 primaryColor text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
@@ -87,7 +90,7 @@ const AccountDropdown = () => {
           className="flex items-center gap-2 cursor-pointer dark:text-white"
           onClick={toggleDropdown}
         >
-          <User className="transition-colors" size={25} />
+          <img src={userIcon} className="transition-colors w-8 h-8" />
           <span className="text-sm font-medium">{user?.username}</span>
         </div>
 
@@ -112,7 +115,7 @@ const AccountDropdown = () => {
                   className="w-full flex items-center px-4 py-2 text-sm text-white hover:bg-white/10 transition-colors duration-200"
                   role="menuitem"
                 >
-                  <span className="mr-3">{item.icon}</span>
+                  <img src={item.img} className="mr-3 w-6 h-6" />
                   {item.text}
                 </button>
               ) : (
@@ -122,7 +125,7 @@ const AccountDropdown = () => {
                   className="flex items-center px-4 py-2 text-sm text-white hover:bg-white/10 transition-colors duration-200"
                   role="menuitem"
                 >
-                  <span className="mr-3">{item.icon}</span>
+                 <img src={item.img} className="mr-3 w-6 h-6" />
                   {item.text}
                 </Link>
               )
@@ -134,4 +137,4 @@ const AccountDropdown = () => {
   );
 };
 
-export default AccountDropdown;
+export default Dropdown;

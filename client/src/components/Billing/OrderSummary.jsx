@@ -9,11 +9,9 @@ const OrderSummary = ({
   currency 
 }) => {
   const { items } = useSelector((state) => state.cart);
-
   const handlePaymentMethodChange = (e) => {
     setSelectedPaymentMethod(e.target.value);
   };
-
   return (
     <div className="p-4 sm:p-6 rounded-lg shadow-sm border border-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-white sticky top-4">
       <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-900 dark:text-white">

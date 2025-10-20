@@ -2,7 +2,7 @@ import { CheckCircle, AlertCircle } from "lucide-react";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "sonner";
-
+import { validateEmail, validateFirstName, validatePhoneNumber, validateStreetAddress, validateTownCity } from "../../Validation/Validation";
 const BillingForm = ({ formData, setFormData, onSubmit }) => {
   const [errors, setErrors] = useState({
     firstName: "",
@@ -19,65 +19,6 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
     phoneNumber: false,
     emailAddress: false,
   });
-
-  const validateFirstName = (name) => {
-    if (!name) return { isValid: false, message: "First Name is required" };
-    if (name.length < 2)
-      return {
-        isValid: false,
-        message: "First Name must be at least 2 characters long",
-      };
-    return { isValid: true, message: "" };
-  };
-
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email) return { isValid: false, message: "Email is required" };
-    if (!emailRegex.test(email))
-      return { isValid: false, message: "Please enter a valid email address" };
-    return { isValid: true, message: "" };
-  };
-
-  const validatePhoneNumber = (phone) => {
-    const phoneRegex = /^[6-9]\d{9}$/;
-    
-    if (!phone) return { isValid: false, message: "Phone Number is required" };
-    
-    if (phone.length > 10) {
-      return { isValid: false, message: "Phone number cannot exceed 10 digits" };
-    }
-    
-    if (phone.length < 10) {
-      return { isValid: false, message: "Phone number must be 10 digits" };
-    }
-    
-    if (!phoneRegex.test(phone)) {
-      return { isValid: false, message: "Please enter a valid Indian phone number" };
-    }
-    
-    return { isValid: true, message: "" };
-  };
-
-  const validateStreetAddress = (address) => {
-    if (!address)
-      return { isValid: false, message: "Street Address is required" };
-    if (address.length < 5)
-      return {
-        isValid: false,
-        message: "Street Address must be at least 5 characters long",
-      };
-    return { isValid: true, message: "" };
-  };
-
-  const validateTownCity = (town) => {
-    if (!town) return { isValid: false, message: "Town/City is required" };
-    if (town.length < 2)
-      return {
-        isValid: false,
-        message: "Town/City must be at least 2 characters long",
-      };
-    return { isValid: true, message: "" };
-  };
 
   const handlePhoneInput = (e) => {
     let value = e.target.value.replace(/\D/g, '');
@@ -164,7 +105,7 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
   };
 
   return (
-    <div>
+    <>
       <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
         Billing Details
       </h2>
@@ -396,7 +337,7 @@ const BillingForm = ({ formData, setFormData, onSubmit }) => {
           )}
         </div>
       </form>
-    </div>
+    </>
   );
 };
 

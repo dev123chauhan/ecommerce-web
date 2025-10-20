@@ -6,13 +6,12 @@ import { ArrowLeft, CheckCircle, AlertCircle } from "lucide-react";
 import AuthImage from "../components/AuthImage/AuthImage";
 import { registerUser } from "../redux/action/AuthAction";
 import { Loader } from "../utils/Loader";
-
+import { validateEmail, validatePassword, validateUsername } from "../Validation/Validation";
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const { loading } = useSelector((state) => state.auth);
-
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -30,50 +29,6 @@ const Register = () => {
     email: false,
     password: false,
   });
-
-  const validateUsername = (username) => {
-    if (!username) return { isValid: false, message: "Name is required" };
-    if (username.length < 2)
-      return {
-        isValid: false,
-        message: "Name must be at least 2 characters long",
-      };
-    if (username.length > 50)
-      return { isValid: false, message: "Name cannot exceed 50 characters" };
-    return { isValid: true, message: "" };
-  };
-
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email) return { isValid: false, message: "Email is required" };
-    if (!emailRegex.test(email))
-      return { isValid: false, message: "Please enter a valid email address" };
-    return { isValid: true, message: "" };
-  };
-
-  const validatePassword = (password) => {
-    if (!password) return { isValid: false, message: "Password is required" };
-    if (password.length < 8)
-      return {
-        isValid: false,
-        message: "Password must be at least 8 characters long",
-      };
-
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasLowerCase = /[a-z]/.test(password);
-    const hasNumber = /[0-9]/.test(password);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-
-    if (!(hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar)) {
-      return {
-        isValid: false,
-        message:
-          "Password must include uppercase, lowercase, number, and special character",
-      };
-    }
-
-    return { isValid: true, message: "" };
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -94,15 +49,8 @@ const Register = () => {
         validationResult = { isValid: false, message: "" };
     }
 
-    setErrors((prev) => ({
-      ...prev,
-      [name]: validationResult.message,
-    }));
-
-    setValidity((prev) => ({
-      ...prev,
-      [name]: validationResult.isValid,
-    }));
+    setErrors((prev) => ({ ...prev, [name]: validationResult.message }));
+    setValidity((prev) => ({ ...prev, [name]: validationResult.isValid }));
   };
 
   const handleSubmit = async (e) => {
@@ -124,34 +72,25 @@ const Register = () => {
       password: passwordValidation.isValid,
     });
 
-    if (
-      !usernameValidation.isValid ||
-      !emailValidation.isValid ||
-      !passwordValidation.isValid
-    ) {
+    if (!usernameValidation.isValid || !emailValidation.isValid || !passwordValidation.isValid) {
       return;
     }
 
     try {
       await dispatch(registerUser(formData));
       toast.success("Successfully registered");
-      setTimeout(() => {
-        navigate("/");
-      }, 1200);
+      setTimeout(() => navigate("/"), 1200);
     } catch (error) {
       toast.error("Registration failed");
       console.error("Error registering user:", error);
     }
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+  const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
   return (
-    <div className="flex flex-col md:flex-row  bg-blue-50">
+    <div className="flex flex-col md:flex-row bg-blue-50">
       <AuthImage />
-
       <div className="w-full md:w-1/2 flex items-center justify-center p-8 h-screen">
         <div className="w-full max-w-md">
           <Link className="flex items-center gap-2 py-3 text-[#db4444]" to="/">
@@ -175,7 +114,6 @@ const Register = () => {
                     : "border-gray-300"
                 }`}
                 onChange={handleChange}
-                required
               />
               {formData.username && (
                 <div className="absolute right-3 top-1/3 transform -translate-y-1/2">
@@ -193,6 +131,8 @@ const Register = () => {
                 </div>
               )}
             </div>
+
+
             <div className="mb-4 relative">
               <input
                 type="email"
@@ -206,7 +146,6 @@ const Register = () => {
                     : "border-gray-300"
                 }`}
                 onChange={handleChange}
-                required
               />
               {formData.email && (
                 <div className="absolute right-3 top-1/3 transform -translate-y-1/2">
@@ -224,6 +163,8 @@ const Register = () => {
                 </div>
               )}
             </div>
+
+
             <div className="relative mb-6">
               <input
                 type={showPassword ? "text" : "password"}
@@ -237,7 +178,6 @@ const Register = () => {
                     : "border-gray-300"
                 }`}
                 onChange={handleChange}
-                required
               />
               <button
                 type="button"
@@ -260,6 +200,7 @@ const Register = () => {
                 </div>
               )}
             </div>
+
             <button
               type="submit"
               className="w-full primaryColor text-white px-6 py-3 rounded-full transition duration-300"
@@ -282,3 +223,5 @@ const Register = () => {
 };
 
 export default Register;
+
+
