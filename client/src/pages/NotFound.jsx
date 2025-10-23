@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
+import Button from "../components/Button/Button";
 const NotFound = () => {
+  const navigate = useNavigate()
   return (
     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300">
     <div className="flex flex-col items-center justify-center min-h-screen px-4 font-sans text-center">
@@ -10,12 +12,13 @@ const NotFound = () => {
       <p className="text-lg text-gray-600 mb-8">
         Your visited page not found. You may go home page.
       </p>
-      <Link
+      {/* <Link
         to="/"
         className="px-6 py-3 bg-red-500 text-white text-lg rounded hover:bg-red-600 transition-colors duration-300"
       >
         Back to home page
-      </Link>
+      </Link> */}
+      <Button text="Back To Home" onClick={()=>navigate("/")} className="py-3 primaryColor text-white"/>
     </div>
     </div>
   );

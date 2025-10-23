@@ -1,18 +1,15 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import ScrollToTop from "react-scroll-to-top";
 import { FaArrowUp } from "react-icons/fa";
-import { useDispatch } from 'react-redux';
-import { checkAuthentication } from './redux/action/AuthAction';
+import { useDispatch } from "react-redux";
+import { checkAuthentication } from "./redux/action/authAction";
 import { useEffect } from "react";
-import ThemeContextProvider from "./context/ThemeContextProvider";
 import { Toaster } from "sonner";
-import { AnimatePresence } from "framer-motion";
-import PageTransition from "./animation/PageTransition";
 import Layout from "./Layout/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import Cart from "./pages/Cart";
+// import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import NotFound from "./pages/NotFound";
 import Shop from "./pages/Shop";
@@ -23,8 +20,6 @@ import Billing from "./pages/Billing";
 import Order from "./pages/Order";
 import Review from "./pages/Review";
 import ProductDetail from "./pages/ProductDetail";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 export default function App() {
   const dispatch = useDispatch();
@@ -34,7 +29,7 @@ export default function App() {
   const location = useLocation();
   useEffect(() => {
     const path = location.pathname;
-    let pageTitle = "Ecommerce Webapp"; 
+    let pageTitle = "Ecommerce Webapp";
 
     switch (path) {
       case "/":
@@ -63,30 +58,33 @@ export default function App() {
   }, [location]);
   return (
     <>
-     <Toaster color="green" position="bottom-right"/>
-    <ThemeContextProvider>
-      <ScrollToTop className="scrollToTop" smooth component={<FaArrowUp className="upArrow"/>}/>
-      <AnimatePresence mode="wait">
+      <Toaster color="green" position="bottom-right" />
+      <ScrollToTop
+        className="scrollToTop"
+        smooth
+        component={<FaArrowUp className="upArrow" />}
+      />
       <Routes>
-        <Route path="/" element={<Layout><PageTransition><Home /></PageTransition></Layout>}/>
-        <Route path="/contact" element={<Layout><Contact /></Layout>}/>
-        <Route path="/about" element={<Layout><About/></Layout>}/>
-        <Route path="/signup" element={<Register />}/>
-        <Route path="/login" element={<Login />}/>
-        <Route path="/cart" element={<Layout><PrivateRoute element={Cart} /></Layout>}/>
-        <Route path="/billing" element={<Layout><PrivateRoute element={Billing} /></Layout>}/>
-        <Route path="/wishlist" element={<Layout><PrivateRoute element={Wishlist} /></Layout>}/>
-        <Route path="/product/:id" element={<Layout><ProductDetail /></Layout>} />
-        <Route path="*" element={<Layout><NotFound /></Layout>}/>
-        <Route path="/order" element={<Layout><PrivateRoute element={Order} /></Layout>}/>
-        <Route path="/shop" element={<Layout><Shop /></Layout>}/>
-        <Route path="/privacy" element={<Layout><PrivacyPolicy /></Layout>}/>
-        <Route path="/terms" element={<Layout><Terms /></Layout>}/>
-        <Route path="/faq" element={<Layout><Faq /></Layout>}/>
-        <Route path="/review" element={<Layout><PrivateRoute element={Review} /></Layout>}/>
+        <Route path="/" element={<Layout />}>
+          <Route index  element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/faq" element={<Faq />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          {/* <Route path="/cart" element={<PrivateRoute element={Cart} />} /> */}
+          <Route path="/billing" element={<PrivateRoute element={Billing} />} />
+          <Route
+            path="/wishlist"
+            element={<PrivateRoute element={Wishlist} />}
+          />
+          <Route path="/order" element={<PrivateRoute element={Order} />} />
+          <Route path="/review" element={<PrivateRoute element={Review} />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
       </Routes>
-      </AnimatePresence>
-    </ThemeContextProvider>
     </>
-  )
+  );
 }

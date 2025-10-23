@@ -2,7 +2,7 @@ import { CheckCircle, AlertCircle } from "lucide-react";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "sonner";
-import { validateEmail, validateFirstName, validatePhoneNumber, validateStreetAddress, validateTownCity } from "../../Validation/Validation";
+import { validateEmail, validateFirstName, validatePhoneNumber, validateStreetAddress, validateTownCity } from "../../Validation/validation";
 const BillingForm = ({ formData, setFormData, onSubmit }) => {
   const [errors, setErrors] = useState({
     firstName: "",

@@ -1,18 +1,24 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Star, Minus, Plus, Heart } from "lucide-react";
-import { useSelector } from "react-redux";
+import {  Minus, Plus, Heart } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
 import RecommendedProducts from "../components/WishLists/RecommendedProducts";
 import Button from "../components/Button/Button";
+import { useModal } from "../context/modalContext";
+import { addToCart } from "../redux/slice/cartSlice";
+import { toast } from "sonner";
+import { toggleWishlistItem } from "../redux/slice/wishlistSlice";
 const ProductDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const favorites = useSelector((state) => state.wishlist.favorites);
-
+  const { openModal } = useModal();
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
+   const { items: wishlistItems } = useSelector((state) => state.wishlist);
   const { product } = location.state || {};
-
+  const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
-  const [selectedColor, setSelectedColor] = useState("white");
+  // const [selectedColor, setSelectedColor] = useState("white");
   const [mainImage, setMainImage] = useState("");
 
   useEffect(() => {
@@ -26,17 +32,69 @@ const ProductDetail = () => {
   if (!product) return null;
 
   const productId = product._id || product.id;
-  const colors = ["white", "#db4444"];
+  // const colors = ["white", "#db4444"];
 
-  const safeRating =
-    typeof product.rating === "number" && isFinite(product.rating)
-      ? Math.min(Math.max(0, Math.floor(product.rating)), 5)
-      : 0;
+  // const safeRating =
+  //   typeof product.rating === "number" && isFinite(product.rating)
+  //     ? Math.min(Math.max(0, Math.floor(product.rating)), 5)
+  //     : 0;
 
   const handleCheckout = () => {
+    if (!isAuthenticated) return openModal("Login");
     navigate("/billing");
   };
+  const renderStars = (rating) => {
+    return Array(5)
+      .fill(0)
+      .map((_, index) => (
+        <span
+          key={`star-${index}`}
+          className={`text-[#FFAD33] text-4xl ${
+            index < Math.floor(rating) ? "fill-current" : "stroke-current"
+          }`}
+        >
+          ★
+        </span>
+      ));
+  };
 
+  const handleAddToCart = async () => {
+    if (!isAuthenticated) return openModal("Login");
+    try {
+      await dispatch(
+        addToCart({
+          userId: user.id,
+          product: {
+            id: product._id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+          },
+        })
+      ).unwrap();
+      toast.success("Item Added to Cart");
+    } catch {
+      toast.error("Failed to add to cart");
+    }
+  };
+  const isInWishlist = (productId) => {
+  return wishlistItems.some(
+    (item) => item?.productId?._id === productId
+    
+  );
+};
+    const handleWishlist = async (product) => {
+      if (!user) return openModal("Login");
+      try {
+        await dispatch(toggleWishlistItem({ userId: user.id, productId: product._id })).unwrap();
+        toast.success(
+          isInWishlist(product._id) ? "Removed from Wishlist" : "Added to Wishlist"
+        );
+      } catch {
+        toast.error("Failed to update wishlist");
+      }
+    };
+    
   return (
     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 pt-10">
@@ -63,16 +121,9 @@ const ProductDetail = () => {
           </div>
           <div>
             <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
-            <p className="mb-6 text-gray-600">{product.description}</p>
+            <p className=" text-gray-600">{product.description}</p>
             <div className="flex items-center mb-4">
-              <div className="flex text-yellow-400 mr-2">
-                {[...Array(safeRating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-current" />
-                ))}
-                {[...Array(5 - safeRating)].map((_, i) => (
-                  <Star key={i + safeRating} className="w-5 h-5" />
-                ))}
-              </div>
+              {renderStars()}
               <span className="text-gray-600">
                 ({product.reviews || 0} Reviews) | In Stock
               </span>
@@ -89,7 +140,7 @@ const ProductDetail = () => {
                 </p>
               )}
             </div>
-            <div className="mb-6">
+            {/* <div className="mb-6">
               <h3 className="font-semibold mb-2">Colours:</h3>
               <div className="flex space-x-2">
                 {colors.map((color) => (
@@ -105,7 +156,7 @@ const ProductDetail = () => {
                   />
                 ))}
               </div>
-            </div>
+            </div> */}
             <div className="flex items-center space-x-4 mb-6">
               <div className="flex items-center border border-gray-300 rounded-md">
                 <button
@@ -130,10 +181,12 @@ const ProductDetail = () => {
               </button> */}
               <Button
                 text="Add to Cart"
+                onClick={handleAddToCart}
                 className="primaryColor text-white py-3 w-full"
               />
               <button className="border border-gray-300 p-2 rounded-md  transition-colors">
                 <Heart
+                  onClick={handleWishlist}
                   className="w-6 h-6"
                   fill={favorites?.[productId] ? "currentColor" : "none"}
                   color={favorites?.[productId] ? "#db4444" : "currentColor"}

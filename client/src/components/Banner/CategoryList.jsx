@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { ChevronRight, ChevronDown } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSelectedCategories, setSelectedSubCategories } from '../../redux/slice/ShopSlice';
-import { useGetCategoriesQuery } from '../../redux/slice/ShopApiSlice';
+import { setSelectedCategories, setSelectedSubCategories } from '../../redux/slice/shopSlice';
+import { useGetCategoriesQuery } from '../../redux/slice/shopApiSlice';
 import { Skeleton } from 'antd';
 const CategoryList = () => {
   const [expandedCategories, setExpandedCategories] = useState([]);

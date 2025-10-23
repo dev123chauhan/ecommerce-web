@@ -4,7 +4,7 @@ import {
   PRODUCTS_LOADING,
   PRODUCTS_ERROR,
   FILTER_PRODUCTS,
-} from "./types";
+} from "../../contants/types";
 const API_URL = import.meta.env.VITE_API_URL;
 export const getProducts = () => async (dispatch) => {
   dispatch({ type: PRODUCTS_LOADING });

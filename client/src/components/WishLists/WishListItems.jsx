@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import {
   fetchWishlist,
   removeFromWishlist,
-} from "../../redux/slice/WishlistSlice";
+} from "../../redux/slice/wishlistSlice";
 import wishlistGif from "../../../public/assets/Wishlist.gif";
 import Card from "../Card/Card";
 import WishlistProductSkeleton from "../Skeleton/WishlistProductSkeleton";

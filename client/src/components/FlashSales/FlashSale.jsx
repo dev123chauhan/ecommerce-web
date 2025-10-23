@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { useModal } from "../../context/ModalContext";
-import { addToCart } from "../../redux/slice/CartSlice";
-import { fetchProducts } from "../../redux/slice/ProductSlice";
-import { fetchWishlist, toggleWishlistItem } from "../../redux/slice/WishlistSlice";
+import { addToCart } from "../../redux/slice/cartSlice";
+import { fetchProducts } from "../../redux/slice/productSlice";
+import { fetchWishlist, toggleWishlistItem } from "../../redux/slice/wishlistSlice";
 import useCountdownTimer from "../../hooks/useCountdownTimer";
 import useHorizontalScroll from "../../hooks/useHorizontalScroll";
 import FlashSaleHeader from "./FlashSaleHeader";
@@ -34,7 +34,7 @@ export default function FlashSale() {
   }, []);
 
   const handleAddToCart = async (product) => {
-    if (!isAuthenticated) return openModal("Login Required");
+    if (!isAuthenticated) return openModal("Login");
     try {
       await dispatch(
         addToCart({
@@ -54,7 +54,7 @@ export default function FlashSale() {
   };
 
   const handleFavoriteClick = async (product) => {
-    if (!user) return openModal("Login Required");
+    if (!user) return openModal("Login");
     try {
       await dispatch(toggleWishlistItem({ userId: user.id, productId: product._id })).unwrap();
       toast.success(

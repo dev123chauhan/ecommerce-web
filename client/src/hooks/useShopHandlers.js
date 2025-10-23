@@ -4,7 +4,7 @@ import {
   setSearchTerm,
   setSelectedCategories,
   setSelectedSubCategories,
-} from "../redux/slice/ShopSlice";
+} from "../redux/slice/shopSlice";
 
 export default function useShopHandlers({ categories, setIsFiltering }) {
   const dispatch = useDispatch();

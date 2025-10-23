@@ -1,8 +1,14 @@
-import { useState } from "react";
-import { Heart, Eye } from "lucide-react";
+import { useContext, useState } from "react";
+import viewIconWhite from "../../../public/assets/viewWhite.png";
+import viewIcon from "../../../public/assets/view.png";
 import { Skeleton } from "antd";
 import PropTypes from "prop-types";
 import Button from "../Button/Button";
+import wishlistIcon from "../../../public/assets/Wishlist.png";
+import wishlistIconWhite from "../../../public/assets/wishlistWhite.png";
+import wishlistIconFilled from "../../../public/assets/heartfill.png";
+import wishlistIconFilledWhite from "../../../public/assets/Wishlist.png";
+import { ThemeContext } from "../../context/ThemeContextProvider";
 const Card = ({
   product,
   loading = false,
@@ -16,6 +22,9 @@ const Card = ({
   className = "",
 }) => {
   const [imageError, setImageError] = useState(false);
+  const { theme } = useContext(ThemeContext);
+  
+  const isDarkMode = theme === "dark";
 
   const renderStars = (rating) => {
     return Array(5)
@@ -91,6 +100,14 @@ const Card = ({
     return null;
   };
 
+  // Get the appropriate wishlist icon based on theme and wishlist status
+  const getWishlistIcon = () => {
+    if (isInWishlist) {
+      return isDarkMode ? wishlistIconFilledWhite : wishlistIconFilled;
+    }
+    return isDarkMode ? wishlistIconWhite : wishlistIcon;
+  };
+
   return (
     <div
       className={`rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ${className}`}
@@ -115,22 +132,26 @@ const Card = ({
         <div className="absolute top-2 right-2 flex flex-col space-y-2">
           <button
             onClick={handleWishlistClick}
-            className="p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-all"
+            className="p-2 dark:bg-gray-900 bg-white rounded-full shadow-md hover:shadow-lg transition-all"
             aria-label="Add to wishlist"
           >
-            <Heart
-              size={20}
-              fill={isInWishlist ? "currentColor" : "none"}
-              className={isInWishlist ? "text-red-500" : ""}
+            <img
+              src={getWishlistIcon()}
+              className="cursor-pointer w-8 h-8"
+              alt="Wishlist"
             />
           </button>
           {onViewDetails && (
             <button
               onClick={handleViewClick}
-              className="p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-all"
+              className="p-2 bg-white dark:bg-gray-900 rounded-full shadow-md hover:shadow-lg transition-all"
               aria-label="View details"
             >
-              <Eye size={20}  />
+              <img
+                src={isDarkMode ? viewIconWhite : viewIcon}
+                className="cursor-pointer w-8 h-6"
+                alt="View"
+              />
             </button>
           )}
         </div>
@@ -220,3 +241,5 @@ Card.propTypes = {
 };
 
 export default Card;
+
+

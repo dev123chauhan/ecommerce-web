@@ -1,11 +1,11 @@
 import Banner from '../components/Banner/Banner'
 import FlashSale from '../components/FlashSales/FlashSale'
 import Categories from '../components/Categories/Categories'
-import BestSellingProducts from '../components/BestSellingProducts/BestSellingProducts'
 import MusicExperience from '../components/MusicExperience/MusicExperience'
 import ExploreOurProducts from '../components/ExploreOurProducts/ExploreOurProducts'
 import FeaturedNewArrivals from '../components/FeaturedNewArrivals/FeaturedNewArrivals'
 import ServiceFeatures from '../components/ServiceFeatures/ServiceFeatures'
+import BestSelling from '../components/BestSellingProducts/BestSelling'
 export default function Home() {
   return (
     <div className='dark:bg-gray-900 dark:text-white transition-colors duration-300'>
@@ -13,7 +13,7 @@ export default function Home() {
       <Banner />
       <FlashSale />
       <Categories />
-      <BestSellingProducts />
+      <BestSelling />
       <MusicExperience />
       <ExploreOurProducts />
       <FeaturedNewArrivals  />

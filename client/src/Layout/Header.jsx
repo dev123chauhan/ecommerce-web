@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { ThemeContext } from "../context/ThemeContextProvider";
+import { useModal } from "../context/modalContext";
 import Button from "../components/Button/Button";
 import Dropdown from "../components/Dropdown/Dropdown";
 const Header = () => {
@@ -10,16 +11,19 @@ const Header = () => {
   const { isAuthenticated } = useSelector((state) => state.auth);
   const [isOpen, setIsOpen] = useState(false);
   const { theme, toggleTheme } = useContext(ThemeContext);
-  const navigate = useNavigate();
+  const { openModal } = useModal();
+
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
+
   const navItems = [
     { name: "Home", path: "/" },
     { name: "Contact", path: "/contact" },
     { name: "About", path: "/about" },
     { name: "Shop", path: "/shop" },
   ];
+
   return (
     <>
       <header className="bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -66,12 +70,12 @@ const Header = () => {
               ) : (
                 <div className="space-x-4 flex items-center">
                   <Button
-                    onClick={() => navigate("/login")}
+                    onClick={() => openModal("Login")}
                     text="Login"
                     className="primaryColor py-2 text-white"
                   />
                   <Button
-                    onClick={() => navigate("/signup")}
+                    onClick={() => openModal("Register")}
                     text="Signup"
                     className="border border-[#db4444] text-[#db4444] py-2"
                   />
@@ -110,12 +114,12 @@ const Header = () => {
               ) : (
                 <div className="flex items-center space-x-2">
                   <Button
-                    onClick={() => navigate("/login")}
+                    onClick={() => openModal("Login")}
                     text="Login"
                     className="primaryColor py-2 text-white"
                   />
                   <Button
-                    onClick={() => navigate("/signup")}
+                    onClick={() => openModal("Register")}
                     text="Signup"
                     className="border border-[#db4444] text-[#db4444] py-2"
                   />

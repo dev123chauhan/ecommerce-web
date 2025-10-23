@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import Card from "../components/Card/Card";
-import { addToCart } from "../redux/slice/CartSlice";
-import { fetchWishlist, toggleWishlistItem } from "../redux/slice/WishlistSlice";
-import { useModal } from "../context/ModalContext";
-import { setProducts } from "../redux/slice/ShopSlice";
-import { useGetProductsQuery, useGetCategoriesQuery } from "../redux/slice/ShopApiSlice";
+import { addToCart } from "../redux/slice/cartSlice";
+import { fetchWishlist, toggleWishlistItem } from "../redux/slice/wishlistSlice";
+import { useModal } from "../context/modalContext";
+import { setProducts } from "../redux/slice/shopSlice";
+import { useGetProductsQuery, useGetCategoriesQuery } from "../redux/slice/shopApiSlice";
 import useShopHandlers from "../hooks/useShopHandlers";
 import ShopSearch from "../components/Shop/ShopSearch";
 import Breadcrumb from "../components/Breadcrumb/Breadcrumb";
@@ -55,7 +55,7 @@ export default function Shop() {
   );
 };
   const handleAddToCart = async (product) => {
-    if (!isAuthenticated) return openModal("Login Required");
+    if (!isAuthenticated) return openModal("Login");
     try {
       await dispatch(
         addToCart({
@@ -75,7 +75,7 @@ export default function Shop() {
   };
 
   const handleToggleWishlist = async (product) => {
-    if (!user) return openModal("Login Required");
+    if (!user) return openModal("Login");
     const wasInWishlist = isInWishlist(product._id);
     try {
       await dispatch(toggleWishlistItem({ userId: user.id, productId: product._id })).unwrap();
@@ -96,11 +96,10 @@ export default function Shop() {
 
   return (
     <div className="dark:bg-gray-900 dark:text-white min-h-screen transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="pt-20">
         <Breadcrumb />
       </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 flex flex-col md:flex-row gap-6 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 flex flex-col md:flex-row gap-6">
         <div className="md:w-1/4 lg:w-1/5">
           <ShopSearch categories={categories} handlers={handlers} loading={categoriesLoading} />
         </div>

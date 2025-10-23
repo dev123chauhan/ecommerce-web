@@ -8,7 +8,7 @@ export default function FlashSaleProduct({
   handleFavoriteClick,
   handleViewDetails,
   handleProductClick,
-  isInWishlist,
+  isInWishlist, 
 }) {
   const skeletons = Array(6).fill(0);
 

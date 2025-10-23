@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 const AnnouncementBanner = React.lazy(() => import("./AnnouncmentBanner"));
-const Layout = ({ children }) => {
+const Layout = () => {
   const location = useLocation();
   const [isBannerVisible, setIsBannerVisible] = useState(true);
   useEffect(() => {
@@ -26,15 +25,12 @@ const Layout = ({ children }) => {
       </div>
 
       <div className={`${isBannerVisible ? "pt-[50px]" : "pt-[9px]"}`}>
-        <main>{children}</main>
+        <main>
+         <Outlet />
+        </main>
         <Footer />
       </div>
     </div>
   );
 };
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
 export default Layout;

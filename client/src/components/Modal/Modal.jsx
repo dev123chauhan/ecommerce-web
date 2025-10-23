@@ -1,13 +1,13 @@
 import { useEffect, useRef } from "react";
 import { Dialog } from "primereact/dialog";
-import { useModal } from "../../context/ModalContext";
-import { LogIn } from "lucide-react";
-import Button from "../Button/Button";
-import { useNavigate } from "react-router-dom";
+import { useModal } from "../../context/modalContext";
+import Login from "../../pages/Login";
+import Register from "../../pages/Register";
+
 const Modal = () => {
   const { isOpen, modalTitle, closeModal } = useModal();
-  const navigate = useNavigate();
   const scrollPosition = useRef(0);
+
   useEffect(() => {
     if (isOpen) {
       scrollPosition.current = window.pageYOffset;
@@ -26,50 +26,38 @@ const Modal = () => {
     }
   }, [isOpen]);
 
+  const renderContent = () => {
+    switch (modalTitle) {
+      case "Login":
+        return <Login />;
+      case "Register":
+        return <Register />;
+      default:
+        return null;
+    }
+  };
+  const headerTemplate = (
+    <div className="w-full text-center text-3xl font-semibold text-gray-900 dark:text-white">
+      {modalTitle}
+    </div>
+  );
   return (
     <Dialog
       visible={isOpen}
       onHide={closeModal}
-      header={modalTitle}
+      header={headerTemplate}
       modal
-      className="w-full max-w-lg"
-      contentClassName="dark:bg-gray-800 dark:text-white"
-      headerClassName="dark:bg-gray-800 dark:text-white dark:border-gray-700"
+      className="w-full max-w-md custom-dialog"
+      contentClassName="dark:bg-gray-800 dark:text-white p-0"
       dismissableMask
       draggable={false}
       resizable={false}
       blockScroll={false}
       appendTo="self"
     >
-      <div className="text-center p-6">
-        <div className="flex justify-center mb-4">
-          <LogIn size={48} className="text-[#db4444]" />
-        </div>
-        <p className="mb-6 text-gray-600 dark:text-gray-300">
-          Please log in to add items to your cart and continue shopping.
-        </p>
-        <div className="flex justify-center space-x-4">
-          <Button
-            text="Cancel"
-            onClick={closeModal}
-            className="py-2 border border-gray-300 dark:border-gray-600"
-          />
-          <Button
-            onClick={() => {
-              closeModal();
-              navigate("/login");
-            }}
-            text="Go to Login"
-            className="primaryColor text-white py-2"
-          />
-        </div>
-      </div>
+      {renderContent()}
     </Dialog>
   );
 };
 
 export default Modal;
-
-
-
-

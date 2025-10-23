@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFeaturedProducts } from "../../redux/slice/ProductBannerSlice";
+import { fetchFeaturedProducts } from "../../redux/slice/productBannerSlice";
 import iphonelogo from "../../../public/assets/iphonelogo.png";
 import { Skeleton } from "antd";
 const ProductSlider = () => {

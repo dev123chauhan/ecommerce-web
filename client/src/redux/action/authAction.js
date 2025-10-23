@@ -8,7 +8,7 @@ import {
   registerFailure,
   logout,
   checkAuthState,
-} from '../../redux/slice/AuthSlice';
+} from '../slice/authSlice';
 const API_URL = import.meta.env.VITE_API_URL
 axios.interceptors.request.use(
   (config) => {

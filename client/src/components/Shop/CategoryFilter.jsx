@@ -1,13 +1,23 @@
 import PropTypes from "prop-types";
 import { ChevronDown } from "lucide-react";
 import SubCategoryFilter from "./SubCategoryFilter";
+import { Skeleton } from "antd";
 
 export default function CategoryFilter({ categories, handlers, loading }) {
   if (loading) {
     return (
       <div className="animate-pulse space-y-2">
-        {[...Array(6)].map((_, i) => (
-          <div key={i} className="h-5 bg-gray-300 rounded w-3/4"></div>
+        {[...Array(23)].map((_, i) => (
+           <div key={i} className="mb-2">
+            <Skeleton.Input 
+              active 
+              style={{ 
+                width: '100%',
+                maxWidth: '100%'
+              }}
+              className="!w-full !h-8 sm:!h-10"
+            />
+          </div>
         ))}
       </div>
     );

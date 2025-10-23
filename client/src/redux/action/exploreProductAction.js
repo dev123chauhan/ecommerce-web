@@ -7,7 +7,6 @@ import {
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL
 } from '../../contants/ExploreProductConstants';
-
 const API_URL = import.meta.env.VITE_API_URL
 export const listProducts = (page = 1, limit = 8) => async (dispatch) => {
   try {

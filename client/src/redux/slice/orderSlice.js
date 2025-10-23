@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { clearPaymentState, createRazorpayOrder } from "./PaymentSlice";
+import { clearPaymentState, createRazorpayOrder } from "./paymentSlice";
 const API_URL = import.meta.env.VITE_API_URL;
 
 export const createOrder = createAsyncThunk(

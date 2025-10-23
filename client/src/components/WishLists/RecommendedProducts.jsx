@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { fetchProducts } from "../../redux/slice/ProductSlice";
-import { addToCart } from "../../redux/slice/CartSlice";
-import { fetchWishlist, toggleWishlistItem } from "../../redux/slice/WishlistSlice";
+import { fetchProducts } from "../../redux/slice/productSlice";
+import { addToCart } from "../../redux/slice/cartSlice";
+import { fetchWishlist, toggleWishlistItem } from "../../redux/slice/wishlistSlice";
 import Card from "../Card/Card";
 import { useModal } from "../../context/ModalContext";
 const RecommendedProducts = () => {
@@ -14,8 +14,7 @@ const RecommendedProducts = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { openModal } = useModal();
-  const [productToAdd, setProductToAdd] = useState(null);
-  console.log(productToAdd)
+  const [ setProductToAdd] = useState(null);
   const [displayLimit] = useState(4);
   const [allProducts, setAllProducts] = useState([]);
 
@@ -34,7 +33,7 @@ const RecommendedProducts = () => {
   const handleAddToCart = async (product) => {
     if (!isAuthenticated) {
       setProductToAdd(product);
-      openModal("Login Required");
+      openModal("Login");
       return;
     }
 
@@ -56,7 +55,7 @@ const RecommendedProducts = () => {
 
   const handleWishlistToggle = async (product) => {
     if (!user) {
-      openModal("Login Required");
+      openModal("Login");
       return;
     }
 

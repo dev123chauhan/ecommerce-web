@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { createOrder } from "../redux/slice/OrderSlice";
-import { createRazorpayOrder, getRazorpayKey, verifyPayment } from "../redux/slice/PaymentSlice";
+import { createOrder } from "../redux/slice/orderSlice";
+import { createRazorpayOrder, getRazorpayKey, verifyPayment } from "../redux/slice/paymentSlice";
 import BillingForm from "../components/Billing/BillingForm";
 import OrderSummary from "../components/Billing/OrderSummary";
 const Billing = () => {

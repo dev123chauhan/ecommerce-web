@@ -2,10 +2,8 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "react-router-dom";
-
 const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   return (
     <div className="border-b dark:border-gray-700 border-gray-200 py-4">
       <button
