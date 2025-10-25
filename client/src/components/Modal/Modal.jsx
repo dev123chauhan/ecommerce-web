@@ -1,11 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useContext } from "react";
 import { Dialog } from "primereact/dialog";
-import { useModal } from "../../context/modalContext";
+import { useModal } from "../../context/ModalContext";
 import Login from "../../pages/Login";
 import Register from "../../pages/Register";
-
+import { ThemeContext } from "../../context/ThemeContextProvider";
 const Modal = () => {
   const { isOpen, modalTitle, closeModal } = useModal();
+  const { theme } = useContext(ThemeContext);
   const scrollPosition = useRef(0);
 
   useEffect(() => {
@@ -21,7 +22,6 @@ const Modal = () => {
       document.body.style.top = "";
       document.body.style.width = "";
       document.body.style.overflowY = "";
-      
       window.scrollTo(0, scrollY);
     }
   }, [isOpen]);
@@ -36,19 +36,29 @@ const Modal = () => {
         return null;
     }
   };
+
   const headerTemplate = (
-    <div className="w-full text-center text-3xl font-semibold text-gray-900 dark:text-white">
+    <div
+      className={`w-full text-center mb-2 text-3xl font-semibold ${
+        theme === "dark" ? "text-white" : "text-gray-900"
+      }`}
+    >
       {modalTitle}
     </div>
   );
+
   return (
     <Dialog
       visible={isOpen}
       onHide={closeModal}
       header={headerTemplate}
       modal
-      className="w-full max-w-md custom-dialog"
-      contentClassName="dark:bg-gray-800 dark:text-white p-0"
+      className={`w-full max-w-md custom-dialog ${
+        theme === "dark" ? "dark-theme-dialog" : "light-theme-dialog"
+      }`}
+      contentClassName={`p-0 ${
+        theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-gray-900"
+      }`}
       dismissableMask
       draggable={false}
       resizable={false}

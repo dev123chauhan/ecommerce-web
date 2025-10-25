@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import noproductfound from "../../../public/assets/Not-found.gif";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
@@ -81,31 +80,4 @@ export default function BestSellingProducts({
     </>
   );
 }
-
-BestSellingProducts.propTypes = {
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      name: PropTypes.string,
-      price: PropTypes.number,
-      image: PropTypes.string,
-    })
-  ).isRequired,
-  allProducts: PropTypes.array.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  error: PropTypes.any,
-  showAll: PropTypes.bool.isRequired,
-  viewAllButtonRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
-  ]),
-  onAddToCart: PropTypes.func.isRequired,
-  onToggleWishlist: PropTypes.func.isRequired,
-  onViewDetails: PropTypes.func.isRequired,
-  onProductClick: PropTypes.func.isRequired,
-  isInWishlist: PropTypes.func.isRequired,
-  onShowLess: PropTypes.func.isRequired,
-  onViewAll: PropTypes.func.isRequired,
-};
-
 

@@ -9,32 +9,33 @@ import cartIcon from "../../../public/assets/Cart.png";
 import cartIconWhite from "../../../public/assets/cartWhite.png";
 import userIcon from "../../../public/assets/user.png";
 import userIconWhite from "../../../public/assets/userWhite.png";
+import userActive from "../../../public/assets/userActive.png"; // ✅ Imported active user icon
 import myOrderIcon from "../../../public/assets/MyOrder.png";
 import reviewsIcon from "../../../public/assets/Reviews.png";
-import logoutIcon from "../../../public/assets/Logout.png"; // Import CartSidebar
+import logoutIcon from "../../../public/assets/Logout.png";
 import { logoutUser } from "../../redux/action/authAction";
-// import Drawer from "../Drawer/Drawer";
 import { fetchCart } from "../../redux/slice/cartSlice";
 import { useCart } from "../../context/cartContext";
-const Dropdown = () => {  
-  const [isOpen, setIsOpen] = useState(false);// Cart sidebar state
+
+const Dropdown = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const { totalQuantity } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const dropdownRef = useRef(null);
   const { theme } = useContext(ThemeContext);
-    const { openDrawer } = useCart();
+  const { openDrawer } = useCart();
   const isDarkMode = theme === "dark";
-  
+
   const toggleDropdown = () => setIsOpen(!isOpen);
-  
+
   const handleLogout = () => {
     dispatch(logoutUser());
     navigate("/");
     toast.success("Successfully logged out!");
   };
-  
+
   useEffect(() => {
     if (user?.id && totalQuantity === 0) {
       const savedCart = localStorage.getItem("cart");
@@ -72,7 +73,8 @@ const Dropdown = () => {
   return (
     <>
       <div className="flex items-center gap-2">
-        <div className="relative">  
+        {/* Wishlist Icon */}
+        <div className="relative">
           <img
             src={isDarkMode ? wishlistIconWhite : wishlistIcon}
             onClick={() => navigate("/wishlist")}
@@ -86,11 +88,11 @@ const Dropdown = () => {
           )}
         </div>
 
+        {/* Cart Icon */}
         <div className="relative">
-          <img 
+          <img
             src={isDarkMode ? cartIconWhite : cartIcon}
-            // onClick={() => setCartVisible(true)} // Open cart sidebar
-             onClick={openDrawer}
+            onClick={openDrawer}
             className="cursor-pointer w-8 h-8"
             alt="Cart"
           />
@@ -101,19 +103,30 @@ const Dropdown = () => {
           )}
         </div>
 
+        {/* User Dropdown */}
         <div className="relative" ref={dropdownRef}>
           <div
             className="flex items-center gap-2 cursor-pointer dark:text-white"
             onClick={toggleDropdown}
           >
-            <img 
-              src={isDarkMode ? userIconWhite : userIcon} 
-              className="w-8 h-8" 
+            {/* ✅ Toggle between normal and active user icon */}
+            <img
+              src={
+                isOpen
+                  ? userActive
+                  : isDarkMode
+                  ? userIconWhite
+                  : userIcon
+              }
+              className={`w-8 h-8 transition-transform duration-300 ${
+                isOpen ? "scale-105" : ""
+              }`}
               alt="User"
             />
             <span className="text-sm font-medium">{user?.username}</span>
           </div>
 
+          {/* Dropdown Menu */}
           <div
             className={`absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-gradient-to-br from-[#9284A3] to-[#594F63] transition-all duration-300 ease-in-out ${
               isOpen
@@ -135,7 +148,11 @@ const Dropdown = () => {
                     className="w-full flex items-center px-4 py-2 text-sm text-white hover:bg-white/10 transition-colors duration-200"
                     role="menuitem"
                   >
-                    <img src={item.img} className="mr-3 w-6 h-6" alt={item.text} />
+                    <img
+                      src={item.img}
+                      className="mr-3 w-6 h-6"
+                      alt={item.text}
+                    />
                     {item.text}
                   </button>
                 ) : (
@@ -145,7 +162,11 @@ const Dropdown = () => {
                     className="flex items-center px-4 py-2 text-sm text-white hover:bg-white/10 transition-colors duration-200"
                     role="menuitem"
                   >
-                   <img src={item.img} className="mr-3 w-6 h-6" alt={item.text} />
+                    <img
+                      src={item.img}
+                      className="mr-3 w-6 h-6"
+                      alt={item.text}
+                    />
                     {item.text}
                   </Link>
                 )
@@ -159,5 +180,3 @@ const Dropdown = () => {
 };
 
 export default Dropdown;
-
-

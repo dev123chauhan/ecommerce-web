@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 export default function FlashSaleTimer({ timeLeft }) {
   return (
     <div className="flex space-x-3 sm:space-x-4">
@@ -15,12 +14,3 @@ export default function FlashSaleTimer({ timeLeft }) {
     </div>
   );
 }
-
-FlashSaleTimer.propTypes = {
-  timeLeft: PropTypes.shape({
-    Days: PropTypes.number,
-    Hours: PropTypes.number,
-    Minutes: PropTypes.number,
-    Seconds: PropTypes.number,
-  }).isRequired,
-};

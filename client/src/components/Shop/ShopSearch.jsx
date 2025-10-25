@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import CategoryFilter from "./CategoryFilter";
 
 export default function ShopSearch({ categories, handlers, loading }) {
@@ -21,18 +20,3 @@ export default function ShopSearch({ categories, handlers, loading }) {
     </div>
   );
 }
-
-ShopSearch.propTypes = {
-  categories: PropTypes.object,
-  handlers: PropTypes.shape({
-    selectedCategories: PropTypes.array.isRequired,
-    selectedSubCategories: PropTypes.array.isRequired,
-    expandedCategories: PropTypes.array.isRequired,
-    handleCategoryChange: PropTypes.func.isRequired,
-    handleSubCategoryChange: PropTypes.func.isRequired,
-    toggleCategory: PropTypes.func.isRequired,
-    searchTerm: PropTypes.string.isRequired,
-    handleSearchChange: PropTypes.func.isRequired,
-  }).isRequired,
-  loading: PropTypes.bool,
-};

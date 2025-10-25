@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { categories } from "../../components/Category/CategoryData";
 const CategoryCard = ({ name, img, imgDark, imgActive, isActive, isDark, onClick }) => {
@@ -20,16 +19,6 @@ const CategoryCard = ({ name, img, imgDark, imgActive, isActive, isDark, onClick
       <span className="text-sm font-medium">{name}</span>
     </div>
   );
-};
-
-CategoryCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired,
-  imgDark: PropTypes.string.isRequired,
-  imgActive: PropTypes.string.isRequired,
-  isActive: PropTypes.bool,
-  isDark: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
 };
 
 const Categories = () => {

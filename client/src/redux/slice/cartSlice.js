@@ -11,6 +11,7 @@ const handleAsyncError = (error) => {
   const message = error.response?.data?.message || error.message || 'An error occurred';
   throw new Error(message);
 };
+
 const saveCartToStorage = (cartData) => {
   try {
     localStorage.setItem('cart', JSON.stringify(cartData));
@@ -34,7 +35,7 @@ const loadCartFromStorage = () => {
     totalQuantity: 0
   };
 };
- 
+
 export const fetchCart = createAsyncThunk(
   'cart/fetchCart',
   async (userId) => {
@@ -71,13 +72,28 @@ export const removeFromCart = createAsyncThunk(
   }
 );
 
+// New thunk for updating quantity
+export const updateCartQuantity = createAsyncThunk(
+  'cart/updateQuantity',
+  async ({ userId, productId, action }) => {
+    try {
+      const response = await axios.patch(
+        `${BASE_URL}/cart/${userId}/update/${productId}`,
+        { action }
+      );
+      return response.data;
+    } catch (error) {
+      return handleAsyncError(error);
+    }
+  }
+);
+
 const updateCartState = (state, action) => {
   state.loading = false;
   state.error = null;
   state.items = action.payload.items || [];
   state.totalAmount = action.payload.totalAmount || 0;
   state.totalQuantity = calculateTotalQuantity(action.payload.items);
-  
 
   saveCartToStorage({
     items: state.items,
@@ -117,16 +133,12 @@ const cartSlice = createSlice({
       state.totalQuantity = 0;
       state.loading = false;
       state.error = null;
-      
-
       localStorage.removeItem('cart');
     },
-
     syncCartFromServer: (state, action) => {
       state.items = action.payload.items || [];
       state.totalAmount = action.payload.totalAmount || 0;
       state.totalQuantity = calculateTotalQuantity(action.payload.items);
-      
 
       saveCartToStorage({
         items: state.items,
@@ -147,7 +159,12 @@ const cartSlice = createSlice({
       
       .addCase(removeFromCart.pending, handlePending)
       .addCase(removeFromCart.fulfilled, updateCartState)
-      .addCase(removeFromCart.rejected, handleRejected);
+      .addCase(removeFromCart.rejected, handleRejected)
+      
+      // Handle updateCartQuantity
+      .addCase(updateCartQuantity.pending, handlePending)
+      .addCase(updateCartQuantity.fulfilled, updateCartState)
+      .addCase(updateCartQuantity.rejected, handleRejected);
   }
 });
 

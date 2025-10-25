@@ -1,6 +1,5 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import FlashSaleTimer from "./FlashSaleTimer";
-import PropTypes from "prop-types";
 export default function FlashSaleHeader({ timeLeft, onScroll }) {
   return (
     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-4 sm:space-y-0">
@@ -25,12 +24,3 @@ export default function FlashSaleHeader({ timeLeft, onScroll }) {
     </div>
   );
 }
-FlashSaleHeader.propTypes = {
-  timeLeft: PropTypes.shape({
-    Days: PropTypes.number,
-    Hours: PropTypes.number,
-    Minutes: PropTypes.number,
-    Seconds: PropTypes.number,
-  }).isRequired,
-  onScroll: PropTypes.func.isRequired,
-};

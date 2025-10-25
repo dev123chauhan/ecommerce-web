@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { Linkedin } from "lucide-react";
 import { BsInstagram } from "react-icons/bs";
 import team1 from "../../../public/assets/team1.png";
@@ -39,17 +38,6 @@ const TeamMember = ({ imageUrl, name, position, socialLinks }) => (
     </div>
   </div>
 );
-
-TeamMember.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  position: PropTypes.string.isRequired,
-  socialLinks: PropTypes.shape({
-    twitter: PropTypes.string,
-    instagram: PropTypes.string,
-    linkedin: PropTypes.string,
-  }).isRequired,
-};
 
 const TeamShowcase = () => {
   const teamMembers = [

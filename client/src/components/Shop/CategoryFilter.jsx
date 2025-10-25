@@ -1,8 +1,6 @@
-import PropTypes from "prop-types";
 import { ChevronDown } from "lucide-react";
 import SubCategoryFilter from "./SubCategoryFilter";
 import { Skeleton } from "antd";
-
 export default function CategoryFilter({ categories, handlers, loading }) {
   if (loading) {
     return (
@@ -57,16 +55,3 @@ export default function CategoryFilter({ categories, handlers, loading }) {
     </div>
   );
 }
-
-CategoryFilter.propTypes = {
-  categories: PropTypes.object,
-  handlers: PropTypes.shape({
-    selectedCategories: PropTypes.array.isRequired,
-    selectedSubCategories: PropTypes.array.isRequired,
-    expandedCategories: PropTypes.array.isRequired,
-    handleCategoryChange: PropTypes.func.isRequired,
-    handleSubCategoryChange: PropTypes.func.isRequired,
-    toggleCategory: PropTypes.func.isRequired,
-  }).isRequired,
-  loading: PropTypes.bool,
-};

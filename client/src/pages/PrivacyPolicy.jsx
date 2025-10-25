@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 const PolicySection = ({ 
   title, 
@@ -32,16 +31,6 @@ const PolicySection = ({
     </div>
   </div>
 );
-
-
-PolicySection.propTypes = {
-  title: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  sectionKey: PropTypes.string.isRequired,
-  openSections: PropTypes.objectOf(PropTypes.bool).isRequired,
-  toggleSection: PropTypes.func.isRequired,
-  className: PropTypes.string
-};
 
 
 
@@ -195,13 +184,6 @@ const PrivacyPolicy = ({
     </div>
     </div>
   );
-};
-
-
-PrivacyPolicy.propTypes = {
-  companyName: PropTypes.string,
-  contactEmail: PropTypes.string,
-  lastUpdated: PropTypes.string
 };
 
 export default PrivacyPolicy;

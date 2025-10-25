@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 export default function SubCategoryFilter({ subCategories, expanded, handlers }) {
   return (
     <div
@@ -22,12 +21,3 @@ export default function SubCategoryFilter({ subCategories, expanded, handlers })
     </div>
   );
 }
-
-SubCategoryFilter.propTypes = {
-  subCategories: PropTypes.array.isRequired,
-  expanded: PropTypes.bool,
-  handlers: PropTypes.shape({
-    selectedSubCategories: PropTypes.array.isRequired,
-    handleSubCategoryChange: PropTypes.func.isRequired,
-  }).isRequired,
-};

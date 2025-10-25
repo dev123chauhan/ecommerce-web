@@ -1,5 +1,4 @@
-import { createContext, useContext, useState } from "react";
-import PropTypes from "prop-types";// your existing Drawer component
+import { createContext, useContext, useState } from "react";// your existing Drawer component
 import Cart from "../components/Cart/Cart";
 // Create context
 const CartContext = createContext();
@@ -23,6 +22,4 @@ export const CartProvider = ({ children }) => {
 };
 export const useCart = () => useContext(CartContext);
 // ✅ Correct spelling — must be propTypes (not prototype)
-CartProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+

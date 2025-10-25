@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { ThemeContext } from "../context/ThemeContextProvider";
-import { useModal } from "../context/modalContext";
+import { useModal } from "../context/ModalContext";
 import Button from "../components/Button/Button";
 import Dropdown from "../components/Dropdown/Dropdown";
 const Header = () => {
@@ -12,18 +12,15 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { openModal } = useModal();
-
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
-
   const navItems = [
     { name: "Home", path: "/" },
     { name: "Contact", path: "/contact" },
     { name: "About", path: "/about" },
     { name: "Shop", path: "/shop" },
   ];
-
   return (
     <>
       <header className="bg-white dark:bg-gray-900 transition-colors duration-300">

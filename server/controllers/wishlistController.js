@@ -4,10 +4,10 @@ exports.toggleWishlistItem = async (req, res) => {
     const { userId, productId } = req.body;
     const existingItem = await Wishlist.findOne({ 
       userId, 
-      productId 
+      productId  
     });
 
-    if (existingItem) {
+    if (existingItem) { 
       await Wishlist.findOneAndDelete({ 
         userId, 
         productId 

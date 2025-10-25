@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import Card from '../Card/Card';
 export default function ExploreOurProductList({
   products,
@@ -53,25 +52,3 @@ export default function ExploreOurProductList({
     </>
   );
 }
-
-ExploreOurProductList.propTypes = {
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string,
-      id: PropTypes.string,
-      name: PropTypes.string,
-      price: PropTypes.number,
-      image: PropTypes.string,
-    })
-  ).isRequired,
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.string,
-  itemsPerPage: PropTypes.number.isRequired,
-  page: PropTypes.number.isRequired,
-  pages: PropTypes.number.isRequired,
-  onAddToCart: PropTypes.func.isRequired,
-  onToggleWishlist: PropTypes.func.isRequired,
-  onViewDetails: PropTypes.func.isRequired,
-  onProductClick: PropTypes.func.isRequired,
-  isInWishlist: PropTypes.func.isRequired,
-};

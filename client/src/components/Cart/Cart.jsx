@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 import cartGif from "../../../public/assets/emptycart.gif";
 import { Skeleton } from "antd"; 
 import Button from '../Button/Button';
-import PropTypes from "prop-types";
-import { fetchCart, removeFromCart } from '../../redux/slice/cartSlice';
+import { fetchCart, removeFromCart, updateCartQuantity } from '../../redux/slice/cartSlice';
+
 const Cart = ({ visible, onHide }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,6 +20,7 @@ const Cart = ({ visible, onHide }) => {
   const { user } = useSelector((state) => state.auth);
   const currency = items.length > 0 ? items[0].currency : "";
   const [loading, setLoading] = useState(true);
+  const [updatingItemId, setUpdatingItemId] = useState(null);
 
   useEffect(() => {
     if (user?.id && visible) {
@@ -39,11 +40,11 @@ const Cart = ({ visible, onHide }) => {
   const handleRemoveItem = async (productId) => {
     try {
       if (!user?.id) {
-        alert("Please log in to remove items");
+        toast.error("Please log in to remove items");
         return;
       }
 
-      setLoading(true); 
+      setUpdatingItemId(productId);
 
       await dispatch(
         removeFromCart({
@@ -52,16 +53,43 @@ const Cart = ({ visible, onHide }) => {
         })
       ).unwrap();
 
-      dispatch(fetchCart(user.id));
-
-      setTimeout(() => {
-        setLoading(false);
-        toast.success("Item Removed from Cart");
-      }, 800);
+      toast.success("Item removed from cart");
     } catch (error) {
       console.error("Failed to remove item:", error);
-      setLoading(false);
-      alert(error.message || "An error occurred while removing the item.");
+      toast.error(error.message || "Failed to remove item");
+    } finally {
+      setUpdatingItemId(null);
+    }
+  };
+
+  const handleQuantityChange = async (productId, action) => {
+    try {
+      if (!user?.id) {
+        toast.error("Please log in to update cart");
+        return;
+      }
+
+      setUpdatingItemId(productId);
+
+      await dispatch(
+        updateCartQuantity({
+          userId: user.id,
+          productId,
+          action, // 'increase' or 'decrease'
+        })
+      ).unwrap();
+
+      if (action === "decrease") {
+        const item = items.find(item => item.productId === productId);
+        if (item && item.quantity === 1) {
+          toast.success("Item removed from cart");
+        }
+      }
+    } catch (error) {
+      console.error("Failed to update quantity:", error);
+      toast.error(error.message || "Failed to update quantity");
+    } finally {
+      setUpdatingItemId(null);
     }
   };
 
@@ -76,10 +104,9 @@ const Cart = ({ visible, onHide }) => {
       position="right" 
       onHide={onHide}
       className="w-full md:w-[28rem] dark:bg-gray-900 dark:text-white"
-      // style={{ width: '100%', maxWidth: '28rem' }}
     >
-      <div className="h-full flex flex-col ">
-        <h2 className="text-2xl font-bold mb-4 pb-4 text-black">
+      <div className="h-full flex flex-col">
+        <h2 className="text-2xl font-bold mb-4 pb-4 text-black dark:text-white">
           Shopping Cart
         </h2>
 
@@ -113,7 +140,12 @@ const Cart = ({ visible, onHide }) => {
           <>
             <div className="flex-1 overflow-y-auto space-y-3 mb-4">
               {items.map((item, index) => (
-                <div key={index} className="border dark:border-gray-700 rounded-lg p-4 space-y-3">
+                <div 
+                  key={index} 
+                  className={`border dark:border-gray-700 rounded-lg p-4 space-y-3 transition-opacity ${
+                    updatingItemId === item.productId ? 'opacity-50' : 'opacity-100'
+                  }`}
+                >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
                       <img
@@ -129,15 +161,20 @@ const Cart = ({ visible, onHide }) => {
                       </div>
                     </div>
                     <button
-                      className="text-red-500 hover:text-red-600"
+                      className="text-red-500 hover:text-red-600 disabled:opacity-50"
                       onClick={() => handleRemoveItem(item.productId)}
+                      disabled={updatingItemId === item.productId}
                     >
                       <Trash className="w-5 h-5" />
                     </button>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="border rounded-md inline-flex dark:border-gray-700">
-                      <button className="px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-800">
+                      <button 
+                        className="px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                        onClick={() => handleQuantityChange(item.productId, 'decrease')}
+                        disabled={updatingItemId === item.productId}
+                      >
                         -
                       </button>
                       <input
@@ -146,7 +183,11 @@ const Cart = ({ visible, onHide }) => {
                         className="w-10 text-center dark:bg-gray-900 dark:border-gray-700 border-x"
                         readOnly
                       />
-                      <button className="px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-800">
+                      <button 
+                        className="px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                        onClick={() => handleQuantityChange(item.productId, 'increase')}
+                        disabled={updatingItemId === item.productId}
+                      >
                         +
                       </button>
                     </div>
@@ -183,8 +224,5 @@ const Cart = ({ visible, onHide }) => {
     </Sidebar>
   );
 };
-Cart.propTypes = {
-  visible: PropTypes.bool.isRequired,
-  onHide: PropTypes.func.isRequired,
-};
+
 export default Cart;

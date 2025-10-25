@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import Card from "../Card/Card";
 export default function FlashSaleProduct({
   products,
@@ -46,24 +45,3 @@ export default function FlashSaleProduct({
     </div>
   );
 }
-
-FlashSaleProduct.propTypes = {
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      name: PropTypes.string,
-      price: PropTypes.number,
-      image: PropTypes.string,
-    })
-  ).isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  scrollContainerRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
-  ]),
-  handleAddToCart: PropTypes.func.isRequired,
-  handleFavoriteClick: PropTypes.func.isRequired,
-  handleViewDetails: PropTypes.func.isRequired,
-  handleProductClick: PropTypes.func.isRequired,
-  isInWishlist: PropTypes.func.isRequired,
-};

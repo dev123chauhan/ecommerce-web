@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Card from "../components/Card/Card";
 import { addToCart } from "../redux/slice/cartSlice";
 import { fetchWishlist, toggleWishlistItem } from "../redux/slice/wishlistSlice";
-import { useModal } from "../context/modalContext";
+import { useModal } from "../context/ModalContext";
 import { setProducts } from "../redux/slice/shopSlice";
 import { useGetProductsQuery, useGetCategoriesQuery } from "../redux/slice/shopApiSlice";
 import useShopHandlers from "../hooks/useShopHandlers";

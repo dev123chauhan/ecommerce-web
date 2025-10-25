@@ -1,5 +1,4 @@
 import { Store, DollarSign, ShoppingBag, Coins } from 'lucide-react';
-import PropTypes from 'prop-types';
 const StatsCard = ({ icon: Icon, value, description, highlighted = false }) => (
   <div className={`p-6 rounded-lg shadow-md ${highlighted ? 'primaryColor text-white' : ''}`}>
     <div className={`dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400 rounded-full w-16 h-16 flex items-center justify-center mb-4 ${highlighted ? 'bg-red-400' : 'bg-gray-200'}`}>
@@ -9,12 +8,6 @@ const StatsCard = ({ icon: Icon, value, description, highlighted = false }) => (
     <p className={`text-sm ${highlighted ? 'text-red-100' : 'text-gray-600'}`}>{description}</p>
   </div>
 );
-StatsCard.propTypes = {
-    icon: PropTypes.elementType.isRequired, 
-    value: PropTypes.string.isRequired, 
-    description: PropTypes.string.isRequired, 
-    highlighted: PropTypes.bool, 
-  };
 const StatsCards = () => {
   const stats = [
     { icon: Store, value: '10.5k', description: 'Sellers active on our site' },

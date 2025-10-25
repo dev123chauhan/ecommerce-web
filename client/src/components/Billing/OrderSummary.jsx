@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import PropTypes from "prop-types";
 const OrderSummary = ({ 
   selectedPaymentMethod, 
   setSelectedPaymentMethod, 
@@ -140,20 +139,9 @@ const OrderSummary = ({
             "Place Order"
           )}
         </button>
-        
-
       </div>
     </div>
   );
-};
-
-OrderSummary.propTypes = {
-  selectedPaymentMethod: PropTypes.string,
-  setSelectedPaymentMethod: PropTypes.func.isRequired,
-  onPlaceOrder: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
-  totalAmount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  currency: PropTypes.string.isRequired,
 };
 
 export default OrderSummary;

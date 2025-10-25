@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import deliveryIcon from "../../../public/assets/Delivery.png"
 import customerServiceIcon from "../../../public/assets/CustomerService.png"
 import secureIcon from "../../../public/assets/Secure.png"
@@ -14,13 +13,6 @@ const ServiceFeature = ({ img, title, description }) => (
     <p className="text-sm">{description}</p>
   </div>
 );
-
-
-ServiceFeature.propTypes = {
-  img: PropTypes.string.isRequired, 
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-};
 
 const ServiceFeatures = () => {
   const features = [

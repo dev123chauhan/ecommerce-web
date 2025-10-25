@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 export const ThemeContext = createContext();
 export default function ThemeContextProvider({ children }) {
@@ -6,7 +5,6 @@ export default function ThemeContextProvider({ children }) {
     const savedTheme = localStorage.getItem("theme");
     return savedTheme || "light";
   });
-  
   useEffect(() => {
     localStorage.setItem("theme", theme);
     
@@ -16,7 +14,6 @@ export default function ThemeContextProvider({ children }) {
       document.documentElement.classList.remove("dark");
     }
   }, [theme]);
-
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
@@ -27,7 +24,3 @@ export default function ThemeContextProvider({ children }) {
     </ThemeContext.Provider>
   );
 }
-
-ThemeContextProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-};

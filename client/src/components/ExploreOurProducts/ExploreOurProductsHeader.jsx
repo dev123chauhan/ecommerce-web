@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 export default function ExploreOurProductsHeader({ page, pages, onPreviousPage, onNextPage }) {
   return (
@@ -39,10 +38,3 @@ export default function ExploreOurProductsHeader({ page, pages, onPreviousPage, 
     </div>
   );
 }
-
-ExploreOurProductsHeader.propTypes = {
-  page: PropTypes.number.isRequired,
-  pages: PropTypes.number.isRequired,
-  onPreviousPage: PropTypes.func.isRequired,
-  onNextPage: PropTypes.func.isRequired,
-};

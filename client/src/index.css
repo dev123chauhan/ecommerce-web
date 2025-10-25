@@ -100,3 +100,21 @@ body[style*="position: fixed"] {
 .p-sidebar .p-sidebar-header{
   padding: 0rem !important;
 }
+
+
+
+.light-theme-dialog .p-dialog-header {
+  background-color: #ffffff !important;
+  color: #111827 !important; 
+}
+
+.dark-theme-dialog .p-dialog-header {
+  background-color: #1f2937 !important; 
+  color: #ffffff !important;
+  border-bottom: 1px solid #374151 !important;
+}
+
+.dark-theme-dialog .p-dialog-content {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+}

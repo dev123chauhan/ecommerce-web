@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import viewIconWhite from "../../../public/assets/viewWhite.png";
 import viewIcon from "../../../public/assets/view.png";
 import { Skeleton } from "antd";
-import PropTypes from "prop-types";
 import Button from "../Button/Button";
 import wishlistIcon from "../../../public/assets/Wishlist.png";
 import wishlistIconWhite from "../../../public/assets/wishlistWhite.png";
@@ -211,33 +210,6 @@ const Card = ({
       </div>
     </div>
   );
-};
-
-Card.propTypes = {
-  product: PropTypes.shape({
-    _id: PropTypes.string,
-    id: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string,
-    price: PropTypes.number.isRequired,
-    originalPrice: PropTypes.number,
-    discount: PropTypes.string,
-    discountPercentage: PropTypes.number,
-    currency: PropTypes.string,
-    rating: PropTypes.number,
-    reviews: PropTypes.number,
-    colors: PropTypes.arrayOf(PropTypes.string),
-    isNew: PropTypes.bool,
-  }),
-  loading: PropTypes.bool,
-  showDiscount: PropTypes.bool,
-  showAddToCart: PropTypes.bool,
-  onAddToCart: PropTypes.func,
-  onToggleWishlist: PropTypes.func,
-  onViewDetails: PropTypes.func,
-  onProductClick: PropTypes.func,
-  isInWishlist: PropTypes.bool,
-  className: PropTypes.string,
 };
 
 export default Card;

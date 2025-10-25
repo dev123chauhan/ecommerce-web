@@ -1,8 +1,6 @@
 import  { useState } from 'react';
-import { Scroll } from 'lucide-react';
 const Terms = () => {
   const [activeSection, setActiveSection] = useState('overview');
-
   const sections = [
     {
       id: 'overview',
@@ -49,10 +47,9 @@ const Terms = () => {
   return (
     <div className='dark:bg-gray-900 dark:text-white transition-colors duration-300'>
     <div className="py-12 px-4 sm:px-6 lg:px-8 pt-20">
-      <div className="max-w-7xl mx-auto  shadow-xl rounded-lg overflow-hidden flex flex-col md:flex-row">
-        <div className="w-full md:w-64  border-r  border-gray-200 dark:border-gray-700">
+      <div className="max-w-7xl mx-auto  overflow-hidden flex flex-col md:flex-row">
+        <div className="w-full md:w-64   border-r  border-gray-200 dark:border-gray-700">
           <h2 className="text-2xl font-bold mb-6 flex items-center">
-            <Scroll className="mr-3" size={24} />
             Terms of Use
           </h2>
           <nav className="space-y-2">
@@ -60,7 +57,7 @@ const Terms = () => {
               <button
                 key={section.id}
                 onClick={() => setActiveSection(section.id)}
-                className={`w-full text-left px-4 py-2 rounded-md transition-colors duration-200 ${
+                className={`w-full text-left px-4 py-2 rounded-full transition-colors duration-200 ${
                   activeSection === section.id 
                     ? 'secondaryColor text-white' 
                     : ''
@@ -90,7 +87,7 @@ const Terms = () => {
       </div>
 
 
-      <div className="max-w-5xl mx-auto mt-6 rounded-lg shadow-md p-6">
+      <div className="max-w-5xl mx-auto mt-6  p-6">
         <div className="flex items-center justify-between">
           <p className="text-sm">
             By using our platform, you agree to these Terms of Use.

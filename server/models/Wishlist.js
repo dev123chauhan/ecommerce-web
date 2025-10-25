@@ -1,17 +1,17 @@
 const mongoose = require('mongoose');
 
 const wishlistSchema = new mongoose.Schema({
-  userId: {
+  userId: { 
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
   productId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Product' 
+    ref: 'Product'  
   },
   createdAt: {
     type: Date,
-    default: Date.now
+    default: Date.now 
   }
 });
 
