@@ -11,7 +11,7 @@ import {
   validatePhoneNumber,
   validateStreetAddress,
   validateTownCity,
-} from "../Validation/validation";
+} from "../validation/validation";
 import BillingForm from "../components/Billing/BillingForm";
 import OrderSummary from "../components/Billing/OrderSummary";
 

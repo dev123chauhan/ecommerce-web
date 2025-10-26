@@ -4,8 +4,9 @@ import { useSelector } from "react-redux";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { ThemeContext } from "../context/ThemeContextProvider";
 import { useModal } from "../context/ModalContext";
-import Button from "../components/Button/Button";
-import Dropdown from "../components/Dropdown/Dropdown";
+import { navLinkItems } from "../lib/navLinkItems";
+import Button from "../common/Button";
+import Dropdown from "../common/Dropdown";
 const Header = () => {
   const location = useLocation();
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -15,12 +16,7 @@ const Header = () => {
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
-  const navItems = [
-    { name: "Home", path: "/" },
-    { name: "Contact", path: "/contact" },
-    { name: "About", path: "/about" },
-    { name: "Shop", path: "/shop" },
-  ];
+
   return (
     <>
       <header className="bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -31,7 +27,7 @@ const Header = () => {
             </Link>
 
             <ul className="flex space-x-8">
-              {navItems.map((item) => (
+              {navLinkItems.map((item) => (
                 <li key={item.name} className="relative group">
                   <Link
                     to={item.path}
@@ -133,7 +129,7 @@ const Header = () => {
             }`}
           >
             <nav className="flex flex-col space-y-3 pt-4 px-4">
-              {navItems.map((item) => (
+              {navLinkItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}

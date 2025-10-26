@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 import { CheckCircle, AlertCircle, Eye, EyeOff } from "lucide-react";
 import { useFormik } from "formik";
-import { loginUser } from "../redux/action/authAction";
-import { Loader } from "../utils/Loader";
-import { validateEmail, validatePassword } from "../Validation/validation";
-import { useModal } from "../context/ModalContext";
-import Button from "../components/Button/Button";
+import { loginUser } from "../../redux/action/authAction";
+import { validateEmail, validatePassword } from "../../Validation/validation";
+import { useModal } from "../../context/ModalContext";
+import Button from "../../common/Button";
+import { Loader } from "../../common/Loader";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();

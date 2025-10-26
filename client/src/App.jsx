@@ -9,7 +9,6 @@ import Layout from "./Layout/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-// import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import NotFound from "./pages/NotFound";
 import Shop from "./pages/Shop";
@@ -74,7 +73,6 @@ export default function App() {
           <Route path="/terms" element={<Terms />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/product/:id" element={<ProductDetail />} />
-          {/* <Route path="/cart" element={<PrivateRoute element={Cart} />} /> */}
           <Route path="/billing" element={<PrivateRoute element={Billing} />} />
           <Route
             path="/wishlist"

@@ -3,15 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 import { CheckCircle, AlertCircle, Eye, EyeOff } from "lucide-react";
 import { useFormik } from "formik";
-import { registerUser } from "../redux/action/authAction";
-import { Loader } from "../utils/Loader";
+// import { registerUser } from "../redux/action/authAction";
 import {
   validateEmail,
   validatePassword,
   validateUsername,
-} from "../Validation/validation";
-import { useModal } from "../context/ModalContext";
-import Button from "../components/Button/Button";
+} from "../../Validation/validation";
+import { useModal } from "../../context/ModalContext";
+import Button from "../../common/Button";
+import { Loader } from "../../common/Loader";
+import { registerUser } from "../../redux/action/authAction";
 const Register = () => {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);

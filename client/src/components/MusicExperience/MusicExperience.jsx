@@ -1,7 +1,7 @@
 import  { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import jbl from "../../../public/assets/Jbl.png"
-import Button from '../../components/Button/Button';
+import Button from '../../common/Button';
 const CountdownTimer = ({ hours, days, minutes, seconds }) => {
   const TimeUnit = ({ value, label }) => (
     <div className="flex flex-col items-center bg-white bg-opacity-10 rounded-full p-2 w-16 h-16 mb-10">

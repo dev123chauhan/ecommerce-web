@@ -1,6 +1,6 @@
 import noproductfound from "../../../public/assets/Not-found.gif";
-import Card from "../Card/Card";
-import Button from "../Button/Button";
+import Button from "../../common/Button";
+import Card from "../../common/Card";
 export default function BestSellingProducts({
   products,
   allProducts,

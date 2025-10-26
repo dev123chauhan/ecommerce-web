@@ -6,9 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react"; 
 import cartGif from "../../../public/assets/emptycart.gif";
 import { Skeleton } from "antd"; 
-import Button from '../Button/Button';
 import { fetchCart, removeFromCart, updateCartQuantity } from '../../redux/slice/cartSlice';
-
+import Button from '../../common/Button';
 const Cart = ({ visible, onHide }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -212,7 +211,7 @@ const Cart = ({ visible, onHide }) => {
                   <span>{currency}{totalAmount}</span>
                 </div>
               </div>
-              <Button 
+              <Button
                 text="Proceed to checkout" 
                 className="w-full py-3 primaryColor text-white" 
                 onClick={handleCheckout}

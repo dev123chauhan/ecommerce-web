@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Star, ThumbsUp, ThumbsDown } from "lucide-react";
+import { ThumbsUp, ThumbsDown } from "lucide-react";
 import airpods from "../../public/assets/airpods.png";
 import monitor from "../../public/assets/monitor.png";
 import mobile from "../../public/assets/mobile.png";
@@ -40,17 +40,19 @@ const Review = () => {
       images: [],
     },
   ]);
-
   const renderStars = (rating) => {
-    return Array.from({ length: 5 }, (_, index) => (
-      <Star
-        key={index}
-        className={`w-5 h-5 ${
-          index < rating ? "text-yellow-500" : "text-gray-300"
-        }`}
-        fill={index < rating ? "#FFC107" : "none"}
-      />
-    ));
+    return Array(5)
+      .fill(0)
+      .map((_, index) => (
+        <span
+          key={`star-${index}`}
+          className={`text-[#FFAD33] text-4xl ${
+            index < Math.floor(rating) ? "fill-current" : "stroke-current"
+          }`}
+        >
+          ★
+        </span>
+      ));
   };
 
   const filterOptions = [

@@ -18,7 +18,7 @@
 import { forwardRef } from "react";
 const Button = forwardRef(
   ({ text, className = "", onClick, type = "button", disabled = false, children }, ref) => {
-    return (
+    return (  
       <button
         ref={ref}
         type={type}
@@ -29,7 +29,7 @@ const Button = forwardRef(
         }`}
       >
         {children || text}
-      </button>
+      </button> 
     );
   }
 );

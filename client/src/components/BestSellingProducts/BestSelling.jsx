@@ -9,7 +9,6 @@ import { fetchWishlist, toggleWishlistItem } from "../../redux/slice/wishlistSli
 import { useModal } from "../../context/ModalContext";
 import BestSellingHeader from "./BestSellingHeader";
 import BestSellingProducts from "./BestSellingProducts";
-
 const BestSelling = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

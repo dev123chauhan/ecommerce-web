@@ -1,5 +1,5 @@
 import { CheckCircle, AlertCircle } from "lucide-react";
-import { Loader } from "../../utils/Loader";
+import { Loader } from "../../common/Loader";
 export default function ContactForm({ formik, loading }) {
   const isFieldValid = (fieldName) => {
     return (

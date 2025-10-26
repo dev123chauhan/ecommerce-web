@@ -1,20 +1,20 @@
 import { useContext, useState } from "react";
-import viewIconWhite from "../../../public/assets/viewWhite.png";
-import viewIcon from "../../../public/assets/view.png";
+import viewIconWhite from "../../public/assets/viewWhite.png";
+import viewIcon from "../../public/assets/view.png";
 import { Skeleton } from "antd";
-import Button from "../Button/Button";
-import wishlistIcon from "../../../public/assets/Wishlist.png";
-import wishlistIconWhite from "../../../public/assets/wishlistWhite.png";
-import wishlistIconFilled from "../../../public/assets/heartfill.png";
-import wishlistIconFilledWhite from "../../../public/assets/Wishlist.png";
-import { ThemeContext } from "../../context/ThemeContextProvider";
+import wishlistIcon from "../../public/assets/Wishlist.png";
+import wishlistIconWhite from "../../public/assets/wishlistWhite.png";
+import wishlistIconFilled from "../../public/assets/heartfill.png";
+import wishlistIconFilledWhite from "../../public/assets/Wishlist.png";
+import { ThemeContext } from "../context/ThemeContextProvider";
+import Button from "./Button";
 const Card = ({
   product,
   loading = false,
   showDiscount = false,
   showAddToCart = true,
   onAddToCart,
-  onToggleWishlist,
+  onToggleWishlist, 
   onViewDetails,
   onProductClick,
   isInWishlist = false,

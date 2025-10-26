@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
 import { toast } from "sonner";
-import { validateEmail, validateMessage, validateName } from "../Validation/validation";
+import { validateEmail, validateMessage, validateName } from "../validation/validation";
 import ContactMap from "../components/Contact/ContactMap";
 import ContactInfo from "../components/Contact/ContactInfo";
 import ContactForm from "../components/Contact/ContactForm";

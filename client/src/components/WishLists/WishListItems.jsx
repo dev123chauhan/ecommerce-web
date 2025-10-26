@@ -6,8 +6,8 @@ import {
   removeFromWishlist,
 } from "../../redux/slice/wishlistSlice";
 import wishlistGif from "../../../public/assets/Wishlist.gif";
-import Card from "../Card/Card";
 import WishlistProductSkeleton from "../Skeleton/WishlistProductSkeleton";
+import Card from "../../common/Card";
 const WishlistItems = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);

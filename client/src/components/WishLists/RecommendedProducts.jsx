@@ -5,8 +5,8 @@ import { toast } from "sonner";
 import { fetchProducts } from "../../redux/slice/productSlice";
 import { addToCart } from "../../redux/slice/cartSlice";
 import { fetchWishlist, toggleWishlistItem } from "../../redux/slice/wishlistSlice";
-import Card from "../Card/Card";
 import { useModal } from "../../context/ModalContext";
+import Card from "../../common/Card";
 const RecommendedProducts = () => {
   const { items: products, loading } = useSelector((state) => state.products);
   const { items: wishlistItems } = useSelector((state) => state.wishlist);

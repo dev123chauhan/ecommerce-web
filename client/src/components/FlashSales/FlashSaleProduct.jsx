@@ -1,4 +1,4 @@
-import Card from "../Card/Card";
+import Card from "../../common/Card";
 export default function FlashSaleProduct({
   products,
   isLoading,

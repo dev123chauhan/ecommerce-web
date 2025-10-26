@@ -2,7 +2,7 @@ import women from "../../../public/assets/women.png";
 import speaker from "../../../public/assets/speaker.png";
 import perfume from "../../../public/assets/perfume.png";
 import plastation from "../../../public/assets/plastation.png";
-import Button from "../../components/Button/Button";
+import Button from "../../common/Button";
 const FeaturedNewArrivals = () => {
   return (
     <div className="mb-10">
