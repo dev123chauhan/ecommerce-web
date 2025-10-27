@@ -1,5 +1,6 @@
 import { CheckCircle, AlertCircle } from "lucide-react";
 import { Loader } from "../../common/Loader";
+import Button from "../../common/Button";
 export default function ContactForm({ formik, loading }) {
   const isFieldValid = (fieldName) => {
     return (
@@ -138,13 +139,13 @@ export default function ContactForm({ formik, loading }) {
           )}
         </div>
 
-        <button
+        <Button
           type="submit"
-          className="w-full inline-flex items-center justify-center primaryColor px-6 py-3 rounded-full text-white font-medium transition duration-200"
+          className="w-full inline-flex items-center justify-center primaryColor text-white"
           disabled={loading}
         >
           {loading ? <Loader /> : "Send Message"}
-        </button>
+        </Button>
       </form>
     </div>
   );

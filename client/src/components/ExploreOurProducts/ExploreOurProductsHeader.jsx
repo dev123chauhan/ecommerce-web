@@ -20,7 +20,7 @@ export default function ExploreOurProductsHeader({ page, pages, onPreviousPage, 
           disabled={page === 1}
           aria-label="Previous page"
         >
-          <ArrowLeft className="w-6 h-6" />
+          <ArrowLeft size={30} strokeWidth={1}  />
         </button>
         <button
           className={`p-2 rounded-full transition-colors dark:bg-gray-800 dark:border-gray-700 dark:text-white ${
@@ -32,7 +32,7 @@ export default function ExploreOurProductsHeader({ page, pages, onPreviousPage, 
           disabled={page === pages}
           aria-label="Next page"
         >
-          <ArrowRight className="w-6 h-6" />
+          <ArrowRight size={30} strokeWidth={1}  />
         </button>
       </div>
     </div>

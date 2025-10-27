@@ -1,6 +1,6 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import ScrollToTop from "react-scroll-to-top";
-import { FaArrowUp } from "react-icons/fa";
+import { ArrowUp } from 'lucide-react';
 import { useDispatch } from "react-redux";
 import { checkAuthentication } from "./redux/action/authAction";
 import { useEffect } from "react";
@@ -61,7 +61,7 @@ export default function App() {
       <ScrollToTop
         className="scrollToTop"
         smooth
-        component={<FaArrowUp className="upArrow" />}
+        component={<ArrowUp size={20} className="upArrow" />}
       />
       <Routes>
         <Route path="/" element={<Layout />}>

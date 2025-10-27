@@ -11,16 +11,16 @@ import ThemeProvider from "./context/ThemeContext.jsx";
 import { ModalProvider } from "./context/ModalContext.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
 createRoot(document.getElementById("root")).render(
-    <BrowserRouter>
-      <Provider store={store}>
-        <ThemeProvider> 
-          <ModalProvider>
-            <CartProvider>
-              <App />
-              <Modal />
-            </CartProvider>
-          </ModalProvider>
-        </ThemeProvider>
-      </Provider>
-    </BrowserRouter>
+  <BrowserRouter>
+    <Provider store={store}>
+      <ThemeProvider>
+        <ModalProvider>
+          <CartProvider>
+            <App />
+            <Modal />
+          </CartProvider>
+        </ModalProvider>
+      </ThemeProvider>
+    </Provider>
+  </BrowserRouter>
 );

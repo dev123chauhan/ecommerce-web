@@ -124,8 +124,8 @@ const CategoryList = () => {
                 </div>
                 <div>
                   {expandedCategories.includes(category)
-                    ? <ChevronDown size={18} className="sm:w-5 sm:h-5" />
-                    : <ChevronRight size={18} className="sm:w-5 sm:h-5" />
+                    ? <ChevronDown size={20} strokeWidth={1}/>
+                    : <ChevronRight size={20} strokeWidth={1} />
                   }
                 </div>
               </div>

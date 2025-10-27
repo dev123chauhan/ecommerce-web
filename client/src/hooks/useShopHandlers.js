@@ -5,7 +5,6 @@ import {
   setSelectedCategories,
   setSelectedSubCategories,
 } from "../redux/slice/shopSlice";
-
 export default function useShopHandlers({ categories, setIsFiltering }) {
   const dispatch = useDispatch();
   const { searchTerm, selectedCategories, selectedSubCategories } = useSelector(
@@ -21,7 +20,7 @@ export default function useShopHandlers({ categories, setIsFiltering }) {
     );
 
   const handleCategoryChange = (category) => {
-    // Start filtering animation
+
     setIsFiltering?.(true);
 
     const newCategories = selectedCategories.includes(category)
@@ -37,7 +36,7 @@ export default function useShopHandlers({ categories, setIsFiltering }) {
       dispatch(setSelectedSubCategories(newSubCategories));
     }
 
-    // End filtering animation after a short delay
+
     setTimeout(() => setIsFiltering?.(false), 300);
   };
 
@@ -56,7 +55,7 @@ export default function useShopHandlers({ categories, setIsFiltering }) {
   const handleSearchChange = (e) => {
     const value = e.target.value;
     
-    // Only show filtering state if there's actual text
+
     if (value.length > 0 || searchTerm.length > 0) {
       setIsFiltering?.(true);
     }

@@ -12,13 +12,13 @@ export default function FlashSaleHeader({ timeLeft, onScroll }) {
           className="p-2 rounded-full bg-gray-100 dark:bg-gray-800"
           onClick={() => onScroll("left")}
         >
-          <ArrowLeft size={20} />
+          <ArrowLeft size={30} strokeWidth={1}/>
         </button>
         <button
           className="p-2 rounded-full bg-gray-100 dark:bg-gray-800"
           onClick={() => onScroll("right")}
         >
-          <ArrowRight size={20} />
+          <ArrowRight size={30} strokeWidth={1}/>
         </button>
       </div>
     </div>

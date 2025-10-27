@@ -74,7 +74,7 @@ const Cart = ({ visible, onHide }) => {
         updateCartQuantity({
           userId: user.id,
           productId,
-          action, // 'increase' or 'decrease'
+          action, 
         })
       ).unwrap();
 

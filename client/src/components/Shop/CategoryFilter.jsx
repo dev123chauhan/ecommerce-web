@@ -38,7 +38,8 @@ export default function CategoryFilter({ categories, handlers, loading }) {
               </label>
               <button onClick={() => handlers.toggleCategory(category)} className="p-1">
                 <ChevronDown
-                  className={`w-4 h-4 transition-transform ${
+                size={20} strokeWidth={1}
+                  className={`transition-transform ${
                     handlers.expandedCategories.includes(category) ? "rotate-180" : ""
                   }`}
                 />

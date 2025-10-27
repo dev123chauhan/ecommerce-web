@@ -1,4 +1,3 @@
-// Light mode icons
 import phoneIcon from "../../public/assets/phone-black.png";
 import computerIcon from "../../public/assets/computer-black.png";
 import smartwatchIcon from "../../public/assets/smartwatch-black.png";
@@ -6,7 +5,6 @@ import cameraIcon from "../../public/assets/camera-black.png";
 import headphoneIcon from "../../public/assets/headphone-black.png";
 import gamepadIcon from "../../public/assets/gamepad-black.png";
 
-// Dark mode icons
 import phoneIconDark from "../../public/assets/cellPhone.png";
 import computerIconDark from "../../public/assets/computer.png";
 import smartwatchIconDark from "../../public/assets/smartWatch.png";
@@ -14,7 +12,7 @@ import cameraIconDark from "../../public/assets/camera.png";
 import headphoneIconDark from "../../public/assets/headphone.png";
 import gamepadIconDark from "../../public/assets/gamepad.png";
 
-// Active state icons
+
 import phoneIconActive from "../../public/assets/cellPhone.png";
 import computerIconActive from "../../public/assets/computer.png";
 import smartwatchIconActive from "../../public/assets/smartWatch.png";

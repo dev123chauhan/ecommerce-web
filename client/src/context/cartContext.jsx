@@ -6,7 +6,7 @@ export const CartProvider = ({ children }) => {
 
   const openDrawer = () => setVisible(true);
   const closeDrawer = () => setVisible(false);
- 
+
   return (
     <CartContext.Provider value={{ openDrawer, closeDrawer }}>
       {children}

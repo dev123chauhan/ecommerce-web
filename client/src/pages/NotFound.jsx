@@ -12,12 +12,6 @@ const NotFound = () => {
       <p className="text-lg text-gray-600 mb-8">
         Your visited page not found. You may go home page.
       </p>
-      {/* <Link
-        to="/"
-        className="px-6 py-3 bg-red-500 text-white text-lg rounded hover:bg-red-600 transition-colors duration-300"
-      >
-        Back to home page
-      </Link> */}
       <Button text="Back To Home" onClick={()=>navigate("/")} className="py-3 primaryColor text-white"/>
     </div>
     </div>

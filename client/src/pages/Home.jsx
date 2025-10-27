@@ -1,4 +1,4 @@
-import Banner from '../components/Banner/Banner'
+  import Banner from '../components/Banner/Banner'
 import FlashSale from '../components/FlashSales/FlashSale'
 import Categories from '../components/Categories/Categories'
 import MusicExperience from '../components/MusicExperience/MusicExperience'
