@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 import { CheckCircle, AlertCircle, Eye, EyeOff } from "lucide-react";
 import { useFormik } from "formik";
-// import { registerUser } from "../redux/action/authAction";
 import {
   validateEmail,
   validatePassword,

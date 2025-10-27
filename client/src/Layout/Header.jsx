@@ -2,11 +2,11 @@ import { useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Menu, Moon, Sun, X } from "lucide-react";
-import { ThemeContext } from "../context/ThemeContextProvider";
-import { useModal } from "../context/ModalContext";
 import { navLinkItems } from "../lib/navLinkItems";
 import Button from "../common/Button";
 import Dropdown from "../common/Dropdown";
+import { ThemeContext } from "../context/ThemeContext";
+import { useModal } from "../context/ModalContext";
 const Header = () => {
   const location = useLocation();
   const { isAuthenticated } = useSelector((state) => state.auth);

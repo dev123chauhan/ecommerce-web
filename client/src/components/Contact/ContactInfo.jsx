@@ -1,5 +1,4 @@
 import { Phone, Mail } from "lucide-react";
-
 export default function ContactInfo() {
   return (
     <div className="w-full md:w-1/3 p-6 rounded-lg border border-gray-300 dark:border-gray-700">

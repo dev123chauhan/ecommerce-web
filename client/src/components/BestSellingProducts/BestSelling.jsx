@@ -6,9 +6,9 @@ import { useGetProductsQuery } from "../../redux/slice/shopApiSlice";
 import { setProducts } from "../../redux/slice/shopSlice";
 import { addToCart } from "../../redux/slice/cartSlice";
 import { fetchWishlist, toggleWishlistItem } from "../../redux/slice/wishlistSlice";
-import { useModal } from "../../context/ModalContext";
 import BestSellingHeader from "./BestSellingHeader";
 import BestSellingProducts from "./BestSellingProducts";
+import { useModal } from "../../context/ModalContext";
 const BestSelling = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
-import { useModal } from "../../context/ModalContext";
 import { addToCart } from "../../redux/slice/cartSlice";
 import { fetchProducts } from "../../redux/slice/productSlice";
 import { fetchWishlist, toggleWishlistItem } from "../../redux/slice/wishlistSlice";
@@ -10,6 +9,7 @@ import useCountdownTimer from "../../hooks/useCountdownTimer";
 import useHorizontalScroll from "../../hooks/useHorizontalScroll";
 import FlashSaleHeader from "./FlashSaleHeader";
 import FlashSaleProduct from "./FlashSaleProduct";
+import { useModal } from "../../context/ModalContext";
 export default function FlashSale() {
   const dispatch = useDispatch();
   const navigate = useNavigate();

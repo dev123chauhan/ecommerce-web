@@ -5,9 +5,9 @@ import { toast } from 'sonner';
 import { listProducts } from '../../redux/action/exploreProductAction';
 import { toggleWishlistItem, fetchWishlist } from '../../redux/slice/wishlistSlice';
 import { addToCart } from '../../redux/slice/cartSlice';
-import { useModal } from '../../context/ModalContext';
 import ExploreOurProductsHeader from './ExploreOurProductsHeader';
 import ExploreOurProductList from './ExploreOurProductsList';
+import { useModal } from '../../context/ModalContext';
 const ExploreOurProducts = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();

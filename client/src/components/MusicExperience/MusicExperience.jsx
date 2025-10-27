@@ -1,5 +1,4 @@
 import  { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import jbl from "../../../public/assets/Jbl.png"
 import Button from '../../common/Button';
 const CountdownTimer = ({ hours, days, minutes, seconds }) => {
@@ -9,10 +8,6 @@ const CountdownTimer = ({ hours, days, minutes, seconds }) => {
       <span className="text-white text-xs">{label}</span>
     </div>
   );
-  TimeUnit.propTypes = {
-    value: PropTypes.number.isRequired,
-    label: PropTypes.string.isRequired,
-  };
 
   return (
     <div className="flex space-x-4">
@@ -23,12 +18,6 @@ const CountdownTimer = ({ hours, days, minutes, seconds }) => {
     </div>
   );
 };
-CountdownTimer.propTypes = {
-    hours: PropTypes.number.isRequired,
-    days: PropTypes.number.isRequired,
-    minutes: PropTypes.number.isRequired,
-    seconds: PropTypes.number.isRequired,
-  };
 const MusicExperience = () => {
   const [timeLeft, setTimeLeft] = useState({
     hours: 23,

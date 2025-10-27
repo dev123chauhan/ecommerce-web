@@ -2,7 +2,6 @@ import { useState, useEffect, useRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
-import { ThemeContext } from "../context/ThemeContextProvider";
 import wishlistIcon from "../../public/assets/Wishlist.png";
 import wishlistIconWhite from "../../public/assets/wishlistWhite.png";
 import cartIcon from "../../public/assets/Cart.png";
@@ -15,6 +14,7 @@ import reviewsIcon from "../../public/assets/Reviews.png";
 import logoutIcon from "../../public/assets/Logout.png";
 import { logoutUser } from "../redux/action/authAction";
 import { fetchCart } from "../redux/slice/cartSlice";
+import { ThemeContext } from "../context/ThemeContext";
 import { useCart } from "../context/cartContext";
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,7 +72,6 @@ const Dropdown = () => {
   return (
     <>
       <div className="flex items-center gap-2">
-        {/* Wishlist Icon */}
         <div className="relative">
           <img
             src={isDarkMode ? wishlistIconWhite : wishlistIcon}
@@ -87,7 +86,7 @@ const Dropdown = () => {
           )}
         </div>
 
-        {/* Cart Icon */}
+
         <div className="relative">
           <img
             src={isDarkMode ? cartIconWhite : cartIcon}
@@ -102,13 +101,13 @@ const Dropdown = () => {
           )}
         </div>
 
-        {/* User Dropdown */}
+
         <div className="relative" ref={dropdownRef}>
           <div
             className="flex items-center gap-2 cursor-pointer dark:text-white"
             onClick={toggleDropdown}
           >
-            {/* ✅ Toggle between normal and active user icon */}
+
             <img
               src={
                 isOpen
@@ -125,7 +124,7 @@ const Dropdown = () => {
             <span className="text-sm font-medium">{user?.username}</span>
           </div>
 
-          {/* Dropdown Menu */}
+
           <div
             className={`absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-gradient-to-br from-[#9284A3] to-[#594F63] transition-all duration-300 ease-in-out ${
               isOpen

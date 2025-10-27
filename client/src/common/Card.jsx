@@ -6,8 +6,8 @@ import wishlistIcon from "../../public/assets/Wishlist.png";
 import wishlistIconWhite from "../../public/assets/wishlistWhite.png";
 import wishlistIconFilled from "../../public/assets/heartfill.png";
 import wishlistIconFilledWhite from "../../public/assets/Wishlist.png";
-import { ThemeContext } from "../context/ThemeContextProvider";
 import Button from "./Button";
+import { ThemeContext } from "../context/ThemeContext";
 const Card = ({
   product,
   loading = false,
@@ -99,7 +99,7 @@ const Card = ({
     return null;
   };
 
-  // Get the appropriate wishlist icon based on theme and wishlist status
+
   const getWishlistIcon = () => {
     if (isInWishlist) {
       return isDarkMode ? wishlistIconFilledWhite : wishlistIconFilled;

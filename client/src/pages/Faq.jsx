@@ -1,7 +1,7 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Link } from "react-router-dom";
+import { faqList } from "../lib/faqList";
 const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -25,12 +25,6 @@ const FAQItem = ({ question, answer }) => {
     </div>
   );
 };
-
-FAQItem.propTypes = {
-  question: PropTypes.string.isRequired,
-  answer: PropTypes.string.isRequired,
-};
-
 const FAQSection = ({ title, items }) => (
   <div className="shadow-md rounded-lg  mb-6">
     <h2 className="text-2xl font-bold mb-6 dark:border-gray-700 border-b pb-3">{title}</h2>
@@ -39,66 +33,7 @@ const FAQSection = ({ title, items }) => (
     ))}
   </div>
 );
-
-FAQSection.propTypes = {
-  title: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      question: PropTypes.string.isRequired,
-      answer: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
-
 const Faq = () => {
-  const faqData = [
-    {
-      title: "Ordering",
-      items: [
-        {
-          question: "How do I place an order?",
-          answer:
-            "Browse our products, select the items you want, add them to your cart, and proceed to checkout. Create an account or check out as a guest.",
-        },
-        {
-          question: "What payment methods do you accept?",
-          answer:
-            "We accept major credit cards (Visa, MasterCard, American Express), PayPal, and Apple Pay.",
-        },
-      ],
-    },
-    {
-      title: "Shipping & Delivery",
-      items: [
-        {
-          question: "How long does shipping take?",
-          answer:
-            "Standard shipping takes 3-5 business days. Express shipping is available at checkout for 1-2 day delivery.",
-        },
-        {
-          question: "Do you ship internationally?",
-          answer:
-            "We currently ship to the United States and Canada. International shipping options are being expanded.",
-        },
-      ],
-    },
-    {
-      title: "Returns & Exchanges",
-      items: [
-        {
-          question: "What is our return policy?",
-          answer:
-            "We offer a 30-day return policy for unworn, unwashed items with original tags attached. Refunds are processed within 5-7 business days.",
-        },
-        {
-          question: "How do I initiate a return?",
-          answer:
-            'Log into your account, go to "Order History", select the item you wish to return, and follow the return process.',
-        },
-      ],
-    },
-  ];
-
   return (
     <div className="dark:bg-gray-900 dark:text-white transition-colors duration-300">
       <div className="pt-20 pb-8 px-4 sm:px-6 lg:px-8">
@@ -107,7 +42,7 @@ const Faq = () => {
             Frequently Asked Questions
           </h1>
 
-          {faqData.map((section, index) => (
+          {faqList.map((section, index) => (
             <FAQSection
               key={index}
               title={section.title}
