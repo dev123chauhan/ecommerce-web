@@ -1,10 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body {
+body, html {
   margin: 0 !important;
   padding: 0 !important;
-  box-sizing: border-box !important;
+}
+footer {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 :root {
   --primary-color: #db4444 !important;
@@ -116,3 +119,6 @@ body[style*="position: fixed"] {
   background-color: #1f2937 !important;
   color: #ffffff !important;
 }
+
+
+
