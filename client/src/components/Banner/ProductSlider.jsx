@@ -8,7 +8,6 @@ import { Skeleton } from "antd";
 const ProductSlider = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
   const dispatch = useDispatch();
   const { featuredProducts, error,loading } = useSelector(
     (state) => state.productBanner

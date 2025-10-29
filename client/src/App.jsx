@@ -20,6 +20,7 @@ import Order from "./pages/Order";
 import Review from "./pages/Review";
 import ProductDetail from "./pages/ProductDetail";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import Account from "./pages/Account";
 export default function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -81,6 +82,7 @@ export default function App() {
           <Route path="/order" element={<PrivateRoute element={Order} />} />
           <Route path="/review" element={<PrivateRoute element={Review} />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/account" element={<Account />} />
         </Route>
       </Routes>
     </>

@@ -26,7 +26,7 @@ const Header = () => {
               ShopVibe
             </Link>
 
-            <ul className="flex space-x-8">
+            <ul className="flex space-x-12">
               {navLinkItems.map((item) => (
                 <li key={item.name} className="relative group">
                   <Link
