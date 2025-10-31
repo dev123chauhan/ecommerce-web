@@ -5,7 +5,6 @@ import { Skeleton } from "antd";
 import wishlistIcon from "../../public/assets/Wishlist.png";
 import wishlistIconWhite from "../../public/assets/wishlistWhite.png";
 import wishlistIconFilled from "../../public/assets/heartfill.png";
-import wishlistIconFilledWhite from "../../public/assets/Wishlist.png";
 import Button from "./Button";
 import { ThemeContext } from "../context/ThemeContext";
 const Card = ({
@@ -102,7 +101,7 @@ const Card = ({
 
   const getWishlistIcon = () => {
     if (isInWishlist) {
-      return isDarkMode ? wishlistIconFilledWhite : wishlistIconFilled;
+      return isDarkMode ? wishlistIconFilled : wishlistIconFilled;
     }
     return isDarkMode ? wishlistIconWhite : wishlistIcon;
   };

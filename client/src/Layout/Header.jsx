@@ -1,17 +1,17 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { TfiClose } from "react-icons/tfi";
 import { navLinkItems } from "../lib/navLinkItems";
 import Button from "../common/Button";
+import { CiMenuFries } from "react-icons/ci";
 import Dropdown from "../common/Dropdown";
-import { ThemeContext } from "../context/ThemeContext";
 import { useModal } from "../context/ModalContext";
+import DarkModeToggle from "../common/DarkModeToggle";
 const Header = () => {
   const location = useLocation();
   const { isAuthenticated } = useSelector((state) => state.auth);
   const [isOpen, setIsOpen] = useState(false);
-  const { theme, toggleTheme } = useContext(ThemeContext);
   const { openModal } = useModal();
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -46,17 +46,7 @@ const Header = () => {
             </ul>
 
             <div className="flex items-center space-x-6">
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                aria-label="Toggle theme"
-              >
-                {theme === "light" ? (
-                  <Sun className="h-5 w-5 text-gray-600 dark:text-gray-400" />
-                ) : (
-                  <Moon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
-                )}
-              </button>
+              <DarkModeToggle />
 
               {isAuthenticated ? (
                 <Dropdown />
@@ -82,7 +72,7 @@ const Header = () => {
               onClick={toggleSidebar}
               className="cursor-pointer dark:text-white"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <TfiClose size={24}/> : <CiMenuFries size={24} />}
             </button>
 
             <Link to="/" className="text-xl font-bold dark:text-white">
@@ -90,17 +80,7 @@ const Header = () => {
             </Link>
 
             <div className="flex items-center space-x-4">
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                aria-label="Toggle theme"
-              >
-                {theme === "light" ? (
-                  <Sun className="h-5 w-5 text-gray-600 dark:text-gray-400" />
-                ) : (
-                  <Moon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
-                )}
-              </button>
+              <DarkModeToggle />
 
               {isAuthenticated ? (
                 <Dropdown />

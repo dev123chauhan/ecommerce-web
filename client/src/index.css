@@ -102,8 +102,6 @@ body[style*="position: fixed"] {
   padding: 0rem !important;
 }
 
-
-
 .light-theme-dialog .p-dialog-header {
   background-color: #ffffff !important;
   color: #111827 !important; 
@@ -112,7 +110,6 @@ body[style*="position: fixed"] {
 .dark-theme-dialog .p-dialog-header {
   background-color: #1f2937 !important; 
   color: #ffffff !important;
-  border-bottom: 1px solid #374151 !important;
 }
 
 .dark-theme-dialog .p-dialog-content {
@@ -120,5 +117,27 @@ body[style*="position: fixed"] {
   color: #ffffff !important;
 }
 
+.containerTheme{
+  width: 42px;
+  height: 24px;
+  border: 1.5px solid #ff8585;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px;
+  position: relative;
+  cursor: pointer;
+}
 
+.iconTheme{
+  font-size: 12px;
+}
 
+.ball{
+  width: 15px;
+  height: 15px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  position: absolute;
+}

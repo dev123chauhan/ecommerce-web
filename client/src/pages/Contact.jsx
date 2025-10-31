@@ -6,7 +6,7 @@ import ContactMap from "../components/Contact/ContactMap";
 import ContactInfo from "../components/Contact/ContactInfo";
 import ContactForm from "../components/Contact/ContactForm";
 import { contactService } from "../api/services/contactService";
-import { validateEmail, validateMessage, validateName } from "../Validation/validation";
+import { validateEmail, validateMessage, validateName } from "../validation/validation";
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);

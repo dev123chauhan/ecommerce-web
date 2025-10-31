@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { CheckCircle, AlertCircle, Eye, EyeOff } from "lucide-react";
 import { useFormik } from "formik";
 import { loginUser } from "../../redux/action/authAction";
-import { validateEmail, validatePassword } from "../../Validation/validation";
+import { validateEmail, validatePassword } from "../../validation/validation";
 import { useModal } from "../../context/ModalContext";
 import Button from "../../common/Button";
 import { Loader } from "../../common/Loader";

@@ -9,7 +9,7 @@ const initialState = {
 
 export const shopSlice = createSlice({
   name: "Shop",
-  initialState,
+  initialState,       
   reducers: {
     setProducts: (state, action) => {
       state.allProducts = action.payload;
